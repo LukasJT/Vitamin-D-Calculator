@@ -14,6 +14,7 @@ export default function InteractiveMap({ latitude, longitude, onLocationChange }
   const marker = useRef<maplibregl.Marker | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [searching, setSearching] = useState(false);
+  const lastSearchTime = useRef(0);
 
   useEffect(() => {
     if (!mapContainer.current || map.current) return;
@@ -79,19 +80,28 @@ export default function InteractiveMap({ latitude, longitude, onLocationChange }
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!searchQuery.trim()) return;
+    const query = searchQuery.trim().slice(0, 200);
+    if (!query) return;
+
+    // Rate limit: 1 request per second (Nominatim usage policy)
+    const now = Date.now();
+    if (now - lastSearchTime.current < 1000) return;
+    lastSearchTime.current = now;
 
     setSearching(true);
     try {
       const res = await fetch(
-        `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(searchQuery)}&format=json&limit=1`,
+        `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=1`,
         { headers: { 'User-Agent': 'VitaminDCalculator/1.0' } }
       );
+      if (!res.ok) return;
       const data = await res.json();
-      if (data.length > 0) {
+      if (Array.isArray(data) && data.length > 0) {
         const lat = parseFloat(data[0].lat);
         const lon = parseFloat(data[0].lon);
-        onLocationChange(lat, lon);
+        if (!isNaN(lat) && !isNaN(lon)) {
+          onLocationChange(lat, lon);
+        }
       }
     } catch {
       // Silently fail — user can click map instead
@@ -112,6 +122,7 @@ export default function InteractiveMap({ latitude, longitude, onLocationChange }
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search location..."
+          maxLength={200}
           className="px-4 py-2 bg-white/95 backdrop-blur-sm rounded-lg shadow-md border border-gray-200 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-sunshine-400"
         />
         <button

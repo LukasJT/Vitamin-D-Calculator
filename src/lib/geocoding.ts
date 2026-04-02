@@ -20,17 +20,19 @@ export async function searchLocation(query: string): Promise<{
   name: string;
 } | null> {
   try {
-    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=1`;
+    const sanitized = query.trim().slice(0, 200);
+    if (!sanitized) return null;
+    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(sanitized)}&format=json&limit=1`;
     const res = await fetch(url, {
       headers: { 'User-Agent': 'VitaminDCalculator/1.0' },
     });
+    if (!res.ok) return null;
     const data = await res.json();
-    if (data.length === 0) return null;
-    return {
-      lat: parseFloat(data[0].lat),
-      lon: parseFloat(data[0].lon),
-      name: data[0].display_name,
-    };
+    if (!Array.isArray(data) || data.length === 0) return null;
+    const lat = parseFloat(data[0].lat);
+    const lon = parseFloat(data[0].lon);
+    if (isNaN(lat) || isNaN(lon)) return null;
+    return { lat, lon, name: String(data[0].display_name ?? '') };
   } catch {
     return null;
   }
@@ -40,15 +42,18 @@ export async function searchLocation(query: string): Promise<{
  * Reverse geocode: get location name from coordinates.
  */
 export async function reverseGeocode(lat: number, lon: number): Promise<string> {
+  const fallback = `${lat.toFixed(2)}°, ${lon.toFixed(2)}°`;
+  if (!isFinite(lat) || !isFinite(lon) || Math.abs(lat) > 90 || Math.abs(lon) > 180) return fallback;
   try {
     const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
     const res = await fetch(url, {
       headers: { 'User-Agent': 'VitaminDCalculator/1.0' },
     });
+    if (!res.ok) return fallback;
     const data = await res.json();
-    return data.display_name ?? `${lat.toFixed(2)}°, ${lon.toFixed(2)}°`;
+    return String(data.display_name ?? fallback);
   } catch {
-    return `${lat.toFixed(2)}°, ${lon.toFixed(2)}°`;
+    return fallback;
   }
 }
 
@@ -59,11 +64,14 @@ export async function reverseGeocode(lat: number, lon: number): Promise<string> 
  * https://open-meteo.com/en/docs/elevation-api
  */
 export async function getElevation(lat: number, lon: number): Promise<number> {
+  if (!isFinite(lat) || !isFinite(lon) || Math.abs(lat) > 90 || Math.abs(lon) > 180) return 0;
   try {
     const url = `https://api.open-meteo.com/v1/elevation?latitude=${lat}&longitude=${lon}`;
     const res = await fetch(url);
+    if (!res.ok) return 0;
     const data = await res.json();
-    return (data.elevation?.[0] ?? 0) / 1000; // Convert meters to km
+    const elev = Number(data.elevation?.[0] ?? 0);
+    return isFinite(elev) ? elev / 1000 : 0;
   } catch {
     return 0;
   }
@@ -76,10 +84,12 @@ export async function getElevation(lat: number, lon: number): Promise<number> {
  * https://open-meteo.com/en/docs/climate-api
  */
 export async function getMonthlyCloudCover(lat: number, lon: number): Promise<number[]> {
+  const defaults = new Array(12).fill(50);
+  if (!isFinite(lat) || !isFinite(lon) || Math.abs(lat) > 90 || Math.abs(lon) > 180) return defaults;
   try {
-    // Use ERA5 climate data for 1991-2020 normals
     const url = `https://climate-api.open-meteo.com/v1/climate?latitude=${lat}&longitude=${lon}&start_date=1991-01-01&end_date=2020-12-31&models=ERA5&monthly=cloud_cover`;
     const res = await fetch(url);
+    if (!res.ok) return defaults;
     const data = await res.json();
 
     if (data.monthly?.cloud_cover) {
