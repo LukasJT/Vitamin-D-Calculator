@@ -28,7 +28,96 @@ const {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>{title}</title>
   </head>
-  <body class="bg-gray-50 text-gray-900 antialiased">
-    <slot />
+  <body class="bg-gray-50 text-gray-900 antialiased min-h-screen flex flex-col">
+    <!-- Header Navigation -->
+    <header class="bg-white border-b border-gray-200">
+      <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2 text-lg font-bold text-amber-600 hover:text-amber-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="5" />
+            <path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" />
+          </svg>
+          Vitamin D Calculator
+        </a>
+        <div class="flex items-center gap-6 text-sm font-medium text-gray-600">
+          <a href="/" class="hover:text-amber-600 transition-colors">Calculator</a>
+          <a href="/about" class="hover:text-amber-600 transition-colors">About</a>
+          <a href="/contact" class="hover:text-amber-600 transition-colors">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex-1">
+      <slot />
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 mt-12">
+      <div class="max-w-6xl mx-auto px-4 py-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-white font-semibold mb-3">Vitamin D Calculator</h3>
+            <p class="text-sm leading-relaxed">A free, science-backed tool to estimate your daily vitamin D needs based on location, skin type, and sun exposure. Not medical advice.</p>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-3">Pages</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/" class="hover:text-white transition-colors">Calculator</a></li>
+              <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
+              <li><a href="/contact" class="hover:text-white transition-colors">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-3">Legal</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms" class="hover:text-white transition-colors">Terms of Service</a></li>
+              <li><a href="/disclaimer" class="hover:text-white transition-colors">Medical Disclaimer</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-6 text-sm text-center">
+          <p>&copy; {new Date().getFullYear()} vitamindcalculator.net. All rights reserved.</p>
+          <p class="mt-1">This website is not a substitute for professional medical advice.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="fixed bottom-0 inset-x-0 bg-gray-900 text-white p-4 z-[9999] shadow-lg" style="display:none;">
+      <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-gray-300">
+          We use cookies to improve your experience and serve personalized ads via Google AdSense. By continuing to use this site, you consent to our use of cookies.
+          <a href="/privacy" class="underline text-amber-400 hover:text-amber-300">Privacy Policy</a>
+        </p>
+        <div class="flex gap-3 shrink-0">
+          <button id="cookie-reject" class="px-4 py-2 text-sm border border-gray-600 rounded-lg hover:bg-gray-800 transition-colors cursor-pointer">
+            Reject
+          </button>
+          <button id="cookie-accept" class="px-4 py-2 text-sm bg-amber-500 text-gray-900 font-semibold rounded-lg hover:bg-amber-400 transition-colors cursor-pointer">
+            Accept
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script is:inline>
+      (function() {
+        var consent = localStorage.getItem('cookie-consent');
+        var banner = document.getElementById('cookie-consent');
+        if (!consent && banner) {
+          banner.style.display = 'block';
+        }
+        document.getElementById('cookie-accept')?.addEventListener('click', function() {
+          localStorage.setItem('cookie-consent', 'accepted');
+          banner.style.display = 'none';
+        });
+        document.getElementById('cookie-reject')?.addEventListener('click', function() {
+          localStorage.setItem('cookie-consent', 'rejected');
+          banner.style.display = 'none';
+        });
+      })();
+    </script>
   </body>
 </html>

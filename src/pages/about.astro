@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About - Vitamin D Calculator"
+  description="Learn how the Vitamin D Calculator works, the science behind it, and the peer-reviewed research that powers our estimates."
+>
+  <main class="max-w-3xl mx-auto px-4 py-12 sm:py-16">
+    <a href="/" class="inline-flex items-center text-sm text-amber-600 hover:text-amber-700 font-medium mb-8">
+      &larr; Back to Calculator
+    </a>
+
+    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-6">
+      About the Vitamin D Calculator
+    </h1>
+
+    <p class="text-lg text-gray-600 mb-10 leading-relaxed">
+      A free, science-backed tool that helps you understand how much vitamin D
+      your body can produce from sunlight and whether you might need to
+      supplement. No accounts, no ads, no data stored.
+    </p>
+
+    <!-- Purpose -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold mb-3">Why this exists</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Nearly one billion people worldwide have insufficient vitamin D levels,
+        yet the amount your skin can synthesise depends on factors most people
+        never think about: latitude, season, time of day, cloud cover, skin
+        pigmentation, age, and how much skin is exposed. This calculator brings
+        those variables together in one place so you can make better-informed
+        decisions about sun exposure and supplementation.
+      </p>
+    </section>
+
+    <!-- Science -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold mb-3">The science behind the calculator</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        The estimates are built on well-established photobiology and atmospheric
+        science models:
+      </p>
+      <ul class="space-y-3 text-gray-700">
+        <li class="flex gap-3">
+          <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-amber-500" aria-hidden="true"></span>
+          <span>
+            <strong class="font-semibold">Beer-Lambert atmospheric model</strong>
+            &mdash; calculates how UV-B radiation is attenuated as it passes
+            through the atmosphere, accounting for solar zenith angle and
+            altitude.
+          </span>
+        </li>
+        <li class="flex gap-3">
+          <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-amber-500" aria-hidden="true"></span>
+          <span>
+            <strong class="font-semibold">Ozone climatology</strong>
+            &mdash; uses latitude- and season-dependent total column ozone data
+            to determine UV-B absorption in the stratosphere.
+          </span>
+        </li>
+        <li class="flex gap-3">
+          <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-amber-500" aria-hidden="true"></span>
+          <span>
+            <strong class="font-semibold">Fitzpatrick skin type classification</strong>
+            &mdash; accounts for differences in melanin concentration across six
+            skin types, which directly affects the rate of pre-vitamin D&#8323;
+            photosynthesis.
+          </span>
+        </li>
+        <li class="flex gap-3">
+          <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-amber-500" aria-hidden="true"></span>
+          <span>
+            <strong class="font-semibold">UV spectral efficiency (action spectrum)</strong>
+            &mdash; weights UV wavelengths by their effectiveness at converting
+            7-dehydrocholesterol to pre-vitamin D&#8323; in the skin.
+          </span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- References -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold mb-3">Key references</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        The models and data used in this calculator draw from the following
+        peer-reviewed research:
+      </p>
+      <ol class="list-decimal list-inside space-y-2 text-gray-700 text-sm leading-relaxed">
+        <li>
+          Webb, A. R. &amp; Holick, M. F. (1988). Influence of season and
+          latitude on the cutaneous synthesis of vitamin D&#8323;.
+          <em>The Journal of Clinical Endocrinology &amp; Metabolism</em>,
+          67(2), 373&ndash;378.
+        </li>
+        <li>
+          Holick, M. F. (2007). Vitamin D deficiency.
+          <em>The New England Journal of Medicine</em>, 357(3), 266&ndash;281.
+        </li>
+        <li>
+          Madronich, S. (2007). UV radiation in the natural and perturbed
+          atmosphere. In <em>Environmental Effects of Ozone Depletion and Its
+          Interactions with Climate Change</em>.
+        </li>
+        <li>
+          CIE (Commission Internationale de l'Eclairage). Action spectrum for
+          the production of pre-vitamin D&#8323; in human skin. CIE 174:2006.
+        </li>
+        <li>
+          Fitzpatrick, T. B. (1988). The validity and practicality of
+          sun-reactive skin types I through VI.
+          <em>Archives of Dermatology</em>, 124(6), 869&ndash;871.
+        </li>
+      </ol>
+    </section>
+
+    <!-- Disclaimer -->
+    <section class="mb-10 rounded-lg border border-amber-200 bg-amber-50 p-5">
+      <h2 class="text-xl font-bold mb-2 text-amber-900">Not medical advice</h2>
+      <p class="text-amber-800 leading-relaxed">
+        This calculator is an educational tool only. It does not diagnose,
+        treat, or prevent any disease. The estimates produced are
+        approximations based on population-level models and may not reflect your
+        individual physiology. Always consult a qualified healthcare provider
+        before making changes to your supplementation or sun-exposure habits.
+      </p>
+    </section>
+
+    <!-- Navigation links -->
+    <nav class="flex flex-wrap gap-4 text-sm font-medium pt-4 border-t border-gray-200">
+      <a href="/" class="text-amber-600 hover:text-amber-700">Calculator</a>
+      <a href="/privacy" class="text-amber-600 hover:text-amber-700">Privacy Policy</a>
+      <a href="/contact" class="text-amber-600 hover:text-amber-700">Contact</a>
+    </nav>
+  </main>
+</BaseLayout>
