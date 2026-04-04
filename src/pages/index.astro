@@ -6,5 +6,211 @@ import CalculatorForm from '../components/calculator/CalculatorForm';
 <BaseLayout>
   <main>
     <CalculatorForm client:load />
+
+    <!-- Educational Content Section -->
+    <section class="max-w-5xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">Understanding Vitamin D & Sunlight</h2>
+      <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+        Vitamin D is essential for bone health, immune function, and overall well-being. Yet an estimated 1 billion people worldwide are deficient. Understanding how your body produces vitamin D from sunlight is the first step toward optimal health.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-16">
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5" />
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M17.36 17.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M17.36 6.64l1.42-1.42" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">The Sunshine Vitamin</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            When UVB rays from sunlight hit your skin, they convert 7-dehydrocholesterol into previtamin D3. This is then transformed into the active form your body uses. It's a remarkable process that has sustained human health for millennia — but modern lifestyles often leave us with insufficient exposure.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Location Matters</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Your latitude dramatically affects vitamin D production. Above 37°N (or below 37°S), the sun's angle becomes too low during winter months for UVB rays to penetrate the atmosphere effectively. This creates a "vitamin D winter" where supplementation becomes essential — lasting 2 months in New York and up to 6 months in northern Scandinavia.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Know Your Needs</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Your skin type, age, clothing, time spent outdoors, and even cloud cover all influence how much vitamin D your body can produce. Darker skin requires up to 5-10 times more sun exposure to produce the same amount of vitamin D as lighter skin. Our calculator accounts for all of these factors using peer-reviewed science.
+          </p>
+        </div>
+      </div>
+
+      <!-- Why Vitamin D Matters Section -->
+      <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-8 md:p-12 mb-16">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Why Vitamin D Matters</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Vitamin D is not just a vitamin — it's a hormone precursor that affects virtually every cell in your body. It plays a critical role in calcium absorption, making it essential for strong bones and teeth. Without adequate vitamin D, your body can only absorb 10-15% of dietary calcium, compared to 30-40% with sufficient levels.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              Beyond bone health, research has linked vitamin D to immune function, muscle strength, cardiovascular health, and mood regulation. The Institute of Medicine recommends 600 IU daily for most adults, while the Endocrine Society suggests 1,500-2,000 IU may be needed to maintain optimal blood levels above 30 ng/mL.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-3">Signs of Deficiency</h3>
+            <ul class="space-y-2 text-gray-700 text-sm">
+              <li class="flex items-start gap-2">
+                <span class="text-amber-500 mt-1">&#9679;</span>
+                <span>Fatigue and general tiredness, even with adequate sleep</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-amber-500 mt-1">&#9679;</span>
+                <span>Bone pain and muscle weakness, especially in the back and legs</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-amber-500 mt-1">&#9679;</span>
+                <span>Frequent illness or infections due to impaired immune response</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-amber-500 mt-1">&#9679;</span>
+                <span>Depression or low mood, particularly during winter months</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-amber-500 mt-1">&#9679;</span>
+                <span>Slow wound healing and impaired recovery from injuries</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-amber-500 mt-1">&#9679;</span>
+                <span>Hair loss and brittle nails in severe, prolonged deficiency</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- How the Calculator Works Section -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">How Our Calculator Works</h2>
+        <p class="text-center text-gray-600 max-w-3xl mx-auto mb-10">
+          Our calculator uses a physics-based atmospheric model grounded in peer-reviewed research to estimate your daily vitamin D production from sunlight exposure.
+        </p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-amber-600">1</span>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Solar Position</h3>
+            <p class="text-gray-600 text-sm">We calculate the sun's exact angle at your location for each month using astronomical algorithms, determining how much UVB reaches the ground.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-amber-600">2</span>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Atmospheric Filtering</h3>
+            <p class="text-gray-600 text-sm">Using the Beer-Lambert law, we model how ozone and Rayleigh scattering filter vitamin D-producing wavelengths (297-303nm) from sunlight.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-amber-600">3</span>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Personal Factors</h3>
+            <p class="text-gray-600 text-sm">Your skin type, age, clothing, sunscreen use, and time outdoors are factored in using data from clinical studies on vitamin D synthesis rates.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-amber-600">4</span>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Recommendation</h3>
+            <p class="text-gray-600 text-sm">We compare your estimated sun production to clinical guidelines from the IOM and Endocrine Society to calculate your supplementation gap.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Who Should Use This Calculator -->
+      <div class="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-gray-100 mb-16">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Who Should Use This Calculator?</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              An estimated 42% of American adults are vitamin D deficient, with rates even higher among African Americans (82%) and Hispanics (69%), according to research published in Nutrition Research. Worldwide, approximately 1 billion people have inadequate vitamin D levels.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              This calculator is especially useful if you live above 37°N latitude (most of the US, all of Canada and Europe), have darker skin, spend most of your day indoors, are over 50 years old, or wear clothing that covers most of your body. These factors all significantly reduce your body's ability to produce vitamin D from sunlight.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-3">At-Risk Groups</h3>
+            <ul class="space-y-3 text-gray-700 text-sm">
+              <li class="flex items-start gap-3">
+                <span class="bg-amber-100 text-amber-700 rounded-full px-2 py-0.5 text-xs font-semibold mt-0.5 shrink-0">High</span>
+                <span>People living at northern latitudes (above 37°N) during winter months</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="bg-amber-100 text-amber-700 rounded-full px-2 py-0.5 text-xs font-semibold mt-0.5 shrink-0">High</span>
+                <span>Individuals with darker skin (Fitzpatrick types IV-VI)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="bg-amber-100 text-amber-700 rounded-full px-2 py-0.5 text-xs font-semibold mt-0.5 shrink-0">High</span>
+                <span>Older adults (reduced skin synthesis capacity after age 50)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="bg-orange-100 text-orange-700 rounded-full px-2 py-0.5 text-xs font-semibold mt-0.5 shrink-0">Mod</span>
+                <span>Office workers and those who spend limited time outdoors</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="bg-orange-100 text-orange-700 rounded-full px-2 py-0.5 text-xs font-semibold mt-0.5 shrink-0">Mod</span>
+                <span>People who regularly wear sunscreen or covering clothing</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="bg-orange-100 text-orange-700 rounded-full px-2 py-0.5 text-xs font-semibold mt-0.5 shrink-0">Mod</span>
+                <span>Obese individuals (vitamin D is sequestered in fat tissue)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Learn More Links -->
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Learn More About Vitamin D</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          <a href="/vitamin-d-guide" class="block bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:border-amber-300 hover:shadow-md transition-all">
+            <h3 class="font-semibold text-gray-900 mb-1">Complete Guide</h3>
+            <p class="text-gray-500 text-sm">Everything you need to know about vitamin D</p>
+          </a>
+          <a href="/how-it-works" class="block bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:border-amber-300 hover:shadow-md transition-all">
+            <h3 class="font-semibold text-gray-900 mb-1">The Science</h3>
+            <p class="text-gray-500 text-sm">How we calculate your vitamin D needs</p>
+          </a>
+          <a href="/faq" class="block bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:border-amber-300 hover:shadow-md transition-all">
+            <h3 class="font-semibold text-gray-900 mb-1">FAQ</h3>
+            <p class="text-gray-500 text-sm">Answers to common vitamin D questions</p>
+          </a>
+          <a href="/about" class="block bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:border-amber-300 hover:shadow-md transition-all">
+            <h3 class="font-semibold text-gray-900 mb-1">About Us</h3>
+            <p class="text-gray-500 text-sm">Our mission and methodology</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Disclaimer Banner -->
+    <section class="bg-gray-100 border-t border-gray-200 py-8">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <p class="text-gray-500 text-sm leading-relaxed">
+          <strong class="text-gray-700">Important:</strong> This calculator provides estimates based on published scientific research and is intended for educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult your healthcare provider before starting any supplement regimen. Read our <a href="/disclaimer" class="text-amber-600 hover:text-amber-700 underline">full medical disclaimer</a>.
+        </p>
+      </div>
+    </section>
   </main>
 </BaseLayout>
