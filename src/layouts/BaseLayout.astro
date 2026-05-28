@@ -131,8 +131,20 @@ const {
         });
       })();
     </script>
-  <!-- Adsterra banner -->
-  <div style="width:468px;height:60px;margin:1rem auto;">
+  <!-- Adsterra responsive banners (320x50 mobile / 468x60 desktop) -->
+  <div class="adsterra-banner adsterra-mobile" style="width:320px;height:50px;margin:1rem auto;">
+    <script is:inline>
+      atOptions = {
+        'key' : 'a24ed02f036c8072b93659a97fc59f02',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script is:inline src="https://www.highperformanceformat.com/a24ed02f036c8072b93659a97fc59f02/invoke.js"></script>
+  </div>
+  <div class="adsterra-banner adsterra-desktop" style="width:468px;height:60px;margin:1rem auto;">
     <script is:inline>
       atOptions = {
         'key' : 'c1ae2784baad856c72f3ba1d209deeac',
@@ -144,5 +156,12 @@ const {
     </script>
     <script is:inline src="https://www.highperformanceformat.com/c1ae2784baad856c72f3ba1d209deeac/invoke.js"></script>
   </div>
+  <style is:inline>
+    .adsterra-mobile { display: none; }
+    @media (max-width: 479px) {
+      .adsterra-mobile { display: block; }
+      .adsterra-desktop { display: none; }
+    }
+  </style>
   </body>
 </html>
