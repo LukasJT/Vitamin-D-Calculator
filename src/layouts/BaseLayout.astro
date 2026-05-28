@@ -206,6 +206,8 @@ const {
     .adsterra-skyscraper-right { right: 8px; }
     @media (min-width: 1280px) {
       .adsterra-skyscraper { display: block; }
+      /* Push main content inward so the 160px skyscrapers don't overlap it */
+      body > .flex-1 { padding-left: 184px; padding-right: 184px; }
     }
   </style>
   </body>
