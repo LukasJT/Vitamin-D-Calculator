@@ -167,6 +167,47 @@ const {
       .adsterra-desktop { display: none; }
     }
   </style>
+  <!-- Adsterra 160x600 side skyscrapers (both sides, desktop only) -->
+  <aside class="adsterra-skyscraper adsterra-skyscraper-left" aria-hidden="true">
+    <script is:inline>
+      atOptions = {
+        'key' : 'ecdf09ae5e8dbc5c40ebc94bc4c0e0be',
+        'format' : 'iframe',
+        'height' : 600,
+        'width' : 160,
+        'params' : {}
+      };
+    </script>
+    <script is:inline src="https://www.highperformanceformat.com/ecdf09ae5e8dbc5c40ebc94bc4c0e0be/invoke.js"></script>
+  </aside>
+  <aside class="adsterra-skyscraper adsterra-skyscraper-right" aria-hidden="true">
+    <script is:inline>
+      atOptions = {
+        'key' : 'ecdf09ae5e8dbc5c40ebc94bc4c0e0be',
+        'format' : 'iframe',
+        'height' : 600,
+        'width' : 160,
+        'params' : {}
+      };
+    </script>
+    <script is:inline src="https://www.highperformanceformat.com/ecdf09ae5e8dbc5c40ebc94bc4c0e0be/invoke.js"></script>
+  </aside>
+  <style is:inline>
+    .adsterra-skyscraper {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 160px;
+      height: 600px;
+      z-index: 5;
+      display: none;
+    }
+    .adsterra-skyscraper-left { left: 8px; }
+    .adsterra-skyscraper-right { right: 8px; }
+    @media (min-width: 1280px) {
+      .adsterra-skyscraper { display: block; }
+    }
+  </style>
   <!-- Adsterra social bar / popunder -->
   <script is:inline src="https://pl29574424.effectivecpmnetwork.com/19/71/59/197159f775d0c1c73128574326c7eab7.js"></script>
   </body>
