@@ -4,12 +4,69 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
 }
+
+const SITE_URL = 'https://vitamindcalculator.net';
+const SITE_NAME = 'Vitamin D Calculator';
 
 const {
   title = 'Vitamin D Calculator — How Much Do You Really Need?',
-  description = 'Science-based calculator that estimates your daily vitamin D needs based on your location, skin type, sun exposure, and lifestyle. Backed by peer-reviewed research.'
+  description = 'Free science-based vitamin D calculator that estimates your daily vitamin D needs from location, skin type, sun exposure, and lifestyle. Backed by peer-reviewed research from the Endocrine Society and NIH.',
+  ogImage = '/og-image.png',
+  ogType = 'website',
+  noindex = false,
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, SITE_URL).toString().replace(/\/$/, '') || SITE_URL;
+const ogImageAbs = new URL(ogImage, SITE_URL).toString();
+
+// Site-wide JSON-LD: WebSite + Organization + (on homepage) WebApplication.
+const isHome = Astro.url.pathname === '/' || Astro.url.pathname === '';
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: SITE_URL,
+  description,
+  inLanguage: 'en',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${SITE_URL}/?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}/favicon.svg`,
+};
+const webAppJsonLd = isHome ? {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: SITE_NAME,
+  url: SITE_URL,
+  description,
+  applicationCategory: 'HealthApplication',
+  operatingSystem: 'Any (web-based)',
+  browserRequirements: 'Requires JavaScript. Requires HTML5.',
+  isAccessibleForFree: true,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  featureList: [
+    'Estimate daily vitamin D needs from sunlight',
+    'Location, skin type, and season aware',
+    'Interactive map for choosing your location',
+    'Peer-reviewed research citations',
+  ],
+} : null;
 ---
 
 <!doctype html>
@@ -18,15 +75,45 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="author" content={SITE_NAME} />
+    <meta name="theme-color" content="#f59e0b" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {!noindex && <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />}
+
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://vitamindcalculator.net" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageAbs} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbs} />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>{title}</title>
+
+    <!-- JSON-LD structured data (site-wide) -->
+    <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
+    {webAppJsonLd && <script type="application/ld+json" set:html={JSON.stringify(webAppJsonLd)} />}
+
+    <!-- Per-page JSON-LD or extra head elements -->
+    <slot name="head" />
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6394912562617960" crossorigin="anonymous"></script>
   </head>
   <body class="bg-gray-50 text-gray-900 antialiased min-h-screen flex flex-col">

@@ -1,11 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import faqData from '../data/faq.json';
+
+// FAQPage JSON-LD — mirrors the on-page Q&A one-to-one so Google can
+// surface answers directly in search results. Answers are the full body
+// text of each <details> block, cleaned of markup.
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: (faqData as { q: string; a: string }[]).map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
 ---
 
 <BaseLayout
   title="Vitamin D FAQ - Common Questions Answered"
   description="Answers to frequently asked questions about vitamin D, including daily needs, sunlight exposure, deficiency symptoms, supplements, and how your body produces this essential nutrient."
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
   <main class="max-w-4xl mx-auto px-4 py-12">
     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Vitamin D: Frequently Asked Questions</h1>
 
