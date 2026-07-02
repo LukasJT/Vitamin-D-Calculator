@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-dosage`;
+
+const DOSAGE_TABLE = [
+  { group: 'Infants 0–6 months', rda: 400, ul: 1000, notes: 'AI (Adequate Intake). Breastfed infants require supplementation.' },
+  { group: 'Infants 7–12 months', rda: 400, ul: 1500, notes: 'AI.' },
+  { group: 'Children 1–3 years', rda: 600, ul: 2500, notes: 'RDA.' },
+  { group: 'Children 4–8 years', rda: 600, ul: 3000, notes: 'RDA.' },
+  { group: 'Ages 9–70', rda: 600, ul: 4000, notes: 'RDA. Includes pregnant and lactating women.' },
+  { group: 'Ages 71+', rda: 800, ul: 4000, notes: 'RDA. Reduced cutaneous synthesis and higher fracture risk.' },
+];
+
+const REPLETION_PROTOCOLS = [
+  { serum: '< 12 ng/mL (severe)', regimen: '50,000 IU/week × 8 wk → 1,500–2,000 IU/d maintenance', note: 'Under physician supervision. Check labs including PTH and calcium.' },
+  { serum: '12–20 ng/mL (deficient)', regimen: '6,000 IU/d × 8 wk → 1,500–2,000 IU/d maintenance', note: 'Recheck 25(OH)D after 3 months.' },
+  { serum: '20–30 ng/mL (insufficient)', regimen: '1,000–2,000 IU/d', note: 'Retest after 3 months; adjust based on response.' },
+  { serum: '30–50 ng/mL (sufficient)', regimen: '600–1,000 IU/d maintenance', note: 'Adjust seasonally; higher in winter if minimal sun exposure.' },
+];
+
+const softwareJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D Dosage Guide',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: { '@type': 'MedicalCondition', name: 'Vitamin D deficiency' },
+  lastReviewed: '2026-05-01',
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Dosage Guide', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D Dosage Guide by Age & 25(OH)D Level | IU/day & Repletion"
+  description="Evidence-based vitamin D dosage guide: RDA and Tolerable Upper Intake Level by age, repletion regimens by baseline serum 25(OH)D, and D2 vs D3 dose equivalence."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(softwareJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D Dosage Guide</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Recommended and upper-limit intakes of cholecalciferol (vitamin&nbsp;D<sub>3</sub>) by age,
+      plus repletion protocols indexed to baseline serum 25-hydroxyvitamin D — pulled from
+      the Institute of Medicine (2011) and Endocrine Society (2011) guidelines.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Daily intake by age (IOM RDA)</h2>
+    <div class="overflow-x-auto bg-white border border-gray-200 rounded-xl shadow-sm mb-10">
+      <table class="w-full text-sm">
+        <thead class="bg-gray-50 border-b border-gray-200 text-gray-700">
+          <tr>
+            <th class="text-left px-4 py-3 font-semibold">Age group</th>
+            <th class="text-right px-4 py-3 font-semibold">RDA / AI (IU/day)</th>
+            <th class="text-right px-4 py-3 font-semibold">UL (IU/day)</th>
+            <th class="text-left px-4 py-3 font-semibold hidden md:table-cell">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {DOSAGE_TABLE.map((r) => (
+            <tr class="border-b border-gray-100 last:border-b-0">
+              <td class="px-4 py-3 font-medium">{r.group}</td>
+              <td class="px-4 py-3 text-right font-mono">{r.rda.toLocaleString()}</td>
+              <td class="px-4 py-3 text-right font-mono text-red-700">{r.ul.toLocaleString()}</td>
+              <td class="px-4 py-3 text-gray-600 hidden md:table-cell">{r.notes}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Repletion protocols by baseline 25(OH)D</h2>
+    <p class="text-gray-700 leading-relaxed mb-4">
+      Below are typical clinical repletion regimens for adults, drawn from the Endocrine Society
+      2011 clinical practice guideline. These are starting points — actual protocols vary by
+      body weight, comorbidities, and medications.
+    </p>
+    <div class="space-y-3 mb-10">
+      {REPLETION_PROTOCOLS.map((p) => (
+        <div class="border-l-4 border-amber-500 bg-amber-50 rounded p-4">
+          <p class="font-semibold text-gray-900">{p.serum}</p>
+          <p class="text-gray-800 mt-1"><span class="font-medium">Regimen:</span> {p.regimen}</p>
+          <p class="text-gray-600 text-sm mt-1">{p.note}</p>
+        </div>
+      ))}
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Cholecalciferol (D<sub>3</sub>) vs ergocalciferol (D<sub>2</sub>)</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      Both raise serum 25(OH)D, but per-mole they differ. Tripkovic et al.'s 2012 meta-analysis
+      found D<sub>3</sub> approximately <strong>60–90% more effective</strong> than D<sub>2</sub>
+      at raising 25(OH)D at equivalent oral doses. In practice, if your prescription reads
+      "ergocalciferol 50,000 IU," ask whether you can substitute cholecalciferol at the same dose
+      for better response.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Unit conversion</h2>
+    <div class="grid grid-cols-2 gap-4 mb-10">
+      <div class="bg-white border border-gray-200 rounded-xl p-4">
+        <p class="text-xs uppercase text-gray-500">IU to µg</p>
+        <p class="text-2xl font-bold font-mono">40 IU = 1 µg</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-4">
+        <p class="text-xs uppercase text-gray-500">µg to IU</p>
+        <p class="text-2xl font-bold font-mono">1 µg = 40 IU</p>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Safety and the upper limit</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      The Tolerable Upper Intake Level (UL) for adults is <strong>4,000 IU/day</strong> from all
+      sources (food + supplements). This is set conservatively; toxicity in observational studies
+      does not appear until serum 25(OH)D exceeds ~150 ng/mL, which typically requires sustained
+      intake of 40,000+ IU/day for months. Sun exposure alone cannot cause toxicity due to the
+      photoequilibrium that degrades previtamin D<sub>3</sub> at high UV doses.
+    </p>
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 leading-relaxed">
+      <strong>Not medical advice.</strong> Always confirm dosing with your physician, especially
+      if you are pregnant, breastfeeding, have renal or hepatic disease, sarcoidosis or another
+      granulomatous disorder (which can cause 1,25(OH)<sub>2</sub>D hypersensitivity), or take
+      medications known to interact with vitamin D metabolism.
+    </div>
+  </main>
+</BaseLayout>

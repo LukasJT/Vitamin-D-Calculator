@@ -1,11 +1,36 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const PAGE_URL = 'https://vitamindcalculator.net/how-it-works';
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: 'How It Works — The Science Behind the Vitamin D Calculator',
+  description: 'A detailed, plain-language explanation of the science behind the Vitamin D Calculator — solar angles, ozone, skin type, UV index, photoequilibrium, and how we turn it all into a supplement recommendation.',
+  author: { '@type': 'Organization', name: 'Vitamin D Calculator' },
+  publisher: { '@type': 'Organization', name: 'Vitamin D Calculator', logo: { '@type': 'ImageObject', url: 'https://vitamindcalculator.net/favicon.svg' } },
+  mainEntityOfPage: PAGE_URL,
+  image: 'https://vitamindcalculator.net/og-image.png',
+  datePublished: '2026-03-01',
+  dateModified: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://vitamindcalculator.net' },
+    { '@type': 'ListItem', position: 2, name: 'How It Works', item: PAGE_URL },
+  ],
+};
 ---
 
 <BaseLayout
   title="How It Works - The Science Behind Vitamin D Calculation"
   description="A detailed, plain-language explanation of the science behind the Vitamin D Calculator — solar angles, ozone, skin type, UV index, photoequilibrium, and how we turn it all into a supplement recommendation."
+  ogType="article"
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <main class="max-w-4xl mx-auto px-4 py-12 sm:py-16">
     <a href="/" class="inline-flex items-center text-sm text-amber-600 hover:text-amber-700 font-medium mb-8">
       &larr; Back to Calculator
