@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-for-kids`;
+
+const AGE_TABLE = [
+  { age: '0–12 months', rda: '400 IU / 10 µg', ul: '1,000–1,500 IU', notes: 'All breastfed and partially breastfed infants; formula-fed infants receiving < 1 L/day of fortified formula.' },
+  { age: '1–3 years', rda: '600 IU / 15 µg', ul: '2,500 IU', notes: 'Fortified milk plus a routine supplement covers most children.' },
+  { age: '4–8 years', rda: '600 IU / 15 µg', ul: '3,000 IU', notes: 'Adequate outdoor play in summer often suffices for lighter-skinned children at lower latitudes.' },
+  { age: '9–18 years', rda: '600 IU / 15 µg', ul: '4,000 IU', notes: 'Growth spurts increase skeletal demand; adolescents with limited sun or dark skin may need higher intake.' },
+];
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D for Kids: Ages, Dosages, and When to Supplement',
+  url: PAGE_URL,
+  medicalAudience: [
+    { '@type': 'MedicalAudience', audienceType: 'Patient' },
+    { '@type': 'PeopleAudience', suggestedMinAge: 0, suggestedMaxAge: 18 },
+  ],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D for Kids', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D for Kids: Dosage by Age, Deficiency Signs, When to Supplement"
+  description="Vitamin D recommendations for infants, children, and adolescents. Includes the AAP 400 IU/day guideline for breastfed babies, when to test, and how much sun is enough."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D for Kids</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Children need vitamin D for growing bones and immune function. Deficiency in childhood
+      causes rickets — impaired mineralisation that manifests as bowed legs, growth failure, and
+      delayed dentition. Sub-clinical insufficiency is much more common than overt rickets and
+      may still affect bone density and infection risk.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Recommended intake by age</h2>
+    <div class="overflow-x-auto bg-white border border-gray-200 rounded-xl shadow-sm mb-8">
+      <table class="w-full text-sm">
+        <thead class="bg-gray-50 text-gray-700 border-b border-gray-200">
+          <tr>
+            <th class="text-left px-4 py-3">Age group</th>
+            <th class="text-left px-4 py-3">RDA / AI</th>
+            <th class="text-left px-4 py-3">Upper limit (UL)</th>
+            <th class="text-left px-4 py-3 hidden md:table-cell">Practical notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {AGE_TABLE.map((r) => (
+            <tr class="border-b border-gray-100 last:border-b-0">
+              <td class="px-4 py-3 font-medium">{r.age}</td>
+              <td class="px-4 py-3 font-mono">{r.rda}</td>
+              <td class="px-4 py-3 font-mono text-red-700">{r.ul}</td>
+              <td class="px-4 py-3 text-gray-600 hidden md:table-cell">{r.notes}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The breastfed infant</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Human breast milk contains very little vitamin D (typically &lt; 50 IU/L). The American
+      Academy of Pediatrics and Health Canada both recommend that <strong>all breastfed infants
+      receive 400 IU cholecalciferol daily</strong> from within the first few days of life,
+      continuing until they are consistently drinking at least 1 L/day of vitamin-D–fortified
+      formula or milk (usually around 12 months).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Signs of deficiency in kids</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Delayed walking or motor milestones</li>
+      <li>Bowed legs (genu varum) or knock-knees (genu valgum) beyond typical toddler alignment</li>
+      <li>Frontal bossing (prominent forehead)</li>
+      <li>Rachitic rosary — palpable beading at costochondral junctions</li>
+      <li>Widened wrists and ankles</li>
+      <li>Delayed tooth eruption or enamel defects</li>
+      <li>Muscle weakness, floppy tone (severe cases)</li>
+      <li>Recurrent respiratory infections</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">How much sun is enough for a child?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Children have thin, efficient skin and generally require less exposure than adults for
+      equivalent vitamin D synthesis. In summer at temperate latitudes, 10–15 minutes of midday
+      sun on face and arms two to three times per week meets typical needs for light-skinned kids.
+      Darker-skinned children may need 2–3× longer. Use our <a href="/" class="text-amber-700 underline">calculator</a> to model your child's exposure needs.
+      Always avoid burning, and consider skin-cancer risk over the lifespan — routine sunscreen
+      use is fine and does not typically cause deficiency.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Discuss any concern about your child's growth or vitamin
+      D status with a paediatrician. Serum 25(OH)D testing in a child with suspected deficiency is
+      inexpensive and definitive.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-for-kids" />
+  </main>
+</BaseLayout>

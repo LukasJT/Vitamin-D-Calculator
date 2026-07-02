@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-in-pregnancy`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D in Pregnancy: Requirements, Risks, and Evidence',
+  url: PAGE_URL,
+  medicalAudience: [
+    { '@type': 'MedicalAudience', audienceType: 'Patient' },
+    { '@type': 'PeopleAudience', suggestedGender: 'female' },
+  ],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D in Pregnancy', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D in Pregnancy: Dosage, Risks & Evidence"
+  description="What pregnant women need to know about vitamin D — RDA, deficiency risks (preeclampsia, gestational diabetes, low birth weight), safe supplementation, and 25(OH)D targets."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D in Pregnancy</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Adequate maternal 25-hydroxyvitamin D is important for fetal skeletal development and appears
+      to reduce the risk of several pregnancy complications. Deficiency is common — surveys show
+      30–60% of pregnant women in temperate countries have serum 25(OH)D below 30 ng/mL.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Recommended intake</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      The IOM sets the RDA in pregnancy at <strong>600 IU/day (15 µg)</strong>, the same as
+      non-pregnant adults. The Endocrine Society recommends up to <strong>1,500–2,000 IU/day</strong>
+      to maintain serum 25(OH)D at ≥ 40 ng/mL, arguing this level is more appropriate for maternal
+      and fetal health. The upper limit remains 4,000 IU/day.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency-associated risks</h2>
+    <ul class="list-disc pl-6 space-y-2 text-gray-700 leading-relaxed">
+      <li><strong>Preeclampsia</strong>: meta-analyses show a 40–50% relative-risk reduction with supplementation, especially when started early.</li>
+      <li><strong>Gestational diabetes mellitus (GDM)</strong>: deficient women have ~1.5× the odds; supplementation modestly reduces incidence.</li>
+      <li><strong>Small-for-gestational-age (SGA) births</strong>: reduced with supplementation in deficient populations.</li>
+      <li><strong>Neonatal hypocalcaemia</strong>: severe maternal deficiency can lead to hypocalcaemic seizures in the newborn.</li>
+      <li><strong>Craniotabes and congenital rickets</strong>: rare but reported in infants of severely deficient mothers.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Testing during pregnancy</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Serum 25(OH)D testing is recommended at the first prenatal visit for women with
+      risk factors: darker skin, veiling, obesity, malabsorption, or a history of gestational
+      diabetes. Below 20 ng/mL, most obstetrics guidelines advise 2,000–4,000 IU/day cholecalciferol
+      through pregnancy and lactation. Confirm dosing with your obstetrician.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">After birth: mother and baby</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Breast milk contains very little vitamin D. All breastfed infants should receive
+      <strong>400 IU/day cholecalciferol</strong> from birth (AAP 2008; Health Canada). Alternatively,
+      maternal supplementation with 6,400 IU/day has been shown to raise breast-milk vitamin D
+      to levels sufficient for the infant (Hollis et al. 2015), though this dose exceeds the
+      standard UL and requires physician oversight.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Pregnancy vitamin D management should be individualised —
+      consult your obstetrician or midwife. Sarcoidosis, hyperparathyroidism, and other conditions
+      that predispose to hypercalcaemia contraindicate high-dose vitamin D.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-in-pregnancy" />
+  </main>
+</BaseLayout>
