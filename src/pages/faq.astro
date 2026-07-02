@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
 import faqData from '../data/faq.json';
 
-// FAQPage JSON-LD — mirrors the on-page Q&A one-to-one so Google can
+// FAQPage JSON-LD â€” mirrors the on-page Q&A one-to-one so Google can
 // surface answers directly in search results. Answers are the full body
 // text of each <details> block, cleaned of markup.
 const faqJsonLd = {
@@ -258,4 +259,5 @@ const faqJsonLd = {
       </p>
     </div>
   </main>
+  <RelatedArticles current="/faq" />
 </BaseLayout>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
 
 const PAGE_URL = 'https://vitamindcalculator.net/vitamin-d-guide';
 const articleJsonLd = {
@@ -370,4 +371,5 @@ const breadcrumbJsonLd = {
       </section>
     </article>
   </main>
+  <RelatedArticles current="/vitamin-d-guide" />
 </BaseLayout>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
 import FoodSourcesTable from '../components/foods/FoodSourcesTable';
 import foods from '../data/vitamin-d-foods.json';
 
@@ -12,7 +13,7 @@ const itemListJsonLd = {
   name: 'Foods high in vitamin D',
   numberOfItems: foods.length,
   itemListElement: (foods as Array<{ name: string; iu: number }>).map((f, i) => ({
-    '@type': 'ListItem', position: i + 1, name: `${f.name} — ${f.iu} IU`,
+    '@type': 'ListItem', position: i + 1, name: `${f.name} â€” ${f.iu} IU`,
   })),
 };
 
@@ -27,8 +28,8 @@ const breadcrumbJsonLd = {
 ---
 
 <BaseLayout
-  title="Vitamin D Foods — Complete List with IU per Serving"
-  description="Searchable database of foods high in vitamin D, with values in International Units (IU) and micrograms (µg) per serving. Fish, mushrooms, eggs, fortified milks and cereals ranked by content."
+  title="Vitamin D Foods â€” Complete List with IU per Serving"
+  description="Searchable database of foods high in vitamin D, with values in International Units (IU) and micrograms (Âµg) per serving. Fish, mushrooms, eggs, fortified milks and cereals ranked by content."
   ogType="article"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(itemListJsonLd)} />
@@ -40,11 +41,11 @@ const breadcrumbJsonLd = {
         Foods High in Vitamin D
       </h1>
       <p class="text-lg text-gray-600 leading-relaxed">
-        Vitamin D<sub>3</sub> (cholecalciferol) is found naturally in only a small number of foods —
+        Vitamin D<sub>3</sub> (cholecalciferol) is found naturally in only a small number of foods â€”
         chiefly fatty fish, fish liver oils, and UV-exposed mushrooms. Vitamin D<sub>2</sub>
         (ergocalciferol) is present in a few non-animal sources. Most dietary vitamin D in the modern
         diet comes from <strong>fortified</strong> milk, plant milks, cereals, and juice. This table
-        lists typical values per serving in both <strong>IU</strong> and <strong>µg</strong> (1 µg = 40 IU).
+        lists typical values per serving in both <strong>IU</strong> and <strong>Âµg</strong> (1 Âµg = 40 IU).
       </p>
     </header>
 
@@ -61,7 +62,7 @@ const breadcrumbJsonLd = {
         light and is the form found in mushrooms and some fortified products. Cholecalciferol
         (D<sub>3</sub>) is the form synthesised in animal skin from 7-dehydrocholesterol, and is
         found in animal-source foods and most modern supplements. On a per-mole basis, D<sub>3</sub>
-        raises serum 25(OH)D approximately 60–90% more effectively than D<sub>2</sub> at equivalent
+        raises serum 25(OH)D approximately 60â€“90% more effectively than D<sub>2</sub> at equivalent
         doses (Tripkovic et al. 2012), so many nutrition scientists prefer D<sub>3</sub> for repletion.
       </p>
 
@@ -72,14 +73,14 @@ const breadcrumbJsonLd = {
         Fortification is the primary dietary source of vitamin D for most people in North America
         and Europe. Since 1932 (in the US), milk has been routinely fortified at approximately
         100 IU per 8-oz serving. Fortification levels of plant milks, orange juice, and breakfast
-        cereals vary by manufacturer — always check the Nutrition Facts panel.
+        cereals vary by manufacturer â€” always check the Nutrition Facts panel.
       </p>
 
       <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-8 mb-3">
         Reaching the RDA from food alone
       </h2>
       <p class="text-gray-700 leading-relaxed">
-        The RDA is <strong>600 IU/day (15 µg)</strong> for adults through age 70 and <strong>800 IU/day (20 µg)</strong>
+        The RDA is <strong>600 IU/day (15 Âµg)</strong> for adults through age 70 and <strong>800 IU/day (20 Âµg)</strong>
         for adults 71+. Meeting this from food alone requires either regular fatty-fish consumption
         (roughly one 3-oz serving of salmon plus a glass of fortified milk daily) or targeted
         supplementation. In practice, most people who don't get adequate summer sun exposure will
@@ -87,4 +88,5 @@ const breadcrumbJsonLd = {
       </p>
     </div>
   </main>
+  <RelatedArticles current="/vitamin-d-foods" />
 </BaseLayout>
