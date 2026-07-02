@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ReservesCalculator from '../components/reserves/ReservesCalculator';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-reserves`;
+
+// MedicalWebPage + BreadcrumbList JSON-LD.
+const medicalPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Latent Vitamin D Reserves Calculator',
+  url: PAGE_URL,
+  description:
+    'Estimate your current serum 25-hydroxyvitamin D concentration from stored cholecalciferol using a two-compartment pharmacokinetic model with a BMI-adjusted terminal half-life.',
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: {
+    '@type': 'MedicalCondition',
+    name: 'Vitamin D deficiency',
+    code: { '@type': 'MedicalCode', codeValue: 'E55', codingSystem: 'ICD-10' },
+  },
+  mainContentOfPage: {
+    '@type': 'WebPageElement',
+    cssSelector: 'main',
+  },
+  lastReviewed: '2026-05-01',
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D Reserves', item: PAGE_URL },
+  ],
+};
+
+const softwareJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Latent Vitamin D Reserves Calculator',
+  applicationCategory: 'HealthApplication',
+  operatingSystem: 'Web',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  url: PAGE_URL,
+  description:
+    'Two-compartment pharmacokinetic model for estimating current serum 25(OH)D from summer sun-exposure history.',
+};
+---
+
+<BaseLayout
+  title="Latent Vitamin D Reserves Calculator | Summer Storage & 25(OH)D Decay"
+  description="Estimate your current serum 25-hydroxyvitamin D from stored cholecalciferol using a two-compartment pharmacokinetic model. Accounts for adipose sequestration, skin phototype, BMI, and age."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalPageJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(softwareJsonLd)} />
+
+  <ReservesCalculator client:load />
+
+  <!-- Long-form scientific content for SEO -->
+  <section class="max-w-4xl mx-auto px-4 pb-16 prose prose-lg prose-amber">
+    <hr class="my-10 border-gray-200" />
+
+    <h2 id="pharmacokinetics" class="text-2xl md:text-3xl font-bold text-gray-900 mt-8 mb-4">
+      Pharmacokinetics of cholecalciferol and 25-hydroxyvitamin D
+    </h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cholecalciferol (vitamin&nbsp;D<sub>3</sub>) synthesised in the epidermis from
+      7-dehydrocholesterol enters the bloodstream bound to vitamin&nbsp;D-binding protein (DBP).
+      In the liver it is 25-hydroxylated by the CYP2R1 enzyme, producing 25-hydroxyvitamin&nbsp;D
+      &#91;25(OH)D&#93; — the metabolite measured clinically because it best reflects overall
+      vitamin&nbsp;D status. A second hydroxylation in the kidney (CYP27B1) yields the biologically
+      active hormone 1,25-dihydroxyvitamin&nbsp;D (calcitriol), which is tightly regulated by
+      parathyroid hormone, calcium, and phosphorus.
+    </p>
+    <p class="text-gray-700 leading-relaxed mt-3">
+      Circulating 25(OH)D has an <em>apparent</em> half-life of 15–25 days when studied in
+      short-duration tracer experiments (Jones 2008; Vieth 1999). However, the whole-body
+      terminal half-life is considerably longer — around 60 days in lean adults and 80–90+ days
+      in obese adults — because cholecalciferol partitioned into adipose tissue re-enters the
+      circulation over months. This adipose sequestration explains why obese individuals often
+      show lower serum 25(OH)D at any given UVB dose (Wortsman 2000; Drincic 2012), and why
+      winter decline curves in temperate populations follow an exponential trajectory with a
+      time constant of roughly two months (Kimlin 2007; Webb 2010).
+    </p>
+
+    <h2 id="model" class="text-2xl md:text-3xl font-bold text-gray-900 mt-8 mb-4">
+      The two-compartment decay model used here
+    </h2>
+    <p class="text-gray-700 leading-relaxed">
+      The calculator assumes a first-order elimination process with an effective terminal
+      half-life scaled to body-mass index. Peak summer serum 25(OH)D is estimated from a
+      pigmentation-, age-, and dose-adjusted anchor point (Fitzpatrick II, 90 min of near-noon
+      UVB per week, exposed fraction ≈ 0.28 → 40 ng/mL, per Holick 2007). The model then
+      projects forward from your entered last-effective-exposure date using
+      <code class="bg-gray-100 px-1 rounded">C(t) = C<sub>peak</sub>·e<sup>−λt</sup></code>
+      where <code class="bg-gray-100 px-1 rounded">λ = ln(2)/t½</code>. Daily supplemental
+      cholecalciferol asymptotically raises steady-state serum 25(OH)D by ~1 ng/mL per 100 IU/day
+      in lean adults (Heaney 2003), and this contribution is added with the same time constant.
+    </p>
+
+    <h2 id="thresholds" class="text-2xl md:text-3xl font-bold text-gray-900 mt-8 mb-4">
+      Clinical thresholds
+    </h2>
+    <ul class="text-gray-700 leading-relaxed list-disc pl-6 space-y-2">
+      <li><strong>&lt; 12 ng/mL (30 nmol/L)</strong> — severe deficiency; risk of rickets in
+        children and osteomalacia in adults.</li>
+      <li><strong>12–20 ng/mL</strong> — deficient by the IOM 2011 threshold; associated with
+        secondary hyperparathyroidism.</li>
+      <li><strong>20–30 ng/mL</strong> — insufficient by the Endocrine Society 2011 threshold;
+        may not fully optimise musculoskeletal outcomes.</li>
+      <li><strong>30–50 ng/mL</strong> — the range most guidelines consider sufficient for
+        general population health.</li>
+      <li><strong>&gt; 100 ng/mL</strong> — potential toxicity; hypercalcaemia possible with
+        sustained levels above ~150 ng/mL.</li>
+    </ul>
+
+    <h2 id="limitations" class="text-2xl md:text-3xl font-bold text-gray-900 mt-8 mb-4">
+      Limitations
+    </h2>
+    <p class="text-gray-700 leading-relaxed">
+      This is a population-level model and cannot capture individual variability in DBP
+      polymorphisms, CYP2R1 activity, renal function, malabsorption, or medication interactions
+      (e.g., glucocorticoids and anticonvulsants can accelerate 25(OH)D catabolism). If your
+      estimate suggests insufficiency and you have symptoms — bone pain, unexplained fatigue,
+      frequent infections — please seek a serum 25(OH)D measurement from a healthcare provider
+      rather than relying on a modelled projection.
+    </p>
+
+    <h2 id="citations" class="text-2xl md:text-3xl font-bold text-gray-900 mt-8 mb-4">
+      Key citations
+    </h2>
+    <ul class="text-sm text-gray-600 leading-relaxed list-disc pl-6 space-y-1">
+      <li>Holick MF. Vitamin D deficiency. <em>N Engl J Med</em>. 2007;357(3):266–281.</li>
+      <li>Holick MF et al. Evaluation, treatment, and prevention of vitamin D deficiency:
+        Endocrine Society clinical practice guideline. <em>J Clin Endocrinol Metab</em>.
+        2011;96(7):1911–1930.</li>
+      <li>Institute of Medicine. Dietary Reference Intakes for Calcium and Vitamin D. National
+        Academies Press; 2011.</li>
+      <li>Wortsman J et al. Decreased bioavailability of vitamin D in obesity. <em>Am J Clin
+        Nutr</em>. 2000;72(3):690–693.</li>
+      <li>Drincic AT et al. Volumetric dilution, rather than sequestration, best explains the
+        low vitamin D status of obesity. <em>Obesity (Silver Spring)</em>. 2012;20(7):1444–1448.</li>
+      <li>Jones G. Pharmacokinetics of vitamin D toxicity. <em>Am J Clin Nutr</em>.
+        2008;88(2):582S–586S.</li>
+      <li>Vieth R. Vitamin D supplementation, 25-hydroxyvitamin D concentrations, and safety.
+        <em>Am J Clin Nutr</em>. 1999;69(5):842–856.</li>
+      <li>Heaney RP et al. Human serum 25-hydroxycholecalciferol response to extended oral
+        dosing with cholecalciferol. <em>Am J Clin Nutr</em>. 2003;77(1):204–210.</li>
+      <li>Kimlin MG. Geographic location and vitamin D synthesis. <em>Mol Aspects Med</em>.
+        2008;29(6):453–461.</li>
+      <li>Webb AR et al. The role of sunlight exposure in determining the vitamin D status of
+        the UK white adult population. <em>Br J Dermatol</em>. 2010;163(5):1050–1055.</li>
+    </ul>
+  </section>
+</BaseLayout>
