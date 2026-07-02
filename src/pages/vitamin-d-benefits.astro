@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-benefits`;
+
+const BENEFITS = [
+  {
+    title: 'Bone health',
+    evidence: 'Strong',
+    body: "Vitamin D's canonical role: it drives intestinal calcium absorption and enables normal bone mineralisation. Adequate 25(OH)D reduces the risk of osteomalacia in adults and rickets in children. Meta-analyses of large trials show ~15% reduction in hip fracture risk in older adults supplemented with 800+ IU/day plus calcium.",
+  },
+  {
+    title: 'Immune function',
+    evidence: 'Moderate',
+    body: 'Vitamin D receptors are expressed on immune cells (T cells, macrophages, dendritic cells). It upregulates cathelicidin and defensins, tightens epithelial barriers, and modulates T-regulatory response. A 2017 BMJ meta-analysis found supplementation cut acute respiratory infections by ~12%, with the largest effect in deficient individuals.',
+  },
+  {
+    title: 'Muscle strength and fall prevention',
+    evidence: 'Moderate',
+    body: 'Meta-analyses of trials in adults >65 show that daily doses of 700–1,000 IU cholecalciferol reduce the risk of falling by ~19%. The effect appears to be mediated through improved lower-limb strength and postural sway.',
+  },
+  {
+    title: 'Cardiovascular disease',
+    evidence: 'Uncertain',
+    body: 'Observational studies show a robust inverse association between 25(OH)D and cardiovascular events. However, large randomised trials (VITAL, D2d) have not shown clear benefit from supplementation, suggesting the association may reflect confounding.',
+  },
+  {
+    title: 'Cancer',
+    evidence: 'Modest',
+    body: 'VITAL (25,000 participants, 5 years) showed no reduction in total cancer incidence with 2,000 IU/day. However, subgroup and post-hoc analyses suggested a small reduction in cancer mortality, particularly in normal-weight individuals — hypothesis-generating rather than definitive.',
+  },
+  {
+    title: 'Type 2 diabetes prevention',
+    evidence: 'Modest',
+    body: 'D2d randomised 2,423 adults with prediabetes to 4,000 IU/day cholecalciferol or placebo. Primary outcome (progression to diabetes) was not significant overall (HR 0.88, p=0.12), but in participants who reached ≥ 40 ng/mL 25(OH)D, risk fell substantially.',
+  },
+  {
+    title: 'Depression and mood',
+    evidence: 'Weak to moderate',
+    body: 'Observational associations are consistent; randomised trials in general populations are largely null. Supplementation may benefit patients with baseline deficiency and diagnosed major depression, but is unlikely to help mildly-low mood in people with sufficient 25(OH)D.',
+  },
+  {
+    title: 'Pregnancy outcomes',
+    evidence: 'Moderate',
+    body: 'Deficiency in pregnancy is associated with preeclampsia, gestational diabetes, and small-for-gestational-age infants. Cochrane reviews conclude supplementation probably reduces preeclampsia and low birth weight; the current expert consensus is 600 IU/day in pregnancy, with higher doses (1,500–2,000 IU/day) for known deficiency.',
+  },
+];
+
+const evidenceColor: Record<string, string> = {
+  Strong: 'bg-emerald-100 text-emerald-800',
+  Moderate: 'bg-teal-100 text-teal-800',
+  Modest: 'bg-amber-100 text-amber-800',
+  Uncertain: 'bg-gray-100 text-gray-700',
+  'Weak to moderate': 'bg-amber-100 text-amber-800',
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: BENEFITS.map((b) => ({
+    '@type': 'Question',
+    name: `Does vitamin D help with ${b.title.toLowerCase()}?`,
+    acceptedAnswer: { '@type': 'Answer', text: b.body },
+  })),
+};
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D Benefits: Evidence-Ranked Overview',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D Benefits', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D Benefits: What the Evidence Actually Shows"
+  description="Evidence-ranked overview of vitamin D benefits: bone health, immunity, muscle strength, cardiovascular disease, cancer, diabetes, mood, and pregnancy. Grouped by strength of evidence."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D Benefits: Evidence-Ranked</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D affects many biological systems, but the evidence base is uneven. The list below
+      groups eight claimed benefits by the current strength of the evidence, drawing on the
+      largest randomised trials (VITAL, D2d, DO-HEALTH) and recent meta-analyses.
+    </p>
+
+    <div class="space-y-4">
+      {BENEFITS.map((b) => (
+        <article class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+          <div class="flex items-baseline justify-between flex-wrap gap-2 mb-2">
+            <h2 class="text-xl font-bold text-gray-900">{b.title}</h2>
+            <span class={`text-xs font-semibold px-2 py-0.5 rounded-full ${evidenceColor[b.evidence] || 'bg-gray-100'}`}>
+              Evidence: {b.evidence}
+            </span>
+          </div>
+          <p class="text-gray-700 leading-relaxed">{b.body}</p>
+        </article>
+      ))}
+    </div>
+
+    <RelatedArticles current="/vitamin-d-benefits" />
+  </main>
+</BaseLayout>
