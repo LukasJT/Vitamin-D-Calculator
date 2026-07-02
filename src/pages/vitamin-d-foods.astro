@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FoodSourcesTable from '../components/foods/FoodSourcesTable';
+import foods from '../data/vitamin-d-foods.json';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-foods`;
+
+const itemListJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Foods high in vitamin D',
+  numberOfItems: foods.length,
+  itemListElement: (foods as Array<{ name: string; iu: number }>).map((f, i) => ({
+    '@type': 'ListItem', position: i + 1, name: `${f.name} — ${f.iu} IU`,
+  })),
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D Foods', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D Foods — Complete List with IU per Serving"
+  description="Searchable database of foods high in vitamin D, with values in International Units (IU) and micrograms (µg) per serving. Fish, mushrooms, eggs, fortified milks and cereals ranked by content."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(itemListJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <main class="max-w-5xl mx-auto px-4 py-10">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+        Foods High in Vitamin D
+      </h1>
+      <p class="text-lg text-gray-600 leading-relaxed">
+        Vitamin D<sub>3</sub> (cholecalciferol) is found naturally in only a small number of foods —
+        chiefly fatty fish, fish liver oils, and UV-exposed mushrooms. Vitamin D<sub>2</sub>
+        (ergocalciferol) is present in a few non-animal sources. Most dietary vitamin D in the modern
+        diet comes from <strong>fortified</strong> milk, plant milks, cereals, and juice. This table
+        lists typical values per serving in both <strong>IU</strong> and <strong>µg</strong> (1 µg = 40 IU).
+      </p>
+    </header>
+
+    <FoodSourcesTable client:load />
+
+    <hr class="my-10 border-gray-200" />
+
+    <div class="prose prose-lg max-w-none">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-2 mb-3">
+        D<sub>2</sub> vs D<sub>3</sub> in food
+      </h2>
+      <p class="text-gray-700 leading-relaxed">
+        Ergocalciferol (D<sub>2</sub>) is produced by yeasts and fungi from ergosterol under UV
+        light and is the form found in mushrooms and some fortified products. Cholecalciferol
+        (D<sub>3</sub>) is the form synthesised in animal skin from 7-dehydrocholesterol, and is
+        found in animal-source foods and most modern supplements. On a per-mole basis, D<sub>3</sub>
+        raises serum 25(OH)D approximately 60–90% more effectively than D<sub>2</sub> at equivalent
+        doses (Tripkovic et al. 2012), so many nutrition scientists prefer D<sub>3</sub> for repletion.
+      </p>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-8 mb-3">
+        Fortified foods
+      </h2>
+      <p class="text-gray-700 leading-relaxed">
+        Fortification is the primary dietary source of vitamin D for most people in North America
+        and Europe. Since 1932 (in the US), milk has been routinely fortified at approximately
+        100 IU per 8-oz serving. Fortification levels of plant milks, orange juice, and breakfast
+        cereals vary by manufacturer — always check the Nutrition Facts panel.
+      </p>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-8 mb-3">
+        Reaching the RDA from food alone
+      </h2>
+      <p class="text-gray-700 leading-relaxed">
+        The RDA is <strong>600 IU/day (15 µg)</strong> for adults through age 70 and <strong>800 IU/day (20 µg)</strong>
+        for adults 71+. Meeting this from food alone requires either regular fatty-fish consumption
+        (roughly one 3-oz serving of salmon plus a glass of fortified milk daily) or targeted
+        supplementation. In practice, most people who don't get adequate summer sun exposure will
+        need a supplement to consistently reach the RDA.
+      </p>
+    </div>
+  </main>
+</BaseLayout>
