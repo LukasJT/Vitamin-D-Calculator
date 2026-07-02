@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const SECTIONS = [
+  {
+    title: 'Interactive tools',
+    items: [
+      { href: '/', label: 'Sunlight Calculator', desc: 'Estimate how much vitamin D your body makes from sun exposure.' },
+      { href: '/vitamin-d-reserves', label: 'Latent Vitamin D Reserves Calculator', desc: 'Model your stored cholecalciferol through winter.' },
+      { href: '/blood-test-interpreter', label: 'Blood Test Interpreter', desc: 'Understand your serum 25(OH)D result.' },
+    ],
+  },
+  {
+    title: 'Guides &amp; deep dives',
+    items: [
+      { href: '/vitamin-d-guide', label: 'Complete Vitamin D Guide', desc: 'Everything you need to know in one place.' },
+      { href: '/how-it-works', label: 'How the Calculator Works', desc: 'The physics and physiology behind the math.' },
+      { href: '/vitamin-d-winter', label: 'Vitamin D Winter', desc: 'Latitude, UVB, and seasonal deficiency.' },
+    ],
+  },
+  {
+    title: 'Reference articles',
+    items: [
+      { href: '/vitamin-d-benefits', label: 'Benefits (evidence-ranked)', desc: 'What the clinical trials really show.' },
+      { href: '/vitamin-d-deficiency-symptoms', label: 'Deficiency Symptoms', desc: 'Nine signs your 25(OH)D may be low.' },
+      { href: '/vitamin-d-dosage', label: 'Dosage Guide', desc: 'RDA, UL, and repletion protocols.' },
+      { href: '/vitamin-d-toxicity', label: 'Toxicity &amp; Safe Upper Limits', desc: 'Can you take too much?' },
+      { href: '/vitamin-d-and-immunity', label: 'Vitamin D and Immunity', desc: 'Cathelicidin, T-cell modulation, RCT evidence.' },
+      { href: '/vitamin-d-in-pregnancy', label: 'Vitamin D in Pregnancy', desc: 'Requirements and risks for expectant mothers.' },
+      { href: '/vitamin-d-for-kids', label: 'Vitamin D for Kids', desc: 'Infants, children, and adolescents.' },
+      { href: '/vitamin-d-foods', label: 'Foods High in Vitamin D', desc: 'Searchable table with IU per serving.' },
+    ],
+  },
+  {
+    title: 'Reference',
+    items: [
+      { href: '/faq', label: 'Frequently Asked Questions', desc: '18 answered questions.' },
+      { href: '/glossary', label: 'Glossary', desc: 'Terminology and abbreviations.' },
+      { href: '/about', label: 'About', desc: 'Methodology and site background.' },
+      { href: '/contact', label: 'Contact', desc: 'Feedback and inquiries.' },
+    ],
+  },
+  {
+    title: 'Legal',
+    items: [
+      { href: '/privacy', label: 'Privacy Policy' },
+      { href: '/terms', label: 'Terms of Service' },
+      { href: '/disclaimer', label: 'Medical Disclaimer' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Site Map | Vitamin D Calculator"
+  description="Browse every page on vitamindcalculator.net — interactive tools, guides, reference articles, glossary, and legal pages."
+>
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Site Map</h1>
+    {SECTIONS.map((s) => (
+      <section class="mb-10">
+        <h2 class="text-xl font-bold text-gray-900 mb-3">{s.title}</h2>
+        <ul class="space-y-3">
+          {s.items.map((i) => (
+            <li>
+              <a href={i.href} class="text-amber-700 font-semibold hover:underline">{i.label}</a>
+              {i.desc && <p class="text-gray-600 text-sm mt-0.5">{i.desc}</p>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </main>
+</BaseLayout>

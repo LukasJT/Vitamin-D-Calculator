@@ -56,6 +56,21 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-toxicity</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-and-immunity</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/sitemap</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://vitamindcalculator.net/glossary</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
