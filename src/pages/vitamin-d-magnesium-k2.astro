@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-magnesium-k2`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D, Magnesium, and Vitamin K2: Cofactor Interactions',
+  url: PAGE_URL,
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D + Magnesium + K2', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D with Magnesium & Vitamin K2: Do the Cofactors Matter?"
+  description="How magnesium activates vitamin D metabolism, and what vitamin K2 does downstream. Evidence-based look at whether combining supplements is actually beneficial."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D, Magnesium, and K2</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      The "vitamin D stack" — cholecalciferol paired with magnesium and menaquinone (vitamin K<sub>2</sub>)
+      — is a favourite of supplement marketers. The underlying biochemistry is real, but the
+      practical need to co-supplement is more nuanced than the marketing suggests.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Magnesium: the cofactor for D metabolism</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      Every enzyme in the vitamin D pathway is magnesium-dependent — CYP2R1 in the liver, CYP27B1
+      and CYP24A1 in the kidney. Severe magnesium deficiency impairs 25-hydroxylation and can
+      produce apparent vitamin D "resistance," where serum 25(OH)D remains low despite adequate
+      cholecalciferol intake. Rezaei et al.'s 2018 review makes the mechanism explicit; earlier
+      case series showed magnesium repletion resolving otherwise treatment-refractory vitamin D
+      deficiency.
+    </p>
+    <p class="text-gray-700 leading-relaxed">
+      In practice, the average Western diet supplies less magnesium than the RDA (300–400 mg/day);
+      about half of US adults consume less than the estimated average requirement. If you take
+      high-dose vitamin D and don't feel benefit, ensuring adequate magnesium (300–400 mg/day
+      elemental, split doses of glycinate or citrate) is a reasonable step.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Vitamin K2: the calcium director</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      Vitamin K<sub>2</sub> (menaquinone-4 and menaquinone-7 being the main forms) activates
+      matrix Gla protein and osteocalcin — proteins that direct calcium <em>into bone</em> and
+      keep it <em>out of arteries</em>. The theoretical concern is that high-dose vitamin D
+      supplementation increases calcium absorption; without adequate vitamin K<sub>2</sub>, that
+      extra calcium may deposit in soft tissue rather than bone.
+    </p>
+    <p class="text-gray-700 leading-relaxed">
+      The evidence for this concern in humans taking normal supplemental doses is weak. The
+      Rotterdam Study showed inverse associations between K<sub>2</sub> intake and coronary
+      calcification, but no randomised trial has shown that adding K<sub>2</sub> to vitamin D
+      reduces cardiovascular events or improves bone outcomes beyond what vitamin D + calcium
+      achieves alone. For most people at typical supplement doses (≤ 2,000 IU/day cholecalciferol),
+      K<sub>2</sub> supplementation is optional.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Warfarin interaction</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin K<sub>2</sub> (like K<sub>1</sub>) antagonises warfarin. If you take warfarin, do
+      <em>not</em> add K<sub>2</sub> without your prescriber's involvement — INR will need adjustment.
+      This is not a problem with DOACs (apixaban, rivaroxaban, dabigatran, edoxaban).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Sensible practice</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Take vitamin D<sub>3</sub> daily (or weekly) with a fat-containing meal.</li>
+      <li>Aim for the RDA of magnesium (300–420 mg/day depending on age &amp; sex) from food first — leafy greens, nuts, seeds, legumes, whole grains. Supplement if diet falls short.</li>
+      <li>Vitamin K<sub>2</sub> supplementation is optional and mostly relevant if you're on higher doses (&gt; 4,000 IU/day) or have osteoporosis with vascular calcification. Not indicated on warfarin.</li>
+      <li>Get calcium from food when possible — dairy, fortified plant milks, greens, sardines.</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> If you're on warfarin, take antiepileptics or
+      glucocorticoids, have kidney disease, or take other medications that interact with the
+      vitamin D / calcium axis, discuss any supplement changes with your prescriber.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-magnesium-k2" />
+  </main>
+</BaseLayout>
