@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-osteoporosis`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Osteoporosis',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: {
+    '@type': 'MedicalCondition',
+    name: 'Osteoporosis',
+    code: { '@type': 'MedicalCode', codeValue: 'M81', codingSystem: 'ICD-10' },
+  },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Osteoporosis', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Osteoporosis: Bone Density, Fractures & Supplementation"
+  description="How vitamin D affects osteoporosis risk, fracture prevention, and bone mineral density — evidence-based dosing with calcium, plus what the largest randomised trials actually show."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Osteoporosis</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D is inseparable from bone health. Its active hormonal form, 1,25-dihydroxyvitamin&nbsp;D
+      (calcitriol), drives intestinal calcium absorption, and low serum 25(OH)D triggers a compensatory
+      rise in parathyroid hormone (PTH) that accelerates bone resorption — the classic pathway to
+      osteoporosis and fragility fractures.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The mechanism in three steps</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Calcium absorption.</strong> Calcitriol upregulates calbindin, TRPV6, and PMCA1b — the intestinal proteins that move dietary calcium into the bloodstream. Without adequate 25(OH)D, only ~10–15% of dietary calcium is absorbed, versus 30–40% in sufficiency.</li>
+      <li><strong>PTH regulation.</strong> When serum ionised calcium falls, the parathyroid glands secrete PTH, which mobilises calcium from bone. Chronic vitamin D insufficiency causes <em>secondary hyperparathyroidism</em>, a sustained low-grade drain on bone.</li>
+      <li><strong>Osteoblast/osteoclast balance.</strong> Vitamin D also acts directly on bone cells — supporting osteoblast maturation and modulating osteoclast activity to maintain the mineralised matrix.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What the trials show</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-3">
+      <li>
+        <strong>Hip fracture prevention.</strong> Meta-analyses of trials in adults ≥65 show ~15% reduction in hip fracture risk with ≥800 IU/day cholecalciferol <em>plus</em> calcium 1,000–1,200 mg/day (Bischoff-Ferrari 2012). Vitamin D alone shows smaller effects; the combination is what carries the evidence.
+      </li>
+      <li>
+        <strong>Non-vertebral fractures.</strong> Same combination: ~14% reduction. Lower doses (400 IU/day) are consistently ineffective — dose matters.
+      </li>
+      <li>
+        <strong>Bone mineral density (BMD).</strong> Effects on DXA are modest but real. Correcting deficiency in older adults typically adds 1–2% BMD at the femoral neck over 2 years.
+      </li>
+      <li>
+        <strong>Falls prevention.</strong> Daily 700–1,000 IU cholecalciferol reduces fall risk by ~19% in adults ≥65, mediated by better lower-limb strength and postural control.
+      </li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical protocol</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      For osteoporosis prevention or as adjunct to bisphosphonate/denosumab therapy, current consensus is:
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Serum 25(OH)D target: <strong>≥ 30 ng/mL (75 nmol/L)</strong>.</li>
+      <li>Cholecalciferol 800–2,000 IU/day (adjust based on 25(OH)D level and body weight; heavier individuals need more).</li>
+      <li>Dietary calcium 1,000 mg/day (women ≤ 50 and men ≤ 70) or 1,200 mg/day (older). Supplements only to fill gaps; get calcium from food when possible.</li>
+      <li>Retest 25(OH)D at 3 months to confirm target level is reached.</li>
+      <li>Address other bone-loss drivers: smoking, excessive alcohol, low body weight, sarcopenia, chronic glucocorticoid use.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Special situations</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Post-bariatric-surgery patients, celiac disease, and inflammatory bowel disease all reduce vitamin D
+      absorption and typically require higher doses (2,000–5,000 IU/day). Glucocorticoid users need
+      supplementation to counter accelerated 25(OH)D catabolism and independent bone-loss effects.
+      Chronic kidney disease impairs the final activation step (1α-hydroxylation) — these patients
+      often need activated vitamin D analogues (calcitriol, paricalcitol) rather than plain cholecalciferol.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Osteoporosis management is individualised; ask your
+      physician about DXA scanning, FRAX risk assessment, and whether pharmacologic therapy is
+      indicated in addition to vitamin D and calcium.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-osteoporosis" />
+  </main>
+</BaseLayout>
