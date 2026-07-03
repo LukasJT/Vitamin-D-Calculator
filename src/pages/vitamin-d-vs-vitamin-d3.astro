@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-vs-vitamin-d3`;
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'What is the difference between vitamin D and vitamin D3?', acceptedAnswer: { '@type': 'Answer', text: '"Vitamin D" is an umbrella term for a family of secosteroid compounds. Vitamin D3 (cholecalciferol) is the specific form produced in animal skin from 7-dehydrocholesterol and found in fatty fish and egg yolk. Vitamin D2 (ergocalciferol) is the plant/fungal form. On a supplement label, "Vitamin D" almost always means D3 unless it explicitly says D2 or ergocalciferol.' } },
+    { '@type': 'Question', name: 'Which is better: vitamin D or vitamin D3?', acceptedAnswer: { '@type': 'Answer', text: 'The relevant comparison is D3 versus D2. Meta-analysis (Tripkovic 2012) shows cholecalciferol (D3) raises serum 25-hydroxyvitamin D about 60–90% more effectively than ergocalciferol (D2) at equivalent oral doses. D3 is the form your skin makes and the form most modern guidelines recommend as a supplement.' } },
+    { '@type': 'Question', name: 'Are vitamin D and cholecalciferol the same thing?', acceptedAnswer: { '@type': 'Answer', text: 'Cholecalciferol is the biochemical name for vitamin D3. So when a supplement label lists "cholecalciferol," you\'re taking vitamin D3. The umbrella term "vitamin D" includes both D3 and D2 (ergocalciferol).' } },
+    { '@type': 'Question', name: 'Is D2 vegan?', acceptedAnswer: { '@type': 'Answer', text: 'Yes — vitamin D2 (ergocalciferol) is produced by UV-irradiating ergosterol in yeasts or fungi and is suitable for vegans. Most vitamin D3 supplements come from lanolin (sheep wool), but plant-based D3 from lichen is also available.' } },
+  ],
+};
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D vs Vitamin D3',
+  url: PAGE_URL,
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D vs Vitamin D3', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D vs Vitamin D3: What's the Difference? (Cholecalciferol vs Ergocalciferol)"
+  description="Vitamin D3 (cholecalciferol) vs vitamin D2 (ergocalciferol) — how the two forms differ in origin, absorption, and effectiveness at raising serum 25(OH)D."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D vs Vitamin D<sub>3</sub></h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      "Vitamin D" on a supplement label is almost always vitamin D<sub>3</sub> (cholecalciferol), but
+      "vitamin D" as a chemistry term is an umbrella including both D<sub>3</sub> and D<sub>2</sub>
+      (ergocalciferol). Here's what actually differs.
+    </p>
+
+    <div class="overflow-x-auto bg-white border border-gray-200 rounded-xl shadow-sm mb-10">
+      <table class="w-full text-sm">
+        <thead class="bg-gray-50 text-gray-700 border-b border-gray-200">
+          <tr>
+            <th class="text-left px-4 py-3">Attribute</th>
+            <th class="text-left px-4 py-3">Vitamin D<sub>3</sub> (cholecalciferol)</th>
+            <th class="text-left px-4 py-3">Vitamin D<sub>2</sub> (ergocalciferol)</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700">
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Origin</td><td class="px-4 py-3">Animal skin from 7-DHC + UVB; fatty fish; egg yolk</td><td class="px-4 py-3">Yeasts/fungi from ergosterol + UV; UV-exposed mushrooms</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Chemistry</td><td class="px-4 py-3">Side chain has H at C24</td><td class="px-4 py-3">Side chain has methyl at C24; double bond at C22–C23</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Effect on serum 25(OH)D</td><td class="px-4 py-3">Raises by ~1 ng/mL per 100 IU/day</td><td class="px-4 py-3">~60–90% less effective per equivalent dose (Tripkovic 2012)</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Half-life of the metabolite</td><td class="px-4 py-3">25(OH)D<sub>3</sub> ~15–25 days apparent; ~60 d terminal</td><td class="px-4 py-3">25(OH)D<sub>2</sub> shorter</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Common supplement source</td><td class="px-4 py-3">Lanolin (sheep wool) or lichen (vegan)</td><td class="px-4 py-3">Yeast or fungi (vegan)</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Prescription forms</td><td class="px-4 py-3">Most European &amp; ROW prescription vitamin D</td><td class="px-4 py-3">US prescription 50,000 IU capsules (Drisdol)</td></tr>
+          <tr><td class="px-4 py-3 font-medium">Recommendation</td><td class="px-4 py-3">Preferred by most modern guidelines</td><td class="px-4 py-3">Reasonable for vegans who avoid lichen-D<sub>3</sub>; ask about substitution</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Why the effectiveness gap?</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      Both forms are 25-hydroxylated by CYP2R1 in the liver. But D<sub>2</sub> is less avidly bound
+      by vitamin D-binding protein (DBP), cleared faster, and its metabolites are catabolised more
+      rapidly. Net result: D<sub>2</sub> produces smaller and shorter-lived rises in serum 25(OH)D.
+    </p>
+    <p class="text-gray-700 leading-relaxed">
+      If your prescription is ergocalciferol (Drisdol, "vitamin D2"), it's worth asking your
+      prescriber whether cholecalciferol at the same IU dose would suit you better — most will
+      say yes.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Reading a supplement label</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>"Vitamin D3"</strong> or <strong>"cholecalciferol"</strong> — the effective form.</li>
+      <li><strong>"Vitamin D2"</strong> or <strong>"ergocalciferol"</strong> — less potent but still works; usually cheaper and vegan.</li>
+      <li><strong>"Vitamin D"</strong> without a number — check the ingredients panel. Almost always D<sub>3</sub> in modern supplements.</li>
+      <li>Doses are given in IU or µg (1 µg = 40 IU). See our <a href="/vitamin-d-unit-converter" class="text-amber-700 underline">unit converter</a>.</li>
+    </ul>
+
+    <RelatedArticles current="/vitamin-d-vs-vitamin-d3" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-weight-loss`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Weight Loss',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Weight Loss', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Weight Loss: Does Deficiency Cause Weight Gain?"
+  description="What the evidence actually shows about vitamin D and body weight — adipose sequestration, appetite regulation, and whether supplementation aids fat loss."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Weight Loss</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      The relationship between vitamin D and body weight is real but modest, and popular
+      claims tend to overstate it. Here's what the evidence supports, what it doesn't, and
+      what actually matters if you're supplementing while trying to lose weight.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Why obese people have lower 25(OH)D</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      Cholecalciferol is fat-soluble and partitions into adipose tissue. In obese individuals
+      the larger fat compartment dilutes and sequesters D<sub>3</sub>, so the <em>same</em> UVB
+      dose or oral intake produces a smaller rise in circulating 25(OH)D. Wortsman's 2000 study
+      showed obese subjects reached peak serum vitamin D at ~50% the level of lean controls after
+      identical UV exposure. Drincic (2012) reframed this as volumetric dilution rather than
+      sequestration — either way, obesity is a strong predictor of low 25(OH)D.
+    </p>
+    <p class="text-gray-700 leading-relaxed">
+      Practical implication: BMI &gt; 30 usually calls for at least 2× the standard supplement
+      dose to reach a given serum target. Rule of thumb: 100 IU/day per kg body weight above the
+      lean adult baseline of 70 kg.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Does supplementation cause weight loss?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Randomised trials of vitamin D supplementation as a weight-loss intervention show <strong>small
+      and inconsistent effects</strong>. Meta-analyses conclude that vitamin D by itself does not
+      reliably reduce body weight or waist circumference. Small trials in vitamin-D-deficient
+      women with obesity have shown modest ~0.5–1 kg additional loss over 12 weeks versus placebo,
+      but these effects don't survive rigorous meta-analysis.
+    </p>
+    <p class="text-gray-700 leading-relaxed mt-3">
+      Where vitamin D does clearly help during a weight-loss programme is <em>preserving lean mass</em>
+      and <em>maintaining bone density</em> — both of which are otherwise vulnerable to rapid weight
+      loss, particularly after bariatric surgery.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Weight loss releases stored vitamin D</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Fat loss mobilises cholecalciferol from adipose tissue back into circulation. In the year
+      after bariatric surgery, serum 25(OH)D often rises modestly even without supplement changes
+      — the adipose reserve is being liberated. But because bariatric surgery also reduces fat
+      absorption from food (particularly Roux-en-Y and BPD/DS), most patients still need
+      2,000–5,000 IU/day cholecalciferol post-operatively.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guidance</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Don't count on vitamin D as a fat-loss agent — the evidence doesn't support it.</li>
+      <li>Do correct deficiency if you're overweight: dose adjusted for body weight (roughly 2× the standard dose for BMI &gt; 30).</li>
+      <li>Take with a fat-containing meal for better absorption.</li>
+      <li>Post-bariatric surgery: 2,000–5,000 IU/day cholecalciferol + a multivitamin with fat-soluble vitamin support.</li>
+      <li>Focus on food, movement, and sleep as the primary weight-loss levers; vitamin D is a supporting supplement, not a driver.</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Discuss dosing with your physician or dietitian,
+      especially after bariatric surgery or if you have malabsorption syndromes.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-weight-loss" />
+  </main>
+</BaseLayout>
