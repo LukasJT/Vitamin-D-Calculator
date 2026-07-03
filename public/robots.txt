@@ -1,5 +1,16 @@
 User-agent: *
 Allow: /
-Disallow:
 
+# Do not crawl the build-artifact scratch directory or fetch anything under /api
+Disallow: /_build/
+Disallow: /api/
+
+# Common crawlers — explicit welcome
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap
 Sitemap: https://vitamindcalculator.net/sitemap.xml
