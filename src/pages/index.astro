@@ -1,9 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CalculatorForm from '../components/calculator/CalculatorForm';
+
+const HOMEPAGE_FAQ = [
+  { q: 'How much sunlight do I need to make enough vitamin D?', a: 'It depends on your latitude, skin phototype, exposed skin area, and the season. As a rule of thumb, 10–30 minutes of midday sun on the arms and legs, 2–3 times per week, is sufficient for a fair-skinned adult at temperate latitudes during summer. Darker skin needs 2–5× longer. Above 40° latitude, cutaneous synthesis stops entirely between roughly November and February — the vitamin D winter.' },
+  { q: 'What is a normal blood vitamin D level?', a: 'Normal serum 25-hydroxyvitamin D [25(OH)D] is generally considered to be 30–50 ng/mL (75–125 nmol/L). The Institute of Medicine defines deficiency below 20 ng/mL, and the Endocrine Society defines insufficiency below 30 ng/mL. Levels above 100 ng/mL approach the potentially-toxic range.' },
+  { q: 'How much vitamin D should I take daily?', a: 'The RDA is 600 IU/day (15 µg) for ages 1–70 and 800 IU/day (20 µg) for 71+. The Tolerable Upper Intake Level is 4,000 IU/day. Many clinicians target 1,000–2,000 IU/day cholecalciferol for adults with limited sun exposure to reach serum 25(OH)D of 30–40 ng/mL.' },
+  { q: 'Can you get too much vitamin D from the sun?', a: 'No. The photoequilibrium mechanism degrades previtamin D3 in the skin at high UV doses, so cutaneous synthesis self-limits. Vitamin D toxicity is only seen with sustained oral overdosing (typically 40,000+ IU/day for months), never from sun exposure.' },
+  { q: 'D2 vs D3 — which is better?', a: 'Cholecalciferol (D3) raises serum 25(OH)D approximately 60–90% more effectively than ergocalciferol (D2) at equivalent oral doses (Tripkovic 2012). D3 is the form produced in your skin and the preferred supplement form in most modern guidelines.' },
+];
+const homepageFaqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: HOMEPAGE_FAQ.map((q) => ({
+    '@type': 'Question',
+    name: q.q,
+    acceptedAnswer: { '@type': 'Answer', text: q.a },
+  })),
+};
 ---
 
 <BaseLayout>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(homepageFaqJsonLd)} />
   <main>
     <CalculatorForm client:load />
 
@@ -178,6 +196,24 @@ import CalculatorForm from '../components/calculator/CalculatorForm';
             </ul>
           </div>
         </div>
+      </div>
+
+      <!-- Homepage FAQ (also emitted as FAQPage JSON-LD for rich snippets) -->
+      <div class="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-gray-100 mb-16">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Common Questions About Vitamin D</h2>
+        <div class="space-y-4">
+          {HOMEPAGE_FAQ.map((f) => (
+            <details class="group border border-gray-200 rounded-xl">
+              <summary class="cursor-pointer px-5 py-4 font-semibold text-gray-900 hover:text-amber-700 transition-colors">
+                {f.q}
+              </summary>
+              <div class="px-5 pb-5 text-gray-700 leading-relaxed">{f.a}</div>
+            </details>
+          ))}
+        </div>
+        <p class="text-sm text-gray-500 mt-6">
+          More answers on our <a href="/faq" class="text-amber-700 underline">full FAQ page</a>.
+        </p>
       </div>
 
       <!-- Learn More Links -->
