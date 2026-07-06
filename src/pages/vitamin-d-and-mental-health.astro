@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-mental-health`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Mental Health',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [
+    { '@type': 'MedicalCondition', name: 'Depression' },
+    { '@type': 'MedicalCondition', name: 'Seasonal Affective Disorder' },
+  ],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Mental Health', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Mental Health: Depression, SAD & Anxiety Evidence"
+  description="What the evidence actually shows about vitamin D and mood — depression, seasonal affective disorder, anxiety. What supplementation does and does not do."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Mental Health</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D receptors are expressed throughout the brain — including the hippocampus, prefrontal
+      cortex, and substantia nigra — and the pathway influences serotonin synthesis, neuroinflammation,
+      and neurotrophic factor expression. The observational association between low 25(OH)D and mood
+      disorders is real. Whether supplementation reliably improves mood is more contested.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Depression</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      Population studies consistently find serum 25(OH)D 20–30% lower in individuals with major
+      depression than in matched controls. Whether that's cause or consequence (depressed people
+      spend less time outdoors) has been hard to pin down. The largest randomised trial (VITAL-MOOD,
+      18,000 participants, 5 years of 2,000 IU/day) found <strong>no reduction in incident depression</strong>
+      compared to placebo.
+    </p>
+    <p class="text-gray-700 leading-relaxed">
+      Meta-analyses find a small but statistically significant improvement in depression scores
+      with supplementation, driven mostly by trials in participants with baseline deficiency. If you
+      have depression <em>and</em> low 25(OH)D, correcting the deficiency is reasonable — but expect
+      only a modest antidepressant effect, and don't stop first-line treatments.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Seasonal affective disorder (SAD)</h2>
+    <p class="text-gray-700 leading-relaxed">
+      SAD is temporally correlated with the vitamin D winter — symptoms peak in the same months
+      that cutaneous synthesis stops. But randomised trials of vitamin D supplementation for SAD
+      have shown mixed results at best; a Cochrane review concluded evidence is insufficient to
+      recommend it. Bright-light therapy has stronger and more consistent evidence for SAD
+      specifically. Correcting deficiency is still worth doing for other reasons.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Anxiety</h2>
+    <p class="text-gray-700 leading-relaxed">
+      A modest inverse association exists between 25(OH)D and generalised anxiety scores, but the
+      randomised evidence for supplementation is very weak. This shouldn't be a primary intervention.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Schizophrenia and cognition</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Prenatal vitamin D deficiency has been linked to increased adult schizophrenia risk in
+      several cohort studies (Eyles 2013). Trials of postnatal supplementation in established
+      schizophrenia are small and equivocal. In older adults, cross-sectional studies find lower
+      25(OH)D in those with cognitive impairment, but supplementation trials have not shown
+      cognitive benefit.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical bottom line</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>If you have depression, anxiety, or seasonal mood change, testing serum 25(OH)D is inexpensive and worthwhile.</li>
+      <li>Correct any deficiency (aim for 30–40 ng/mL) with 1,000–2,000 IU/day cholecalciferol.</li>
+      <li>Do not substitute vitamin D for evidence-based mental health care — therapy, first-line medications, and light therapy where indicated.</li>
+      <li>Sunlight exposure has mood benefits beyond vitamin D (bright light, outdoor time, physical activity). These are worth pursuing independently of the supplement question.</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> If you are experiencing symptoms of depression, anxiety,
+      or a mood disorder, please see a healthcare provider — evidence-based treatments exist and
+      are more effective than any single supplement.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-mental-health" />
+  </main>
+</BaseLayout>
