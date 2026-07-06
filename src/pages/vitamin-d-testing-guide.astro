@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-testing-guide`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D Testing Guide',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Testing Guide', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="How to Get a Vitamin D Blood Test: 25(OH)D Testing Guide"
+  description="Which vitamin D test to order (25(OH)D vs 1,25(OH)2D), how to prepare, cost expectations, and when to re-test after starting supplementation."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D Testing Guide</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      A single serum 25-hydroxyvitamin D measurement resolves most vitamin D questions faster
+      than any dietary calculator. Here's what to ask for, how to prepare, and how to interpret
+      the result.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Which test to order</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      Ask for <strong>25-hydroxyvitamin D</strong> — sometimes written as <em>25(OH)D</em>,
+      <em>calcidiol</em>, or <em>vitamin D, 25-OH total</em>. This is the correct test for
+      assessing vitamin D status: it reflects several weeks of cumulative intake plus cutaneous
+      synthesis, and it's what all the clinical thresholds refer to.
+    </p>
+    <p class="text-gray-700 leading-relaxed">
+      Do <strong>not</strong> order <em>1,25-dihydroxyvitamin D</em> (calcitriol) for routine
+      screening. That's the active hormone form, tightly regulated by PTH, and it does not
+      reflect stores. It's ordered only for specific clinical situations — sarcoidosis,
+      chronic kidney disease, hypercalcaemia workup.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">How to prepare</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>No fasting required.</strong> Unlike lipid panels, 25(OH)D is stable in serum and unaffected by recent meals.</li>
+      <li><strong>Time of day doesn't matter.</strong> 25(OH)D shows minimal circadian variation.</li>
+      <li><strong>Don't stop your supplement</strong> before testing — the goal is to measure your actual status on your current regimen.</li>
+      <li><strong>Do note biotin intake.</strong> High-dose biotin (&gt; 5 mg/day) can interfere with some immunoassay methods for 25(OH)D. Pause for 48 hours if you take a hair-and-nails supplement.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cost and access</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Physician-ordered:</strong> covered by most insurance plans for individuals with risk factors (bone disease, malabsorption, chronic corticosteroid use, obesity, dark skin at high latitude).</li>
+      <li><strong>Direct-to-consumer:</strong> ~US$40–75 without physician order (Quest, LabCorp direct, Everlywell, LetsGetChecked). Results usually within a week.</li>
+      <li><strong>At-home fingerstick:</strong> ~US$50–75. Slightly less precise than venous draw but adequate for status screening.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">When to re-test after starting supplementation</h2>
+    <p class="text-gray-700 leading-relaxed">
+      <strong>Three months</strong> after starting or changing a dose. This is roughly one and a
+      half half-lives of 25(OH)D — long enough for the trajectory to be clear, short enough to
+      catch under- or over-shooting the target early.
+    </p>
+    <p class="text-gray-700 leading-relaxed mt-3">
+      Once you're at a stable target level on a stable regimen, annual re-testing is sufficient
+      for most people. Consider testing again after weight change of &gt; 10%, a new medication
+      that affects vitamin D metabolism (glucocorticoids, anticonvulsants), or a season change if
+      you rely on summer sun exposure.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Interpreting the result</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Use our <a href="/blood-test-interpreter" class="text-amber-700 underline font-semibold">blood test interpreter</a>
+      to convert units (ng/mL ↔ nmol/L) and see your result against IOM and Endocrine Society
+      thresholds with plain-language interpretation.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Test results warrant discussion with a healthcare
+      provider, especially if you have symptoms, take affected medications, or fall outside the
+      typical adult reference range.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-testing-guide" />
+  </main>
+</BaseLayout>
