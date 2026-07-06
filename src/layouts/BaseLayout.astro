@@ -139,9 +139,61 @@ const webAppJsonLd = isHome ? {
       </nav>
     </header>
 
+    <!-- Adsterra top responsive banner — 320x50 mobile / 468x60 desktop, above the fold -->
+    <div class="adsterra-banner adsterra-mobile" style="width:320px;height:50px;margin:0.75rem auto;">
+      <script is:inline>
+        atOptions = {
+          'key' : 'a24ed02f036c8072b93659a97fc59f02',
+          'format' : 'iframe',
+          'height' : 50,
+          'width' : 320,
+          'params' : {}
+        };
+      </script>
+      <script is:inline src="https://www.highperformanceformat.com/a24ed02f036c8072b93659a97fc59f02/invoke.js"></script>
+    </div>
+    <div class="adsterra-banner adsterra-desktop" style="width:468px;height:60px;margin:0.75rem auto;max-width:100%;">
+      <script is:inline>
+        atOptions = {
+          'key' : 'c1ae2784baad856c72f3ba1d209deeac',
+          'format' : 'iframe',
+          'height' : 60,
+          'width' : 468,
+          'params' : {}
+        };
+      </script>
+      <script is:inline src="https://www.highperformanceformat.com/c1ae2784baad856c72f3ba1d209deeac/invoke.js"></script>
+    </div>
+
     <!-- Main Content -->
     <div class="flex-1">
       <slot />
+
+      <!-- Adsterra bottom responsive banner (before footer, inside main flow) -->
+      <div class="adsterra-banner adsterra-mobile" style="width:320px;height:50px;margin:1.5rem auto;">
+        <script is:inline>
+          atOptions = {
+            'key' : 'a24ed02f036c8072b93659a97fc59f02',
+            'format' : 'iframe',
+            'height' : 50,
+            'width' : 320,
+            'params' : {}
+          };
+        </script>
+        <script is:inline src="https://www.highperformanceformat.com/a24ed02f036c8072b93659a97fc59f02/invoke.js"></script>
+      </div>
+      <div class="adsterra-banner adsterra-desktop" style="width:468px;height:60px;margin:1.5rem auto;max-width:100%;">
+        <script is:inline>
+          atOptions = {
+            'key' : 'c1ae2784baad856c72f3ba1d209deeac',
+            'format' : 'iframe',
+            'height' : 60,
+            'width' : 468,
+            'params' : {}
+          };
+        </script>
+        <script is:inline src="https://www.highperformanceformat.com/c1ae2784baad856c72f3ba1d209deeac/invoke.js"></script>
+      </div>
     </div>
 
     <!-- Footer -->
@@ -234,31 +286,6 @@ const webAppJsonLd = isHome ? {
         });
       })();
     </script>
-  <!-- Adsterra responsive banners (320x50 mobile / 468x60 desktop) -->
-  <div class="adsterra-banner adsterra-mobile" style="width:320px;height:50px;margin:1rem auto;">
-    <script is:inline>
-      atOptions = {
-        'key' : 'a24ed02f036c8072b93659a97fc59f02',
-        'format' : 'iframe',
-        'height' : 50,
-        'width' : 320,
-        'params' : {}
-      };
-    </script>
-    <script is:inline src="https://www.highperformanceformat.com/a24ed02f036c8072b93659a97fc59f02/invoke.js"></script>
-  </div>
-  <div class="adsterra-banner adsterra-desktop" style="width:468px;height:60px;margin:1rem auto;">
-    <script is:inline>
-      atOptions = {
-        'key' : 'c1ae2784baad856c72f3ba1d209deeac',
-        'format' : 'iframe',
-        'height' : 60,
-        'width' : 468,
-        'params' : {}
-      };
-    </script>
-    <script is:inline src="https://www.highperformanceformat.com/c1ae2784baad856c72f3ba1d209deeac/invoke.js"></script>
-  </div>
   <style is:inline>
     .adsterra-mobile { display: none; }
     @media (max-width: 479px) {
@@ -303,7 +330,7 @@ const webAppJsonLd = isHome ? {
     }
     .adsterra-skyscraper-left { left: 8px; }
     .adsterra-skyscraper-right { right: 8px; }
-    @media (min-width: 1280px) {
+    @media (min-width: 1100px) {
       .adsterra-skyscraper { display: block; }
       /* Push main content inward so the 160px skyscrapers don't overlap it */
       body > .flex-1 { padding-left: 184px; padding-right: 184px; }
