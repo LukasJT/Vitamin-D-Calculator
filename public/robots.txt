@@ -14,3 +14,6 @@ Allow: /
 
 # Sitemap
 Sitemap: https://vitamindcalculator.net/sitemap.xml
+
+# Article feed (RSS 2.0)
+# https://vitamindcalculator.net/rss.xml

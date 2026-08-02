@@ -5,6 +5,22 @@ import RelatedArticles from '../components/shared/RelatedArticles.astro';
 const SITE = 'https://vitamindcalculator.net';
 const PAGE_URL = `${SITE}/vitamin-d-testing-guide`;
 
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Get a Vitamin D Blood Test',
+  description: 'Order the right test (25-hydroxyvitamin D), prepare correctly, and interpret the result against clinical reference ranges.',
+  totalTime: 'PT30M',
+  step: [
+    { '@type': 'HowToStep', position: 1, name: 'Ask for the right test', text: 'Order serum 25-hydroxyvitamin D (25(OH)D, also known as calcidiol). Do not order 1,25-dihydroxyvitamin D — that measures the active hormone and is not appropriate for status screening.' },
+    { '@type': 'HowToStep', position: 2, name: 'Skip fasting and clock timing', text: 'No fasting required; serum 25(OH)D is stable and shows negligible circadian variation. Do continue your usual supplement — the goal is to measure your true status.' },
+    { '@type': 'HowToStep', position: 3, name: 'Pause high-dose biotin', text: 'If you take a hair-and-nails supplement with biotin >5 mg/day, pause for 48 hours before the draw — biotin can interfere with some 25(OH)D immunoassays.' },
+    { '@type': 'HowToStep', position: 4, name: 'Have the sample drawn', text: 'Physician-ordered venous draw is covered by most insurance with risk factors present. Direct-to-consumer options (Quest, LabCorp direct, Everlywell, LetsGetChecked) run $40–75 without a prescription; at-home fingerstick kits are similar cost.' },
+    { '@type': 'HowToStep', position: 5, name: 'Interpret the result', text: 'Under 20 ng/mL is deficient; 20–30 ng/mL is insufficient; 30–50 ng/mL is sufficient; above 100 ng/mL is high. Use our online interpreter for full context.' },
+    { '@type': 'HowToStep', position: 6, name: 'Re-test at 3 months if you change your dose', text: 'Serum 25(OH)D approaches a new steady state slowly. Three months is the standard interval after starting or changing supplementation.' },
+  ],
+};
+
 const medicalJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MedicalWebPage',
@@ -28,6 +44,7 @@ const breadcrumbJsonLd = {
   description="Which vitamin D test to order (25(OH)D vs 1,25(OH)2D), how to prepare, cost expectations, and when to re-test after starting supplementation."
   ogType="article"
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(howToJsonLd)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
 

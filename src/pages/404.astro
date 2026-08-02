@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+---
+
+<BaseLayout
+  title="Page Not Found | Vitamin D Calculator"
+  description="The page you tried to open doesn't exist. Jump to the calculator, the guide, or explore our other vitamin D tools."
+  noindex={true}
+>
+  <main class="max-w-3xl mx-auto px-4 py-16 text-center">
+    <div class="text-7xl mb-4">☀️</div>
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-3">Page not found</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      The URL you followed doesn't exist. It may have been moved or mistyped. Try one of these instead:
+    </p>
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+      <a href="/" class="px-5 py-3 rounded-lg bg-amber-500 hover:bg-amber-600 text-white font-semibold transition-colors">
+        Open the calculator
+      </a>
+      <a href="/vitamin-d-guide" class="px-5 py-3 rounded-lg border border-gray-300 hover:border-amber-400 text-gray-800 font-semibold transition-colors">
+        Vitamin D guide
+      </a>
+      <a href="/faq" class="px-5 py-3 rounded-lg border border-gray-300 hover:border-amber-400 text-gray-800 font-semibold transition-colors">
+        FAQ
+      </a>
+      <a href="/sitemap" class="px-5 py-3 rounded-lg border border-gray-300 hover:border-amber-400 text-gray-800 font-semibold transition-colors">
+        Full site map
+      </a>
+    </div>
+    <RelatedArticles current="/404" />
+  </main>
+</BaseLayout>
