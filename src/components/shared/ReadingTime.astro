@@ -1,0 +1,15 @@
+---
+interface Props {
+  words: number;
+}
+const { words } = Astro.props;
+// 220 WPM average silent reading, rounded up.
+const minutes = Math.max(1, Math.ceil(words / 220));
+---
+<div class="text-xs text-gray-500 flex items-center gap-2">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <circle cx="12" cy="12" r="10" />
+    <polyline points="12 6 12 12 15 15" />
+  </svg>
+  <span>{minutes} min read</span>
+</div>
