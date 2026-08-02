@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
 const SITE = 'https://vitamindcalculator.net';
 const PAGE_URL = `${SITE}/vitamin-d-deficiency-symptoms`;
@@ -11,7 +13,7 @@ const SYMPTOMS = [
   { name: 'Muscle weakness and cramps', body: 'Vitamin D receptors are present in muscle. Deficiency causes proximal muscle weakness, difficulty rising from a chair, and increased fall risk in older adults.' },
   { name: 'Frequent infections', body: 'Vitamin D modulates innate and adaptive immunity. Deficient individuals have more upper respiratory infections; meta-analyses show supplementation reduces acute respiratory infection risk by ~12%.' },
   { name: 'Slow wound healing', body: 'Adequate 25(OH)D is needed for the production of cathelicidin and defensins that support tissue repair; deficient patients heal surgical and diabetic wounds more slowly.' },
-  { name: 'Hair loss', body: 'Severe deficiency is associated with alopecia areata and generalised hair thinning. Vitamin D receptor knockout mice develop alopecia â€” the pathway is well established.' },
+  { name: 'Hair loss', body: 'Severe deficiency is associated with alopecia areata and generalised hair thinning. Vitamin D receptor knockout mice develop alopecia Ã¢â‚¬â€ the pathway is well established.' },
   { name: 'Mood changes and depression', body: 'Observational studies consistently link low 25(OH)D with depressive symptoms and seasonal affective disorder, though randomised supplementation trials show mixed results.' },
   { name: 'Bone loss (osteopenia / osteoporosis)', body: 'Chronic deficiency leads to secondary hyperparathyroidism, bone resorption, and reduced BMD on DXA. This is often silent until a fracture.' },
   { name: 'Impaired glucose control', body: 'Deficiency is associated with insulin resistance; some trials show modest improvements in HbA1c with supplementation in deficient individuals.' },
@@ -48,12 +50,16 @@ const breadcrumbJsonLd = {
 
 <BaseLayout
   title="Vitamin D Deficiency Symptoms: 9 Signs Your 25(OH)D May Be Low"
-  description="Recognise the symptoms of vitamin D deficiency â€” fatigue, bone pain, muscle weakness, frequent infections, hair loss, and mood changes. Learn when to request a serum 25(OH)D test."
+  description="Recognise the symptoms of vitamin D deficiency Ã¢â‚¬â€ fatigue, bone pain, muscle weakness, frequent infections, hair loss, and mood changes. Learn when to request a serum 25(OH)D test."
   ogType="article"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+    <Breadcrumbs crumbs={[{ href: "/vitamin-d-deficiency-symptoms", label: "Deficiency Symptoms" }]} />
+  <EditorialStandards />
+
 
   <main class="max-w-4xl mx-auto px-4 py-10">
     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D Deficiency: Symptoms and Warning Signs</h1>
@@ -61,7 +67,7 @@ const breadcrumbJsonLd = {
       Roughly 1 billion people worldwide have low serum <span class="italic">25-hydroxyvitamin D</span>
       &#91;25(OH)D&#93;. Symptoms are usually subtle and non-specific, which is why deficiency
       often goes undiagnosed for years. Below are the nine most common signs, with the evidence
-      behind each one â€” and a note on when to ask your doctor for a blood test.
+      behind each one Ã¢â‚¬â€ and a note on when to ask your doctor for a blood test.
     </p>
 
     <div class="space-y-4">
@@ -82,7 +88,7 @@ const breadcrumbJsonLd = {
         A serum 25(OH)D test is reasonable if you have any of these <strong>risk factors</strong>:
       </p>
       <ul class="list-disc pl-6 space-y-1 text-gray-800">
-        <li>Live above ~40Â° latitude (most of the US, all of Canada, northern Europe)</li>
+        <li>Live above ~40Ã‚Â° latitude (most of the US, all of Canada, northern Europe)</li>
         <li>Fitzpatrick skin phototype IV, V, or VI</li>
         <li>Age 70+ (skin 7-DHC declines with age)</li>
         <li>BMI &gt; 30 (adipose sequestration lowers serum 25(OH)D)</li>
@@ -101,9 +107,9 @@ const breadcrumbJsonLd = {
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">What to do if you're deficient</h2>
     <p class="text-gray-700 leading-relaxed mb-3">
       If your 25(OH)D is below 20 ng/mL (50 nmol/L), most guidelines recommend a loading dose of
-      50,000 IU cholecalciferol weekly for 8 weeks, followed by 1,500â€“2,000 IU/day maintenance.
+      50,000 IU cholecalciferol weekly for 8 weeks, followed by 1,500Ã¢â‚¬â€œ2,000 IU/day maintenance.
       Below 12 ng/mL (30 nmol/L), see a physician for urgent repletion and additional workup
-      (calcium, phosphorus, PTH, kidney function). For insufficiency (20â€“30 ng/mL), 1,000â€“2,000 IU/day
+      (calcium, phosphorus, PTH, kidney function). For insufficiency (20Ã¢â‚¬â€œ30 ng/mL), 1,000Ã¢â‚¬â€œ2,000 IU/day
       cholecalciferol with re-testing at 3 months is a common approach.
     </p>
     <p class="text-gray-700 leading-relaxed">

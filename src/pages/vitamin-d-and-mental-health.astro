@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
 const SITE = 'https://vitamindcalculator.net';
 const PAGE_URL = `${SITE}/vitamin-d-and-mental-health`;
@@ -29,24 +31,28 @@ const breadcrumbJsonLd = {
 
 <BaseLayout
   title="Vitamin D and Mental Health: Depression, SAD & Anxiety Evidence"
-  description="What the evidence actually shows about vitamin D and mood — depression, seasonal affective disorder, anxiety. What supplementation does and does not do."
+  description="What the evidence actually shows about vitamin D and mood â€” depression, seasonal affective disorder, anxiety. What supplementation does and does not do."
   ogType="article"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
 
+    <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-mental-health", label: "Mental Health" }]} />
+  <EditorialStandards />
+
+
   <main class="max-w-4xl mx-auto px-4 py-10">
     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Mental Health</h1>
     <p class="text-lg text-gray-600 leading-relaxed mb-8">
-      Vitamin D receptors are expressed throughout the brain — including the hippocampus, prefrontal
-      cortex, and substantia nigra — and the pathway influences serotonin synthesis, neuroinflammation,
+      Vitamin D receptors are expressed throughout the brain â€” including the hippocampus, prefrontal
+      cortex, and substantia nigra â€” and the pathway influences serotonin synthesis, neuroinflammation,
       and neurotrophic factor expression. The observational association between low 25(OH)D and mood
       disorders is real. Whether supplementation reliably improves mood is more contested.
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mb-3">Depression</h2>
     <p class="text-gray-700 leading-relaxed mb-3">
-      Population studies consistently find serum 25(OH)D 20–30% lower in individuals with major
+      Population studies consistently find serum 25(OH)D 20â€“30% lower in individuals with major
       depression than in matched controls. Whether that's cause or consequence (depressed people
       spend less time outdoors) has been hard to pin down. The largest randomised trial (VITAL-MOOD,
       18,000 participants, 5 years of 2,000 IU/day) found <strong>no reduction in incident depression</strong>
@@ -55,13 +61,13 @@ const breadcrumbJsonLd = {
     <p class="text-gray-700 leading-relaxed">
       Meta-analyses find a small but statistically significant improvement in depression scores
       with supplementation, driven mostly by trials in participants with baseline deficiency. If you
-      have depression <em>and</em> low 25(OH)D, correcting the deficiency is reasonable — but expect
+      have depression <em>and</em> low 25(OH)D, correcting the deficiency is reasonable â€” but expect
       only a modest antidepressant effect, and don't stop first-line treatments.
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Seasonal affective disorder (SAD)</h2>
     <p class="text-gray-700 leading-relaxed">
-      SAD is temporally correlated with the vitamin D winter — symptoms peak in the same months
+      SAD is temporally correlated with the vitamin D winter â€” symptoms peak in the same months
       that cutaneous synthesis stops. But randomised trials of vitamin D supplementation for SAD
       have shown mixed results at best; a Cochrane review concluded evidence is insufficient to
       recommend it. Bright-light therapy has stronger and more consistent evidence for SAD
@@ -86,14 +92,14 @@ const breadcrumbJsonLd = {
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical bottom line</h2>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
       <li>If you have depression, anxiety, or seasonal mood change, testing serum 25(OH)D is inexpensive and worthwhile.</li>
-      <li>Correct any deficiency (aim for 30–40 ng/mL) with 1,000–2,000 IU/day cholecalciferol.</li>
-      <li>Do not substitute vitamin D for evidence-based mental health care — therapy, first-line medications, and light therapy where indicated.</li>
+      <li>Correct any deficiency (aim for 30â€“40 ng/mL) with 1,000â€“2,000 IU/day cholecalciferol.</li>
+      <li>Do not substitute vitamin D for evidence-based mental health care â€” therapy, first-line medications, and light therapy where indicated.</li>
       <li>Sunlight exposure has mood benefits beyond vitamin D (bright light, outdoor time, physical activity). These are worth pursuing independently of the supplement question.</li>
     </ul>
 
     <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
       <strong>Not medical advice.</strong> If you are experiencing symptoms of depression, anxiety,
-      or a mood disorder, please see a healthcare provider — evidence-based treatments exist and
+      or a mood disorder, please see a healthcare provider â€” evidence-based treatments exist and
       are more effective than any single supplement.
     </div>
 

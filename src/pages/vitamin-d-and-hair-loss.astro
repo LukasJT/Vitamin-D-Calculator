@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
 const SITE = 'https://vitamindcalculator.net';
 const PAGE_URL = `${SITE}/vitamin-d-and-hair-loss`;
@@ -26,18 +28,22 @@ const breadcrumbJsonLd = {
 
 <BaseLayout
   title="Vitamin D and Hair Loss: Alopecia Areata, Telogen Effluvium, and 25(OH)D"
-  description="How vitamin D deficiency links to hair loss — alopecia areata, telogen effluvium, and androgenetic alopecia. What the evidence supports and what it doesn't."
+  description="How vitamin D deficiency links to hair loss â€” alopecia areata, telogen effluvium, and androgenetic alopecia. What the evidence supports and what it doesn't."
   ogType="article"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+    <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-hair-loss", label: "Hair Loss" }]} />
+  <EditorialStandards />
+
 
   <main class="max-w-4xl mx-auto px-4 py-10">
     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Hair Loss</h1>
     <p class="text-lg text-gray-600 leading-relaxed mb-8">
       Vitamin D receptors are expressed in the hair follicle keratinocytes, especially during the
       anagen (growth) phase. The strongest evidence linking vitamin D to hair loss comes from
-      vitamin D receptor (VDR) knockout mice, which develop generalised alopecia — hair falls
+      vitamin D receptor (VDR) knockout mice, which develop generalised alopecia â€” hair falls
       out and does not regrow. In humans, the association exists but is weaker and more nuanced.
     </p>
 
@@ -48,7 +54,7 @@ const breadcrumbJsonLd = {
       <p class="text-gray-700 leading-relaxed">
         The autoimmune patchy-hair-loss condition. Meta-analyses consistently find lower serum
         25(OH)D in patients with alopecia areata than controls. Whether correcting deficiency
-        speeds regrowth is not yet clear — small trials of oral or topical vitamin D show
+        speeds regrowth is not yet clear â€” small trials of oral or topical vitamin D show
         cosmetic improvement in a minority of patients, particularly those with markedly low
         baseline 25(OH)D.
       </p>
@@ -59,7 +65,7 @@ const breadcrumbJsonLd = {
       <p class="text-gray-700 leading-relaxed">
         The "diffuse shedding" pattern that follows stress, illness, weight loss, or postpartum.
         A cross-sectional study of 80 women with chronic telogen effluvium found 25(OH)D below
-        30 ng/mL in about 96% of them versus 22% of controls. Correlation, not causation — but
+        30 ng/mL in about 96% of them versus 22% of controls. Correlation, not causation â€” but
         checking and correcting deficiency is inexpensive and safe.
       </p>
     </article>
@@ -70,15 +76,15 @@ const breadcrumbJsonLd = {
         Male- and female-pattern hair loss. Observational studies show slightly lower 25(OH)D in
         affected individuals, but the effect is small and confounded (people with visible hair
         loss may avoid the sun, wear hats, etc.). Vitamin D is not a treatment for pattern hair
-        loss — finasteride, minoxidil, and dutasteride remain the evidence-based options.
+        loss â€” finasteride, minoxidil, and dutasteride remain the evidence-based options.
       </p>
     </article>
 
     <article class="bg-white border border-gray-200 rounded-xl p-5 mb-4">
       <h3 class="text-xl font-bold text-gray-900 mb-2">Rickets and severe deficiency</h3>
       <p class="text-gray-700 leading-relaxed">
-        Severe or genetic vitamin D disorders (e.g., hereditary vitamin D–resistant rickets with
-        alopecia; VDR mutations) cause total-body alopecia — clear proof that VDR signalling
+        Severe or genetic vitamin D disorders (e.g., hereditary vitamin Dâ€“resistant rickets with
+        alopecia; VDR mutations) cause total-body alopecia â€” clear proof that VDR signalling
         matters for hair. But this is a rare congenital scenario, not a supplement-response
         picture.
       </p>
@@ -87,15 +93,15 @@ const breadcrumbJsonLd = {
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical takeaway</h2>
     <p class="text-gray-700 leading-relaxed">
       If you're experiencing unexplained shedding, a serum 25(OH)D test is a reasonable first step.
-      Correcting deficiency (raising to ≥ 30 ng/mL) won't harm and may help, particularly for
+      Correcting deficiency (raising to â‰¥ 30 ng/mL) won't harm and may help, particularly for
       telogen effluvium and alopecia areata. Don't expect vitamin D to reverse androgenetic
-      alopecia. Rule out iron deficiency, thyroid disease, and B12 in parallel — all more
+      alopecia. Rule out iron deficiency, thyroid disease, and B12 in parallel â€” all more
       commonly implicated in reversible hair loss than vitamin D alone.
     </p>
 
     <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
       <strong>Not medical advice.</strong> Persistent or patchy hair loss warrants dermatology
-      review — pattern, distribution, and pull-test findings distinguish between conditions with
+      review â€” pattern, distribution, and pull-test findings distinguish between conditions with
       very different treatments.
     </div>
 

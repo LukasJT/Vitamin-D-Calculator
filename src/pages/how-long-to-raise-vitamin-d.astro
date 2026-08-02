@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
 const SITE = 'https://vitamindcalculator.net';
 const PAGE_URL = `${SITE}/how-long-to-raise-vitamin-d`;
@@ -8,7 +10,7 @@ const PAGE_URL = `${SITE}/how-long-to-raise-vitamin-d`;
 const QAS = [
   {
     q: 'How long does it take vitamin D supplements to work?',
-    a: 'Serum 25(OH)D approaches a new steady state along a first-order approach with a time constant of roughly the effective terminal half-life — about 60 days in lean adults and up to 90 days in obese adults. In practical terms, you reach ~87% of the final level by three half-lives, so 3–6 months of consistent supplementation is a fair rule of thumb before your 25(OH)D reflects the full effect of the new dose.',
+    a: 'Serum 25(OH)D approaches a new steady state along a first-order approach with a time constant of roughly the effective terminal half-life â€” about 60 days in lean adults and up to 90 days in obese adults. In practical terms, you reach ~87% of the final level by three half-lives, so 3â€“6 months of consistent supplementation is a fair rule of thumb before your 25(OH)D reflects the full effect of the new dose.',
   },
   {
     q: 'How much does 1,000 IU/day of vitamin D3 raise blood levels?',
@@ -16,19 +18,19 @@ const QAS = [
   },
   {
     q: 'How fast can I raise my 25(OH)D with a loading dose?',
-    a: 'Loading protocols such as 50,000 IU cholecalciferol weekly for 8 weeks (Endocrine Society) can push serum 25(OH)D from < 20 ng/mL to > 30 ng/mL within 4–8 weeks. High single doses (300,000+ IU) raise 25(OH)D within days, but effects on downstream health markers (PTH, calcium absorption) lag by 2–4 weeks.',
+    a: 'Loading protocols such as 50,000 IU cholecalciferol weekly for 8 weeks (Endocrine Society) can push serum 25(OH)D from < 20 ng/mL to > 30 ng/mL within 4â€“8 weeks. High single doses (300,000+ IU) raise 25(OH)D within days, but effects on downstream health markers (PTH, calcium absorption) lag by 2â€“4 weeks.',
   },
   {
     q: 'Why is my 25(OH)D still low after a month of supplementing?',
-    a: 'Two main reasons: dose too low for your body weight/adiposity, or absorption issues. Cholecalciferol needs dietary fat to absorb — take it with a meal containing some fat. Obese individuals often need 2–3× the standard dose. Fat-malabsorption conditions (celiac, IBD, post-bariatric surgery) reduce uptake further.',
+    a: 'Two main reasons: dose too low for your body weight/adiposity, or absorption issues. Cholecalciferol needs dietary fat to absorb â€” take it with a meal containing some fat. Obese individuals often need 2â€“3Ã— the standard dose. Fat-malabsorption conditions (celiac, IBD, post-bariatric surgery) reduce uptake further.',
   },
   {
     q: 'Does D3 raise levels faster than D2?',
-    a: 'Yes. Tripkovic et al.\'s 2012 meta-analysis found cholecalciferol (D3) 60–90% more effective at raising serum 25(OH)D than ergocalciferol (D2) at equivalent oral doses. If your prescription is ergocalciferol, ask about substituting cholecalciferol at the same IU dose.',
+    a: 'Yes. Tripkovic et al.\'s 2012 meta-analysis found cholecalciferol (D3) 60â€“90% more effective at raising serum 25(OH)D than ergocalciferol (D2) at equivalent oral doses. If your prescription is ergocalciferol, ask about substituting cholecalciferol at the same IU dose.',
   },
   {
     q: 'When should I re-test my 25(OH)D after starting supplementation?',
-    a: 'Three months after starting or changing a dose is the standard interval — it gives serum 25(OH)D enough time to approach the new steady state. Re-testing sooner captures the trajectory but underestimates the eventual level.',
+    a: 'Three months after starting or changing a dose is the standard interval â€” it gives serum 25(OH)D enough time to approach the new steady state. Re-testing sooner captures the trajectory but underestimates the eventual level.',
   },
 ];
 
@@ -61,12 +63,16 @@ const breadcrumbJsonLd = {
 
 <BaseLayout
   title="How Long Does It Take to Raise Vitamin D Levels? Timeline & Dose Response"
-  description="How quickly vitamin D supplements raise serum 25(OH)D — dose-response, time-to-steady-state, loading protocols, D2 vs D3 kinetics, and when to re-test."
+  description="How quickly vitamin D supplements raise serum 25(OH)D â€” dose-response, time-to-steady-state, loading protocols, D2 vs D3 kinetics, and when to re-test."
   ogType="article"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+    <Breadcrumbs crumbs={[{ href: "/how-long-to-raise-vitamin-d", label: "How Long to Raise 25(OH)D" }]} />
+  <EditorialStandards />
+
 
   <main class="max-w-4xl mx-auto px-4 py-10">
     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
@@ -74,7 +80,7 @@ const breadcrumbJsonLd = {
     </h1>
     <p class="text-lg text-gray-600 leading-relaxed mb-8">
       Vitamin D pharmacokinetics are slow. A new dose changes your serum 25-hydroxyvitamin D level
-      along a first-order approach curve with a time constant of roughly two months — meaning
+      along a first-order approach curve with a time constant of roughly two months â€” meaning
       you reach ~63% of the new steady state after one half-life, ~87% after two, and ~95% after three.
       Practical answers to the most common questions below.
     </p>

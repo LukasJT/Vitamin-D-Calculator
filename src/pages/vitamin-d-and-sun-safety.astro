@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
 const SITE = 'https://vitamindcalculator.net';
 const PAGE_URL = `${SITE}/vitamin-d-and-sun-safety`;
@@ -25,26 +27,30 @@ const breadcrumbJsonLd = {
 
 <BaseLayout
   title="Vitamin D and Sun Safety: Getting UVB Without Skin-Cancer Risk"
-  description="How to get enough UVB for vitamin D synthesis while managing skin-cancer risk — sub-erythemal doses, timing, sunscreen effects, and the WHO / dermatology consensus."
+  description="How to get enough UVB for vitamin D synthesis while managing skin-cancer risk â€” sub-erythemal doses, timing, sunscreen effects, and the WHO / dermatology consensus."
   ogType="article"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+    <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-sun-safety", label: "Sun Safety" }]} />
+  <EditorialStandards />
+
 
   <main class="max-w-4xl mx-auto px-4 py-10">
     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Sun Safety</h1>
     <p class="text-lg text-gray-600 leading-relaxed mb-8">
       Sunlight is the most efficient source of vitamin D<sub>3</sub>, but the same UVB photons
       that trigger cutaneous synthesis also damage DNA in a dose-dependent way. Resolving this
-      tension is the central question of sensible sun exposure — and the answer is
+      tension is the central question of sensible sun exposure â€” and the answer is
       <strong>sub-erythemal doses</strong>: enough UVB to make vitamin D, well below what causes
       erythema, tan, or measurable DNA damage.
     </p>
 
-    <h2 class="text-2xl font-bold text-gray-900 mb-3">The dose–response mismatch</h2>
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The doseâ€“response mismatch</h2>
     <p class="text-gray-700 leading-relaxed mb-3">
       Vitamin D<sub>3</sub> production saturates at roughly <strong>0.5 minimal erythemal doses</strong>
-      (MED) on the exposed skin surface — beyond that, photoequilibrium degrades further previtamin
+      (MED) on the exposed skin surface â€” beyond that, photoequilibrium degrades further previtamin
       D<sub>3</sub>. Skin-cancer risk, in contrast, keeps rising well past 1 MED. So the smart
       strategy is to stop at the point where additional exposure yields no vitamin D but continues to
       accumulate DNA damage.
@@ -53,35 +59,35 @@ const breadcrumbJsonLd = {
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Rules of thumb</h2>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
       <li><strong>Never burn.</strong> A single sunburn in childhood roughly doubles lifetime melanoma risk. Erythema is <em>always</em> a signal you exceeded the useful vitamin D dose.</li>
-      <li><strong>10–30 minutes at midday</strong>, 2–3 times per week, on arms and legs (Fitzpatrick I–III) — usually enough during the UVB season at temperate latitudes. Fitzpatrick IV–VI needs longer.</li>
+      <li><strong>10â€“30 minutes at midday</strong>, 2â€“3 times per week, on arms and legs (Fitzpatrick Iâ€“III) â€” usually enough during the UVB season at temperate latitudes. Fitzpatrick IVâ€“VI needs longer.</li>
       <li><strong>Protect the high-risk areas.</strong> Face, ears, hands, and shoulders carry disproportionate skin-cancer risk over a lifetime. Sunscreen those; expose arms and legs instead.</li>
-      <li><strong>Use the UV index as your clock.</strong> At UV 3–5, effective vitamin D dose comes in ~15 min for fair skin. At UV 8+, the same dose comes in 5–7 min — go by time, not sensation.</li>
-      <li><strong>Sunscreen doesn't eliminate synthesis.</strong> In practice, most people apply less than a third of the density needed for label SPF. Real-world SPF 30 usually behaves like SPF 5–10, allowing plenty of UVB through.</li>
+      <li><strong>Use the UV index as your clock.</strong> At UV 3â€“5, effective vitamin D dose comes in ~15 min for fair skin. At UV 8+, the same dose comes in 5â€“7 min â€” go by time, not sensation.</li>
+      <li><strong>Sunscreen doesn't eliminate synthesis.</strong> In practice, most people apply less than a third of the density needed for label SPF. Real-world SPF 30 usually behaves like SPF 5â€“10, allowing plenty of UVB through.</li>
     </ul>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The dermatology consensus</h2>
     <p class="text-gray-700 leading-relaxed">
       The American Academy of Dermatology and the WHO INTERSUN Programme both hold that
-      <em>no unprotected sun exposure is necessary</em> to meet vitamin D needs — supplements can
+      <em>no unprotected sun exposure is necessary</em> to meet vitamin D needs â€” supplements can
       cover the gap safely. This is a defensible position from a strict skin-cancer standpoint.
       Other bodies (the Endocrine Society, the Vitamin D Society, and many European public-health
       agencies) accept short, non-burning midday exposures as a reasonable primary source in the
       UVB season, given the population-level benefits of adequate 25(OH)D. Both positions are
-      internally coherent — pick the one that fits your risk profile.
+      internally coherent â€” pick the one that fits your risk profile.
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Higher-risk skin types</h2>
     <p class="text-gray-700 leading-relaxed">
       History of melanoma, family history of melanoma, immunosuppression, prior extensive UV
-      damage, and Fitzpatrick I skin all argue for the supplement-only strategy — no deliberate
-      sun exposure for vitamin D, aiming for 25(OH)D ≥ 30 ng/mL via cholecalciferol 1,000–2,000 IU/day.
+      damage, and Fitzpatrick I skin all argue for the supplement-only strategy â€” no deliberate
+      sun exposure for vitamin D, aiming for 25(OH)D â‰¥ 30 ng/mL via cholecalciferol 1,000â€“2,000 IU/day.
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Timing and the UV index</h2>
     <p class="text-gray-700 leading-relaxed">
-      Vitamin-D–producing wavelengths (~295–300 nm) reach the ground primarily when the solar
-      zenith angle is below ~40°, which at temperate latitudes means the middle of the day. Early
-      morning and late afternoon UV is dominated by UVA — which tans and ages skin but produces
+      Vitamin-Dâ€“producing wavelengths (~295â€“300 nm) reach the ground primarily when the solar
+      zenith angle is below ~40Â°, which at temperate latitudes means the middle of the day. Early
+      morning and late afternoon UV is dominated by UVA â€” which tans and ages skin but produces
       almost no vitamin D. So the counter-intuitive answer to "when is the safest time to get sun
       for vitamin D?" is <strong>near solar noon, for a short time</strong>. Long, spread-out
       exposures at the edges of the day give you UVA damage without the D<sub>3</sub> benefit.
@@ -89,7 +95,7 @@ const breadcrumbJsonLd = {
 
     <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
       <strong>Not medical advice.</strong> If you have a history of skin cancer, immunosuppression,
-      or a photosensitivity disorder, discuss sun exposure strategy with your dermatologist —
+      or a photosensitivity disorder, discuss sun exposure strategy with your dermatologist â€”
       supplements are almost certainly the right approach.
     </div>
 

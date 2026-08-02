@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
 const SITE = 'https://vitamindcalculator.net';
 const PAGE_URL = `${SITE}/best-time-of-day-for-vitamin-d`;
@@ -9,10 +11,10 @@ const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'What is the best time of day to get sun for vitamin D?', acceptedAnswer: { '@type': 'Answer', text: 'Near solar noon — when the sun is highest in the sky. UVB (280–315 nm) has a much steeper zenith-angle dependence than UVA, so most of the vitamin-D–producing radiation reaches the ground during the 3–4 hours centred on noon. Early-morning and late-afternoon sun is mostly UVA — good for tanning and skin damage, poor for vitamin D.' } },
-    { '@type': 'Question', name: 'What is the best time to take a vitamin D supplement?', acceptedAnswer: { '@type': 'Answer', text: 'With the largest fat-containing meal of the day. Cholecalciferol is fat-soluble, and absorption improves ~30–50% when taken with dietary fat versus on an empty stomach (Mulligan 2010). Time of day itself doesn\'t matter — morning, noon, or evening are all fine. Consistency matters more than clock time.' } },
-    { '@type': 'Question', name: 'Should I take vitamin D in the morning or at night?', acceptedAnswer: { '@type': 'Answer', text: 'Either works. Some people report taking vitamin D at night interferes with sleep, but the evidence for this is anecdotal — no rigorous trial has confirmed it. If you notice sleep changes, switch to morning; otherwise pick whichever timing you\'ll remember consistently.' } },
-    { '@type': 'Question', name: 'Is there a wrong time of day to take vitamin D?', acceptedAnswer: { '@type': 'Answer', text: 'Only on an empty stomach with no fat — that reduces absorption. Otherwise no time of day is uniquely worse. Taking it once weekly (e.g., 10,000 IU on Sundays) is also acceptable if you find daily dosing hard to remember; steady-state 25(OH)D is similar.' } },
+    { '@type': 'Question', name: 'What is the best time of day to get sun for vitamin D?', acceptedAnswer: { '@type': 'Answer', text: 'Near solar noon â€” when the sun is highest in the sky. UVB (280â€“315 nm) has a much steeper zenith-angle dependence than UVA, so most of the vitamin-Dâ€“producing radiation reaches the ground during the 3â€“4 hours centred on noon. Early-morning and late-afternoon sun is mostly UVA â€” good for tanning and skin damage, poor for vitamin D.' } },
+    { '@type': 'Question', name: 'What is the best time to take a vitamin D supplement?', acceptedAnswer: { '@type': 'Answer', text: 'With the largest fat-containing meal of the day. Cholecalciferol is fat-soluble, and absorption improves ~30â€“50% when taken with dietary fat versus on an empty stomach (Mulligan 2010). Time of day itself doesn\'t matter â€” morning, noon, or evening are all fine. Consistency matters more than clock time.' } },
+    { '@type': 'Question', name: 'Should I take vitamin D in the morning or at night?', acceptedAnswer: { '@type': 'Answer', text: 'Either works. Some people report taking vitamin D at night interferes with sleep, but the evidence for this is anecdotal â€” no rigorous trial has confirmed it. If you notice sleep changes, switch to morning; otherwise pick whichever timing you\'ll remember consistently.' } },
+    { '@type': 'Question', name: 'Is there a wrong time of day to take vitamin D?', acceptedAnswer: { '@type': 'Answer', text: 'Only on an empty stomach with no fat â€” that reduces absorption. Otherwise no time of day is uniquely worse. Taking it once weekly (e.g., 10,000 IU on Sundays) is also acceptable if you find daily dosing hard to remember; steady-state 25(OH)D is similar.' } },
   ],
 };
 const medicalJsonLd = {
@@ -34,12 +36,16 @@ const breadcrumbJsonLd = {
 
 <BaseLayout
   title="Best Time of Day for Vitamin D: Sun Exposure & Supplement Timing"
-  description="Near solar noon is the most effective time for UVB-driven vitamin D synthesis. For supplements, timing barely matters — but taking with a fatty meal boosts absorption ~30–50%."
+  description="Near solar noon is the most effective time for UVB-driven vitamin D synthesis. For supplements, timing barely matters â€” but taking with a fatty meal boosts absorption ~30â€“50%."
   ogType="article"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+    <Breadcrumbs crumbs={[{ href: "/best-time-of-day-for-vitamin-d", label: "Best Time of Day" }]} />
+  <EditorialStandards />
+
 
   <main class="max-w-4xl mx-auto px-4 py-10">
     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Best Time of Day for Vitamin D</h1>
@@ -51,24 +57,24 @@ const breadcrumbJsonLd = {
 
     <h2 class="text-2xl font-bold text-gray-900 mb-3">For sun exposure: near solar noon</h2>
     <p class="text-gray-700 leading-relaxed mb-3">
-      UVB — the narrow 280–315 nm band that converts 7-dehydrocholesterol to previtamin D<sub>3</sub>
-      — is preferentially absorbed by stratospheric ozone. The lower the sun sits, the longer the
+      UVB â€” the narrow 280â€“315 nm band that converts 7-dehydrocholesterol to previtamin D<sub>3</sub>
+      â€” is preferentially absorbed by stratospheric ozone. The lower the sun sits, the longer the
       atmospheric path length, and the more UVB is stripped out. Effective vitamin D synthesis
-      requires a <strong>solar zenith angle below ~40°</strong>, which happens for a few hours
+      requires a <strong>solar zenith angle below ~40Â°</strong>, which happens for a few hours
       centred on noon during the UVB season at temperate latitudes.
     </p>
     <p class="text-gray-700 leading-relaxed">
       The counter-intuitive corollary: sunbathing at 8 AM or 6 PM will tan you and age your skin
       via UVA, but produce almost no vitamin D. Short, midday exposures are more efficient and
-      less DNA-damaging per unit of vitamin D — see our <a href="/vitamin-d-and-sun-safety" class="text-amber-700 underline">sun-safety guide</a>.
+      less DNA-damaging per unit of vitamin D â€” see our <a href="/vitamin-d-and-sun-safety" class="text-amber-700 underline">sun-safety guide</a>.
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">For supplements: with a fatty meal, any time</h2>
     <p class="text-gray-700 leading-relaxed mb-3">
       Cholecalciferol is fat-soluble. It absorbs into chylomicrons in the small intestine along with
-      dietary lipids. Taking a supplement with a fat-containing meal boosts absorption 30–50% versus
+      dietary lipids. Taking a supplement with a fat-containing meal boosts absorption 30â€“50% versus
       an empty stomach (Mulligan &amp; Licata 2010). Beyond that, morning-vs-evening timing has
-      no measurable effect on serum 25(OH)D — the metabolite's half-life is so long (weeks) that
+      no measurable effect on serum 25(OH)D â€” the metabolite's half-life is so long (weeks) that
       circadian variation in a daily dose gets averaged out.
     </p>
 
@@ -85,7 +91,7 @@ const breadcrumbJsonLd = {
     <div class="bg-amber-50 border-l-4 border-amber-500 rounded-xl p-6 mt-10">
       <h2 class="text-xl font-bold text-gray-900 mb-2">Bottom line</h2>
       <ul class="list-disc pl-6 text-gray-800 leading-relaxed space-y-2">
-        <li><strong>Sun</strong>: midday, short exposures, exposed skin — most efficient and safest per unit of vitamin D.</li>
+        <li><strong>Sun</strong>: midday, short exposures, exposed skin â€” most efficient and safest per unit of vitamin D.</li>
         <li><strong>Supplement</strong>: any time of day, but pair with a fat-containing meal for best absorption.</li>
         <li><strong>Consistency &gt; timing</strong>: pick a schedule you'll actually keep.</li>
       </ul>

@@ -1,17 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
 const SITE = 'https://vitamindcalculator.net';
 const PAGE_URL = `${SITE}/vitamin-d-winter`;
 
 const LATITUDE_TABLE = [
-  { lat: '<35°', season: 'Year-round', examples: 'Los Angeles, Phoenix, Atlanta, Sydney, Cairo', months: '12 months of effective UVB' },
-  { lat: '35–42°', season: 'March–October', examples: 'San Francisco, Denver, New York, Rome, Tokyo', months: '~8 months' },
-  { lat: '42–50°', season: 'April–September', examples: 'Chicago, Toronto, Vancouver, Paris, Berlin', months: '~6 months' },
-  { lat: '50–55°', season: 'May–August', examples: 'London, Amsterdam, Warsaw, Edmonton', months: '~4 months' },
-  { lat: '55–60°', season: 'Late-May–mid-August', examples: 'Copenhagen, Moscow, Anchorage', months: '~3 months' },
-  { lat: '>60°', season: 'June–early August', examples: 'Reykjavík, Fairbanks, Tromsø', months: '~2 months (some UVB midsummer only)' },
+  { lat: '<35Â°', season: 'Year-round', examples: 'Los Angeles, Phoenix, Atlanta, Sydney, Cairo', months: '12 months of effective UVB' },
+  { lat: '35â€“42Â°', season: 'Marchâ€“October', examples: 'San Francisco, Denver, New York, Rome, Tokyo', months: '~8 months' },
+  { lat: '42â€“50Â°', season: 'Aprilâ€“September', examples: 'Chicago, Toronto, Vancouver, Paris, Berlin', months: '~6 months' },
+  { lat: '50â€“55Â°', season: 'Mayâ€“August', examples: 'London, Amsterdam, Warsaw, Edmonton', months: '~4 months' },
+  { lat: '55â€“60Â°', season: 'Late-Mayâ€“mid-August', examples: 'Copenhagen, Moscow, Anchorage', months: '~3 months' },
+  { lat: '>60Â°', season: 'Juneâ€“early August', examples: 'ReykjavÃ­k, Fairbanks, TromsÃ¸', months: '~2 months (some UVB midsummer only)' },
 ];
 
 const medicalJsonLd = {
@@ -34,29 +36,33 @@ const breadcrumbJsonLd = {
 
 <BaseLayout
   title="Vitamin D Winter Explained: Latitude, UVB, and When Sun Stops Working"
-  description="Why above ~35° latitude the winter sun cannot drive vitamin D synthesis, when the UVB season starts and stops at your latitude, and what to do about it."
+  description="Why above ~35Â° latitude the winter sun cannot drive vitamin D synthesis, when the UVB season starts and stops at your latitude, and what to do about it."
   ogType="article"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+    <Breadcrumbs crumbs={[{ href: "/vitamin-d-winter", label: "Vitamin D Winter" }]} />
+  <EditorialStandards />
+
 
   <main class="max-w-4xl mx-auto px-4 py-10">
     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">The Vitamin D Winter</h1>
     <p class="text-lg text-gray-600 leading-relaxed mb-8">
       "Vitamin D winter" is the months during which UVB radiation reaching the ground at your
       latitude is too weak to trigger cutaneous vitamin&nbsp;D<sub>3</sub> synthesis, regardless of
-      how much time you spend outside. It's driven by <strong>solar zenith angle</strong> — the
+      how much time you spend outside. It's driven by <strong>solar zenith angle</strong> â€” the
       sun's altitude above the horizon at solar noon.
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mb-3">Why UVB disappears in winter</h2>
     <p class="text-gray-700 leading-relaxed mb-3">
-      UVB photons (280–315 nm) that reach the ground must pass through the atmosphere. In winter
+      UVB photons (280â€“315 nm) that reach the ground must pass through the atmosphere. In winter
       at temperate latitudes the sun sits low in the sky; sunlight travels a much longer path
       through the atmosphere, and the stratospheric ozone layer selectively absorbs almost all
       the UVB. The typical rule from Webb et al.: cutaneous vitamin D<sub>3</sub> synthesis
-      effectively stops when the <em>solar zenith angle exceeds ~60°</em> — i.e., when the sun is
-      less than about 30° above the horizon.
+      effectively stops when the <em>solar zenith angle exceeds ~60Â°</em> â€” i.e., when the sun is
+      less than about 30Â° above the horizon.
     </p>
     <p class="text-gray-700 leading-relaxed">
       This is why the same latitude that produces plenty of vitamin D at noon in June yields
@@ -96,8 +102,8 @@ const breadcrumbJsonLd = {
     <p class="text-gray-700 leading-relaxed mb-3">
       Because cholecalciferol is fat-soluble and partitions into adipose tissue, humans store a
       reservoir that sustains circulating 25(OH)D through winter. In lean adults, serum 25(OH)D
-      decays with an effective terminal half-life of ~60 days from a summer peak — enough to
-      hold sufficiency for 2–3 months into winter before dropping into the insufficient range.
+      decays with an effective terminal half-life of ~60 days from a summer peak â€” enough to
+      hold sufficiency for 2â€“3 months into winter before dropping into the insufficient range.
       Obese individuals show more sequestration and slower release, giving a longer terminal
       half-life but a lower peak. Use our
       <a href="/vitamin-d-reserves" class="text-amber-700 underline">reserves calculator</a> to
@@ -106,10 +112,10 @@ const breadcrumbJsonLd = {
 
     <h2 class="text-2xl font-bold text-gray-900 mb-3">What to do</h2>
     <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
-      <li>Bank as much vitamin D as safely possible during summer through short, sensible sun exposures — 10–30 minutes of midday sun on arms and legs, 2–3 times a week, without burning.</li>
-      <li>Through the vitamin D winter, supplement with 1,000–2,000 IU/day cholecalciferol; higher doses for known insufficiency. See our <a href="/vitamin-d-dosage" class="text-amber-700 underline">dosage guide</a>.</li>
-      <li>Eat vitamin D–rich foods when possible: fatty fish, UV-exposed mushrooms, egg yolks, and fortified dairy or plant milks.</li>
-      <li>Consider testing serum 25(OH)D at end of winter (February–March in the Northern Hemisphere) to see the seasonal nadir.</li>
+      <li>Bank as much vitamin D as safely possible during summer through short, sensible sun exposures â€” 10â€“30 minutes of midday sun on arms and legs, 2â€“3 times a week, without burning.</li>
+      <li>Through the vitamin D winter, supplement with 1,000â€“2,000 IU/day cholecalciferol; higher doses for known insufficiency. See our <a href="/vitamin-d-dosage" class="text-amber-700 underline">dosage guide</a>.</li>
+      <li>Eat vitamin Dâ€“rich foods when possible: fatty fish, UV-exposed mushrooms, egg yolks, and fortified dairy or plant milks.</li>
+      <li>Consider testing serum 25(OH)D at end of winter (Februaryâ€“March in the Northern Hemisphere) to see the seasonal nadir.</li>
     </ol>
 
     <RelatedArticles current="/vitamin-d-winter" />

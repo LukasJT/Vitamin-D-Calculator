@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
 const SITE = 'https://vitamindcalculator.net';
 const PAGE_URL = `${SITE}/how-to-take-vitamin-d`;
@@ -9,35 +11,35 @@ const FORMATS = [
   {
     name: 'Softgel capsule (oil-filled)',
     absorption: 'Excellent',
-    dose_range: '400 – 50,000 IU',
+    dose_range: '400 â€“ 50,000 IU',
     pros: 'Best studied; oil vehicle boosts absorption; convenient; long shelf-life; consistent dosing.',
     cons: 'Requires ability to swallow capsules; gelatin-based (not vegan unless plant softgel).',
   },
   {
     name: 'Tablet',
     absorption: 'Good',
-    dose_range: '400 – 5,000 IU',
+    dose_range: '400 â€“ 5,000 IU',
     pros: 'Inexpensive; often vegan-friendly; long shelf-life.',
     cons: 'Absorption slightly lower than oil-based; larger dose forms may be harder to swallow.',
   },
   {
     name: 'Liquid drops (in MCT or olive oil)',
     absorption: 'Excellent',
-    dose_range: '400 – 5,000 IU per drop or 500 IU/drop typical',
+    dose_range: '400 â€“ 5,000 IU per drop or 500 IU/drop typical',
     pros: 'Best for infants and children; dose-titratable; easy to swallow.',
     cons: 'More expensive per IU; drop counting introduces variability; shorter shelf-life once opened.',
   },
   {
     name: 'Chewable / gummy',
     absorption: 'Good',
-    dose_range: '400 – 2,000 IU',
+    dose_range: '400 â€“ 2,000 IU',
     pros: 'Palatable; good for kids and those with swallowing difficulty.',
     cons: 'Added sugar; usually lower doses; harder to reach repletion targets.',
   },
   {
     name: 'Sublingual spray or drop',
     absorption: 'Comparable to oral in most studies',
-    dose_range: '1,000 – 5,000 IU per spray',
+    dose_range: '1,000 â€“ 5,000 IU per spray',
     pros: 'Convenient; useful for people avoiding pills.',
     cons: 'Not superior to swallowed oil despite marketing claims; some sprays contain alcohol.',
   },
@@ -57,11 +59,11 @@ const howToJsonLd = {
   description: 'Choose a cholecalciferol form, take it with a fat-containing meal, and be consistent to maintain optimal serum 25(OH)D.',
   totalTime: 'PT1M',
   step: [
-    { '@type': 'HowToStep', position: 1, name: 'Pick a cholecalciferol (D3) product', text: 'Choose a vitamin D3 softgel, liquid drop in oil, or chewable. Prefer D3 (cholecalciferol) over D2 (ergocalciferol) — it raises serum 25(OH)D 60–90% more effectively at the same IU dose.' },
-    { '@type': 'HowToStep', position: 2, name: 'Take it with a fat-containing meal', text: 'Cholecalciferol is fat-soluble. Absorption increases 30–50% versus taking it on an empty stomach. Any meal with oil, butter, avocado, nuts, or dairy works.' },
-    { '@type': 'HowToStep', position: 3, name: 'Pick a consistent time of day', text: 'Morning, noon, or evening — clock time does not matter because 25(OH)D has a long half-life. Consistency matters more than timing.' },
-    { '@type': 'HowToStep', position: 4, name: 'Pair with adequate magnesium', text: 'Magnesium is a cofactor for every enzyme in the vitamin D pathway. Target the 300–400 mg/day RDA from food or supplement 200–400 mg elemental Mg if diet falls short.' },
-    { '@type': 'HowToStep', position: 5, name: 'Re-test 25(OH)D at 3 months', text: 'Serum 25(OH)D approaches its new steady state along a slow first-order approach. Three months is the standard interval to confirm your dose is landing you in the sufficiency range (30–50 ng/mL).' },
+    { '@type': 'HowToStep', position: 1, name: 'Pick a cholecalciferol (D3) product', text: 'Choose a vitamin D3 softgel, liquid drop in oil, or chewable. Prefer D3 (cholecalciferol) over D2 (ergocalciferol) â€” it raises serum 25(OH)D 60â€“90% more effectively at the same IU dose.' },
+    { '@type': 'HowToStep', position: 2, name: 'Take it with a fat-containing meal', text: 'Cholecalciferol is fat-soluble. Absorption increases 30â€“50% versus taking it on an empty stomach. Any meal with oil, butter, avocado, nuts, or dairy works.' },
+    { '@type': 'HowToStep', position: 3, name: 'Pick a consistent time of day', text: 'Morning, noon, or evening â€” clock time does not matter because 25(OH)D has a long half-life. Consistency matters more than timing.' },
+    { '@type': 'HowToStep', position: 4, name: 'Pair with adequate magnesium', text: 'Magnesium is a cofactor for every enzyme in the vitamin D pathway. Target the 300â€“400 mg/day RDA from food or supplement 200â€“400 mg elemental Mg if diet falls short.' },
+    { '@type': 'HowToStep', position: 5, name: 'Re-test 25(OH)D at 3 months', text: 'Serum 25(OH)D approaches its new steady state along a slow first-order approach. Three months is the standard interval to confirm your dose is landing you in the sufficiency range (30â€“50 ng/mL).' },
   ],
 };
 
@@ -69,10 +71,10 @@ const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'What is the best way to take vitamin D?', acceptedAnswer: { '@type': 'Answer', text: 'Take a cholecalciferol (D3) softgel or oil-based drop with a fat-containing meal. Absorption improves 30–50% versus taking it on an empty stomach. Time of day does not matter for daily dosing; morning, noon, or evening are all fine. Consistency matters more than clock time.' } },
+    { '@type': 'Question', name: 'What is the best way to take vitamin D?', acceptedAnswer: { '@type': 'Answer', text: 'Take a cholecalciferol (D3) softgel or oil-based drop with a fat-containing meal. Absorption improves 30â€“50% versus taking it on an empty stomach. Time of day does not matter for daily dosing; morning, noon, or evening are all fine. Consistency matters more than clock time.' } },
     { '@type': 'Question', name: 'Do vitamin D drops work better than pills?', acceptedAnswer: { '@type': 'Answer', text: 'Not really. Both are effective. Drops in an oil vehicle absorb well; so do softgels. Drops are preferred for infants, small children, and anyone who has trouble swallowing pills. Softgels are cheaper per IU for adults.' } },
-    { '@type': 'Question', name: 'Should vitamin D be taken with food?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, with a fat-containing meal. Cholecalciferol is fat-soluble; taking it with dietary fat increases absorption ~30–50% versus an empty stomach (Mulligan 2010). A meal containing any oil, butter, avocado, nuts, or dairy is sufficient.' } },
-    { '@type': 'Question', name: 'Can I take vitamin D with other supplements?', acceptedAnswer: { '@type': 'Answer', text: 'Yes — vitamin D pairs well with calcium and magnesium (which are cofactors for the vitamin D pathway) and vitamin K2. It does not interfere with typical multivitamin components. If you take warfarin, discuss with your prescriber before adding K2.' } },
+    { '@type': 'Question', name: 'Should vitamin D be taken with food?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, with a fat-containing meal. Cholecalciferol is fat-soluble; taking it with dietary fat increases absorption ~30â€“50% versus an empty stomach (Mulligan 2010). A meal containing any oil, butter, avocado, nuts, or dairy is sufficient.' } },
+    { '@type': 'Question', name: 'Can I take vitamin D with other supplements?', acceptedAnswer: { '@type': 'Answer', text: 'Yes â€” vitamin D pairs well with calcium and magnesium (which are cofactors for the vitamin D pathway) and vitamin K2. It does not interfere with typical multivitamin components. If you take warfarin, discuss with your prescriber before adding K2.' } },
   ],
 };
 const medicalJsonLd = {
@@ -94,7 +96,7 @@ const breadcrumbJsonLd = {
 
 <BaseLayout
   title="How to Take Vitamin D: Drops vs Capsules vs Chewables & Timing"
-  description="Which vitamin D form absorbs best? Softgels, drops, chewables, sublingual, and prescription 50,000 IU compared — plus timing, with-meal advice, and cofactor pairing."
+  description="Which vitamin D form absorbs best? Softgels, drops, chewables, sublingual, and prescription 50,000 IU compared â€” plus timing, with-meal advice, and cofactor pairing."
   ogType="article"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(howToJsonLd)} />
@@ -102,11 +104,15 @@ const breadcrumbJsonLd = {
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
 
+    <Breadcrumbs crumbs={[{ href: "/how-to-take-vitamin-d", label: "How to Take" }]} />
+  <EditorialStandards />
+
+
   <main class="max-w-4xl mx-auto px-4 py-10">
     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">How to Take Vitamin D</h1>
     <p class="text-lg text-gray-600 leading-relaxed mb-8">
       Choose a cholecalciferol (D<sub>3</sub>) form that suits your lifestyle, take it with a
-      fat-containing meal, and be consistent. Format matters less than most consumers assume —
+      fat-containing meal, and be consistent. Format matters less than most consumers assume â€”
       here's a practical comparison plus timing advice.
     </p>
 
@@ -129,17 +135,17 @@ const breadcrumbJsonLd = {
 
     <h2 class="text-2xl font-bold text-gray-900 mb-4">Timing checklist</h2>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2 mb-10">
-      <li><strong>With food, containing fat</strong> — 30–50% absorption boost versus empty stomach.</li>
-      <li><strong>Any time of day</strong> — no evidence that morning is better than evening or vice versa. Pick the meal you'll remember most reliably.</li>
-      <li><strong>Daily, weekly, or monthly</strong> — steady-state 25(OH)D is comparable. Daily is most physiological; weekly (10,000 IU) is easier to remember; monthly (60,000 IU) is fine for adherence-challenged patients.</li>
-      <li><strong>Avoid annual megadoses (500,000+ IU)</strong> — associated with paradoxical falls and fractures in older adults (Sanders 2010).</li>
+      <li><strong>With food, containing fat</strong> â€” 30â€“50% absorption boost versus empty stomach.</li>
+      <li><strong>Any time of day</strong> â€” no evidence that morning is better than evening or vice versa. Pick the meal you'll remember most reliably.</li>
+      <li><strong>Daily, weekly, or monthly</strong> â€” steady-state 25(OH)D is comparable. Daily is most physiological; weekly (10,000 IU) is easier to remember; monthly (60,000 IU) is fine for adherence-challenged patients.</li>
+      <li><strong>Avoid annual megadoses (500,000+ IU)</strong> â€” associated with paradoxical falls and fractures in older adults (Sanders 2010).</li>
     </ul>
 
     <h2 class="text-2xl font-bold text-gray-900 mb-4">Cofactor pairing</h2>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2 mb-10">
-      <li><strong>Magnesium</strong> is required by every enzyme in the vitamin D pathway. Aim for the RDA from food; supplement 200–400 mg/day if diet falls short. See our <a href="/vitamin-d-magnesium-k2" class="text-amber-700 underline">cofactor page</a>.</li>
+      <li><strong>Magnesium</strong> is required by every enzyme in the vitamin D pathway. Aim for the RDA from food; supplement 200â€“400 mg/day if diet falls short. See our <a href="/vitamin-d-magnesium-k2" class="text-amber-700 underline">cofactor page</a>.</li>
       <li><strong>Vitamin K<sub>2</sub></strong> is theoretically synergistic for directing calcium into bone rather than arteries; evidence is thin at standard doses. Optional unless taking &gt; 4,000 IU/day cholecalciferol.</li>
-      <li><strong>Calcium</strong> — target dietary intake of 1,000–1,200 mg/day, mostly from food.</li>
+      <li><strong>Calcium</strong> â€” target dietary intake of 1,000â€“1,200 mg/day, mostly from food.</li>
     </ul>
 
     <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 leading-relaxed">

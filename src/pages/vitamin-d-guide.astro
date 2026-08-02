@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
 const PAGE_URL = 'https://vitamindcalculator.net/vitamin-d-guide';
 const articleJsonLd = {
@@ -32,6 +34,9 @@ const breadcrumbJsonLd = {
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+    <Breadcrumbs crumbs={[{ href: "/vitamin-d-guide", label: "Vitamin D Guide" }]} />
+  <EditorialStandards />
+
   <main class="max-w-4xl mx-auto px-4 py-12 sm:py-16">
     <a href="/" class="inline-flex items-center text-sm text-amber-600 hover:text-amber-700 font-medium mb-8">
       &larr; Back to Calculator
