@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-testosterone`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Testosterone',
+  url: PAGE_URL,
+  medicalAudience: [
+    { '@type': 'MedicalAudience', audienceType: 'Patient' },
+    { '@type': 'PeopleAudience', suggestedGender: 'male' },
+  ],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Testosterone', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Testosterone: Does 25(OH)D Affect Male Hormones?"
+  description="Evidence on vitamin D's effect on serum testosterone — what the trials show for deficient vs sufficient men and where the marketing overpromises."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-testosterone", label: "Testosterone" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Testosterone</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D receptors are expressed in the testes, and observational studies consistently
+      find lower serum testosterone in men with low 25(OH)D. The supplementation evidence is
+      more nuanced: correction helps if you're deficient, but doesn't push hormones above
+      normal in men who are already sufficient.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">What observational studies show</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cross-sectional analyses of the NHANES cohort and European men's health datasets show
+      a positive correlation between serum 25(OH)D and total testosterone, roughly a 20%
+      lower testosterone in men with 25(OH)D &lt; 20 ng/mL compared to men with 30+ ng/mL.
+      Causation is unclear — obese men have both low vitamin D and low testosterone through
+      independent pathways.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Randomised supplementation evidence</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      Pilsz et al. (2011) randomised 165 overweight men with baseline 25(OH)D of ~30 nmol/L
+      (12 ng/mL — deficient) to 3,332 IU/day D3 or placebo for a year. Total testosterone
+      rose from 10.7 to 13.4 nmol/L in the D3 group and did not change in placebo —
+      clinically meaningful in deficient men.
+    </p>
+    <p class="text-gray-700 leading-relaxed">
+      However, follow-up trials in men who were already sufficient at baseline (25(OH)D
+      &gt; 30 ng/mL) have failed to show additional testosterone rises. The signal appears
+      dose-dependent on baseline status: correct deficiency, get benefit; supplement beyond
+      that, no incremental benefit.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mechanism</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The proposed pathway: vitamin D receptor activation in Leydig cells (which produce
+      testosterone) enhances steroidogenesis directly. Vitamin D also modulates sex
+      hormone-binding globulin (SHBG), which can affect free testosterone. Neither pathway
+      overrides the pituitary–gonadal axis regulation, so vitamin D can't raise testosterone
+      in a normal-baseline man to supraphysiologic levels.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical takeaway</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>If you have low libido, fatigue, or reduced morning erections, test <strong>both</strong> total testosterone and serum 25(OH)D — they commonly co-occur but respond to different interventions.</li>
+      <li>Correcting deficient 25(OH)D to ≥ 30 ng/mL may raise testosterone modestly (~15–25%) if you're deficient at baseline.</li>
+      <li>Vitamin D is not a testosterone booster in men who are already sufficient.</li>
+      <li>For clinically low testosterone (repeatedly &lt; 300 ng/dL AM), discuss hypogonadism workup with an endocrinologist — TRT is the evidence-based treatment when indicated, not vitamin D.</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Testosterone replacement decisions require a full
+      workup including LH/FSH, prolactin, and morning testosterone measurements. Discuss with
+      your physician.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-testosterone" />
+  </main>
+</BaseLayout>

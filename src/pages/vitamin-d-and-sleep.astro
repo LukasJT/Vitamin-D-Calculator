@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-sleep`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Sleep',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: { '@type': 'MedicalCondition', name: 'Insomnia' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Sleep', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Sleep: Does 25(OH)D Affect Sleep Quality?"
+  description="How vitamin D deficiency relates to insomnia, sleep quality, and sleep apnea. Should you take vitamin D at night, and what the evidence really shows."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-sleep", label: "Sleep" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Sleep</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D receptors are expressed throughout the hypothalamus, midbrain, and brainstem —
+      including sleep-regulatory nuclei. Observational studies consistently link low serum
+      25(OH)D to poor sleep quality and short sleep duration. The randomised evidence is
+      cautiously supportive but not definitive.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational data</h2>
+    <p class="text-gray-700 leading-relaxed">
+      A 2018 meta-analysis pooling nine cohort studies (~9,400 participants) found deficient
+      individuals were 1.5–2× more likely to report sleep disorders, poor sleep quality, or
+      sleep durations under 5 hours. The association survived adjustment for age, sex, BMI,
+      and physical activity — but confounding by lifestyle (indoor time, depression) is hard
+      to eliminate.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Randomised trials</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Small trials in vitamin-D–deficient adults with insomnia have shown improvements in
+      subjective sleep quality (Pittsburgh Sleep Quality Index) and, in one Iranian trial,
+      polysomnographic sleep latency after 8 weeks of 50,000 IU weekly cholecalciferol. Larger
+      trials in unselected populations have not shown clear benefit. The pattern mirrors most
+      vitamin D outcomes: correcting deficiency helps, supplementing sufficient people doesn't.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Obstructive sleep apnea (OSA)</h2>
+    <p class="text-gray-700 leading-relaxed">
+      OSA patients have consistently lower 25(OH)D than matched controls, and severity of OSA
+      (higher AHI) correlates with lower 25(OH)D. Whether vitamin D deficiency causes OSA
+      (through respiratory muscle weakness or upper-airway inflammation) or vice versa (via
+      reduced daytime activity and outdoor time) is unresolved. Supplementation is unlikely to
+      substitute for CPAP but may improve muscle function.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Should you take vitamin D at night?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      A common online claim is that evening vitamin D dosing disrupts sleep because it
+      suppresses melatonin. The evidence is anecdotal — no rigorous trial has demonstrated
+      the effect. Time-of-day dosing doesn't measurably affect steady-state 25(OH)D. If you
+      subjectively notice sleep changes after evening vitamin D, switch to morning. Otherwise
+      pick whichever timing you'll keep consistent — see our <a href="/best-time-of-day-for-vitamin-d" class="text-amber-700 underline">timing page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guidance</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>If you sleep poorly and haven't checked 25(OH)D recently, it's a reasonable test.</li>
+      <li>Correct any deficiency (aim for 30–40 ng/mL) with 1,000–2,000 IU/day cholecalciferol.</li>
+      <li>Don't expect dramatic sleep improvement from vitamin D alone — sleep hygiene, CBT-I, and treating any OSA remain first-line.</li>
+      <li>If evening dosing seems to bother your sleep, try morning; there's no absorption downside.</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Persistent insomnia, loud snoring, or daytime
+      sleepiness warrant a sleep evaluation — vitamin D is not a substitute for a diagnosis.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-sleep" />
+  </main>
+</BaseLayout>

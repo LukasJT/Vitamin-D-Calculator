@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-for-vegans`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D for Vegans',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D for Vegans', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D for Vegans: Lichen D3, D2, Fortified Foods & UV Mushrooms"
+  description="Vegan-friendly vitamin D sources: lichen-derived cholecalciferol, fortified plant milks, UV-exposed mushrooms, and D2 vs D3 tradeoffs. Practical supplementation guide."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-for-vegans", label: "Vegan Vitamin D" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D for Vegans</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      A well-planned vegan diet covers most nutrients — but vitamin D is a genuine gap.
+      Almost all natural D<sub>3</sub> (cholecalciferol) sources are animal, and D<sub>2</sub>
+      (ergocalciferol) from fungi is less potent per IU. Vegans need to be deliberate.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Sources compared</h2>
+    <div class="overflow-x-auto bg-white border border-gray-200 rounded-xl shadow-sm mb-8">
+      <table class="w-full text-sm">
+        <thead class="bg-gray-50 text-gray-700 border-b border-gray-200">
+          <tr>
+            <th class="text-left px-4 py-3">Source</th>
+            <th class="text-left px-4 py-3">Form</th>
+            <th class="text-left px-4 py-3">Typical dose</th>
+            <th class="text-left px-4 py-3 hidden md:table-cell">Notes</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700">
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Lichen-derived D<sub>3</sub></td><td class="px-4 py-3">Cholecalciferol</td><td class="px-4 py-3">1,000–5,000 IU</td><td class="px-4 py-3 hidden md:table-cell">The gold-standard vegan option — biochemically identical to lanolin-derived D<sub>3</sub>. Look for "vegan D3" on the label.</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Ergocalciferol (D<sub>2</sub>)</td><td class="px-4 py-3">Ergocalciferol</td><td class="px-4 py-3">1,000–5,000 IU</td><td class="px-4 py-3 hidden md:table-cell">Yeast/fungal origin. Vegan by default. Raises serum 25(OH)D 60–90% less effectively per IU than D<sub>3</sub>.</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">UV-exposed mushrooms</td><td class="px-4 py-3">D<sub>2</sub></td><td class="px-4 py-3">200–500 IU per serving</td><td class="px-4 py-3 hidden md:table-cell">White, portabella, and shiitake mushrooms exposed to UV light contain meaningful D<sub>2</sub>. Look for "UV-exposed" or "vitamin D–enhanced" labelling.</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Fortified soy/oat/almond milk</td><td class="px-4 py-3">Usually D<sub>2</sub>, sometimes D<sub>3</sub></td><td class="px-4 py-3">80–120 IU per cup</td><td class="px-4 py-3 hidden md:table-cell">Read the label — some brands use lichen D<sub>3</sub>, others D<sub>2</sub>.</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Fortified orange juice</td><td class="px-4 py-3">D<sub>3</sub> or D<sub>2</sub></td><td class="px-4 py-3">100 IU per cup</td><td class="px-4 py-3 hidden md:table-cell">Common fortification; check the source.</td></tr>
+          <tr><td class="px-4 py-3 font-medium">Fortified breakfast cereals</td><td class="px-4 py-3">Usually D<sub>3</sub></td><td class="px-4 py-3">40–100 IU per serving</td><td class="px-4 py-3 hidden md:table-cell">Common D<sub>3</sub> in cereals comes from lanolin — check for vegan certification.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Should vegans take D<sub>2</sub> or lichen D<sub>3</sub>?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Lichen D<sub>3</sub> if you can afford it — it raises serum 25(OH)D more effectively
+      per IU and produces steadier levels. D<sub>2</sub> works, but you need a higher dose
+      (~1.5–2× the equivalent D<sub>3</sub> dose) and it clears faster, so trough levels
+      dip lower between doses. Costs of lichen D<sub>3</sub> have fallen; a year's supply
+      is now $20–40 in the US and UK.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Sun exposure</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cutaneous synthesis works the same regardless of diet. Sensible sun exposure remains
+      the most bioavailable vitamin D source for anyone during the UVB season. Vegans at
+      high latitudes still hit the vitamin D winter (~November through February) and need
+      supplementation during those months.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Testing considerations</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Standard 25(OH)D lab assays measure total 25(OH)D<sub>2</sub> + 25(OH)D<sub>3</sub>.
+      If you supplement with D<sub>2</sub>, some older assays may underestimate your total
+      status — modern LC-MS/MS methods measure both forms accurately. If you're on D<sub>2</sub>
+      and your result is unexpectedly low, ask your lab about the assay used.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Recommended vegan protocol</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Daily lichen-derived vitamin D<sub>3</sub> 1,000–2,000 IU with a fat-containing meal.</li>
+      <li>Include UV-exposed mushrooms or fortified plant milks as regular dietary sources.</li>
+      <li>Test serum 25(OH)D at end of winter (February–March) — vegans have higher deficiency rates in cohort studies.</li>
+      <li>During UVB season, sensible sun exposure (10–30 minutes midday, 2–3× weekly).</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Vegan diet planning benefits from consultation with
+      a registered dietitian, especially for children, pregnant women, and people with
+      malabsorption disorders.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-for-vegans" />
+  </main>
+</BaseLayout>

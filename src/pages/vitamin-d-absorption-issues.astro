@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-absorption-issues`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D Absorption Issues',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Absorption Issues', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D Absorption Problems: Malabsorption, Meds & Bariatric Surgery"
+  description="Why your 25(OH)D might stay low despite supplementation — Crohn's, celiac, cystic fibrosis, bariatric surgery, glucocorticoids, and how to fix it."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-absorption-issues", label: "Absorption Issues" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D Absorption Issues</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      If your serum 25(OH)D stays low despite reasonable supplementation, absorption is
+      the usual explanation. Vitamin D is fat-soluble; anything that reduces fat absorption,
+      accelerates catabolism, or shifts the D<sub>3</sub>-to-25(OH)D conversion can produce
+      apparent supplementation resistance.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Gastrointestinal causes</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Celiac disease</strong> — damaged small-intestinal villi reduce fat and fat-soluble vitamin absorption. Vitamin D deficiency is present in 25–65% of untreated celiac patients and resolves gradually on a gluten-free diet.</li>
+      <li><strong>Crohn's disease</strong> — ileal inflammation reduces bile acid recycling and impairs fat-soluble vitamin uptake. Higher supplemental doses (3,000–5,000 IU/day) and periodic re-testing are standard.</li>
+      <li><strong>Ulcerative colitis</strong> — less absorption impact than Crohn's, but chronic inflammation and glucocorticoid use compound the issue.</li>
+      <li><strong>Cystic fibrosis</strong> — pancreatic insufficiency reduces lipase secretion, which is required for micelle formation. Fat-soluble vitamin supplementation (A, D, E, K) is routine.</li>
+      <li><strong>Short bowel syndrome</strong> — reduced absorptive surface. Often requires prescription 50,000 IU weekly.</li>
+      <li><strong>Cholestatic liver disease</strong> — reduced bile salt secretion impairs micelle formation.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Post-bariatric surgery</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Roux-en-Y gastric bypass (RYGB) and biliopancreatic diversion (BPD/DS) bypass the
+      duodenum and proximal jejunum, where most vitamin D absorption occurs. Post-op patients
+      typically require <strong>2,000–5,000 IU/day cholecalciferol</strong> indefinitely, plus
+      calcium citrate 1,200–1,500 mg/day. Sleeve gastrectomy has a milder effect but still
+      warrants monitoring.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Medications</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Glucocorticoids</strong> (prednisone, hydrocortisone) — induce CYP24A1, accelerating 25(OH)D catabolism. Patients on chronic ≥ 5 mg prednisone typically need 2,000–4,000 IU/day.</li>
+      <li><strong>Anticonvulsants</strong> (phenytoin, carbamazepine, phenobarbital) — same enzyme induction; consider 2× standard dose.</li>
+      <li><strong>Cholestyramine and colestipol</strong> — bile acid sequestrants block fat-soluble vitamin absorption. Separate doses by 4+ hours.</li>
+      <li><strong>Orlistat (Xenical, Alli)</strong> — lipase inhibitor; reduces vitamin D absorption. Take supplements at least 2 hours apart from orlistat doses.</li>
+      <li><strong>Antiretrovirals</strong> — some HIV medications increase 25(OH)D catabolism; monitor annually.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Genetic factors</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Polymorphisms in the vitamin D-binding protein gene (GC / DBP), CYP2R1 (25-hydroxylase),
+      and CYP24A1 (24-hydroxylase) each explain 1–4% of individual variation in serum 25(OH)D.
+      Rare CYP24A1 loss-of-function mutations cause idiopathic infantile hypercalcaemia and
+      require careful, low-dose supplementation. Standard supplementation is safe for the
+      general population.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Troubleshooting checklist</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Are you taking the supplement with a fat-containing meal? If not, absorption drops 30–50%.</li>
+      <li>Is your dose adequate for your body weight? Obese adults typically need 2× lean-adult dose.</li>
+      <li>Is the product actually cholecalciferol (D<sub>3</sub>)? D<sub>2</sub> raises 25(OH)D less effectively.</li>
+      <li>Are you on any of the medications above?</li>
+      <li>Have you been screened for celiac (tTG-IgA), Crohn's, or other GI absorption disorders?</li>
+      <li>Have you tried a liquid oil-based formulation instead of a tablet? Oil vehicles improve absorption in impaired-fat-uptake patients.</li>
+      <li>If all else fails: prescription 50,000 IU weekly cholecalciferol, or investigate 1,25(OH)<sub>2</sub>D directly with an endocrinologist.</li>
+    </ol>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Persistent low 25(OH)D despite adequate
+      supplementation deserves a workup — celiac panel, comprehensive metabolic panel, and
+      review of all medications. Discuss with your primary care physician or a
+      gastroenterologist.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-absorption-issues" />
+  </main>
+</BaseLayout>

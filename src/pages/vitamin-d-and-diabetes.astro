@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-diabetes`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Diabetes',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [
+    { '@type': 'MedicalCondition', name: 'Type 2 diabetes mellitus', code: { '@type': 'MedicalCode', codeValue: 'E11', codingSystem: 'ICD-10' } },
+    { '@type': 'MedicalCondition', name: 'Type 1 diabetes mellitus', code: { '@type': 'MedicalCode', codeValue: 'E10', codingSystem: 'ICD-10' } },
+  ],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Diabetes', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Diabetes: Insulin Resistance, Type 2 Prevention & Evidence"
+  description="What the largest RCTs (D2d, VITAL) show about vitamin D and diabetes prevention. Type 1 evidence, insulin sensitivity, and practical dosing for prediabetes."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-diabetes", label: "Diabetes" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Diabetes</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D receptors are expressed on pancreatic β-cells, and observational studies have
+      long linked low serum 25(OH)D to insulin resistance and type 2 diabetes risk. The
+      randomised evidence is more measured: supplementation helps prevent progression in some
+      deficient prediabetic populations but does not clearly benefit those already sufficient.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Type 2 diabetes prevention</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      The definitive trial is <strong>D2d</strong> (Pittas et al., 2019): 2,423 US adults with
+      prediabetes were randomised to 4,000 IU/day cholecalciferol or placebo for a median of
+      2.5 years. Overall, D3 supplementation did not reach statistical significance for
+      progression to type 2 diabetes (HR 0.88; 95% CI 0.75–1.04). But in the pre-specified
+      subgroup analysis of participants who reached ≥ 40 ng/mL serum 25(OH)D, risk fell
+      substantially — hazard ratio ~0.24 versus placebo. The signal is real; the effect size
+      depends heavily on achieving true sufficiency.
+    </p>
+    <p class="text-gray-700 leading-relaxed">
+      <strong>VITAL</strong> (Manson et al., 2019) — 25,000 adults, 5 years of 2,000 IU/day —
+      found no reduction in incident type 2 diabetes in the general population.
+      Bottom line: if you have prediabetes and low 25(OH)D, correcting it to 40+ ng/mL is a
+      reasonable adjunct to lifestyle change; don't rely on vitamin D as a replacement for
+      diet, exercise, or metformin.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Type 1 diabetes</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cohort studies from Finland, Norway, and the US show early-childhood vitamin D
+      supplementation is associated with lower type 1 diabetes risk. The mechanism is
+      immunomodulatory — vitamin D dampens the autoimmune destruction of β-cells. No
+      randomised prevention trial has definitively confirmed this, but 400–1,000 IU/day
+      in early childhood is safe and standard practice.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Insulin sensitivity and HbA1c</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Meta-analyses of shorter trials in insulin-resistant patients show modest improvements
+      in HOMA-IR and HbA1c with supplementation, primarily in vitamin-D–deficient participants.
+      Effect sizes are small — typically 0.1–0.3 percentage points on HbA1c — but consistent
+      enough to be worth pursuing correction of deficiency in patients with metabolic syndrome.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Gestational diabetes</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Deficient pregnant women have ~1.5× the odds of gestational diabetes. Supplementation
+      during pregnancy modestly reduces GDM incidence in deficient populations. See our
+      <a href="/vitamin-d-in-pregnancy" class="text-amber-700 underline">pregnancy page</a>
+      for dosing.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical dosing for people with diabetes</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test serum 25(OH)D at diagnosis if not recently done.</li>
+      <li>Target ≥ 40 ng/mL — the level associated with the D2d subgroup benefit.</li>
+      <li>Typical dose: 2,000–4,000 IU/day cholecalciferol for adults; adjust for weight (obese need more).</li>
+      <li>Retest at 3 months to confirm you've reached target.</li>
+      <li>Continue standard diabetes management — vitamin D is adjunct, not primary therapy.</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Diabetes management is individualised; consult your
+      endocrinologist or primary care physician about supplementation, especially if you have
+      renal disease or take medications that interact with vitamin D metabolism.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-diabetes" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-thyroid`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Thyroid Disease',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [
+    { '@type': 'MedicalCondition', name: "Hashimoto's thyroiditis" },
+    { '@type': 'MedicalCondition', name: "Graves' disease" },
+    { '@type': 'MedicalCondition', name: 'Hypothyroidism' },
+  ],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Thyroid', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Thyroid: Hashimoto's, Graves' & Hypothyroidism Evidence"
+  description="How vitamin D deficiency links to autoimmune thyroid disease. What TPO-antibody, TSH, and free T4 studies show — and whether supplementation helps."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-thyroid", label: "Thyroid" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Thyroid Disease</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D acts as an immunomodulator, biasing T-cell responses away from Th1/Th17
+      autoimmunity. Because Hashimoto's and Graves' disease are the two most common
+      autoimmune diseases in adults, vitamin D's relevance to thyroid health is more than
+      theoretical.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Hashimoto's thyroiditis</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      Meta-analyses consistently show serum 25(OH)D is 30–40% lower in Hashimoto's patients
+      than in matched controls, and low 25(OH)D correlates with higher TPO (thyroid
+      peroxidase) antibody titres. Whether that's cause, consequence, or shared
+      autoimmune-susceptibility genotype has been hard to pin down.
+    </p>
+    <p class="text-gray-700 leading-relaxed">
+      Randomised supplementation trials in Hashimoto's patients have shown modest reductions
+      in TPO antibodies (typically 10–30% over 3–6 months of 2,000–4,000 IU/day
+      cholecalciferol), particularly in patients with baseline deficiency. Whether this
+      translates to slower progression to overt hypothyroidism is not yet established, but
+      the biological plausibility plus the low cost make repletion sensible.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Graves' disease</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Similar observational patterns: lower 25(OH)D in Graves' patients versus controls.
+      Small RCTs suggest correcting deficiency may reduce relapse rates after antithyroid
+      medication is stopped, though the trials are underpowered. Vitamin D also protects
+      bone during hyperthyroidism, when accelerated bone turnover raises osteoporosis risk.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Effect on TSH and thyroid hormone levels</h2>
+    <p class="text-gray-700 leading-relaxed">
+      In patients already on levothyroxine, vitamin D correction has minimal effect on TSH or
+      free T4 — the dose is titrated to those levels directly. If your TSH is unstable and you
+      recently started high-dose vitamin D, an unrelated absorption change may be the reason
+      (calcium and iron supplements taken with levothyroxine are more common culprits).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical dosing for thyroid patients</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test serum 25(OH)D at diagnosis of any autoimmune thyroid disease.</li>
+      <li>Target 30–50 ng/mL. Typical dose 1,500–4,000 IU/day cholecalciferol depending on baseline and body weight.</li>
+      <li>Retest at 3 months.</li>
+      <li>Separate vitamin D from levothyroxine by at least 4 hours — no known interaction, but standard best-practice for other hormone therapy overlap.</li>
+      <li>Combined with selenium 200 µg/day (also linked to lower TPO antibodies in Hashimoto's) if desired, though the evidence is similarly modest.</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Thyroid disease management centres on TSH-guided
+      hormone replacement or antithyroid therapy — vitamin D is adjunct at best. Discuss any
+      supplement addition with your endocrinologist.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-thyroid" />
+  </main>
+</BaseLayout>
