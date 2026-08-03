@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-psoriasis`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Psoriasis',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [
+    { '@type': 'MedicalCondition', name: 'Psoriasis', code: { '@type': 'MedicalCode', codeValue: 'L40', codingSystem: 'ICD-10' } },
+    { '@type': 'MedicalCondition', name: 'Eczema' },
+  ],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Psoriasis & Skin', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D for Psoriasis & Eczema: Topical Calcipotriene, Oral D3, and UVB"
+  description="How vitamin D treats psoriasis — topical calcipotriene, oral cholecalciferol adjuncts, narrowband UVB phototherapy, and evidence for atopic dermatitis (eczema)."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-psoriasis", label: "Psoriasis & Skin" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Psoriasis</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D is one of the few conditions where the compound is genuinely first-line
+      therapy. Topical vitamin D analogues (calcipotriene, calcitriol) are standard-of-care
+      for mild-to-moderate plaque psoriasis, and narrowband UVB phototherapy leverages the
+      same pathway. The role of oral cholecalciferol as an adjunct is more modest but
+      supportive.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">How vitamin D works in psoriasis</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Psoriasis is a Th17-driven autoimmune condition characterised by keratinocyte
+      hyperproliferation. Active 1,25-dihydroxyvitamin D binds to VDR in keratinocytes,
+      inhibiting proliferation, promoting differentiation, and dampening the local
+      inflammatory response. Topical calcipotriene delivers this activity directly to
+      the plaque without raising serum calcium.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Topical calcipotriene / calcitriol</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Calcipotriene 0.005% ointment or cream, applied twice daily to plaques, produces
+      clearance in ~50–60% of patients over 8 weeks — comparable to mid-potency topical
+      corticosteroids but without steroid side effects. Combination products with a
+      corticosteroid (calcipotriene + betamethasone) are the current first-line topical
+      approach in most guidelines.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Narrowband UVB phototherapy</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Narrowband UVB at 311 nm is close to the peak vitamin-D-producing wavelength (297 nm)
+      and is one of the most effective non-biologic psoriasis treatments — 80%+ clearance
+      in moderate-to-severe plaque psoriasis over 12 weeks. It works through both direct
+      immunosuppression and cutaneous vitamin D synthesis; patients often see substantial
+      rises in serum 25(OH)D.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Oral cholecalciferol as adjunct</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Psoriasis patients are commonly vitamin D deficient. Meta-analyses of oral
+      supplementation (typically 1,000–4,000 IU/day cholecalciferol) show modest reductions
+      in PASI (Psoriasis Area and Severity Index) — average 3–5 points over 12 weeks. This
+      is small compared to topical calcipotriene or phototherapy, but low-cost and low-risk.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Atopic dermatitis (eczema)</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Eczema patients also have lower average 25(OH)D than controls, and correcting
+      deficiency modestly reduces eczema severity in randomised trials, particularly in
+      children. The effect is smaller than for psoriasis. Vitamin D is not a substitute
+      for standard eczema therapy (emollients, topical steroids or calcineurin inhibitors)
+      but is a safe adjunct.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical approach</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>For psoriasis: prescription topical calcipotriene (usually with a corticosteroid) is first-line for limited disease. Consult a dermatologist.</li>
+      <li>Consider narrowband UVB phototherapy for moderate-to-severe cases; discuss with dermatologist.</li>
+      <li>Test serum 25(OH)D and correct any deficiency with 2,000–4,000 IU/day cholecalciferol — adjunct, not primary therapy.</li>
+      <li>For eczema: continue standard care; add cholecalciferol 1,000–2,000 IU/day if deficient.</li>
+      <li>Sensible sun exposure (short, non-burning midday sessions) may help both conditions but must be balanced against long-term skin cancer risk.</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Psoriasis and eczema management requires a
+      dermatology consultation — biologics (adalimumab, ustekinumab, secukinumab,
+      guselkumab) and JAK inhibitors have transformed severe disease and vastly outperform
+      any single vitamin.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-psoriasis" />
+  </main>
+</BaseLayout>

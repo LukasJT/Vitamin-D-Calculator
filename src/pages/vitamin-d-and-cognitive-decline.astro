@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-cognitive-decline`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Cognitive Decline',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [
+    { '@type': 'MedicalCondition', name: "Alzheimer's disease" },
+    { '@type': 'MedicalCondition', name: 'Dementia' },
+  ],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Cognitive Decline', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Cognitive Decline: Dementia, Alzheimer's & Brain Aging"
+  description="Vitamin D deficiency and cognitive decline — cohort evidence for dementia risk, what supplementation trials show, and whether correcting deficiency preserves brain function."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-cognitive-decline", label: "Cognitive Decline" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Cognitive Decline</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D receptors are dense in the hippocampus and other memory-critical brain
+      regions. Observational studies consistently link low 25(OH)D to accelerated cognitive
+      decline and higher dementia risk. Randomised supplementation trials for cognition
+      have been smaller and less definitive.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Cohort evidence</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The largest analysis comes from the UK Biobank (~294,000 participants, Navale 2022):
+      adults with 25(OH)D &lt; 25 nmol/L (10 ng/mL) had 79% higher dementia risk than those
+      with 50 nmol/L (20 ng/mL) or greater, after adjusting for age, sex, and lifestyle.
+      A 2014 Neurology study (Littlejohns) similarly found deficient older adults developed
+      Alzheimer's roughly 2× more often than those with sufficient levels.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Why the association</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D promotes amyloid-β clearance by macrophages, modulates neuroinflammation,
+      supports hippocampal neurogenesis, and protects against oxidative stress. All of
+      these pathways are implicated in Alzheimer's and vascular dementia. Whether
+      supplementation can move the needle at scale remains uncertain.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation trials</h2>
+    <p class="text-gray-700 leading-relaxed">
+      RCTs in cognitively normal older adults have generally not shown improvement in
+      global cognition or dementia incidence with 800–4,000 IU/day cholecalciferol over
+      1–5 years. The trials are limited by short duration (dementia develops over decades)
+      and by including participants who were already sufficient at baseline. Trials in
+      established mild cognitive impairment have shown small improvements in executive
+      function but not memory.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Why the interpretation is difficult</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cognitive decline develops over 20+ years before symptoms. A 3-year RCT in older
+      adults may be too short and too late. The cohort associations may reflect vitamin D
+      as a marker of overall lifestyle (outdoor activity, physical fitness, better diet)
+      rather than a causal factor. But because correcting deficiency is safe and
+      inexpensive, most geriatricians favour keeping 25(OH)D ≥ 30 ng/mL in older adults.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical recommendation</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>For adults ≥ 65: test 25(OH)D at least once, then supplement to maintain 30–50 ng/mL.</li>
+      <li>Typical dose 800–2,000 IU/day cholecalciferol (see our <a href="/vitamin-d-in-elderly" class="text-amber-700 underline">elderly page</a> for context).</li>
+      <li>Don't rely on vitamin D as a dementia-prevention strategy — physical activity, social engagement, hearing correction, and controlling vascular risk factors have far stronger evidence.</li>
+      <li>If diagnosed with cognitive impairment, correcting deficiency is a low-risk part of overall care.</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Concerns about memory or cognition warrant a
+      formal evaluation with a physician — reversible causes (medication side effects,
+      thyroid dysfunction, depression) should be ruled out before attributing changes to
+      dementia.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-cognitive-decline" />
+  </main>
+</BaseLayout>

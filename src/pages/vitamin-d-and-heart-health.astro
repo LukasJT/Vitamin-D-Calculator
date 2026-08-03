@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-heart-health`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Heart Health',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [
+    { '@type': 'MedicalCondition', name: 'Cardiovascular disease' },
+    { '@type': 'MedicalCondition', name: 'Hypertension' },
+  ],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Heart Health', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Heart Health: Blood Pressure, CVD & the VITAL Trial"
+  description="What the largest cardiovascular RCT (VITAL) actually showed for vitamin D — blood pressure, stroke, heart attack, heart failure. When supplementation helps and when it does not."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-heart-health", label: "Heart Health" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Heart Health</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Observational studies show a strong inverse relationship between serum 25(OH)D and
+      cardiovascular disease. Randomised supplementation trials have been much less
+      encouraging — a pattern that likely reflects reverse causality (people with heart
+      disease spend less time outdoors) rather than a therapeutic gap.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The VITAL trial</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      VITAL (Manson et al., 2019) is the largest and most authoritative cardiovascular
+      vitamin D trial: 25,871 US adults randomised to 2,000 IU/day cholecalciferol or
+      placebo for 5.3 years. The primary composite endpoint (heart attack, stroke, or
+      cardiovascular death) was <strong>not reduced</strong>: hazard ratio 0.97, p=0.69.
+      No signal for coronary revascularisation, heart failure, or cardiovascular mortality.
+    </p>
+    <p class="text-gray-700 leading-relaxed">
+      Subgroup analyses hinted at possible benefit in Black participants and those with
+      lower baseline 25(OH)D, but these did not reach conventional significance thresholds.
+      The bottom line for cardiovascular event prevention: <strong>vitamin D
+      supplementation does not replace statins, antihypertensives, or lifestyle change.</strong>
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Blood pressure</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Meta-analyses of BP trials show a very small reduction in systolic BP with
+      supplementation (roughly 1–2 mmHg) in vitamin-D–deficient hypertensive patients.
+      In sufficient individuals, no measurable effect. Vitamin D is not a substitute for
+      ACE inhibitors, ARBs, thiazides, or calcium channel blockers.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Vascular calcification</h2>
+    <p class="text-gray-700 leading-relaxed">
+      High-dose vitamin D (typically &gt; 4,000 IU/day chronically) combined with high
+      calcium intake theoretically risks arterial calcification, but the human trial
+      evidence for harm at these doses is weak. Vitamin K<sub>2</sub> is proposed as
+      protective — see our <a href="/vitamin-d-magnesium-k2" class="text-amber-700 underline">cofactor page</a>.
+      In practice, keeping cholecalciferol at or below 2,000–4,000 IU/day and getting
+      calcium primarily from food is a sensible cardiovascular-safe strategy.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Heart failure</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Small trials (VINDICATE, EVITA) in stable systolic heart failure showed modest
+      improvements in cardiac remodelling markers with 4,000 IU/day cholecalciferol but no
+      change in mortality or hospitalisation. Given that heart failure patients are commonly
+      deficient (limited outdoor time, medication interactions), targeted repletion is
+      reasonable — but not a replacement for guideline-directed medical therapy.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guidance</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Correct deficiency for its own sake — it doesn't reduce your CV event risk directly, but it addresses a common laboratory abnormality with proven benefit for bones, immunity, and muscle.</li>
+      <li>Continue all evidence-based cardiovascular care — statins, BP medications, aspirin (where indicated), smoking cessation, Mediterranean-pattern diet, moderate exercise.</li>
+      <li>If you're deficient and hypertensive, expect at most a 1–2 mmHg systolic BP reduction from correction.</li>
+      <li>Don't take high-dose vitamin D expecting cardiovascular protection — the trials have decisively answered no.</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Cardiovascular risk management is complex —
+      individualised discussion with a physician using a validated risk calculator
+      (ASCVD, QRISK) remains the standard of care.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-heart-health" />
+  </main>
+</BaseLayout>

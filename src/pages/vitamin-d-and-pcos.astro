@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-pcos`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and PCOS',
+  url: PAGE_URL,
+  medicalAudience: [
+    { '@type': 'MedicalAudience', audienceType: 'Patient' },
+    { '@type': 'PeopleAudience', suggestedGender: 'female' },
+  ],
+  about: { '@type': 'MedicalCondition', name: 'Polycystic ovary syndrome', code: { '@type': 'MedicalCode', codeValue: 'E28.2', codingSystem: 'ICD-10' } },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and PCOS', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and PCOS: Insulin Resistance, Fertility & Supplementation"
+  description="How vitamin D deficiency intersects with PCOS — insulin sensitivity, ovulation, testosterone, and what randomised trials show about supplementation."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-pcos", label: "PCOS" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and PCOS</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Roughly two-thirds of women with polycystic ovary syndrome are vitamin D deficient — a
+      much higher rate than the general population. The overlap is not coincidence: vitamin D
+      influences insulin sensitivity and ovarian steroidogenesis, both central to PCOS
+      pathophysiology.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Why PCOS and low 25(OH)D co-occur</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Higher BMI (common in PCOS) sequesters cholecalciferol in adipose tissue, lowering
+      serum 25(OH)D. Insulin resistance further impairs downstream vitamin D signalling.
+      And women with PCOS report less outdoor time and more sedentary behaviour on average,
+      compounding cutaneous synthesis loss. The result is a bidirectional loop where each
+      condition worsens the other.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Insulin sensitivity</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Meta-analyses of PCOS supplementation trials show modest but consistent improvements
+      in HOMA-IR (typically 10–20% reduction) and fasting insulin with 2,000–4,000 IU/day
+      cholecalciferol over 8–12 weeks in deficient women. Effects on HbA1c are smaller but
+      also positive. This is one of the more replicated benefits of vitamin D repletion in
+      PCOS.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Menstrual regularity and ovulation</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Trials combining vitamin D (up to 50,000 IU weekly) with metformin have shown improved
+      cycle regularity and higher spontaneous ovulation rates compared to metformin alone.
+      Vitamin D monotherapy also modestly improves cycle regularity in deficient women.
+      Neither intervention matches the ovulation-induction efficacy of letrozole or clomiphene,
+      but vitamin D is a safe adjunct.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Androgens (testosterone, DHEAS)</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Small trials show 15–25% reductions in free testosterone and DHEAS after vitamin D
+      correction, likely mediated through improved insulin sensitivity (which lowers ovarian
+      androgen production). Clinical impact on hirsutism and acne is modest and slow (3–6
+      months).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Fertility outcomes</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Higher pre-conception 25(OH)D is associated with better live-birth rates in observational
+      IVF studies; RCT data is small but favourable. For women trying to conceive with PCOS,
+      correcting deficiency (target ≥ 30 ng/mL) before starting ovulation induction is a
+      reasonable step. See our <a href="/vitamin-d-in-pregnancy" class="text-amber-700 underline">pregnancy page</a> for continuing supplementation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical protocol</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test serum 25(OH)D at PCOS diagnosis and annually.</li>
+      <li>Aim for 30–50 ng/mL — the range associated with insulin-sensitivity benefit.</li>
+      <li>Typical dose: 2,000–4,000 IU/day cholecalciferol (higher if BMI > 30).</li>
+      <li>Retest at 3 months.</li>
+      <li>Combine with the standard PCOS lifestyle interventions — moderate weight loss (5–10% body weight), Mediterranean-pattern diet, and regular exercise.</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> PCOS management is individualised. Discuss vitamin D
+      dosing with your gynaecologist or endocrinologist, especially if pregnancy is planned or
+      you are already on metformin, letrozole, or hormonal contraception.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-pcos" />
+  </main>
+</BaseLayout>

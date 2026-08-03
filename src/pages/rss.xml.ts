@@ -30,6 +30,18 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-testing-guide', title: 'Vitamin D Testing Guide', description: 'What to order, prep, cost, and re-testing.', date: '2026-05-01' },
   { slug: '/vitamin-d-foods', title: 'Foods High in Vitamin D', description: 'Searchable table with IU per serving.', date: '2026-05-01' },
   { slug: '/glossary', title: 'Vitamin D Glossary', description: 'Terminology and abbreviations reference.', date: '2026-05-01' },
+  { slug: '/vitamin-d-and-diabetes', title: 'Vitamin D and Diabetes', description: 'Insulin resistance, T2D prevention, D2d trial data.', date: '2026-05-15' },
+  { slug: '/vitamin-d-and-testosterone', title: 'Vitamin D and Testosterone', description: 'What supplementation does for male hormones in deficient vs sufficient men.', date: '2026-05-15' },
+  { slug: '/vitamin-d-and-thyroid', title: 'Vitamin D and Thyroid Disease', description: "Hashimoto's, Graves', and TPO antibody evidence.", date: '2026-05-15' },
+  { slug: '/vitamin-d-and-sleep', title: 'Vitamin D and Sleep', description: 'Insomnia, sleep quality, and OSA associations.', date: '2026-05-15' },
+  { slug: '/vitamin-d-for-vegans', title: 'Vitamin D for Vegans', description: 'Lichen D3, D2, mushrooms, and fortified plant sources.', date: '2026-05-15' },
+  { slug: '/vitamin-d-absorption-issues', title: 'Vitamin D Absorption Issues', description: 'Malabsorption, medications, and bariatric surgery.', date: '2026-05-15' },
+  { slug: '/vitamin-d-and-pcos', title: 'Vitamin D and PCOS', description: 'Insulin sensitivity, ovulation, and fertility in PCOS.', date: '2026-05-20' },
+  { slug: '/vitamin-d-and-heart-health', title: 'Vitamin D and Heart Health', description: 'BP, cardiovascular events, and the VITAL trial.', date: '2026-05-20' },
+  { slug: '/vitamin-d-and-cancer', title: 'Vitamin D and Cancer', description: 'Incidence, mortality, and type-by-type evidence.', date: '2026-05-20' },
+  { slug: '/vitamin-d-and-cognitive-decline', title: 'Vitamin D and Cognitive Decline', description: "Dementia and Alzheimer's risk associations.", date: '2026-05-20' },
+  { slug: '/vitamin-d-and-psoriasis', title: 'Vitamin D and Psoriasis', description: 'Topical calcipotriene, UVB, and oral adjunct therapy.', date: '2026-05-20' },
+  { slug: '/vitamin-d-and-fibromyalgia', title: 'Vitamin D and Fibromyalgia', description: 'Chronic pain and osteomalacia mimicry.', date: '2026-05-20' },
 ];
 
 export const GET: APIRoute = async () => {
