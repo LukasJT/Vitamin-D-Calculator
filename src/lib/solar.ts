@@ -74,19 +74,38 @@ export function getDailyOutdoorSolarData(
   endHour: number
 ): { avgZenith: number; minZenith: number; samples: number; avgAltitude: number } {
   const times = getSunTimes(date, latitude, longitude);
-  const sunrise = times.sunrise;
-  const sunset = times.sunset;
   const solarNoon = times.solarNoon;
+  const MS_PER_HOUR = 3600000;
 
-  // If no sunrise (polar night) or no solar noon, return max zenith
-  if (isNaN(sunrise.getTime()) || isNaN(sunset.getTime()) || isNaN(solarNoon.getTime())) {
+  // Solar noon is nearly always defined (only fails at extreme polar dates with
+  // impossible geometry). If it is NaN, we cannot proceed at all.
+  if (isNaN(solarNoon.getTime())) {
     return { avgZenith: Math.PI / 2, minZenith: Math.PI / 2, samples: 0, avgAltitude: 0 };
   }
-
-  const MS_PER_HOUR = 3600000;
   const noonMs = solarNoon.getTime();
-  const sunriseMs = sunrise.getTime();
-  const sunsetMs = sunset.getTime();
+
+  // Resolve sunrise/sunset with polar-day and polar-night handling.
+  // SunCalc returns Invalid Date for both when the sun never crosses the
+  // horizon on that date:
+  //   • Above the Arctic Circle in summer  → midnight sun (24 h day)
+  //   • Above the Arctic Circle in winter  → polar night (24 h night)
+  //   • Symmetric near the Antarctic Circle in the opposite season
+  // Naively treating NaN as "no sunlight" makes summer disappear at high
+  // latitudes — the exact bug that produces 0 IU for May/June/July at 72°N.
+  let sunriseMs = times.sunrise.getTime();
+  let sunsetMs = times.sunset.getTime();
+  if (isNaN(sunriseMs) || isNaN(sunsetMs)) {
+    // Sample solar noon to decide which polar regime we're in.
+    const noonPos = getSolarPosition(new Date(noonMs), latitude, longitude);
+    if (noonPos.altitude <= 0) {
+      // Polar night — sun below horizon all day, no UVB reaches the ground.
+      return { avgZenith: Math.PI / 2, minZenith: Math.PI / 2, samples: 0, avgAltitude: 0 };
+    }
+    // Polar day — sun is above the horizon for the full 24 h. Treat the
+    // whole day as available for the exposure window.
+    sunriseMs = noonMs - 12 * MS_PER_HOUR;
+    sunsetMs = noonMs + 12 * MS_PER_HOUR;
+  }
 
   // Convert user's local solar hours to timestamps anchored on solar noon.
   // Solar noon ≈ 12:00 local solar time, so hour 10 = noon - 2h, hour 14 = noon + 2h
