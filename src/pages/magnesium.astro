@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/magnesium`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Magnesium Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: { '@type': 'MedicalCondition', name: 'Hypomagnesaemia' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Magnesium', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Magnesium: Deficiency, Forms Compared, and Which to Take"
+  description="Magnesium reference — RDA, deficiency signs, food sources, and comparison of magnesium glycinate, citrate, oxide, threonate, malate, and taurate."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/magnesium", label: "Magnesium" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Magnesium</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Magnesium is a cofactor for over 300 enzymes, including every enzyme in the vitamin D
+      pathway (see <a href="/vitamin-d-magnesium-k2" class="text-amber-700 underline">D + Mg + K2</a>),
+      the ATP synthase complex, and enzymes that regulate neuronal excitability and cardiac
+      rhythm. Roughly half of US adults consume less than the estimated average requirement.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adult men (19–30):</strong> 400 mg/day.</li>
+      <li><strong>Adult men (31+):</strong> 420 mg/day.</li>
+      <li><strong>Adult women (19–30):</strong> 310 mg/day.</li>
+      <li><strong>Adult women (31+):</strong> 320 mg/day.</li>
+      <li><strong>Pregnancy:</strong> 350–400 mg/day.</li>
+      <li><strong>Tolerable Upper Intake Level (from supplements only):</strong> 350 mg elemental Mg/day.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Serum magnesium is not a sensitive test — only 1% of body magnesium is in serum. Chronic
+      subclinical deficiency is common and hard to detect. Symptoms of overt deficiency
+      include muscle cramps, twitching, fatigue, irritability, palpitations, migraines, and
+      difficulty sleeping. Severe hypomagnesaemia causes tetany and cardiac arrhythmia.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Common causes of magnesium deficiency</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Diet low in leafy greens, legumes, nuts, and whole grains</li>
+      <li>Chronic alcohol use — impairs absorption, increases renal loss</li>
+      <li>Proton pump inhibitors (chronic use)</li>
+      <li>Diuretics (loop, thiazide)</li>
+      <li>Type 2 diabetes (renal wasting)</li>
+      <li>Malabsorption disorders (celiac, Crohn's, short bowel)</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Forms of magnesium supplements compared</h2>
+    <div class="overflow-x-auto bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
+      <table class="w-full text-sm">
+        <thead class="bg-gray-50 text-gray-700 border-b border-gray-200">
+          <tr>
+            <th class="text-left px-4 py-3">Form</th>
+            <th class="text-left px-4 py-3">Absorption</th>
+            <th class="text-left px-4 py-3 hidden md:table-cell">Notes</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700">
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Glycinate</td><td class="px-4 py-3">High</td><td class="px-4 py-3 hidden md:table-cell">Gentle on GI; often used for sleep and anxiety.</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Citrate</td><td class="px-4 py-3">High</td><td class="px-4 py-3 hidden md:table-cell">Mild laxative effect; useful if constipated.</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Malate</td><td class="px-4 py-3">High</td><td class="px-4 py-3 hidden md:table-cell">Sometimes preferred for fibromyalgia and muscle pain.</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Taurate</td><td class="px-4 py-3">High</td><td class="px-4 py-3 hidden md:table-cell">Used in cardiovascular applications.</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">L-Threonate</td><td class="px-4 py-3">Moderate</td><td class="px-4 py-3 hidden md:table-cell">Marketed for cognition; crosses blood-brain barrier in animal studies.</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Oxide</td><td class="px-4 py-3">Low (~4%)</td><td class="px-4 py-3 hidden md:table-cell">Cheap; strong laxative. OK for occasional constipation, poor for repletion.</td></tr>
+          <tr><td class="px-4 py-3 font-medium">Sulphate (Epsom salt)</td><td class="px-4 py-3">Oral: laxative</td><td class="px-4 py-3 hidden md:table-cell">Topical/bath absorption is negligible despite the popular claim.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Evidence-based clinical uses</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Migraine prophylaxis</strong> — 400–600 mg/day (glycinate or citrate); modest reduction in frequency.</li>
+      <li><strong>Sleep quality</strong> — small trials show benefit for insomnia in older adults.</li>
+      <li><strong>Constipation</strong> — magnesium citrate or oxide at 200–400 mg.</li>
+      <li><strong>Preeclampsia</strong> — IV magnesium sulphate is standard obstetric care for severe preeclampsia and eclampsia prevention.</li>
+      <li><strong>Type 2 diabetes</strong> — small improvements in insulin sensitivity in deficient patients.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Pumpkin seeds (1 oz): 156 mg</li>
+      <li>Almonds (1 oz): 80 mg</li>
+      <li>Spinach (½ cup cooked): 78 mg</li>
+      <li>Cashews (1 oz): 74 mg</li>
+      <li>Black beans (½ cup cooked): 60 mg</li>
+      <li>Dark chocolate (1 oz, 70%): 65 mg</li>
+      <li>Whole-grain bread, brown rice, quinoa — 30–70 mg/serving</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Consult your physician before high-dose magnesium
+      if you have kidney disease (reduced excretion → toxicity risk), take digoxin, or use
+      other cardiac medications.
+    </div>
+
+    <RelatedArticles current="/magnesium" />
+  </main>
+</BaseLayout>

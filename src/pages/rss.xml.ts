@@ -42,6 +42,16 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-cognitive-decline', title: 'Vitamin D and Cognitive Decline', description: "Dementia and Alzheimer's risk associations.", date: '2026-05-20' },
   { slug: '/vitamin-d-and-psoriasis', title: 'Vitamin D and Psoriasis', description: 'Topical calcipotriene, UVB, and oral adjunct therapy.', date: '2026-05-20' },
   { slug: '/vitamin-d-and-fibromyalgia', title: 'Vitamin D and Fibromyalgia', description: 'Chronic pain and osteomalacia mimicry.', date: '2026-05-20' },
+  { slug: '/vitamins', title: 'Vitamins & Minerals Complete Reference', description: 'Index of every essential vitamin and mineral with dosing and food sources.', date: '2026-06-01' },
+  { slug: '/vitamin-b12', title: 'Vitamin B12 (Cobalamin)', description: 'Pernicious anaemia, neurological deficiency, methylcobalamin.', date: '2026-06-01' },
+  { slug: '/vitamin-c', title: 'Vitamin C (Ascorbic Acid)', description: 'Collagen synthesis, cold and flu evidence, scurvy.', date: '2026-06-01' },
+  { slug: '/vitamin-a', title: 'Vitamin A (Retinol)', description: 'Retinol vs beta-carotene; teratogenicity; toxicity.', date: '2026-06-01' },
+  { slug: '/vitamin-e', title: 'Vitamin E (Alpha-Tocopherol)', description: 'Antioxidant lipid protection; why supplementation trials disappointed.', date: '2026-06-01' },
+  { slug: '/vitamin-k', title: 'Vitamin K', description: 'K1 for coagulation, K2 for bone and vascular calcification.', date: '2026-06-01' },
+  { slug: '/folate', title: 'Folate (Vitamin B9)', description: 'Neural tube defect prevention, MTHFR polymorphisms.', date: '2026-06-01' },
+  { slug: '/magnesium', title: 'Magnesium', description: 'Cofactor for 300+ enzymes; glycinate/citrate/oxide compared.', date: '2026-06-01' },
+  { slug: '/iron', title: 'Iron', description: 'Iron deficiency anaemia, ferritin, alternate-day dosing.', date: '2026-06-01' },
+  { slug: '/zinc', title: 'Zinc', description: 'Immunity, wound healing, cold lozenge evidence.', date: '2026-06-01' },
 ];
 
 export const GET: APIRoute = async () => {

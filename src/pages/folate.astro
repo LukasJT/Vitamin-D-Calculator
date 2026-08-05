@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/folate`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Folate (Vitamin B9) Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: { '@type': 'MedicalCondition', name: 'Neural tube defects' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Folate', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Folate (Vitamin B9): Neural Tube Defects, MTHFR & Optimal Dosing"
+  description="Folate vs folic acid, MTHFR polymorphisms, methylfolate supplementation, pregnancy dosing to prevent neural tube defects, and food sources."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/folate", label: "Folate" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Folate (Vitamin B9)</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Folate is the umbrella term for a family of water-soluble B vitamins essential for DNA
+      synthesis, methylation, and red-blood-cell production. Its most publicised role is
+      preventing neural tube defects when supplemented before and during early pregnancy —
+      one of the most successful nutritional public-health interventions in history.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Folate vs folic acid vs methylfolate</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Folate</strong> — the natural food form (polyglutamates).</li>
+      <li><strong>Folic acid</strong> — synthetic, added to fortified grains and most supplements. Highly bioavailable; converted to methylfolate by DHFR and MTHFR.</li>
+      <li><strong>5-methyltetrahydrofolate (5-MTHF, "methylfolate")</strong> — the active circulating form. Sold as L-methylfolate supplements for people with MTHFR polymorphisms.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Daily requirements (dietary folate equivalents)</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adults:</strong> 400 µg DFE/day.</li>
+      <li><strong>Preconception / early pregnancy:</strong> <strong>400 µg (up to 800 µg) folic acid daily starting at least 1 month before conception</strong> — prevents ~70% of neural tube defects.</li>
+      <li><strong>Pregnancy:</strong> 600 µg DFE.</li>
+      <li><strong>Lactation:</strong> 500 µg DFE.</li>
+      <li><strong>Tolerable Upper Intake Level:</strong> 1,000 µg folic acid/day from supplements or fortified foods. No limit on food folate.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Neural tube defects — the key intervention</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Neural tube closure occurs on days 21–28 after conception — often before pregnancy is
+      recognised. Peri-conceptional folic acid supplementation (400–800 µg/day) prevents
+      spina bifida and anencephaly. Higher doses (4 mg/day) are recommended if a previous
+      pregnancy was affected or in women on antiepileptics. Since the US mandated folic acid
+      fortification of enriched grains in 1998, neural tube defect rates fell ~36%.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">MTHFR polymorphisms</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Common polymorphisms (C677T, A1298C) reduce MTHFR enzyme activity by 30–70%,
+      producing higher homocysteine and slightly lower serum folate. About 10% of the
+      population is homozygous C677T. Whether MTHFR carriers benefit from taking methylfolate
+      instead of folic acid is debated — most people convert folic acid to methylfolate
+      adequately. For those with documented hyperhomocysteinaemia or recurrent pregnancy
+      loss, methylfolate is a reasonable alternative.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Causes megaloblastic anaemia (indistinguishable from B12 deficiency on peripheral
+      smear). Symptoms: fatigue, glossitis, elevated MCV, low reticulocyte count. Chronic
+      folate deficiency raises homocysteine and modestly increases cardiovascular risk.
+      Alcoholism, malabsorption, and antifolate drugs (methotrexate, sulfasalazine,
+      phenytoin) are the most common causes.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Beef liver (3 oz cooked): 215 µg</li>
+      <li>Fortified breakfast cereal (½ cup): 100–400 µg</li>
+      <li>Lentils (½ cup cooked): 179 µg</li>
+      <li>Spinach (½ cup cooked): 131 µg</li>
+      <li>Asparagus (½ cup): 134 µg</li>
+      <li>Avocado (½): 82 µg</li>
+      <li>Fortified rice, pasta, bread — variable, check label</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Caution: masking B12 deficiency</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Folic acid supplementation can correct megaloblastic anaemia caused by B12 deficiency
+      without correcting the underlying neurological damage. If you're on high-dose folic acid
+      (&gt; 1,000 µg/day), check B12 too — chronic combined supplementation is standard in
+      pregnancy and older adults.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Preconception folic acid dosing may differ if you
+      have a history of neural tube defect pregnancies, take antiepileptic medications, or
+      have inflammatory bowel disease. Consult your obstetrician or midwife.
+    </div>
+
+    <RelatedArticles current="/folate" />
+  </main>
+</BaseLayout>

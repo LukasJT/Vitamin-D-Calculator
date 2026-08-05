@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/iron`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Iron Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: { '@type': 'MedicalCondition', name: 'Iron deficiency anaemia', code: { '@type': 'MedicalCode', codeValue: 'D50', codingSystem: 'ICD-10' } },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Iron', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Iron: Deficiency Anaemia, Heme vs Non-Heme, Supplement Forms Compared"
+  description="Iron reference — deficiency anaemia diagnosis, ferritin interpretation, heme vs non-heme absorption, bisglycinate vs sulphate, and haemochromatosis screening."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/iron", label: "Iron" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Iron</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Iron is a component of haemoglobin (which carries oxygen), myoglobin, cytochromes, and
+      numerous enzymes. Iron deficiency anaemia affects roughly 25% of the world's
+      population and is the most common nutrient deficiency globally.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adult men and post-menopausal women:</strong> 8 mg/day.</li>
+      <li><strong>Menstruating women:</strong> 18 mg/day.</li>
+      <li><strong>Pregnancy:</strong> 27 mg/day.</li>
+      <li><strong>Vegetarians / vegans:</strong> 1.8× the standard RDA due to lower bioavailability of non-heme iron.</li>
+      <li><strong>Tolerable Upper Intake Level:</strong> 45 mg/day (adults) from supplements — above this, GI toxicity is common.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Heme vs non-heme</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Heme iron</strong> — from animal muscle (beef, lamb, chicken, fish). Absorbed 15–35% regardless of other dietary factors.</li>
+      <li><strong>Non-heme iron</strong> — from plants and fortified foods. Absorbed 2–20% depending on cofactors. Vitamin C in the same meal roughly doubles absorption; tannins in coffee/tea and calcium reduce it.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency and anaemia</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      Symptoms of iron deficiency (with or without anaemia): fatigue, exercise intolerance,
+      pallor, brittle nails, restless legs syndrome, pica (ice craving), headaches, hair
+      loss, cold intolerance. Anaemia (low haemoglobin) is a late sign — depleted iron
+      stores (low ferritin) occur first.
+    </p>
+    <p class="text-gray-700 leading-relaxed">
+      <strong>Diagnosis:</strong> serum ferritin is the single best test. &lt; 30 ng/mL is
+      generally considered deficient (some experts push the cut-off to &lt; 50 in
+      symptomatic patients). Confirm with iron, TIBC, and transferrin saturation if uncertain.
+      Investigate cause of iron loss in men and post-menopausal women — colorectal or upper
+      GI blood loss must be ruled out.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation</h2>
+    <div class="overflow-x-auto bg-white border border-gray-200 rounded-xl shadow-sm mb-4">
+      <table class="w-full text-sm">
+        <thead class="bg-gray-50 text-gray-700 border-b border-gray-200">
+          <tr>
+            <th class="text-left px-4 py-3">Form</th>
+            <th class="text-left px-4 py-3">Elemental Fe</th>
+            <th class="text-left px-4 py-3 hidden md:table-cell">Notes</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700">
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Ferrous sulphate 325 mg</td><td class="px-4 py-3">65 mg</td><td class="px-4 py-3 hidden md:table-cell">Standard first line; cheapest; GI upset common.</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Ferrous gluconate</td><td class="px-4 py-3">36 mg/324 mg</td><td class="px-4 py-3 hidden md:table-cell">Gentler; may need higher pill count.</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Ferrous bisglycinate</td><td class="px-4 py-3">28 mg per 200 mg pill</td><td class="px-4 py-3 hidden md:table-cell">Much better tolerated; higher absorption per mg elemental.</td></tr>
+          <tr><td class="px-4 py-3 font-medium">IV iron (iron sucrose, ferric carboxymaltose)</td><td class="px-4 py-3">1,000 mg per dose</td><td class="px-4 py-3 hidden md:table-cell">For severe deficiency, intolerance, or malabsorption.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-gray-700 leading-relaxed">
+      Contemporary evidence supports <strong>alternate-day dosing</strong> for repletion —
+      65 mg every other day absorbs as much iron per week as 65 mg daily, with far less GI
+      upset and less hepcidin blockade of subsequent absorption (Stoffel 2017).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Beef liver (3 oz): 5.2 mg heme</li>
+      <li>Oysters (3 oz): 8 mg</li>
+      <li>Beef, sirloin (3 oz): 2.5 mg heme</li>
+      <li>Chicken thigh (3 oz): 1.1 mg heme</li>
+      <li>Fortified breakfast cereal: 4–18 mg non-heme</li>
+      <li>Lentils (½ cup): 3.3 mg non-heme</li>
+      <li>Spinach (½ cup cooked): 3.2 mg non-heme</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Iron overload — the opposite risk</h2>
+    <p class="text-gray-700 leading-relaxed">
+      <strong>Haemochromatosis</strong> (hereditary iron overload) affects ~1 in 200 people
+      of Northern European descent. Screening with transferrin saturation and ferritin is
+      appropriate in adults with unexplained fatigue, joint pain, liver enzyme elevation,
+      or diabetes. Untreated haemochromatosis causes cirrhosis, cardiomyopathy, and diabetes.
+      Never take a routine iron supplement without a documented indication.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Iron deficiency in adults warrants investigation
+      of the cause. GI bleeding, coeliac disease, and menorrhagia are the most common
+      culprits and must be ruled out.
+    </div>
+
+    <RelatedArticles current="/iron" />
+  </main>
+</BaseLayout>

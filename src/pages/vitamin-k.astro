@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-k`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin K Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Vitamin K', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin K: K1 for Clotting, K2 for Calcium Routing & MK-7"
+  description="Vitamin K1 (phylloquinone) vs K2 (menaquinones MK-4 and MK-7) — coagulation, bone health, arterial calcification, and interactions with warfarin."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/vitamin-k", label: "Vitamin K" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin K</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin K is a family of fat-soluble compounds required for γ-carboxylation of specific
+      proteins — clotting factors II, VII, IX, X, protein C, protein S, plus osteocalcin and
+      matrix Gla protein. In practical terms this means vitamin K clots blood, mineralises
+      bone, and keeps calcium out of arteries.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">K1 vs K2</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Vitamin K1 (phylloquinone)</strong> — plant form; the primary dietary source. Mostly used by the liver for clotting factor synthesis.</li>
+      <li><strong>Vitamin K2 (menaquinones)</strong> — animal and fermented food form. Subtypes named by chain length: MK-4 (short, in meat and egg yolk) and MK-7 (long, in natto and cheese). MK-7 has a much longer half-life (~72 h vs ~1 h for K1) and reaches peripheral tissues more effectively — the basis of the bone / arterial argument for K2.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Daily requirements</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adult men:</strong> 120 µg/day (AI).</li>
+      <li><strong>Adult women:</strong> 90 µg/day (AI).</li>
+      <li><strong>Tolerable Upper Intake Level:</strong> none established.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Rare in adults with normal diets. Bleeding tendency (elevated INR/PT) is the first
+      clinical sign. Newborns routinely receive an intramuscular vitamin K injection at birth
+      to prevent vitamin K deficiency bleeding (VKDB), which can otherwise cause fatal
+      intracranial haemorrhage.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Bone health</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Osteocalcin requires vitamin K–dependent γ-carboxylation to bind calcium to bone
+      hydroxyapatite. Undercarboxylated osteocalcin (ucOC) is a marker of vitamin K
+      insufficiency and correlates with fracture risk. Meta-analyses of K1 supplementation
+      for fracture prevention are modestly positive; K2 (MK-7 45 µg/day) has stronger
+      evidence for improving bone mineral density in postmenopausal women (Knapen 2013).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Arterial calcification</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Matrix Gla protein (MGP), also vitamin K–dependent, actively inhibits arterial
+      calcium deposition. The Rotterdam Study found high dietary K2 intake associated with
+      lower coronary calcification and cardiovascular mortality (Geleijnse 2004). RCTs of
+      MK-7 in kidney disease show slowed vascular calcification progression. This is the
+      biological basis for pairing K2 with high-dose vitamin D.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Warfarin interaction</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin K reverses warfarin. Patients on warfarin should keep vitamin K intake
+      <strong>consistent</strong>, not necessarily low — sudden increases (starting a
+      leafy-greens phase) or decreases (going low-vegetable) will destabilise INR. DOACs
+      (apixaban, rivaroxaban, dabigatran, edoxaban) are not affected by vitamin K.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Vitamin K1:</strong> collard greens (530 µg/½ cup), spinach, kale, broccoli, brussels sprouts.</li>
+      <li><strong>Vitamin K2 (MK-7):</strong> natto (fermented soybeans — 850 µg/3 oz), aged cheeses, sauerkraut.</li>
+      <li><strong>Vitamin K2 (MK-4):</strong> egg yolk, beef liver, dark chicken meat.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Not needed for most people eating leafy greens regularly.</li>
+      <li>K2 (MK-7) 90–180 µg/day is common as an adjunct to high-dose vitamin D or in postmenopausal osteoporosis management.</li>
+      <li>Do not add K2 while on warfarin without prescriber involvement.</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Anticoagulation and vitamin K management require
+      physician guidance. Discuss any supplement change with your prescriber, especially if
+      you are on warfarin.
+    </div>
+
+    <RelatedArticles current="/vitamin-k" />
+  </main>
+</BaseLayout>

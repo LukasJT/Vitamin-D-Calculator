@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamins`;
+
+const VITAMINS = [
+  { href: '/vitamin-d-guide', name: 'Vitamin D', tagline: 'The sunshine vitamin — bone, immunity, muscle', class: 'Fat-soluble' },
+  { href: '/vitamin-a', name: 'Vitamin A', tagline: 'Retinol, beta-carotene — vision and epithelial health', class: 'Fat-soluble' },
+  { href: '/vitamin-e', name: 'Vitamin E', tagline: 'Alpha-tocopherol — antioxidant lipid protection', class: 'Fat-soluble' },
+  { href: '/vitamin-k', name: 'Vitamin K', tagline: 'K1 for clotting, K2 for calcium routing', class: 'Fat-soluble' },
+  { href: '/vitamin-c', name: 'Vitamin C', tagline: 'Ascorbic acid — collagen and antioxidant', class: 'Water-soluble' },
+  { href: '/vitamin-b12', name: 'Vitamin B12', tagline: 'Cobalamin — nerves, blood, DNA methylation', class: 'Water-soluble' },
+  { href: '/folate', name: 'Folate (B9)', tagline: 'Neural tube prevention, methylation', class: 'Water-soluble' },
+  { href: '/magnesium', name: 'Magnesium', tagline: 'Mineral cofactor for 300+ enzymes', class: 'Mineral' },
+  { href: '/iron', name: 'Iron', tagline: 'Haemoglobin, oxygen transport, anaemia', class: 'Mineral' },
+  { href: '/zinc', name: 'Zinc', tagline: 'Immunity, wound healing, testosterone', class: 'Mineral' },
+];
+
+const itemListJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Vitamin and mineral reference index',
+  numberOfItems: VITAMINS.length,
+  itemListElement: VITAMINS.map((v, i) => ({
+    '@type': 'ListItem', position: i + 1, name: v.name, url: `${SITE}${v.href}`,
+  })),
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamins & Minerals Reference: Complete Guide to Daily Nutrients"
+  description="Evidence-based reference for every essential vitamin and mineral — recommended intakes, deficiency signs, food sources, and supplementation guidance."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(itemListJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-5xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+      Vitamins &amp; Minerals — Complete Reference
+    </h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Every essential vitamin and mineral, indexed with recommended intakes, deficiency
+      signs, primary food sources, and supplementation guidance drawn from the Institute of
+      Medicine Dietary Reference Intakes and current clinical practice.
+    </p>
+
+    {['Fat-soluble', 'Water-soluble', 'Mineral'].map((cat) => (
+      <section class="mb-10">
+        <h2 class="text-xl font-bold text-gray-900 mb-4">{cat} {cat === 'Mineral' ? 'nutrients' : 'vitamins'}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {VITAMINS.filter((v) => v.class === cat).map((v) => (
+            <a href={v.href} class="block bg-white border border-gray-200 rounded-xl p-5 hover:border-amber-400 hover:shadow-md transition-all">
+              <p class="text-amber-700 font-semibold">{v.name} &rarr;</p>
+              <p class="text-gray-600 text-sm mt-1">{v.tagline}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <section class="bg-gray-50 border border-gray-200 rounded-xl p-6 mt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-2">A note on multivitamins</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Multivitamin research has produced mostly null results in randomised trials for
+        preventing cardiovascular events, cancer, or cognitive decline in the general adult
+        population. Where supplementation is clearly justified is (1) documented deficiency,
+        (2) high-risk groups (pregnancy, older adults, veganism, malabsorption), and (3)
+        specific micronutrients tied to specific outcomes. Read the individual references
+        above for evidence-based guidance rather than defaulting to a generic multivitamin.
+      </p>
+    </section>
+  </main>
+</BaseLayout>

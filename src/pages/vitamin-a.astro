@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-a`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin A Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: { '@type': 'MedicalCondition', name: 'Vitamin A deficiency' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Vitamin A', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin A: Retinol, Beta-Carotene, Deficiency & Toxicity"
+  description="Vitamin A reference — preformed retinol vs beta-carotene, vision and epithelial health, night blindness, teratogenicity, and safe dosing."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/vitamin-a", label: "Vitamin A" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin A</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin A is a group of fat-soluble compounds essential for vision (retinal in the
+      rhodopsin cycle), epithelial cell differentiation, immune function, and reproduction.
+      It exists as <em>preformed retinol</em> in animal foods and as <em>carotenoid
+      precursors</em> in plants — chiefly beta-carotene, which the body converts to retinol
+      as needed. It has the smallest safety margin of any vitamin: chronic excess is
+      teratogenic and hepatotoxic.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements (retinol activity equivalents)</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adult men:</strong> 900 µg RAE/day (~3,000 IU).</li>
+      <li><strong>Adult women:</strong> 700 µg RAE/day (~2,333 IU).</li>
+      <li><strong>Pregnancy:</strong> 770 µg RAE/day.</li>
+      <li><strong>Lactation:</strong> 1,300 µg RAE/day.</li>
+      <li><strong>Tolerable Upper Intake Level:</strong> 3,000 µg RAE/day (10,000 IU) — pertains to preformed retinol only; beta-carotene has no UL.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Rare in the developed world; still a leading cause of childhood blindness in low-income
+      countries. Early sign is <strong>night blindness</strong> (nyctalopia) — impaired dark
+      adaptation. Progressive damage: xerophthalmia, Bitot's spots, corneal ulceration,
+      permanent blindness. Immunodeficiency and increased infection risk (particularly
+      measles) accompany deficiency.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Toxicity — the safety margin is narrow</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Acute:</strong> single doses &gt; 200,000 IU cause nausea, vomiting, headache.</li>
+      <li><strong>Chronic:</strong> intakes &gt; 25,000 IU/day for months cause liver damage, bone pain, alopecia, dry skin, and hypercalcaemia.</li>
+      <li><strong>Teratogenic:</strong> &gt; 10,000 IU/day preformed retinol in pregnancy causes birth defects. Isotretinoin (a retinoid drug) is strictly contraindicated in pregnancy.</li>
+      <li><strong>Bone fracture risk:</strong> observational data suggest chronic intakes &gt; 3,000 µg RAE/day are associated with reduced bone mineral density.</li>
+    </ul>
+    <p class="text-gray-700 leading-relaxed mt-3">
+      Beta-carotene from food does not cause vitamin A toxicity because the conversion to
+      retinol is regulated. However, <strong>high-dose beta-carotene supplements</strong>
+      (&gt; 20 mg/day) increase lung cancer risk in smokers (CARET and ATBC trials) —
+      avoid supplemental beta-carotene if you smoke.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <p class="text-gray-700 leading-relaxed">
+      <strong>Preformed retinol:</strong> beef liver (a single 3-oz serving contains ~9× the
+      RDA — do not eat regularly), fish liver oils, egg yolk, dairy fat.
+      <br /><strong>Beta-carotene:</strong> sweet potato, carrots, dark leafy greens (spinach,
+      kale), butternut squash, cantaloupe. Cooking with a little fat improves absorption.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Most multivitamins provide 100% of the RDA (750–900 µg RAE) — appropriate for most adults.</li>
+      <li>Don't add a stand-alone vitamin A supplement unless prescribed for a documented deficiency.</li>
+      <li>Do not take cod liver oil AND a vitamin A supplement — cod liver oil can contain 4,500 IU per teaspoon.</li>
+      <li>Pregnancy: prenatal vitamins typically use beta-carotene rather than retinol for safety.</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Vitamin A toxicity is a real risk with
+      unmonitored high-dose supplementation. Consult a physician if you're considering
+      any supplement above the RDA, particularly in pregnancy.
+    </div>
+
+    <RelatedArticles current="/vitamin-a" />
+  </main>
+</BaseLayout>

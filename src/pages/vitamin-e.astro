@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-e`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin E Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Vitamin E', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin E: Alpha-Tocopherol, Antioxidant Evidence, and Safe Doses"
+  description="Vitamin E reference — RDA, dietary sources, RRR- vs synthetic tocopherol, mixed tocopherols, and why high-dose supplements failed in cardiovascular and cancer trials."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/vitamin-e", label: "Vitamin E" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin E</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin E is a family of eight related compounds — four tocopherols and four
+      tocotrienols. Alpha-tocopherol is the form most biologically active in humans and the
+      one measured in blood tests. Its main role is as a lipid-phase antioxidant, protecting
+      cell membranes from oxidative damage. Deficiency is rare in the general population;
+      supplementation trials have been unexpectedly disappointing.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adults:</strong> 15 mg alpha-tocopherol/day (~22 IU natural, ~33 IU synthetic).</li>
+      <li><strong>Pregnancy:</strong> 15 mg.</li>
+      <li><strong>Lactation:</strong> 19 mg.</li>
+      <li><strong>Tolerable Upper Intake Level:</strong> 1,000 mg/day supplemental — high-dose is associated with bleeding risk.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Natural vs synthetic</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Natural vitamin E is <strong>d-alpha-tocopherol</strong> (or RRR-alpha-tocopherol) —
+      one stereoisomer. Synthetic vitamin E is <strong>dl-alpha-tocopherol</strong> — a
+      mixture of eight stereoisomers, of which only the RRR isomer is fully bioactive. On a
+      per-mg basis, natural has about 1.5× the biological activity of synthetic. Both are
+      safe; food-derived forms are best.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The failed supplementation trials</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      Vitamin E was one of the most heavily studied antioxidant supplements of the 2000s.
+      Results were consistently null or slightly harmful for the general population:
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>HOPE-TOO trial</strong> (n=9,541, 7 years, 400 IU/day) — no reduction in cardiovascular events; increased heart failure.</li>
+      <li><strong>SELECT trial</strong> (n=35,533, 5.5 years, 400 IU/day) — no cancer prevention; 17% increase in prostate cancer risk on longer follow-up.</li>
+      <li><strong>Miller meta-analysis</strong> (2005) — high-dose vitamin E (&gt; 400 IU/day) associated with 4% increase in all-cause mortality.</li>
+    </ul>
+    <p class="text-gray-700 leading-relaxed mt-3">
+      The current consensus: <strong>do not take high-dose vitamin E supplements</strong>
+      for prevention. Standard multivitamin doses (~30 IU) are safe.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Clinical uses of vitamin E</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Non-alcoholic steatohepatitis (NASH)</strong> — 800 IU/day slows progression in non-diabetic adults.</li>
+      <li><strong>Abetalipoproteinaemia and rare fat-malabsorption disorders</strong> — high-dose vitamin E prevents neurological deterioration.</li>
+      <li><strong>Age-related macular degeneration</strong> — vitamin E is a component of the AREDS-2 formula (400 IU) that slows progression.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Wheat germ oil (1 tbsp): 20 mg</li>
+      <li>Sunflower seeds (1 oz): 7.4 mg</li>
+      <li>Almonds (1 oz): 6.8 mg</li>
+      <li>Sunflower oil (1 tbsp): 5.6 mg</li>
+      <li>Hazelnuts (1 oz): 4.3 mg</li>
+      <li>Peanut butter, spinach, broccoli, avocado — 1–3 mg per serving</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Vitamin E supplementation above 400 IU/day is not
+      recommended without a specific clinical indication. It increases bleeding risk in
+      patients on anticoagulants (warfarin, DOACs, aspirin).
+    </div>
+
+    <RelatedArticles current="/vitamin-e" />
+  </main>
+</BaseLayout>

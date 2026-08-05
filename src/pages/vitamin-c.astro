@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-c`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin C (Ascorbic Acid) Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: { '@type': 'MedicalCondition', name: 'Scurvy', code: { '@type': 'MedicalCode', codeValue: 'E54', codingSystem: 'ICD-10' } },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Vitamin C', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin C (Ascorbic Acid): Immunity, Collagen, and Actual Evidence"
+  description="Complete vitamin C reference — RDA, food sources, scurvy prevention, cold-and-flu evidence, mega-dose questions, and clinical uses."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/vitamin-c", label: "Vitamin C" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin C (Ascorbic Acid)</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      A water-soluble vitamin that humans lost the ability to synthesise millions of years ago
+      (via a broken GULO gene). Required for collagen hydroxylation, catecholamine synthesis,
+      and as a general antioxidant. Its deficiency disease — scurvy — is rare in modern diets
+      but its role in cold-and-flu prevention and mega-dosing continues to fuel research.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adult men:</strong> 90 mg/day.</li>
+      <li><strong>Adult women:</strong> 75 mg/day.</li>
+      <li><strong>Smokers:</strong> add 35 mg/day.</li>
+      <li><strong>Pregnancy / lactation:</strong> 85 / 120 mg/day.</li>
+      <li><strong>Tolerable Upper Intake Level:</strong> 2,000 mg/day (above this: GI upset, kidney stone risk in susceptible people).</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency and scurvy</h2>
+    <p class="text-gray-700 leading-relaxed">
+      True scurvy requires vitamin C intake below ~10 mg/day for weeks to months. Early signs:
+      fatigue, easy bruising, corkscrew hairs. Late signs: gum bleeding and tooth loss,
+      petechiae, poor wound healing, joint pain, and if untreated, death from cardiac
+      failure or haemorrhage. Modern cases occur in alcoholism, extreme "meat-only" diets,
+      severe eating disorders, and institutional settings.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cold and flu — what the evidence shows</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      The Hemilä Cochrane review (updated 2013, ~11,000 participants) shows regular vitamin C
+      supplementation (200 mg+/day) does <strong>not</strong> reduce common-cold incidence in
+      the general population. It does <strong>modestly reduce cold duration</strong> — about
+      8% in adults and 14% in children.
+    </p>
+    <p class="text-gray-700 leading-relaxed">
+      In extreme physical stress (marathon runners, soldiers on Arctic training), regular
+      supplementation halves cold incidence. Once a cold has started, therapeutic
+      supplementation shows no clear benefit — the effect is preventive, not curative.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">High-dose IV vitamin C in cancer and sepsis</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Oral vitamin C absorption saturates at ~400 mg per dose. Intravenous administration
+      achieves much higher plasma concentrations. Randomised trials of IV vitamin C in
+      advanced cancer (mostly single-arm or non-randomised) suggest quality-of-life
+      improvement but not survival benefit. In septic shock, the CITRIS-ALI trial and
+      VITAMINS trial were negative for mortality reduction. IV vitamin C remains
+      investigational.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Red bell pepper (½ cup raw): 95 mg</li>
+      <li>Orange (1 medium): 70 mg</li>
+      <li>Kiwifruit (1 medium): 64 mg</li>
+      <li>Broccoli (½ cup cooked): 51 mg</li>
+      <li>Strawberries (½ cup): 49 mg</li>
+      <li>Brussels sprouts, potatoes, tomatoes, spinach — 15–50 mg per serving</li>
+    </ul>
+    <p class="text-gray-700 leading-relaxed mt-3">
+      Vitamin C is easily destroyed by heat, light, and prolonged cooking. Raw or lightly
+      cooked vegetables and fruit preserve the most.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Ascorbic acid</strong> — standard, cheapest, most studied.</li>
+      <li><strong>Buffered forms</strong> (calcium/sodium ascorbate) — gentler on the stomach.</li>
+      <li><strong>Liposomal vitamin C</strong> — claims of higher bioavailability; some evidence, higher cost.</li>
+      <li>Typical maintenance: 100–500 mg/day. High doses (&gt; 1,000 mg/day) offer no clear extra benefit and can cause diarrhoea and kidney stones in predisposed individuals.</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Consult your physician before high-dose vitamin C
+      if you have a history of kidney stones, iron overload disorders (haemochromatosis),
+      or glucose-6-phosphate dehydrogenase deficiency.
+    </div>
+
+    <RelatedArticles current="/vitamin-c" />
+  </main>
+</BaseLayout>

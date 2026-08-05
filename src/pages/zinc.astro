@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/zinc`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Zinc Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Zinc', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Zinc: Immunity, Wound Healing, Testosterone & Common Cold Evidence"
+  description="Zinc reference — RDA, deficiency signs, immune function, common cold evidence, testosterone, food sources, and safe supplementation."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/zinc", label: "Zinc" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Zinc</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Zinc is a structural component of over 3,000 proteins and a cofactor for hundreds of
+      enzymes involved in cell division, immune function, wound healing, DNA synthesis, and
+      protein synthesis. Marginal deficiency is common; overt deficiency is a real problem
+      in low-income countries and in specific medical conditions.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adult men:</strong> 11 mg/day.</li>
+      <li><strong>Adult women:</strong> 8 mg/day.</li>
+      <li><strong>Pregnancy:</strong> 11 mg.</li>
+      <li><strong>Lactation:</strong> 12 mg.</li>
+      <li><strong>Vegetarians / vegans:</strong> up to 50% higher due to phytate-related absorption inhibition.</li>
+      <li><strong>Tolerable Upper Intake Level:</strong> 40 mg/day — chronic excess causes copper deficiency and immunosuppression.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency signs</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Impaired wound healing</li>
+      <li>Recurrent infections</li>
+      <li>Hair loss (alopecia)</li>
+      <li>Loss of taste and smell (hypogeusia, hyposmia)</li>
+      <li>Diarrhoea</li>
+      <li>Delayed growth and sexual maturation (in children)</li>
+      <li>Skin rash (acrodermatitis)</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Common cold and immunity</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cochrane meta-analysis (Singh &amp; Das 2013) of zinc lozenges (75+ mg/day started
+      within 24 hours of cold onset) shows ~33% reduction in cold duration. The effect is
+      form-specific: <strong>zinc acetate</strong> and <strong>zinc gluconate</strong>
+      lozenges are effective; syrups and nasal sprays are not. Nasal zinc has been withdrawn
+      due to permanent anosmia risk. Don't use it.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Testosterone</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Zinc deficiency lowers serum testosterone and correction restores it. Supplementation
+      does not raise testosterone above normal in men with sufficient baseline zinc. See our
+      <a href="/vitamin-d-and-testosterone" class="text-amber-700 underline">testosterone
+      page</a> for the same pattern with vitamin D. If your libido is low, test zinc,
+      vitamin D, and morning testosterone together.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Wet macular degeneration (AREDS)</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The AREDS and AREDS-2 formulations include 25–80 mg zinc plus copper 2 mg (to prevent
+      zinc-induced copper deficiency). Slows progression of intermediate-to-late age-related
+      macular degeneration.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Oysters (3 oz): 32 mg — by far the highest natural source</li>
+      <li>Beef, chuck (3 oz): 7 mg</li>
+      <li>Crab (3 oz): 6.5 mg</li>
+      <li>Pumpkin seeds (1 oz): 2.2 mg</li>
+      <li>Cashews (1 oz): 1.6 mg</li>
+      <li>Yogurt (1 cup): 1.7 mg</li>
+      <li>Chickpeas (½ cup): 1.3 mg</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplement forms</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Zinc picolinate</strong> — well absorbed; commonly recommended.</li>
+      <li><strong>Zinc gluconate</strong> — used in lozenges for colds.</li>
+      <li><strong>Zinc citrate</strong> — well absorbed; gentle.</li>
+      <li><strong>Zinc sulphate</strong> — cheapest; can be harsh on the stomach.</li>
+      <li>Take on an empty stomach for best absorption, or with food if it causes nausea.</li>
+      <li>Long-term supplementation &gt; 40 mg/day: pair with 1–2 mg copper to prevent copper deficiency.</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Long-term high-dose zinc can suppress immunity
+      via copper deficiency — the opposite of the intended effect. Consult your physician
+      before chronic supplementation above the RDA.
+    </div>
+
+    <RelatedArticles current="/zinc" />
+  </main>
+</BaseLayout>
