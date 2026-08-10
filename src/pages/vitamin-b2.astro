@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-b2`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin B2 (Riboflavin) Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Vitamin B2', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin B2 (Riboflavin): Migraine Prophylaxis and Bright Yellow Urine"
+  description="Riboflavin reference — RDA, migraine prevention evidence at 400 mg/day, MTHFR interaction, and why B-complex supplements turn urine fluorescent yellow."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/vitamin-b2", label: "Vitamin B2" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin B2 (Riboflavin)</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Riboflavin is the precursor to FAD and FMN, redox cofactors central to mitochondrial
+      energy production. Deficiency alone is rare in high-income countries but common as
+      part of general B-complex insufficiency in alcoholism and severe undernutrition.
+      Riboflavin has one well-established therapeutic use — migraine prevention.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adult men:</strong> 1.3 mg/day.</li>
+      <li><strong>Adult women:</strong> 1.1 mg/day.</li>
+      <li><strong>Pregnancy:</strong> 1.4 mg/day.</li>
+      <li><strong>Lactation:</strong> 1.6 mg/day.</li>
+      <li><strong>No Tolerable Upper Intake Level</strong> — excess is renally excreted (as riboflavin's bright yellow pigment).</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Migraine prevention</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Riboflavin 400 mg/day has Level B evidence from the American Academy of Neurology
+      for migraine prophylaxis. The seminal 1998 Schoenen trial showed a 50% reduction in
+      migraine frequency in about half of participants after 3 months. Response is slow
+      (allow 2–3 months). It's cheap, safe, and worth trying before or alongside prescription
+      preventives like topiramate or CGRP antagonists.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Ariboflavinosis (deficiency)</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cheilosis (cracks at corners of the mouth), angular stomatitis, glossitis, seborrhoeic
+      dermatitis, corneal vascularisation, and normocytic-normochromic anaemia. Usually
+      responds within days to riboflavin 5–10 mg/day. Common in alcoholism, anorexia, and
+      breast-fed infants of B2-deficient mothers.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">MTHFR polymorphism</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Riboflavin is a cofactor for methylenetetrahydrofolate reductase (MTHFR). People
+      homozygous for the C677T polymorphism (~10% of Europeans) have reduced enzyme activity
+      that is partly restored by higher riboflavin intake. Small trials show riboflavin
+      lowers blood pressure specifically in this genotype — an interesting example of
+      nutrigenomics with clinical relevance.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The fluorescent yellow urine</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Riboflavin itself is a bright yellow-green fluorescent pigment. Any dose above a few
+      mg (which includes almost every multivitamin and B-complex) produces neon-yellow
+      urine within hours — harmless, and actually confirms your supplement is absorbing.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Beef liver (3 oz): 2.9 mg — the champion source</li>
+      <li>Fortified breakfast cereal: 0.6–2 mg</li>
+      <li>Yoghurt, plain (1 cup): 0.5 mg</li>
+      <li>Milk (1 cup): 0.4 mg</li>
+      <li>Egg (1 large): 0.2 mg</li>
+      <li>Almonds (1 oz): 0.3 mg</li>
+      <li>Beef (3 oz): 0.4 mg</li>
+      <li>Mushrooms, portabella (½ cup): 0.3 mg</li>
+      <li>Spinach (½ cup cooked): 0.2 mg</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> If you're using 400 mg/day riboflavin for
+      migraine and starting a new headache pattern (worse pain, aura, unilateral neurology),
+      get medical review — riboflavin is prophylaxis, not treatment for a red-flag headache.
+    </div>
+
+    <RelatedArticles current="/vitamin-b2" />
+  </main>
+</BaseLayout>

@@ -64,6 +64,13 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-multiple-sclerosis', title: 'Vitamin D and Multiple Sclerosis', description: 'Latitude gradient, Mendelian-randomisation evidence, SOLAR and CHOLINE trials, MS-specific 25(OH)D targets.', date: '2026-08-11' },
   { slug: '/vitamin-d-and-asthma', title: 'Vitamin D and Asthma', description: 'Cochrane meta-analysis, VIDA trial, VDAART pregnancy trial, and dosing for adults with poorly controlled asthma.', date: '2026-08-11' },
   { slug: '/vitamin-d-and-acne', title: 'Vitamin D and Acne', description: 'The deficiency link in inflammatory acne and what the small supplementation RCTs actually show.', date: '2026-08-11' },
+  { slug: '/vitamin-b2', title: 'Vitamin B2 (Riboflavin)', description: 'Migraine prophylaxis (400 mg/day), MTHFR interaction, and why B-complex urine glows yellow.', date: '2026-08-12' },
+  { slug: '/vitamin-b5', title: 'Vitamin B5 (Pantothenic Acid)', description: 'CoA cofactor, the acne megadose claim, panthenol in cosmetics, and why deficiency is unheard of.', date: '2026-08-12' },
+  { slug: '/potassium', title: 'Potassium', description: 'DASH diet, salt substitutes, SSaSS trial, banana myth, and the hyperkalaemia ceiling.', date: '2026-08-12' },
+  { slug: '/iodine', title: 'Iodine', description: 'Thyroid hormone synthesis, pregnancy requirements, salt iodisation history, and the kelp overdose risk.', date: '2026-08-12' },
+  { slug: '/vitamin-d-and-ibd', title: "Vitamin D and IBD (Crohn's & UC)", description: 'Deficiency is the norm; latitude gradient, MR evidence, supplementation trials, malabsorption dosing.', date: '2026-08-12' },
+  { slug: '/vitamin-d-and-migraine', title: 'Vitamin D and Migraine', description: 'What supplementation trials show, mechanism via neuroinflammation, and combining with riboflavin and magnesium.', date: '2026-08-12' },
+  { slug: '/vitamin-d-and-eczema', title: 'Vitamin D and Eczema (Atopic Dermatitis)', description: 'Winter flares, cathelicidin and skin barrier defence, RCT evidence for SCORAD improvement.', date: '2026-08-12' },
 ];
 
 export const GET: APIRoute = async () => {

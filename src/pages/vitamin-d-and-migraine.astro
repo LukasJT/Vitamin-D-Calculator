@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-migraine`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Migraine',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Migraine', code: { '@type': 'MedicalCode', codeValue: 'G43', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Migraine', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Migraine: Frequency, Severity, and Combining with Riboflavin"
+  description="What the evidence shows about vitamin D for migraine prevention — dosing, when it helps most, and how it stacks with riboflavin, magnesium, and CoQ10."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-migraine", label: "Vitamin D & Migraine" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Migraine</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D deficiency is more common in migraine sufferers than in age-matched
+      controls, and smaller controlled trials of supplementation have reported reduced
+      attack frequency. It's a reasonable low-cost adjunct — likely most helpful when
+      baseline 25(OH)D is genuinely low.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The evidence base</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Ghorbani 2020 (Iran RCT)</strong> — 80 adults with episodic migraine; 2,000 IU/day for 12 weeks reduced monthly headache days from ~7 to ~3 (placebo went from 7 to 5.5).</li>
+      <li><strong>Buettner 2015 (VITAL-migraine)</strong> — post-hoc analysis; no effect of 2,000 IU cholecalciferol/day on migraine incidence in adults not selected for deficiency.</li>
+      <li><strong>Cayir 2014 (children)</strong> — vitamin D repletion in deficient children with migraine reduced monthly attack days.</li>
+      <li><strong>2019 meta-analysis of 8 RCTs</strong> — pooled reduction of ~1.5 headache days per month; effect largest in deficient subgroups.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mechanism</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D modulates central nociception, cortical excitability, and inflammatory
+      cytokines implicated in migraine (IL-6, TNF-α). Migraine is now understood as a
+      neuroinflammatory disorder; vitamin D's immunomodulatory effects are biologically
+      plausible.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Stacking with other supplements</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The American Academy of Neurology gives Level B evidence to <a href="/vitamin-b2" class="text-amber-700 underline">riboflavin 400 mg/day</a>,
+      <a href="/magnesium" class="text-amber-700 underline">magnesium 400–600 mg/day</a>,
+      and CoQ10 300 mg/day for migraine prevention. Vitamin D isn't on that list yet — the
+      trials are smaller — but there's no interaction and no reason not to combine them.
+      Allow 8–12 weeks to judge effect.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D. If &lt; 20 ng/mL, correct with 2,000–4,000 IU/day.</li>
+      <li>If already 30–50 ng/mL, expect only a small additional benefit at best.</li>
+      <li>Track a headache diary before and 3 months into supplementation to judge effect.</li>
+      <li>Combine with proven prophylaxis — riboflavin, magnesium, CoQ10, or prescription options — rather than substituting.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Any new headache pattern with red flags —
+      unilateral, thunderclap onset, associated neurology, systemic symptoms — needs
+      immediate medical assessment, not a vitamin trial.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-migraine" />
+  </main>
+</BaseLayout>

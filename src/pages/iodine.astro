@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/iodine`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Iodine Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Iodine', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Iodine: Thyroid, Pregnancy, Salt Fortification and the Kelp Overdose Problem"
+  description="Iodine reference — RDA, thyroid hormone synthesis, pregnancy requirements, salt-iodisation history, and why kelp supplements can push you into overdose territory."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/iodine", label: "Iodine" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Iodine</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Iodine's only known biological role is as a component of the thyroid hormones T3 and
+      T4. Salt iodisation was one of the great 20th-century public health interventions —
+      eliminating endemic goitre and preventing millions of cases of iodine-deficiency
+      brain damage. Adequacy sits between too-little (goitre, cretinism) and too-much
+      (thyroid dysfunction) in a narrower window than most people realise.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adults:</strong> 150 µg/day.</li>
+      <li><strong>Pregnancy:</strong> 220 µg/day.</li>
+      <li><strong>Lactation:</strong> 290 µg/day.</li>
+      <li><strong>Tolerable Upper Intake Level:</strong> 1,100 µg/day for adults — narrower for children.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Pregnancy — the critical window</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Severe maternal iodine deficiency in early pregnancy causes irreversible cognitive
+      impairment (endemic cretinism) in the fetus. Even mild-to-moderate deficiency
+      correlates with lower child IQ. All prenatal vitamins should contain ~150 µg iodine;
+      many don't — check the label. The American Thyroid Association recommends women
+      planning pregnancy or breastfeeding supplement 150 µg/day of potassium iodide.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Goitre and hypothyroidism</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Chronic iodine deficiency causes the thyroid gland to enlarge (goitre) as it works
+      harder to trap iodide. Severe deficiency causes hypothyroidism with fatigue, cold
+      intolerance, weight gain, and dry skin. In children, it stunts growth and impairs
+      neurodevelopment.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Iodine excess — the Wolff-Chaikoff and Jod-Basedow effects</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Acute large doses briefly shut down thyroid hormone production (Wolff-Chaikoff effect)
+      — usually protective and self-limited. Chronic excess can either provoke autoimmune
+      hypothyroidism (Hashimoto's) or, in people with underlying nodular thyroid disease,
+      trigger hyperthyroidism (Jod-Basedow effect). Kelp supplements can contain 500–3,000+
+      µg per serving; some batches wildly exceed the label claim. Don't stack kelp with
+      iodised salt and a multivitamin.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Are you getting enough?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Not automatically. The trend toward "sea salt," "pink Himalayan salt," and non-iodised
+      "kosher salt" is quietly reversing decades of iodisation progress. Non-dairy milk
+      alternatives, absent egg intake, and low seafood intake compound the problem.
+      Australian, UK, and pregnant-women surveys have all documented rising mild iodine
+      deficiency.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Seaweed, kelp (1 g dried): 232 µg (wildly variable — up to several mg)</li>
+      <li>Cod (3 oz): 158 µg</li>
+      <li>Iodised table salt (¼ tsp): 76 µg</li>
+      <li>Milk (1 cup): 56 µg</li>
+      <li>Yoghurt (1 cup): 75 µg</li>
+      <li>Egg (1 large): 26 µg</li>
+      <li>Shrimp (3 oz): 35 µg</li>
+      <li>Tuna, canned (3 oz): 17 µg</li>
+      <li>Prunes (5): 13 µg</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> If you have autoimmune thyroid disease (Hashimoto's
+      or Graves'), sudden increases in iodine (from kelp, supplement stacks, or amiodarone)
+      can worsen thyroid dysfunction — check with your endocrinologist before adding kelp.
+    </div>
+
+    <RelatedArticles current="/iodine" />
+  </main>
+</BaseLayout>

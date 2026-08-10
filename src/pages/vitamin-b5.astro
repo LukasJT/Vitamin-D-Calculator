@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-b5`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin B5 (Pantothenic Acid) Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Vitamin B5', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin B5 (Pantothenic Acid): CoA, Acne Claims, and the Panto Nail Story"
+  description="Pantothenic acid — the vitamin behind coenzyme A. What the evidence shows for the megadose-acne claim, panthenol in cosmetics, and why deficiency is essentially unheard of."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/vitamin-b5", label: "Vitamin B5" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin B5 (Pantothenic Acid)</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      The name comes from Greek <em>pantothen</em> — "from everywhere" — reflecting how
+      widespread it is in food. Pantothenic acid is the backbone of coenzyme A, essential
+      for fatty acid synthesis, oxidation, and the citric acid cycle. Isolated deficiency
+      is essentially unknown in normal diets.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily Adequate Intake</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adults:</strong> 5 mg/day.</li>
+      <li><strong>Pregnancy:</strong> 6 mg/day.</li>
+      <li><strong>Lactation:</strong> 7 mg/day.</li>
+      <li><strong>No Tolerable Upper Intake Level</strong> — very high doses (10 g) can cause diarrhoea and GI upset.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The acne megadose claim</h2>
+    <p class="text-gray-700 leading-relaxed">
+      A single small 2014 double-blind RCT reported pantothenic acid 2,200 mg/day for 12
+      weeks reduced total facial lesion count vs placebo in mild-to-moderate acne. The
+      claim went viral in supplement marketing, but the trial was small (n = 48), the
+      mechanism is speculative, and no larger replication has been published. It's a
+      possible-but-unproven adjunct at best.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Panthenol (provitamin B5)</h2>
+    <p class="text-gray-700 leading-relaxed">
+      D-panthenol is the alcohol form of pantothenic acid used in shampoos, skin creams,
+      and eye drops. It penetrates skin and hair, humectant properties help retain moisture,
+      and there's reasonable evidence for wound-healing acceleration and modest improvement
+      in hair shaft appearance. Topical use is well tolerated.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Experimentally induced deficiency causes "burning feet syndrome" (severe paraesthesia
+      and burning pain in feet and lower legs), fatigue, headaches, and insomnia. Real-world
+      cases are limited to severe undernutrition and one wartime study of malnourished POWs
+      whose symptoms responded to pantothenate.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Beef liver (3 oz): 8.3 mg — one serving covers 165% of the AI</li>
+      <li>Shiitake mushrooms (½ cup cooked): 2.6 mg</li>
+      <li>Sunflower seeds (¼ cup): 2.4 mg</li>
+      <li>Chicken breast (3 oz): 1.3 mg</li>
+      <li>Tuna (3 oz): 1.2 mg</li>
+      <li>Avocado (½ fruit): 1.0 mg</li>
+      <li>Egg (1 large): 0.7 mg</li>
+      <li>Milk (1 cup): 0.9 mg</li>
+      <li>Broccoli (½ cup): 0.4 mg</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> There is little reason for isolated B5
+      supplementation — it comes bundled in every B-complex and is abundant in food.
+    </div>
+
+    <RelatedArticles current="/vitamin-b5" />
+  </main>
+</BaseLayout>

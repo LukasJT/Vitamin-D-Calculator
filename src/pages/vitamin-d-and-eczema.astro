@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-eczema`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Atopic Dermatitis (Eczema)',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Atopic dermatitis', code: { '@type': 'MedicalCode', codeValue: 'L20', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Eczema', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Eczema (Atopic Dermatitis): Winter Flares, Cathelicidin, RCT Evidence"
+  description="Why eczema often worsens in winter, what the RCT evidence shows for vitamin D supplementation, and how cathelicidin defends the skin barrier."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-eczema", label: "Vitamin D & Eczema" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Eczema (Atopic Dermatitis)</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Atopic dermatitis often flares in winter. Vitamin D deficiency correlates with
+      severity in cross-sectional studies, and small RCTs of supplementation report
+      significant improvement in SCORAD (Scoring Atopic Dermatitis) index — meaningful,
+      though the effect size is modest and best-established in deficient patients.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Why winter matters</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Two things happen in winter that hurt atopic skin: 25(OH)D falls (less UVB), and low
+      indoor humidity strips barrier lipids. Vitamin D upregulates cathelicidin
+      (LL-37), an antimicrobial peptide that keeps the skin barrier resistant to
+      <em>Staphylococcus aureus</em> — a bacterium implicated in eczema flares. Low vitamin
+      D → less cathelicidin → more staph colonisation → more flares.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">RCT evidence</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Amestejani 2012</strong> — 60 adults; cholecalciferol 1,600 IU/day for 60 days significantly improved SCORAD vs placebo (44% reduction vs 15%).</li>
+      <li><strong>Camargo 2014 (Mongolia)</strong> — 107 children with winter-related eczema; 1,000 IU/day for 1 month improved eczema area and severity index.</li>
+      <li><strong>Sidbury 2008</strong> — small crossover in children; benefit signal in the deficient subgroup.</li>
+      <li><strong>2016 meta-analysis (4 RCTs)</strong> — pooled significant SCORAD reduction favouring vitamin D.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical dosing</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D — most eczema patients with winter flares are deficient.</li>
+      <li>Adults: 2,000 IU cholecalciferol/day for 2–3 months, then re-test and titrate.</li>
+      <li>Children: 400–1,000 IU/day depending on age and baseline.</li>
+      <li>Vitamin D does not replace daily emollients, low-potency topical steroids for flares, or dupilumab/JAK inhibitors for severe disease — it's an adjunct.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Phototherapy — the other side of the vitamin D story</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Narrowband UVB (311 nm) is an established dermatology treatment for moderate-to-severe
+      atopic dermatitis. It doesn't work primarily by raising vitamin D (though it does
+      that too), but by directly modulating skin T-cells and reducing epidermal Langerhans
+      cell counts. Home UVB units are second-line to office-based phototherapy.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Severe or infected eczema (weeping, honey-coloured
+      crusts, spreading redness) needs medical assessment — vitamin D won't treat impetigo
+      or herpes eczema.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-eczema" />
+  </main>
+</BaseLayout>

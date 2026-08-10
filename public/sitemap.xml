@@ -306,6 +306,41 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://vitamindcalculator.net/vitamin-b2</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/vitamin-b5</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/potassium</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/iodine</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-and-ibd</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-and-migraine</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-and-eczema</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://vitamindcalculator.net/sitemap</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
