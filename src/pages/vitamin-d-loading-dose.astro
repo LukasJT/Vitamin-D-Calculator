@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-loading-dose`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D Loading Dose Protocols',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Loading Dose Protocols', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D Loading Dose Protocols: 50,000 IU Weekly and Alternatives"
+  description="How high-dose vitamin D loading works, when it makes sense, standard 50,000 IU weekly regimens, and the falls-risk problem with annual megadoses."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-loading-dose", label: "Loading Dose Protocols" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D Loading Dose Protocols</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      When 25(OH)D is severely low, a loading dose can normalise it in weeks rather than
+      months. Standard-dose supplementation takes ~3–4 months to reach steady state
+      (see our <a href="/how-long-to-raise-vitamin-d" class="text-amber-700 underline">time-to-steady-state page</a>);
+      loading doses compress that to 4–8 weeks. Not every deficient patient needs one —
+      and one loading regimen (annual bolus) has been shown to cause harm.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Standard Endocrine Society loading regimen</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Adults:</strong> 50,000 IU cholecalciferol (D3) once weekly × 8 weeks = 400,000 IU total, then maintenance 1,500–2,000 IU/day.</li>
+      <li><strong>Alternative:</strong> 6,000 IU daily × 8 weeks (equivalent total).</li>
+      <li><strong>Children 1–18:</strong> 2,000 IU daily × 6 weeks OR 50,000 IU weekly × 6 weeks.</li>
+      <li><strong>Infants &lt; 1 year:</strong> 1,000–2,000 IU daily × 6 weeks.</li>
+      <li><strong>Re-test:</strong> 25(OH)D at 8–12 weeks; move to maintenance.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">When loading makes sense</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Baseline 25(OH)D &lt; 12 ng/mL (severe deficiency, rickets-territory)</li>
+      <li>Symptomatic deficiency — bone pain, proximal myopathy</li>
+      <li>Approaching a time-critical intervention (surgery, pregnancy, bariatric bypass)</li>
+      <li>Malabsorption where daily dosing keeps failing</li>
+      <li>Compliance is easier with weekly than daily</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">When loading is unnecessary</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Mild deficiency (20–30 ng/mL) without symptoms rises adequately on 2,000 IU/day
+      over 2–3 months. Loading buys speed, not endpoint difference. If you don't need
+      normalisation urgently, standard dosing is fine.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The annual mega-bolus that backfired</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The 2010 Sanders trial gave 500,000 IU cholecalciferol once yearly to community-dwelling
+      women ≥ 70 years. Result: <strong>increased</strong> falls and fractures compared with
+      placebo, particularly in the 3 months after each annual dose. A separate trial
+      (Smith 2007) with 300,000 IU IM annually showed similar risk. Very-high infrequent
+      bolus dosing appears to acutely dysregulate calcium handling and is <strong>not</strong>
+      recommended. Weekly or monthly loading avoids this problem.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">D2 vs D3 for loading</h2>
+    <p class="text-gray-700 leading-relaxed">
+      D3 (cholecalciferol) is preferred — it raises 25(OH)D more effectively than D2
+      (ergocalciferol) per unit dose. If your prescription only has D2 (still common in
+      US "50,000 IU vitamin D" scripts), consider asking for D3 or an OTC equivalent.
+      See <a href="/vitamin-d-vs-vitamin-d3" class="text-amber-700 underline">D2 vs D3</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Safety monitoring</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Loading up to 50,000 IU/week × 8 weeks is well tolerated in adults with normal calcium metabolism.</li>
+      <li>Check serum calcium if there's any concern about hyperparathyroidism, sarcoidosis, granulomatous disease, or lymphoma (which can convert 25(OH)D to calcitriol unregulated).</li>
+      <li>Don't stack loading doses with concurrent very-high-dose calcium.</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Loading regimens should be initiated with a
+      recent 25(OH)D level and (in older adults or complex cases) medical supervision.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-loading-dose" />
+  </main>
+</BaseLayout>

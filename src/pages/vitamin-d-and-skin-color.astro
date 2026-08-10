@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-skin-color`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Skin Color (Fitzpatrick Types)',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Skin Color', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Skin Color: Fitzpatrick Types, Melanin, and Deficiency Risk"
+  description="How melanin blocks UVB and slows vitamin D synthesis, Fitzpatrick I–VI comparison of MED and D3 output, and why darker-skinned people at high latitudes need supplementation."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-skin-color", label: "Vitamin D & Skin Color" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Skin Color</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Melanin evolved as a UV filter. It protects DNA in skin cells from mutation — but
+      it also blocks the same UVB wavelengths that make vitamin D. People with darker
+      skin need substantially longer sun exposure to make the same amount of vitamin D
+      as people with lighter skin at the same latitude. At high latitudes with limited
+      UVB, this becomes a public health problem.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Fitzpatrick classification</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Type I</strong> — Pale white, always burns, never tans (Irish, Scottish, Northern European)</li>
+      <li><strong>Type II</strong> — White, usually burns, tans with difficulty</li>
+      <li><strong>Type III</strong> — White to olive, sometimes burns, gradually tans</li>
+      <li><strong>Type IV</strong> — Olive/light brown, rarely burns, tans easily (Mediterranean, Middle Eastern, Latin American)</li>
+      <li><strong>Type V</strong> — Brown, very rarely burns, tans very easily (South Asian, Middle Eastern, some Hispanic)</li>
+      <li><strong>Type VI</strong> — Dark brown to black, never burns (African, African American, Aboriginal Australian)</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The synthesis gap</h2>
+    <p class="text-gray-700 leading-relaxed">
+      A landmark study by Clemens & Adams (1982) measured serum previtamin D3 after
+      identical UVB exposure. A Fitzpatrick type II individual reached a given previtamin
+      D3 concentration in ~15 minutes; a type V–VI individual needed 60–120 minutes for
+      the same. That's a 4–6× difference in exposure time. At UK, Canadian, or
+      Scandinavian latitudes in winter, the required exposure exceeds what's practical
+      or safe for anyone — but it's outright impossible for Fitzpatrick V–VI.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Prevalence data</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>NHANES US data: Non-Hispanic Black adults have mean 25(OH)D ~16 ng/mL vs 26 ng/mL in non-Hispanic White adults.</li>
+      <li>UK Biobank: 57% of adults of South Asian ancestry vs 24% of White adults are deficient in winter.</li>
+      <li>Northern European studies of African-heritage populations: 60–80% deficient year-round.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Vitamin D binding protein — a complicating factor</h2>
+    <p class="text-gray-700 leading-relaxed">
+      A 2013 NEJM study by Powe et al. reported that Black adults, despite lower total
+      25(OH)D, had similar <em>bioavailable</em> (free + albumin-bound) 25(OH)D as White
+      adults because they had lower levels of vitamin D binding protein. This finding
+      has been contested — the assay used was later shown to underestimate certain DBP
+      variants. Standard practice still uses total 25(OH)D and considers dark-skinned
+      populations at higher deficiency risk.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guidance by skin type</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Fitzpatrick I–III at temperate latitudes</strong> — modest deliberate midday sun (5–15 min forearms + face several times per week in summer) covers most of the need; supplement 1,000–2,000 IU/day in winter.</li>
+      <li><strong>Fitzpatrick IV</strong> — longer exposures (15–30 min) or more frequent; year-round supplement 1,000–2,000 IU/day above 35° latitude.</li>
+      <li><strong>Fitzpatrick V–VI</strong> — do not rely on sun exposure at latitudes above 30°; supplement 2,000 IU/day year-round; consider testing 25(OH)D.</li>
+      <li><strong>Everyone, any type</strong> — Fitzpatrick I–II should never seek sunburn for vitamin D; the melanoma risk always exceeds the benefit.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Skin color is a rough proxy for melanin content
+      — the underlying biology is a continuum, and individual variation matters. Test
+      25(OH)D if you're uncertain.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-skin-color" />
+  </main>
+</BaseLayout>

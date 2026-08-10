@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/uv-lamps-for-vitamin-d`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'UV Lamps for Vitamin D',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'UV Lamps for Vitamin D', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="UV Lamps for Vitamin D: What Actually Works and What Doesn't"
+  description="Only UVB in the 290–315 nm range makes vitamin D — not SAD lamps, not tanning beds by default. Wavelengths, dosing, and why supplements are usually the smarter choice."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/uv-lamps-for-vitamin-d", label: "UV Lamps for Vitamin D" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">UV Lamps for Vitamin D</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D synthesis requires ultraviolet-B in a narrow wavelength window
+      (290–315 nm, with peak activity around 297 nm). Most consumer "sun lamps" and
+      almost all "SAD lamps" emit no meaningful UVB and produce zero vitamin D. Only
+      specific medical-grade or tanning-industry UVB sources do the job.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The wavelength requirement</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>UVA (315–400 nm)</strong> — most tanning beds emit primarily UVA. Produces a tan, ages skin, does NOT produce vitamin D.</li>
+      <li><strong>UVB (280–315 nm)</strong> — the vitamin D-synthesising band. Only UVB in the 290–315 nm range converts 7-dehydrocholesterol to previtamin D3.</li>
+      <li><strong>Narrowband UVB (311–313 nm)</strong> — used in dermatology for psoriasis and vitiligo; produces vitamin D as a side effect but is not marketed for that purpose.</li>
+      <li><strong>Full-spectrum "sun lamps" and SAD lamps</strong> — these use visible-white LED light around 10,000 lux; no UVB, no vitamin D. They treat seasonal affective disorder by circadian entrainment, not by making vitamin D.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Consumer options that do produce vitamin D</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Medical UVB units</strong> (Sperti, Solarc RMR-1600 series) — engineered to emit 290–315 nm. Sessions of a few minutes, 3× per week, can raise 25(OH)D similarly to oral supplementation. FDA-registered but not covered by insurance for vitamin D indication.</li>
+      <li><strong>Tanning beds</strong> — vary hugely. Some newer beds include UVB tubes; older/most beds are UVA-dominant. Deliberate tanning-bed use for vitamin D is not recommended by any professional dermatology body because of melanoma risk.</li>
+      <li><strong>Reptile UVB lamps</strong> (10.0 or 12% UVB fluorescents designed for chameleons and lizards) — do produce UVB and have been used off-label for vitamin D. Not FDA-cleared for human use; exposure control is up to you; skin cancer risk of chronic use is unstudied.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">When lamps actually make sense</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Severe fat malabsorption</strong> — cystic fibrosis, short-bowel, post-bariatric — where oral cholecalciferol fails despite high doses.</li>
+      <li><strong>Established rickets or osteomalacia</strong> when supplementation has failed.</li>
+      <li><strong>Concurrent psoriasis or vitiligo</strong> where narrowband UVB is already being used therapeutically.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">For everyone else — supplements win</h2>
+    <p class="text-gray-700 leading-relaxed">
+      An OTC cholecalciferol capsule is cheaper, safer, and more precise than any UV
+      device. UVB carries carcinogenic risk (basal cell, squamous cell, and — with UVA —
+      melanoma), needs eye protection, and requires uncovered skin at a specific distance
+      for measured minutes. For 95%+ of people asking about "vitamin D lamps," the correct
+      answer is: don't buy the lamp, buy the supplement.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Recreational tanning-bed use is a proven
+      melanoma risk factor — do not rebrand it as "vitamin D therapy" for yourself.
+    </div>
+
+    <RelatedArticles current="/uv-lamps-for-vitamin-d" />
+  </main>
+</BaseLayout>

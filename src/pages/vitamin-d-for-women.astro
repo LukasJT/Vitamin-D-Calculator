@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-for-women`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D for Women',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D for Women', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D for Women: Bones, Pregnancy, PCOS, and Menopause"
+  description="Complete women's vitamin D guide — dosing across the reproductive lifespan, PCOS and fertility, pregnancy and lactation, and post-menopausal bone protection."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-for-women", label: "Vitamin D for Women" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D for Women</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Women have identical vitamin D requirements to men in isolation, but pregnancy,
+      lactation, and menopause create distinct windows where dosing changes and where
+      deficiency has larger consequences.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Reproductive-age adult dosing</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>19–50 years:</strong> 600 IU/day RDA; Endocrine Society 1,500–2,000 IU/day for adults at risk of deficiency.</li>
+      <li><strong>Pregnancy:</strong> 600 IU/day RDA, but many obstetric societies recommend 1,000–2,000 IU/day; the VDAART trial used 4,400 IU/day safely.</li>
+      <li><strong>Lactation:</strong> 600 IU/day RDA for mother; higher maternal doses (6,400 IU/day) can transfer enough vitamin D via breastmilk to meet the infant's requirement without direct infant drops.</li>
+      <li><strong>Perimenopausal (~50):</strong> 800 IU/day plus adequate calcium.</li>
+      <li><strong>Postmenopausal:</strong> 800–2,000 IU/day; higher targets when combined with anti-osteoporosis therapy.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Bone health and osteoporosis</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Women lose ~10% of bone mineral density in the first 5 years post-menopause because
+      of oestrogen withdrawal. Vitamin D + calcium is the foundation on which bisphosphonates,
+      denosumab, or raloxifene act. See <a href="/vitamin-d-and-osteoporosis" class="text-amber-700 underline">osteoporosis</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">PCOS and fertility</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Polycystic ovary syndrome (PCOS) is associated with high rates of vitamin D deficiency
+      and metabolic dysregulation. Supplementation improves insulin sensitivity, may improve
+      ovulation frequency, and (in trials with fertility outcomes) supports better response
+      to ovulation induction. See <a href="/vitamin-d-and-pcos" class="text-amber-700 underline">PCOS</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Pregnancy</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Maternal deficiency is associated with pre-eclampsia, gestational diabetes, low
+      birthweight, and childhood asthma/wheeze. Supplementation reduces some of these
+      outcomes in intervention trials. All prenatal vitamins should contain 600 IU
+      cholecalciferol; higher doses (up to 4,000 IU/day) are commonly used and considered
+      safe. See <a href="/vitamin-d-in-pregnancy" class="text-amber-700 underline">pregnancy</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Menopause and vasomotor symptoms</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D does not reduce hot flashes or night sweats. Its role in menopause is
+      about bone protection, muscle strength (reducing fall/fracture risk), and modest
+      benefits for mood and immunity — not vasomotor symptom control.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Endometriosis and menstrual pain</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Small trials suggest vitamin D supplementation may reduce dysmenorrhoea (period pain)
+      and endometriosis pain, likely via anti-inflammatory effects. Reasonable low-cost
+      adjunct — not a substitute for evidence-based endometriosis therapy.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Post-menopausal bleeding, breast lumps, and
+      severe pelvic pain need medical evaluation, not a vitamin. Discuss any supplement
+      regime with your women's health clinician if you're on hormone therapy or
+      contraception.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-for-women" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-shift-work`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D for Shift Workers and Indoor Workers',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Shift Work', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D for Shift Workers and Indoor Workers: Deficiency, Dosing, Circadian Angle"
+  description="Night shifts, office jobs, healthcare, mining — all associate with vitamin D deficiency. Dosing guidance for people whose schedule fights UVB exposure."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-shift-work", label: "Vitamin D & Shift Work" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D for Shift Workers and Indoor Workers</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Any job that keeps you indoors during UVB hours — night shifts, office work, healthcare
+      clinical shifts, mining, professional driving, factory work — sets you up for
+      vitamin D deficiency. Studies of nurses, night-shift factory workers, and coal
+      miners consistently find 40–70% of workers deficient regardless of season.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Why the day/night schedule matters</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      UVB reaches the ground in usable intensity only when the sun is more than about 35°
+      above the horizon — roughly 10 AM to 2 PM at temperate latitudes. Sleep during those
+      hours is more than an inconvenience; it removes the only window in which your skin
+      can synthesise vitamin D. Weekend catch-up sun exposure helps but doesn't fully
+      compensate over a 5-day/2-day pattern.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Occupational deficiency data</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Night-shift healthcare workers</strong> — Alefishat & Abu Farha (2016) found 76% of Jordanian night-shift nurses deficient vs 43% of day-shift.</li>
+      <li><strong>Coal miners</strong> — Turkish study (Elmali 2018) found 90%+ deficient, with the underground years correlating with lower 25(OH)D.</li>
+      <li><strong>Office workers</strong> — European studies find winter deficiency in 50%+; commute-in-the-dark and lunch-at-the-desk are enough to depress synthesis year-round.</li>
+      <li><strong>Submariners, offshore oil workers</strong> — closed environments produce near-complete deficiency within weeks unless supplemented.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Consequences beyond bones</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Shift work is independently associated with cardiovascular disease, metabolic
+      syndrome, and certain cancers — through disrupted circadian biology. Vitamin D
+      deficiency compounds several of those pathways. Correcting deficiency doesn't reverse
+      circadian misalignment, but it removes one accelerator.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Dosing guide for indoor / shift schedules</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D — assume deficiency probable unless proven otherwise.</li>
+      <li>Standard adult supplementation: 2,000 IU/day cholecalciferol year-round.</li>
+      <li>If deficient (&lt; 20 ng/mL): 4,000 IU/day for 8–12 weeks, re-test, then 2,000 IU/day maintenance.</li>
+      <li>Take with a fat-containing meal — for shift workers this may be your "dinner" at an unconventional hour.</li>
+      <li>Sun exposure on days off helps but is not sufficient — plan on year-round supplementation.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Circadian vs vitamin D — separate problems, separate fixes</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Bright light exposure timed to your desired wake period entrains the circadian
+      pacemaker. That's what SAD-style light boxes do at 10,000 lux — no vitamin D
+      involved. For shift workers, the two interventions are complementary but distinct:
+      light for circadian alignment, vitamin D for the endocrine deficiency.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> If shift work is causing severe fatigue,
+      cardiovascular symptoms, or mental health decline, the fix isn't only a vitamin —
+      talk to an occupational health physician about schedule modification.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-shift-work" />
+  </main>
+</BaseLayout>

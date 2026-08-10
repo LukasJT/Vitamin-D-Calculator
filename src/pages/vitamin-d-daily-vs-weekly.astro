@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-daily-vs-weekly`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Daily vs Weekly vs Monthly Vitamin D Dosing',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Daily vs Weekly Dosing', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Daily vs Weekly vs Monthly Vitamin D: What Actually Changes?"
+  description="Head-to-head comparison of daily, weekly, and monthly vitamin D dosing schedules — 25(OH)D levels achieved, compliance, and why annual bolus dosing is out of favour."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-daily-vs-weekly", label: "Daily vs Weekly" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Daily vs Weekly vs Monthly Vitamin D</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D has a serum half-life of ~2–3 weeks (25(OH)D), so it's not necessary to
+      take it every day for steady-state levels — but the frequency you pick still matters
+      for compliance, safety at the extremes, and (for certain outcomes) clinical effect.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Equivalent totals</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>2,000 IU daily = 14,000 IU weekly = ~60,000 IU monthly</li>
+      <li>4,000 IU daily = 28,000 IU weekly = ~120,000 IU monthly</li>
+      <li>1,000 IU daily = 7,000 IU weekly = ~30,000 IU monthly</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Do they produce the same 25(OH)D?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      For daily vs weekly at moderate doses (up to 50,000 IU/week), 25(OH)D endpoints
+      are essentially the same. Monthly dosing at equivalent total is slightly less
+      efficient because a higher fraction of the dose is metabolised through the CYP24A1
+      catabolic pathway. Daily is the most efficient per IU, followed by weekly, then
+      monthly.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Compliance — the deciding factor</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Real-world compliance with daily supplements drops to 40–60% at 6 months. Weekly
+      dosing improves compliance for many patients — one Sunday-morning reminder is
+      easier than seven daily reminders. Some patients on prescription 50,000 IU weekly
+      have far better serum levels than they had on OTC daily supplements they kept
+      forgetting.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Clinical outcomes — does frequency matter?</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Fracture prevention</strong> — meta-analyses find daily dosing more effective than large bolus dosing for reducing fractures, even at equivalent totals.</li>
+      <li><strong>Falls in elderly</strong> — daily/weekly are safe; annual mega-bolus (500,000 IU) increased falls (Sanders 2010) and is not recommended.</li>
+      <li><strong>Acute respiratory infection prevention</strong> — Martineau 2017 IPD meta-analysis showed daily/weekly dosing reduced infections but bolus dosing did not.</li>
+      <li><strong>Bone mineral density and cardiovascular outcomes</strong> — no clear difference between daily and weekly at equivalent totals.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Recommended pattern</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Daily</strong> — first choice; most physiologic, most consistent 25(OH)D.</li>
+      <li><strong>Weekly</strong> — legitimate alternative if daily compliance is a struggle; also standard for prescription loading.</li>
+      <li><strong>Monthly</strong> — reasonable for stable patients on chronic therapy; slightly less efficient.</li>
+      <li><strong>Quarterly</strong> — sometimes used in institutional care; keep dose ≤ 100,000 IU per bolus.</li>
+      <li><strong>Annual mega-bolus</strong> — do NOT use; falls and fractures increased in RCTs.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Whatever cadence you pick, target the same
+      end-of-cycle 25(OH)D and re-test at 8–12 weeks after any change.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-daily-vs-weekly" />
+  </main>
+</BaseLayout>

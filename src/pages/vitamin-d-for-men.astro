@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-for-men`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D for Men',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D for Men', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D for Men: Testosterone, Sperm Quality, Cardiovascular, Muscle"
+  description="Complete guide to vitamin D for men — RDA, dosing, and evidence for testosterone, fertility, muscle mass, cardiovascular, and prostate health."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-for-men", label: "Vitamin D for Men" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D for Men</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Men and women have identical vitamin D requirements at the population level, but
+      several vitamin D-linked outcomes matter more (or exclusively) to men: testosterone,
+      sperm quality, prostate health, and cardiovascular risk. Here's what the evidence
+      supports.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Standard dosing</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>19–70 years:</strong> 600 IU/day RDA (IOM); Endocrine Society suggests 1,500–2,000 IU/day for adults at risk.</li>
+      <li><strong>71+ years:</strong> 800 IU/day RDA.</li>
+      <li><strong>Correction if deficient:</strong> 2,000–4,000 IU/day for 8–12 weeks, then re-test.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Testosterone</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D receptors are expressed in testicular Leydig cells. Observational
+      studies find a positive correlation between 25(OH)D and total testosterone.
+      Supplementation trials are mixed — some report modest increases in deficient men,
+      others show no effect. See our
+      <a href="/vitamin-d-and-testosterone" class="text-amber-700 underline">testosterone page</a>
+      for the full trial breakdown. If deficient, correcting deficiency is reasonable and
+      may modestly help; if already sufficient, more won't raise T further.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Sperm quality and fertility</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D deficiency has been associated with reduced sperm motility, morphology,
+      and count in observational studies. The 2018 Blomberg-Jensen RCT of 307 subfertile
+      men showed cholecalciferol 1,400 IU/day + 500 mg calcium modestly improved sperm
+      motility and DNA fragmentation vs placebo, though effect on live birth rate was
+      not significant. Vitamin D is a low-cost adjunct in male-factor infertility workup.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cardiovascular</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cardiovascular disease kills more men than any other single cause. Observational
+      studies link low 25(OH)D with hypertension, atherosclerosis, and CV mortality.
+      The 25,000-person VITAL trial (2019) tested 2,000 IU/day for 5.3 years and found
+      NO reduction in major cardiovascular events overall — a dampener on the enthusiasm.
+      Correcting deficiency remains reasonable; adding vitamin D on top of sufficiency
+      does not reduce heart attacks.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Muscle mass and strength</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Skeletal muscle has vitamin D receptors and deficiency causes proximal myopathy
+      (leg weakness, difficulty standing from a chair). Vitamin D repletion improves grip
+      strength and gait speed in deficient older men. In already-sufficient young men,
+      additional vitamin D doesn't enhance resistance training gains.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Prostate health</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Ecological and case-control data hinted at a protective role for vitamin D against
+      prostate cancer. The SELECT trial (selenium and vitamin E) had a small vitamin D
+      arm and did not show benefit. A 2018 randomised active-surveillance study
+      (Marshall) suggested vitamin D 4,000 IU/day may reduce Gleason score progression
+      in low-risk prostate cancer, but the trial was small and not definitive. This
+      remains an unsettled research area — no current guideline recommends vitamin D
+      supplementation specifically for prostate cancer prevention or treatment.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Any change in urinary stream, blood in urine,
+      or new erectile dysfunction warrants urological evaluation — vitamin D is not a
+      substitute for that workup.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-for-men" />
+  </main>
+</BaseLayout>

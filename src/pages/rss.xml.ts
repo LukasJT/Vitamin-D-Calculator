@@ -79,6 +79,14 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-dental-health', title: 'Vitamin D and Dental Health', description: 'Caries reduction, periodontitis progression, implant osseointegration, and enamel hypoplasia.', date: '2026-08-13' },
   { slug: '/vitamin-d-and-eye-health', title: 'Vitamin D and Eye Health', description: 'AMD, dry eye, myopia and diabetic retinopathy — what evidence supports and what it does not.', date: '2026-08-13' },
   { slug: '/vitamin-d-for-athletes', title: 'Vitamin D for Athletes', description: 'Indoor-sport deficiency, muscle strength and stress fractures, target 40–50 ng/mL for elite performance.', date: '2026-08-13' },
+  { slug: '/vitamin-d-for-men', title: 'Vitamin D for Men', description: 'Testosterone, sperm quality, cardiovascular, muscle, prostate — the men-specific evidence in one place.', date: '2026-08-14' },
+  { slug: '/vitamin-d-for-women', title: 'Vitamin D for Women', description: 'Bones, pregnancy, PCOS, endometriosis, menopause — dosing across the reproductive lifespan.', date: '2026-08-14' },
+  { slug: '/vitamin-d-loading-dose', title: 'Vitamin D Loading Dose Protocols', description: 'Standard 50,000 IU weekly regimens, when loading makes sense, and why annual megadoses backfire.', date: '2026-08-14' },
+  { slug: '/vitamin-d-daily-vs-weekly', title: 'Daily vs Weekly vs Monthly Vitamin D', description: 'How dosing cadence affects 25(OH)D, compliance, and clinical outcomes — and why annual bolus dosing fails.', date: '2026-08-14' },
+  { slug: '/uv-lamps-for-vitamin-d', title: 'UV Lamps for Vitamin D', description: 'Which lamps actually produce vitamin D (UVB 290–315 nm), which do not, and why supplements usually win.', date: '2026-08-14' },
+  { slug: '/vitamin-d-and-shift-work', title: 'Vitamin D and Shift Work', description: 'Why night-shift and indoor workers run deficient year-round and how to dose supplements.', date: '2026-08-14' },
+  { slug: '/vitamin-d-and-skin-color', title: 'Vitamin D and Skin Color (Fitzpatrick Types)', description: 'How melanin filters UVB, the synthesis gap between Fitzpatrick I and VI, and skin-type-specific supplementation.', date: '2026-08-14' },
+  { slug: '/vitamin-d-and-long-covid', title: 'Vitamin D and Long COVID', description: 'Observational associations, mechanistic angles, and reasonable dosing for PASC recovery.', date: '2026-08-14' },
 ];
 
 export const GET: APIRoute = async () => {

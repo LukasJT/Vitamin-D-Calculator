@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-long-covid`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Long COVID',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Long COVID', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Long COVID: What the Current Evidence Shows"
+  description="Observational studies find lower 25(OH)D in Long COVID patients. What supplementation trials show so far, mechanistic angles, and reasonable dosing."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-long-covid", label: "Vitamin D & Long COVID" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Long COVID</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Long COVID (also called post-COVID condition or PASC) affects an estimated 10–20% of
+      adults after acute SARS-CoV-2 infection. Vitamin D is one of many candidate factors
+      in prevention and recovery, based on its immunomodulatory profile and observational
+      associations. The evidence base is early but suggestive.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational associations</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      A 2023 Italian prospective study (Chiodini) found patients with 25(OH)D &lt; 20 ng/mL
+      6 months after acute COVID had ~3-fold higher rates of Long COVID symptoms than
+      those with 25(OH)D &gt; 30 ng/mL, independent of acute severity. A UK cohort found
+      similar patterns for post-COVID fatigue and cognitive symptoms.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Small supplementation trials</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Small open-label series report symptom improvement with cholecalciferol repletion in deficient Long COVID patients, but placebo effects in this heterogeneous condition are large.</li>
+      <li>Better-controlled trials are underway; no definitive RCT-level evidence yet.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mechanistic plausibility</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Long COVID biology involves persistent low-grade inflammation, autonomic dysfunction,
+      mitochondrial impairment, and in some phenotypes autoimmune features. Vitamin D
+      modulates T-cell balance, dampens IL-6 and TNF-α, and supports Treg function — all
+      pathways implicated in Long COVID. Whether this translates to clinical benefit
+      remains to be proven in randomised trials.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Reasonable practical steps</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D if you have Long COVID symptoms.</li>
+      <li>Correct any deficiency (target ≥ 30 ng/mL) with 2,000–4,000 IU/day for 8–12 weeks, then re-test.</li>
+      <li>Don't expect vitamin D alone to resolve Long COVID — it's a modifiable factor, not a treatment.</li>
+      <li>Pursue Long COVID clinic evaluation for structured rehabilitation (paced return to activity, POTS management, cognitive rehabilitation) that has better evidence than any single supplement.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Long COVID is a real and disabling condition
+      that deserves specialised medical care — supplements alone are rarely enough.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-long-covid" />
+  </main>
+</BaseLayout>
