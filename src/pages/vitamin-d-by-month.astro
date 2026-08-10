@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-by-month`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D by Month of the Year',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D by Month', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D by Month: The Northern Hemisphere Year in UVB and 25(OH)D"
+  description="A month-by-month walk through vitamin D availability in the Northern Hemisphere — from the January vitamin D winter to the June peak and back — with dosing implications."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-by-month", label: "By Month of Year" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D by Month of the Year</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D production from sunlight follows a predictable annual cycle that most
+      people underestimate. The cycle is largely driven by solar zenith angle — how
+      steep the sun sits in the sky at noon. Latitudes above about 37° experience
+      months when UVB simply doesn't reach the ground in synthesising quantity,
+      regardless of how sunny the day feels.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">January — the deepest vitamin D winter</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Serum 25(OH)D reaches its annual minimum in mid-to-late January in the Northern
+      Hemisphere. At latitudes above ~35° N, no meaningful vitamin D synthesis is
+      occurring from sunlight — even at noon on a clear day. UVB is being absorbed by
+      the thicker atmosphere the low-angle sun travels through. Supplementation is
+      essential; 1,000–2,000 IU/day for most adults, higher if starting deficient.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">February — nadir continues</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Days are lengthening but sun angle is still low. In Boston (42° N), London (51° N),
+      or Berlin (52° N), UVB remains below the synthesising threshold. The Mediterranean
+      (~40° N) starts to see meaningful UVB at midday. Continue winter supplementation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">March — the equinox reboot</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The spring equinox marks the return of synthesising UVB in most temperate zones.
+      Sun angle reaches ~50° at noon. Fair-skinned adults can start making meaningful
+      vitamin D from 15–30 minutes of face and forearm exposure at midday. Serum 25(OH)D
+      hasn't caught up yet — there's a ~4–6 week lag between UVB return and rising
+      blood levels.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">April — 25(OH)D starts climbing</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cross-sectional data (NHANES, UK Biobank) show serum 25(OH)D beginning meaningful
+      rise in April. Fair-skinned adults spending time outdoors at midday can start
+      reducing supplementation dose or frequency. Darker-skinned adults at high latitudes
+      still benefit from continuing supplementation year-round.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">May — approaching peak synthesis</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Sun is high, days are long. This is when 25(OH)D rises fastest. Sunburn risk also
+      climbs sharply — a few minutes' unaccustomed sun on unprotected skin can produce
+      a first-degree burn. Aim for pre-erythemal exposure: enough to redden slightly
+      but not burn.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">June — annual peak</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Summer solstice. Sun is at maximum altitude; solar noon delivers the year's peak
+      UVB. 5–15 minutes of arm and leg exposure between 10 AM and 2 PM produces
+      approximately the equivalent of 1,000–2,000 IU of oral vitamin D in fair skin —
+      more in longer sessions or larger uncovered areas. Many people meet requirements
+      from this alone; supplementation can be reduced or paused.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">July — sustained peak, deepening reserves</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Serum 25(OH)D peaks in late July / early August in the Northern Hemisphere — about
+      6 weeks after the solstice, reflecting the pharmacokinetic delay. This is when
+      adipose vitamin D stores are being replenished for the coming winter. See our
+      <a href="/vitamin-d-reserves" class="text-amber-700 underline">reserves model</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">August — the pivot</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Serum 25(OH)D still near peak but UVB starts declining. Days shorten noticeably.
+      This is the last month when unassisted sun exposure fully covers vitamin D needs
+      in most people at high temperate latitudes.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">September — resumption of supplementation for many</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Autumn equinox. Days = nights. Sun angle drops rapidly. Above 37° N, UVB starts to
+      lose reliability at midday. Serum 25(OH)D begins its 6-month decline. Time to
+      restart or intensify supplementation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">October — winter is coming</h2>
+    <p class="text-gray-700 leading-relaxed">
+      For most of North America and Europe, October marks the transition into
+      vitamin D winter. Boston (42° N) sees its last meaningful synthesising day mid-
+      October; London (51° N) around September 30. From here, sun exposure is dietary
+      variety and mood benefit but not a vitamin D strategy.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">November — deep winter</h2>
+    <p class="text-gray-700 leading-relaxed">
+      UVB is essentially absent above 40° N. 25(OH)D falls at roughly 1–2 ng/mL per
+      month. Supplement compliance now determines late-winter status.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">December — winter solstice</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Shortest days, lowest sun. 25(OH)D falling toward January nadir. Some traditional
+      practices bear reflection: cod liver oil in Scandinavia through winter is not
+      folklore — it's roughly 400–1,000 IU vitamin D per teaspoon plus vitamin A and
+      omega-3, and predates commercial supplementation. Modern equivalent: 1,000–2,000
+      IU/day cholecalciferol for adults, more if deficient.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Southern Hemisphere</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Everything above is offset by 6 months. December is the Southern Hemisphere's
+      annual peak; June is deepest winter. Adjust accordingly for Australia, New Zealand,
+      South Africa, and southern South America.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> These are population-scale patterns —
+      individual variation is large. Use our <a href="/" class="text-amber-700 underline">calculator</a>
+      for your latitude and lifestyle-specific estimate.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-by-month" />
+  </main>
+</BaseLayout>

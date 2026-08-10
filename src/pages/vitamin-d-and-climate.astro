@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-climate`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Climate',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Climate', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Climate: How Where You Live Shapes Deficiency Risk"
+  description="Beyond latitude — how climate type (Mediterranean, temperate, tropical, polar, coastal, desert, monsoon) shapes real-world vitamin D availability and deficiency rates."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-climate", label: "Vitamin D and Climate" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Climate</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Two cities at the same latitude can produce very different real-world vitamin D
+      status because climate — cloud cover, temperature, humidity, outdoor culture,
+      dress norms — modifies how much of the available UVB actually reaches human skin.
+      This is the difference between a Mediterranean coast and a rainy northern port at
+      the same 43° latitude.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Mediterranean climates</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Hot dry summers, mild wet winters, high sunshine hours. Southern Europe, coastal
+      California, central Chile, western Australia. Excellent UVB availability;
+      historically low vitamin D deficiency rates. However, mid-day heat drives many
+      people indoors in summer, and Mediterranean cultural dress in some populations
+      (Greek/Italian widows in black; conservative Middle Eastern dress) reduces
+      effective exposure. Winter deficiency is real but modest — 15–25% of adults.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Temperate continental / oceanic</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Four distinct seasons, moderate rainfall, latitude 40–55°. Much of North America,
+      Europe, East Asia, southern Australia, New Zealand. Vitamin D deficiency is
+      seasonal — 30–60% of adults deficient in winter, 10–30% in summer. Continuous
+      supplementation is standard advice for adults with limited summer sun.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Oceanic / marine (Northwestern Europe, Pacific Northwest)</h2>
+    <p class="text-gray-700 leading-relaxed">
+      High cloud cover year-round, mild temperatures, moderate rainfall. UK, Ireland,
+      coastal Norway, Pacific Northwest US, coastal British Columbia. Compound climate
+      penalty: latitude ~50° + persistent overcast. Deficiency rates are among the
+      highest in the developed world — 60–80% of UK adults deficient at some point
+      annually; median 25(OH)D in Seattle adults ~18 ng/mL vs 27 in Sacramento at
+      similar latitude.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Tropical / equatorial</h2>
+    <p class="text-gray-700 leading-relaxed">
+      High UVB all year, warm to hot temperatures, high humidity. Central Africa, South
+      America, Southeast Asia, Pacific Islands. Expectation: no vitamin D deficiency —
+      but the reality is more complex. Indoor lifestyles in growing tropical cities,
+      long protective clothing for sun avoidance, and dark skin combine to produce
+      substantial deficiency in some tropical cities. Bangkok, Mumbai, Jakarta all show
+      40%+ adult deficiency rates in office-worker populations. The lesson: tropical
+      latitude doesn't guarantee sun exposure.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Arid desert climates</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cloudless skies, high UVB, high heat. Middle East, North Africa, southwestern
+      US, Australian outback. Should be sun-replete populations. Instead, desert
+      cultures have some of the highest vitamin D deficiency rates in the world (60–90%
+      in Saudi women, up to 80% in UAE adults) because sun avoidance is cultural and
+      practical — heat drives everyone indoors during productive UVB hours, and
+      conservative dress covers most of the body. Air-conditioned malls, workplaces, and
+      cars complete the enclosure.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Monsoon climates</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Wet season, dry season, latitude 10–30°. South Asia, Southeast Asia, parts of
+      West Africa. Monsoon months produce persistent cloud cover, sometimes for weeks —
+      substantial UVB reduction even at low latitude. Combined with dark skin and
+      indoor pursuits during rain, monsoon populations often are surprisingly deficient.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Polar / subpolar</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Months of no or minimal sun. Alaska, northern Canada, Iceland, northern
+      Scandinavia, southern tip of South America, Antarctica. Traditional Arctic and
+      subarctic populations solved this with vitamin D-rich diet (marine mammal and
+      fish liver, oily fish); populations without that diet — or modern populations
+      that have adopted low-fat/low-fish Western patterns — show extreme deficiency.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Urban vs rural</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Within a given climate, urban adults consistently have lower 25(OH)D than rural
+      counterparts. Indoor employment, less time outside, more air pollution, and taller
+      buildings creating shade all contribute. Air pollution in some cities (particulate
+      matter, ozone, aerosols) can reduce ground-level UVB by 20–40% during severe
+      episodes.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Climate change and vitamin D</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Longer wildfire seasons in the western US and Australia may reduce UVB during
+      smoke events. Increased extreme-heat days may push more people indoors during
+      peak UVB hours. Air-quality events from various causes may compound. On the
+      other hand, warmer weather may increase outdoor time in cooler regions.
+      The net effect on vitamin D is uncertain and probably modest compared to the
+      dominant drivers (latitude, culture, supplementation).
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Climate is a modifier — supplementation is
+      the reliable intervention regardless of where you live.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-climate" />
+  </main>
+</BaseLayout>

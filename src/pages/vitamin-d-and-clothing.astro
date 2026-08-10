@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-clothing`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Clothing Coverage',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Clothing', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and What You're Wearing: Coverage, UPF Fabrics, and Cultural Dress"
+  description="How clothing affects vitamin D synthesis — % skin covered, UPF fabric ratings, veiling and cultural dress, and dosing for people with high daily body coverage."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-clothing", label: "Vitamin D & Clothing" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Clothing Coverage</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D synthesis depends on the surface area of skin exposed to UVB. What you
+      wear when outside — long sleeves, shorts, hat, hijab, gown, veil — is one of the
+      largest modifiable determinants of how much vitamin D you make. Coverage practices
+      driven by climate, occupation, culture, or religion all affect deficiency risk.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Body surface area estimates</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Face + hands</strong> — ~5–8% of body surface area (BSA).</li>
+      <li><strong>Face + hands + forearms</strong> — ~10–12% BSA.</li>
+      <li><strong>Face + hands + arms + legs (shorts and short-sleeve)</strong> — ~35–40% BSA.</li>
+      <li><strong>Swimwear</strong> — ~80–90% BSA exposed.</li>
+      <li><strong>Full body coverage (long clothing + hijab or full-face covering)</strong> — 0–5% BSA.</li>
+    </ul>
+    <p class="text-gray-700 leading-relaxed mt-3">
+      Vitamin D synthesis is roughly proportional to exposed BSA. Doubling exposed skin
+      area roughly doubles synthesis for the same duration and UV intensity.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">UPF fabric ratings</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Ultraviolet Protection Factor (UPF) rates a fabric's ability to block UV. Tightly
+      woven dark fabrics can achieve UPF 50+ (blocks 98% of UV). A typical white cotton
+      T-shirt is ~UPF 7 — blocks 85% of UV. Wet or stretched fabric offers less
+      protection. UPF is a helpful skin-cancer protection measure — but it's also a
+      vitamin D-blocking measure. Purpose-built sun-protection clothing is very effective
+      at both.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cultural and religious dress</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Full-body coverage in dress (hijab, niqab, burqa, some traditional Orthodox or
+      Amish styles) is associated with high rates of vitamin D deficiency, particularly
+      when combined with dark skin and limited outdoor time. Studies from Saudi Arabia,
+      UAE, Turkey, and Pakistan document deficiency in 60–90% of adult women in veiled
+      populations. Supplementation is the practical answer — sun exposure requires
+      compromising practices most such women have chosen for reasons unrelated to
+      vitamin D.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Occupational coverage</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Outdoor workers you'd expect to be sun-replete (construction, farming, roofing)
+      often are — but not always. Modern workwear includes UPF-rated long sleeves,
+      wide-brimmed hats, and full-length trousers as heat protection. Farmers in
+      Australia and the American Southwest have been observed to be vitamin D deficient
+      despite spending 8+ hours outdoors daily, because their protective clothing blocks
+      UVB effectively.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Face-only exposure</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Face + hands alone (typical winter dress in temperate climates) produces roughly
+      10–20% of the vitamin D that swimwear-level exposure produces at the same UV
+      intensity. In winter, face-only exposure at high latitudes is essentially
+      symbolic — the sun angle prevents synthesis regardless of BSA.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Fully-covered dress or heavy UPF workwear year-round — supplement 1,000–2,000 IU/day cholecalciferol. Test 25(OH)D.</li>
+      <li>Standard summer casual (short sleeves, long trousers) — 15–30 minutes midday sun several times per week meets most needs May–August in temperate zones.</li>
+      <li>Beach-style exposure (swimwear, adequate arms/legs) — 5–15 minutes midday is sufficient in summer; stop before pinkening.</li>
+      <li>Winter (any coverage) — sun angle is limiting; supplement regardless.</li>
+      <li>Never seek sunburn to boost vitamin D — you can't accelerate synthesis by burning, and cancer risk climbs.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Adjustment for clothing is complex — use our
+      <a href="/" class="text-amber-700 underline">calculator</a> to model your typical
+      coverage pattern, and consider testing 25(OH)D once to calibrate.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-clothing" />
+  </main>
+</BaseLayout>

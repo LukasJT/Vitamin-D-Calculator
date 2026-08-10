@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-by-latitude`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D by Latitude',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D by Latitude', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D by Latitude: The 37° Line, Polar Days, and City-by-City Winter Months"
+  description="How latitude sets vitamin D availability — the 37° UVB rule of thumb, months of vitamin D winter by city (Miami, London, Reykjavik), and polar day/night."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-by-latitude", label: "Vitamin D by Latitude" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D by Latitude</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Latitude is the single largest factor in year-round vitamin D availability.
+      A person in Bogota (4° N) makes vitamin D from noon sun every day of the year;
+      a person in Reykjavik (64° N) makes essentially none for six months. Understanding
+      your latitude tells you whether sun exposure is a plausible year-round strategy or
+      a summer-only one.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The 37° rule of thumb</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Below 37° latitude (north or south), synthesising UVB reaches the ground every
+      day of the year. Between 37° and 55°, UVB is present for 6–9 months per year;
+      "vitamin D winter" runs from roughly November through March. Above 55°, UVB is
+      seasonal to strongly seasonal; above 66° (Arctic/Antarctic Circle), months of
+      polar night eliminate UVB entirely.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Sample cities and their vitamin D winter length</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Singapore (1° N):</strong> 0 months. Year-round synthesis.</li>
+      <li><strong>Bogota, Nairobi, Quito (near equator):</strong> 0 months.</li>
+      <li><strong>Miami (26° N):</strong> 0 months. Year-round.</li>
+      <li><strong>Cairo, Delhi (~30° N):</strong> minimal winter, brief.</li>
+      <li><strong>Los Angeles (34° N):</strong> ~1 month deep-winter reduction.</li>
+      <li><strong>Atlanta, Phoenix (~33° N):</strong> minimal, mostly year-round.</li>
+      <li><strong>Rome, Beijing, Nashville (~40° N):</strong> ~3 months (Nov–Jan) synthesis limited.</li>
+      <li><strong>New York, Madrid (~40–41° N):</strong> ~3–4 months.</li>
+      <li><strong>Boston, Chicago, Rome (~42° N):</strong> ~4 months (Nov–Feb).</li>
+      <li><strong>Seattle, Paris (~47–48° N):</strong> ~5 months (Oct–Feb).</li>
+      <li><strong>London, Berlin, Vancouver (~51–52° N):</strong> ~5–6 months (Oct–Mar).</li>
+      <li><strong>Edinburgh, Copenhagen, Moscow (~55–56° N):</strong> ~6 months (Oct–Mar).</li>
+      <li><strong>Oslo, Stockholm, Anchorage (~59–61° N):</strong> ~6–7 months.</li>
+      <li><strong>Reykjavik (64° N):</strong> ~7 months.</li>
+      <li><strong>Tromsø, Fairbanks (~65–69° N):</strong> polar night (no sun) in December.</li>
+      <li><strong>Barrow, AK (71° N):</strong> polar night late Nov–late Jan; polar day May–early Aug.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Polar day — midnight sun</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Above the Arctic and Antarctic Circles, mid-summer produces continuous sun for
+      weeks — the sun never sets. UVB is present around the clock during these periods,
+      but sun angle is low even at "midday," which limits per-hour synthesis. Total
+      accumulated UVB over 24-hour days can still be substantial.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Polar night</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The reverse: months of no sunrise. Vitamin D synthesis is zero. Supplementation
+      is mandatory. Traditional Arctic diets included generous seal, whale, and fish
+      liver — natural cholecalciferol sources. Modern indigenous and non-indigenous
+      Arctic populations without traditional diet or supplementation show near-universal
+      severe deficiency in winter.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Altitude</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Higher altitude means thinner atmosphere and more UVB reaching skin. Every 300 m
+      (1,000 ft) increase adds ~4% UVB intensity. Denver (1,600 m) gets meaningfully more
+      UVB than coastal cities at the same latitude. Populations at very high altitude
+      (Andean, Tibetan, Ethiopian highland) generally have better vitamin D status
+      than coastal counterparts at the same latitude — but sunburn risk is also higher.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Ozone and atmospheric variables</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Ozone absorbs UVB. Ozone layer thickness varies seasonally and with latitude. The
+      historical ozone hole over Antarctica temporarily raised ground-level UVB in the
+      Southern Hemisphere. Air pollution — particulate matter, aerosols — also
+      absorbs UVB; historically bad air pollution episodes (London smog, Beijing haze)
+      reduce vitamin D synthesis.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide by latitude</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Below 30°</strong> — sun-derived vitamin D year-round; supplementation optional if you're outside regularly.</li>
+      <li><strong>30–37°</strong> — mostly year-round; consider supplementation Dec–Jan for indoor workers.</li>
+      <li><strong>37–45°</strong> — supplement Nov–Mar (5 months) if not getting deliberate summer sun.</li>
+      <li><strong>45–55°</strong> — year-round supplementation reasonable; deliberate summer sun useful but not sufficient.</li>
+      <li><strong>Above 55°</strong> — year-round supplementation mandatory for most; even summer sun may need supplementation.</li>
+      <li><strong>Above 60°</strong> — supplementation is the primary strategy; winter polar night makes sun impossible.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Use our
+      <a href="/" class="text-amber-700 underline">calculator</a> for your specific
+      latitude to see monthly UVB availability and estimated vitamin D from sun exposure.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-by-latitude" />
+  </main>
+</BaseLayout>

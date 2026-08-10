@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-time-of-day`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Time of Day',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Time of Day', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Time of Day: Why Noon Sun Makes Vitamin D and Evening Sun Doesn't"
+  description="Why UVB availability is compressed around solar noon, when to actually go outside for vitamin D, and why early-morning and late-afternoon sun is nearly pure UVA."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-time-of-day", label: "Vitamin D & Time of Day" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Time of Day</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      The sun's height above the horizon (solar zenith angle) controls how much UVB
+      reaches the ground. At sunrise and sunset the sun is low, UVB traverses more
+      atmosphere, and gets absorbed almost entirely. At solar noon, UVB peaks. The
+      window where meaningful vitamin D synthesis occurs is much narrower than the
+      total daylight window.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The 35° rule</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      The sun needs to be at least ~35° above the horizon for usable UVB to reach the
+      ground. Below that angle, the atmospheric path length filters out virtually all
+      UVB while transmitting UVA (which tans but doesn't make vitamin D). This is why
+      sunrise and sunset feel gentle — they are. And why morning coffee in the sun
+      makes no vitamin D.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Solar noon hits differently by latitude and season</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Equator (0°) at any equinox</strong> — sun straight overhead at noon (90°).</li>
+      <li><strong>40° N in summer solstice</strong> — 73° at noon; strong UVB from about 10 AM to 3 PM.</li>
+      <li><strong>40° N in winter solstice</strong> — 27° at noon; sub-threshold; no meaningful UVB all day.</li>
+      <li><strong>60° N (Oslo) in summer</strong> — 53° at noon; usable UVB in a narrower window.</li>
+      <li><strong>60° N in winter</strong> — 7° at noon; effectively no UVB.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The vitamin D window</h2>
+    <p class="text-gray-700 leading-relaxed">
+      At temperate latitudes in summer, the vitamin-D-synthesising window is roughly
+      10 AM to 3 PM (some conservative sources say 11 AM–1 PM). At the winter solstice
+      above 40°, the window is closed entirely. In spring and autumn, it opens for
+      1–3 hours around noon in temperate zones. Adjust your outdoor time accordingly if
+      you're relying on sun for any of your vitamin D.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Morning walks and evening jogs</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Great for cardiovascular fitness, mood, and circadian entrainment (early morning
+      light regulates the biological clock). Not effective for vitamin D synthesis.
+      If you exercise outdoors early or late, you still need to supplement or get
+      midday sun for vitamin D.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Daylight saving time confusion</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Solar noon (when the sun is highest) is when it's highest — not necessarily 12:00
+      PM on the clock. During Daylight Saving Time, solar noon in most US locations
+      falls around 1:00 PM. When people say "midday," they usually mean solar noon
+      ± 1–2 hours. Check a solar-position app if you want to be precise.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Shadow rule of thumb</h2>
+    <p class="text-gray-700 leading-relaxed">
+      If your shadow is shorter than your height, you're in usable UVB territory. If
+      your shadow is longer than your height, the sun angle is too low for meaningful
+      vitamin D synthesis. A crude but functional field guide.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical timing</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Aim for outdoor time between 11 AM and 2 PM in summer for vitamin D.</li>
+      <li>Fair skin: 5–15 minutes of face and arms is often enough. Stop before pinkening.</li>
+      <li>Darker skin: 20–45 minutes may be needed for equivalent synthesis.</li>
+      <li>Winter above 40°: don't rely on any time-of-day; supplement.</li>
+      <li>See our <a href="/best-time-of-day-for-vitamin-d" class="text-amber-700 underline">best time of day page</a> for the sun-vs-supplement timing question.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Use our
+      <a href="/" class="text-amber-700 underline">calculator</a> for your location and
+      season to see when UVB is actually available.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-time-of-day" />
+  </main>
+</BaseLayout>

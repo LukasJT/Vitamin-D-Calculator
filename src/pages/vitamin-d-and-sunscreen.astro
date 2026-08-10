@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-sunscreen`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Sunscreen',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Sunscreen', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Sunscreen: Does SPF 30 Cause Vitamin D Deficiency?"
+  description="What the research actually shows about sunscreen use and vitamin D — real-world application patterns, laboratory vs field studies, and why sunscreen fear is overblown."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-sunscreen", label: "Vitamin D & Sunscreen" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Sunscreen</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      "Sunscreen causes vitamin D deficiency" is a claim you'll see repeated in
+      pop-health articles and in supplement marketing. It's largely wrong. Real-world
+      sunscreen use does not appreciably reduce vitamin D status in population studies,
+      and the trade-off between skin cancer protection and vitamin D synthesis has been
+      carefully studied. Here's what the evidence actually says.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The laboratory finding</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      In vitro and controlled skin-cell studies show SPF 15+ sunscreen, applied at the
+      recommended 2 mg/cm² density, blocks 93–99% of UVB — and therefore should block
+      most vitamin D synthesis. This is the source of the deficiency concern. If people
+      applied sunscreen the way testing labs do, it would substantially reduce
+      synthesis.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The real-world finding</h2>
+    <p class="text-gray-700 leading-relaxed">
+      People don't apply sunscreen at test-lab density. Population studies (Marks 1995,
+      Farrerons 2001, and others) find real-world sunscreen users typically apply
+      25–50% of the recommended amount, re-apply inconsistently, and miss areas
+      entirely. Actual UVB reaching skin is often 50–70% of unprotected level. Vitamin
+      D synthesis proceeds nearly normally at real-world densities.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Population data</h2>
+    <p class="text-gray-700 leading-relaxed">
+      NHANES and other large cross-sectional studies find no meaningful association
+      between reported sunscreen use frequency and serum 25(OH)D. If anything, regular
+      sunscreen users have similar or slightly higher 25(OH)D — they may spend more
+      time outdoors than sunscreen avoiders. Australian studies (in a heavily
+      sun-protected population) similarly do not show sunscreen-attributable
+      deficiency.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Public health messaging</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The Skin Cancer Foundation, American Academy of Dermatology, and Cancer Council
+      Australia all conclude that sunscreen use does not cause vitamin D deficiency
+      and should continue to be recommended for skin cancer prevention. Vitamin D
+      supplementation, when needed, is the appropriate alternative to reducing sun
+      protection.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Where the debate actually matters</h2>
+    <p class="text-gray-700 leading-relaxed">
+      For most fair-skinned adults with normal outdoor time: sunscreen doesn't affect
+      vitamin D meaningfully. For darker-skinned adults, elderly homebound adults, and
+      people who genuinely apply sunscreen densely to all exposed skin every time they
+      go outside, some UVB blocking may compound with other deficiency risks. The
+      answer is the same: supplement. Don't stop wearing sunscreen.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mineral vs chemical sunscreens</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Zinc oxide and titanium dioxide (mineral sunscreens) are physical UV blockers.
+      Chemical sunscreens (avobenzone, oxybenzone, octinoxate, etc.) absorb UV
+      chemically. From a vitamin D standpoint, both classes reduce UVB when applied
+      properly and reduce it similarly at real-world densities. Choice between them is
+      largely about skin sensitivity, reef safety (mineral generally preferred), and
+      cosmetic preference — not vitamin D.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical takeaway</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Wear sunscreen for skin cancer prevention. This is evidence-based and important.</li>
+      <li>Do not use vitamin D as an excuse to skip sunscreen or to seek sunburn.</li>
+      <li>If you need vitamin D and don't want to increase sun exposure, supplement — it's cheaper, safer, and more reliable.</li>
+      <li>See our <a href="/vitamin-d-and-sun-safety" class="text-amber-700 underline">sun safety page</a> for a full discussion of the trade-off.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> If you have a personal or family history of
+      melanoma, sun protection is non-negotiable; get vitamin D from supplements.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-sunscreen" />
+  </main>
+</BaseLayout>

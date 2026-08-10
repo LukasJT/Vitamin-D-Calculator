@@ -120,6 +120,16 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-gestational-diabetes', title: 'Vitamin D and Gestational Diabetes', description: 'Deficiency association, DALI trial, dosing during pregnancy, and postpartum T2D risk.', date: '2026-08-18' },
   { slug: '/vitamin-d-for-infants', title: 'Vitamin D for Infants', description: 'AAP 400 IU recommendation, breastfed vs formula-fed, rickets prevention, and the maternal 6,400 IU alternative.', date: '2026-08-18' },
   { slug: '/vitamin-d-and-preterm-birth', title: 'Vitamin D and Preterm Birth', description: 'Maternal 25(OH)D and preterm risk, RCT evidence, preterm-infant dosing and metabolic bone disease.', date: '2026-08-18' },
+  { slug: '/vitamin-d-by-month', title: 'Vitamin D by Month of the Year', description: 'A month-by-month walk through the Northern Hemisphere UVB cycle from Jan nadir to Jun peak, with dosing.', date: '2026-08-19' },
+  { slug: '/vitamin-d-and-cloud-cover', title: 'Vitamin D and Cloud Cover', description: 'How thin cirrus, thick stratocumulus, wildfire smoke and marine fog change ground-level UVB.', date: '2026-08-19' },
+  { slug: '/vitamin-d-and-clothing', title: 'Vitamin D and What You Wear', description: 'Body surface area exposed, UPF fabric ratings, cultural dress, and dosing for high-coverage patterns.', date: '2026-08-19' },
+  { slug: '/vitamin-d-by-latitude', title: 'Vitamin D by Latitude', description: 'The 37° UVB rule, months of vitamin D winter by city from Miami to Reykjavik, polar day and night.', date: '2026-08-19' },
+  { slug: '/vitamin-d-and-climate', title: 'Vitamin D and Climate', description: 'Beyond latitude — Mediterranean, temperate, tropical, oceanic, desert, monsoon, polar climate impacts.', date: '2026-08-19' },
+  { slug: '/vitamin-d-and-windows', title: 'Vitamin D Through a Window', description: 'Standard glass blocks ~99% of UVB — the office and car window vitamin D reality check.', date: '2026-08-19' },
+  { slug: '/vitamin-d-and-sunscreen', title: 'Vitamin D and Sunscreen', description: 'Does SPF 30 cause deficiency? What real-world sunscreen use actually does to serum 25(OH)D.', date: '2026-08-19' },
+  { slug: '/vitamin-d-and-air-pollution', title: 'Vitamin D and Air Pollution', description: 'How particulate haze, wildfire smoke, ozone and volcanic dust reduce UVB reaching the ground.', date: '2026-08-19' },
+  { slug: '/vitamin-d-and-altitude', title: 'Vitamin D and Altitude', description: 'The 4%-per-300m UVB gain, snow reflectance nearly doubling exposure, and mountain sunburn hazard.', date: '2026-08-19' },
+  { slug: '/vitamin-d-and-time-of-day', title: 'Vitamin D and Time of Day', description: "Why noon sun makes vitamin D and morning/evening sun doesn't — the shadow rule and 35° threshold.", date: '2026-08-19' },
 ];
 
 export const GET: APIRoute = async () => {

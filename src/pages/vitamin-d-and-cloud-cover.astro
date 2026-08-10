@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-cloud-cover`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Cloud Cover',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Cloud Cover', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Cloud Cover: How Overcast Skies Block UVB (and How Much)"
+  description="How different cloud types affect UVB transmission — thin cirrus lets 90% through, thick stratocumulus blocks 90%. Practical UVB availability on cloudy days."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-cloud-cover", label: "Vitamin D & Cloud Cover" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Cloud Cover</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Not all clouds are equal. UVB transmission through the atmosphere varies from
+      near-total (thin cirrus) to almost zero (thick storm clouds) depending on optical
+      depth. On a cloudy day, you can be making almost as much vitamin D as a clear day —
+      or almost none.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The transmission spectrum</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Clear sky</strong> — 100% UVB reference.</li>
+      <li><strong>Thin cirrus (high wispy)</strong> — 85–95% UVB transmission. Barely affects synthesis.</li>
+      <li><strong>Broken cumulus (scattered puffy)</strong> — 60–90% average, with intermittent full sun. Beach cloudiness — actual UV exposure often surprisingly high because scattering from cloud edges augments direct beam.</li>
+      <li><strong>Overcast altostratus (grey uniform)</strong> — 30–50% transmission. Reduced but not zero.</li>
+      <li><strong>Thick stratocumulus / marine layer</strong> — 10–30% transmission. Substantially reduced.</li>
+      <li><strong>Storm clouds / thick cumulonimbus</strong> — 0–20% transmission. Effectively zero synthesis.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">"But I still got sunburned on a cloudy day"</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Common experience because broken clouds actually enhance UVB via edge scattering
+      — the "cloud enhancement effect." Recorded values 25% above clear-sky at cloud
+      edges. This is why sunscreen is still recommended on partly cloudy days. It also
+      means partly cloudy days at midday in summer can still deliver plenty of UVB for
+      vitamin D synthesis.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Consistently cloudy climates</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Chronic cloud cover compounds latitude in producing regional vitamin D deficiency.
+      The Pacific Northwest (Seattle, Portland), UK, Ireland, coastal Norway, and
+      Newfoundland all combine high latitude with high mean cloud cover. Deficiency
+      rates in these regions exceed comparable-latitude sunny climates. Continuous
+      year-round supplementation is standard advice for adults in cloud-heavy temperate
+      zones.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Fog vs cloud</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Ground-level fog behaves like a very low cloud — UVB transmission through thick
+      fog is ~10–30%. Marine layer fog (common in coastal California) that burns off by
+      noon has minimal impact on daily UVB budget. Persistent all-day fog reduces
+      synthesis substantially.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Wildfire smoke and aerosol haze</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Increasing concern in the western US and Australia. Heavy wildfire smoke can
+      reduce UVB by 30–80% during severe events. Combined with air quality reasons to
+      stay indoors, wildfire seasons dramatically reduce vitamin D synthesis in
+      affected regions. Supplementation becomes essential during multi-week smoke events.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The reflectance surprise — snow doubles UVB</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Fresh snow reflects 80–90% of incident UVB (vs 4% for grass). Winter mountain
+      conditions with clear sky and snow cover can nearly double effective UVB dose.
+      This is why ski goggles and lip balm matter even on cold, "safe-feeling" days —
+      and it's a small vitamin D silver lining for winter mountain populations.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Water reflectance</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Sand reflects ~25% UVB, water ~10%, concrete ~10%, grass ~3%. Beach environments
+      thus receive both direct and reflected UVB — reinforcing the vitamin D-synthesis
+      case for spending time by the sea, and the sunburn-risk case for the same.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Cloudy but bright — assume 40–60% UVB, roughly 1.5–2× the exposure time for equivalent synthesis.</li>
+      <li>Grey overcast — assume 20–40% UVB, 2.5–5× exposure time.</li>
+      <li>Storm dark — assume &lt; 10%; don't count on synthesis.</li>
+      <li>Consistently cloudy climate — supplement year-round; don't wait for weather.</li>
+      <li>Use our <a href="/" class="text-amber-700 underline">calculator</a> — it doesn't model cloud cover directly, but assume clear-sky output and reduce accordingly.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> UV Index apps (Weather.com, EPA SunWise,
+      dedicated UV apps) report real-time UVB and are more useful than trying to
+      eyeball cloud cover.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-cloud-cover" />
+  </main>
+</BaseLayout>

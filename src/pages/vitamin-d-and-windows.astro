@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-windows`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Windows',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Windows', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D Through a Window: Why Standard Glass Blocks UVB (Almost Entirely)"
+  description="Standard window glass blocks ~99% of UVB — sun through a window makes no vitamin D. Car windows, greenhouses, tinted glass, and the office worker's dilemma."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-windows", label: "Vitamin D & Windows" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D Through a Window</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Sunlight streaming through a window feels warm and looks bright — but it doesn't
+      make vitamin D. Standard soda-lime silica glass blocks essentially all of the UVB
+      wavelengths (290–315 nm) required for cholecalciferol synthesis, while
+      transmitting most of the visible light and much of the UVA. This has real
+      consequences for office workers, greenhouse dwellers, and people who spend most
+      of their "sun time" behind glass.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The transmission physics</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Standard window glass</strong> — transmits 0–5% of UVB (280–315 nm). Effectively total block.</li>
+      <li><strong>UVA (315–400 nm)</strong> — transmits 60–70% through standard glass. Sunburns and tanning through windows can occur; skin cancer damage accumulates.</li>
+      <li><strong>Visible light (400–700 nm)</strong> — 80–90% transmission.</li>
+      <li><strong>Infrared / heat</strong> — mostly transmitted, hence the greenhouse effect inside cars.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Car windows</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Modern car windshields are laminated glass — an inner plastic layer blocks nearly
+      all UV including UVA. Side and rear windows are usually tempered glass and
+      transmit UVA (people can tan through them; skin damage from cumulative side-window
+      exposure is a real dermatology finding in long-distance drivers). Neither
+      transmits UVB in usable quantity. Driving does not make vitamin D.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Office workers behind glass all day</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The classic vitamin D deficiency scenario. Even a sunny corner office with
+      floor-to-ceiling windows produces essentially zero vitamin D. Cross-sectional
+      studies of office workers in sunny cities (San Francisco, Sydney, Athens) find
+      surprisingly high winter deficiency rates because the "outdoor time" people
+      report is often behind glass — car, office, home.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Greenhouses and conservatories</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Same principle. Standard greenhouse glass blocks UVB. Older greenhouses used
+      quartz glass panels that transmitted some UVB, useful for horticulture. Modern
+      polycarbonate greenhouse panels are opaque to UVB. Sitting in a sun room is not
+      a vitamin D strategy.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">UVB-transmitting glass — the exception</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Special quartz or specific fused-silica glass transmits UVB. Used in laboratory
+      equipment, some phototherapy lamps, and (historically) certain reptile
+      enclosures. Not used in residential or commercial windows because of cost and
+      because most people don't want UVB in their homes.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Low-E coatings and tinted glass</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Modern energy-efficient windows have low-emissivity (Low-E) coatings that
+      further reduce UV transmission, including some UVA. Tinted or reflective
+      commercial glass blocks even more. From a vitamin D perspective, the difference
+      is academic — none of them let usable UVB through.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The bright-day-indoors trap</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cognitive point: sunlight looks the same to your eyes whether you're indoors or
+      outdoors. This creates the illusion that a sunny day at your desk is "getting some
+      sun." It isn't — from a vitamin D perspective. Skin needs direct outdoor
+      exposure to UVB for cholecalciferol production, and no amount of bright indoor
+      light substitutes.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical takeaway</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>If most of your daytime is behind glass, you need vitamin D supplementation year-round regardless of your climate.</li>
+      <li>Adults spending 8+ hours indoors most days: standard 1,000–2,000 IU/day cholecalciferol.</li>
+      <li>Take breaks outside — even 15 minutes at lunch several times a week meaningfully affects summer vitamin D synthesis. It's also good for eyes, mood, and circadian rhythm.</li>
+      <li>Don't try to solve indoor lifestyle with a UV lamp — see our <a href="/uv-lamps-for-vitamin-d" class="text-amber-700 underline">UV lamps page</a>; supplements are almost always the better answer.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Persistent fatigue, mood problems, or bone
+      pain in a chronic indoor worker warrants 25(OH)D testing rather than assuming
+      "I get enough sun through the window."
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-windows" />
+  </main>
+</BaseLayout>

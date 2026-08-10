@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-air-pollution`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Air Pollution',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Air Pollution', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Air Pollution: How Urban Haze and Wildfire Smoke Reduce UVB"
+  description="How particulate air pollution, ozone, and wildfire smoke reduce ground-level UVB — evidence from Delhi, Beijing, and California smoke events; supplementation implications."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-air-pollution", label: "Vitamin D & Air Pollution" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Air Pollution</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Air pollution reduces UVB reaching the ground — particulate matter scatters and
+      absorbs UV, and increased ozone at ground level absorbs UVB specifically. Adults
+      living in heavily polluted cities have lower serum 25(OH)D than adults in cleaner
+      cities at the same latitude. Wildfire smoke events can produce dramatic
+      short-term reductions.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">How pollution blocks UVB</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Particulate matter (PM2.5, PM10)</strong> — scatters and absorbs UV. Heavy pollution can reduce UVB by 20–50%.</li>
+      <li><strong>Tropospheric ozone (ground-level ozone)</strong> — direct UVB absorption. Not to be confused with the protective stratospheric ozone layer.</li>
+      <li><strong>Sulphur dioxide, nitrogen oxides</strong> — moderate UV absorption; more relevant in industrial pollution scenarios.</li>
+      <li><strong>Water vapour and aerosols</strong> — general UV scattering.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">City studies</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Delhi, India</strong> — despite being at latitude 28° N with abundant potential UVB, adult deficiency rates approach 90% in urban Delhi. Air pollution, dark skin, and modest outdoor time compound.</li>
+      <li><strong>Tehran, Iran</strong> — extremely high deficiency rates in a sunny climate; multi-year smog contributes.</li>
+      <li><strong>Beijing, China</strong> — measurable UVB reduction during severe smog episodes. Deficiency rates elevated compared to cleaner Chinese cities at similar latitude.</li>
+      <li><strong>Los Angeles, historical</strong> — 1960s–70s air pollution documented UVB reduction; improvements since have raised measurable UV.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Wildfire smoke</h2>
+    <p class="text-gray-700 leading-relaxed">
+      An increasing concern in the American West, Australia, and parts of the
+      Mediterranean. Heavy wildfire smoke can reduce ground-level UVB by 30–80%
+      during severe events lasting days to weeks. Combined with air quality guidance
+      to stay indoors, wildfire seasons produce a double vitamin D hit: less UVB in
+      the air and less time spent outside. Supplementation becomes essential during
+      multi-week smoke events.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Volcanic and Saharan dust</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Saharan dust events reach the Canary Islands, southern Europe, and even the
+      Caribbean and southern US. Volcanic ash from major eruptions (Pinatubo 1991,
+      Eyjafjallajökull 2010) can reduce global UVB for weeks to years — Pinatubo
+      measurably lowered global surface UV for ~2 years. Rare events; supplement is
+      the answer when they occur.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Historical: London smog</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Coal-burning London in the 19th and early 20th centuries produced pea-soup fogs
+      thick enough to reduce ground-level UV to near zero for days. Endemic childhood
+      rickets in industrial northern cities — Glasgow, Manchester, Liverpool — is
+      directly attributable to this combination of high latitude + severe pollution
+      + poor diet. Clean Air Acts and cod liver oil largely solved the problem.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Living in a chronically polluted city: assume 20–30% UVB reduction; supplement year-round.</li>
+      <li>During wildfire smoke or extreme pollution events: increase supplementation, follow air quality guidance for time outdoors.</li>
+      <li>Use AQI apps — when air is unhealthy, don't try to "get sun" as a compensation strategy.</li>
+      <li>Air quality improvements matter for many reasons; vitamin D synthesis is a small one among big benefits.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Cardiovascular and respiratory health
+      concerns from air pollution far exceed the vitamin D issue — supplementation
+      handles the vitamin D question cheaply.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-air-pollution" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-altitude`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Altitude',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Altitude', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Altitude: Higher Elevation, More UVB, and the Snow Reflection Effect"
+  description="Why UVB increases roughly 4% per 300 m of altitude, snow reflection nearly doubling exposure, mountain populations, and altitude sunburn hazard."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-altitude", label: "Vitamin D & Altitude" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Altitude</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Higher altitude means less atmosphere for UVB to travel through, so more of it
+      reaches the skin. The rule of thumb: roughly 4% more UVB per 300 m (1,000 ft)
+      of elevation gain. Combined with high snow-reflectance in mountain environments,
+      altitude produces surprisingly high effective UV doses — a boon for vitamin D
+      synthesis, and a hazard for sunburn and skin cancer.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The atmospheric thinning effect</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Sea level: 100% UVB reference.</li>
+      <li>500 m (1,650 ft): ~107%.</li>
+      <li>1,000 m (3,300 ft): ~113%.</li>
+      <li>1,500 m (Denver, Bogota, Nairobi): ~120%.</li>
+      <li>2,500 m (Mexico City, Addis Ababa): ~130%.</li>
+      <li>3,500 m (La Paz, Lhasa): ~140%.</li>
+      <li>4,500 m (El Alto, Everest Base Camp): ~150%.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mountain snowfields double the dose</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Fresh snow reflects 80–90% of incident UVB (vs 4% for grass). Winter mountain
+      exposure combines high-altitude reference intensity with high reflectance —
+      effective UV dose can exceed 180% of sea-level equivalent. Ski goggles, high-SPF
+      lip balm, and face sunscreen are not paranoia; snow blindness (photokeratitis) and
+      severe sunburn are common in unprepared skiers.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Highland populations</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Andean, Tibetan, Ethiopian, and Bolivian highland populations show better vitamin
+      D status on average than coastal populations at the same latitude. Adaptation:
+      more compact stature, higher haemoglobin, and — relevant here — habitual
+      accommodation to higher UV exposure. Skin cancer rates in Andean highland
+      populations are higher than in coastal Peru at the same latitude.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">High-altitude cities</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Denver (1,600 m, 39.7° N) has notably higher measured UV than lower cities at
+      the same latitude. Mexico City (2,240 m, 19° N) receives intense UV year-round.
+      Addis Ababa (2,355 m, 9° N) is one of the highest-UV capital cities in the
+      world. La Paz, Bolivia (3,640 m, 16° S) is even higher. Vitamin D deficiency in
+      these populations, when it occurs, is more about indoor lifestyles or dark skin
+      + limited exposure than atmospheric limitation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical implications</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Living at meaningful altitude (&gt; 1,000 m): expect better vitamin D synthesis than sea-level counterparts. Sun exposure needs may be 15–30% shorter.</li>
+      <li>Mountain recreation (skiing, hiking above tree line): sunscreen is mandatory; sunburn and skin cancer risk climbs.</li>
+      <li>Occasional visitors to high altitude: use SPF 30+, sunglasses, wide-brim hat; expect faster sunburn than at home.</li>
+      <li>Chronic mountain residents still need supplementation in winter — altitude helps but doesn't solve the sun-angle problem at high latitudes.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Aviation and vitamin D</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Airplane cockpit windows transmit substantial UVA (not UVB — see our
+      <a href="/vitamin-d-and-windows" class="text-amber-700 underline">windows page</a>).
+      Airline pilots and frequent flyers have documented elevated melanoma risk from
+      chronic UVA exposure at altitude. This is not a vitamin D story — pilots do not
+      make useful vitamin D during flight — but the sun-safety angle matters.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> UV intensity climbs faster with altitude
+      than most people expect. Even on cold days at altitude, you can burn quickly.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-altitude" />
+  </main>
+</BaseLayout>
