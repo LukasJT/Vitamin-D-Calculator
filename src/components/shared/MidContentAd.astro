@@ -1,0 +1,37 @@
+---
+/**
+ * Reusable mid-content Adsterra banner — drops the responsive
+ * 320x50 / 468x60 pair inline in the article body. Placed after the
+ * first big section on long-form pages, well above the fold for scrolled
+ * readers.
+ *
+ * Uses the same iframe zone keys as the top/bottom banners; Adsterra
+ * serves different creatives per impression.
+ */
+---
+<div class="my-8 flex justify-center">
+  <div class="adsterra-mobile" style="width:320px;height:50px;">
+    <script is:inline>
+      atOptions = {
+        'key' : 'a24ed02f036c8072b93659a97fc59f02',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script is:inline src="https://www.highperformanceformat.com/a24ed02f036c8072b93659a97fc59f02/invoke.js"></script>
+  </div>
+  <div class="adsterra-desktop" style="width:468px;height:60px;max-width:100%;">
+    <script is:inline>
+      atOptions = {
+        'key' : 'c1ae2784baad856c72f3ba1d209deeac',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script is:inline src="https://www.highperformanceformat.com/c1ae2784baad856c72f3ba1d209deeac/invoke.js"></script>
+  </div>
+</div>

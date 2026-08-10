@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
 import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
 import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
@@ -32,7 +33,7 @@ const breadcrumbJsonLd = {
 
 <BaseLayout
   title="Vitamin D and Osteoporosis: Bone Density, Fractures & Supplementation"
-  description="How vitamin D affects osteoporosis risk, fracture prevention, and bone mineral density â€” evidence-based dosing with calcium, plus what the largest randomised trials actually show."
+  description="How vitamin D affects osteoporosis risk, fracture prevention, and bone mineral density Ã¢â‚¬â€ evidence-based dosing with calcium, plus what the largest randomised trials actually show."
   ogType="article"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
@@ -47,30 +48,31 @@ const breadcrumbJsonLd = {
     <p class="text-lg text-gray-600 leading-relaxed mb-8">
       Vitamin D is inseparable from bone health. Its active hormonal form, 1,25-dihydroxyvitamin&nbsp;D
       (calcitriol), drives intestinal calcium absorption, and low serum 25(OH)D triggers a compensatory
-      rise in parathyroid hormone (PTH) that accelerates bone resorption â€” the classic pathway to
+      rise in parathyroid hormone (PTH) that accelerates bone resorption Ã¢â‚¬â€ the classic pathway to
       osteoporosis and fragility fractures.
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mb-3">The mechanism in three steps</h2>
+    <MidContentAd />
     <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
-      <li><strong>Calcium absorption.</strong> Calcitriol upregulates calbindin, TRPV6, and PMCA1b â€” the intestinal proteins that move dietary calcium into the bloodstream. Without adequate 25(OH)D, only ~10â€“15% of dietary calcium is absorbed, versus 30â€“40% in sufficiency.</li>
+      <li><strong>Calcium absorption.</strong> Calcitriol upregulates calbindin, TRPV6, and PMCA1b Ã¢â‚¬â€ the intestinal proteins that move dietary calcium into the bloodstream. Without adequate 25(OH)D, only ~10Ã¢â‚¬â€œ15% of dietary calcium is absorbed, versus 30Ã¢â‚¬â€œ40% in sufficiency.</li>
       <li><strong>PTH regulation.</strong> When serum ionised calcium falls, the parathyroid glands secrete PTH, which mobilises calcium from bone. Chronic vitamin D insufficiency causes <em>secondary hyperparathyroidism</em>, a sustained low-grade drain on bone.</li>
-      <li><strong>Osteoblast/osteoclast balance.</strong> Vitamin D also acts directly on bone cells â€” supporting osteoblast maturation and modulating osteoclast activity to maintain the mineralised matrix.</li>
+      <li><strong>Osteoblast/osteoclast balance.</strong> Vitamin D also acts directly on bone cells Ã¢â‚¬â€ supporting osteoblast maturation and modulating osteoclast activity to maintain the mineralised matrix.</li>
     </ol>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What the trials show</h2>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-3">
       <li>
-        <strong>Hip fracture prevention.</strong> Meta-analyses of trials in adults â‰¥65 show ~15% reduction in hip fracture risk with â‰¥800 IU/day cholecalciferol <em>plus</em> calcium 1,000â€“1,200 mg/day (Bischoff-Ferrari 2012). Vitamin D alone shows smaller effects; the combination is what carries the evidence.
+        <strong>Hip fracture prevention.</strong> Meta-analyses of trials in adults Ã¢â€°Â¥65 show ~15% reduction in hip fracture risk with Ã¢â€°Â¥800 IU/day cholecalciferol <em>plus</em> calcium 1,000Ã¢â‚¬â€œ1,200 mg/day (Bischoff-Ferrari 2012). Vitamin D alone shows smaller effects; the combination is what carries the evidence.
       </li>
       <li>
-        <strong>Non-vertebral fractures.</strong> Same combination: ~14% reduction. Lower doses (400 IU/day) are consistently ineffective â€” dose matters.
+        <strong>Non-vertebral fractures.</strong> Same combination: ~14% reduction. Lower doses (400 IU/day) are consistently ineffective Ã¢â‚¬â€ dose matters.
       </li>
       <li>
-        <strong>Bone mineral density (BMD).</strong> Effects on DXA are modest but real. Correcting deficiency in older adults typically adds 1â€“2% BMD at the femoral neck over 2 years.
+        <strong>Bone mineral density (BMD).</strong> Effects on DXA are modest but real. Correcting deficiency in older adults typically adds 1Ã¢â‚¬â€œ2% BMD at the femoral neck over 2 years.
       </li>
       <li>
-        <strong>Falls prevention.</strong> Daily 700â€“1,000 IU cholecalciferol reduces fall risk by ~19% in adults â‰¥65, mediated by better lower-limb strength and postural control.
+        <strong>Falls prevention.</strong> Daily 700Ã¢â‚¬â€œ1,000 IU cholecalciferol reduces fall risk by ~19% in adults Ã¢â€°Â¥65, mediated by better lower-limb strength and postural control.
       </li>
     </ul>
 
@@ -79,9 +81,9 @@ const breadcrumbJsonLd = {
       For osteoporosis prevention or as adjunct to bisphosphonate/denosumab therapy, current consensus is:
     </p>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
-      <li>Serum 25(OH)D target: <strong>â‰¥ 30 ng/mL (75 nmol/L)</strong>.</li>
-      <li>Cholecalciferol 800â€“2,000 IU/day (adjust based on 25(OH)D level and body weight; heavier individuals need more).</li>
-      <li>Dietary calcium 1,000 mg/day (women â‰¤ 50 and men â‰¤ 70) or 1,200 mg/day (older). Supplements only to fill gaps; get calcium from food when possible.</li>
+      <li>Serum 25(OH)D target: <strong>Ã¢â€°Â¥ 30 ng/mL (75 nmol/L)</strong>.</li>
+      <li>Cholecalciferol 800Ã¢â‚¬â€œ2,000 IU/day (adjust based on 25(OH)D level and body weight; heavier individuals need more).</li>
+      <li>Dietary calcium 1,000 mg/day (women Ã¢â€°Â¤ 50 and men Ã¢â€°Â¤ 70) or 1,200 mg/day (older). Supplements only to fill gaps; get calcium from food when possible.</li>
       <li>Retest 25(OH)D at 3 months to confirm target level is reached.</li>
       <li>Address other bone-loss drivers: smoking, excessive alcohol, low body weight, sarcopenia, chronic glucocorticoid use.</li>
     </ul>
@@ -89,9 +91,9 @@ const breadcrumbJsonLd = {
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Special situations</h2>
     <p class="text-gray-700 leading-relaxed">
       Post-bariatric-surgery patients, celiac disease, and inflammatory bowel disease all reduce vitamin D
-      absorption and typically require higher doses (2,000â€“5,000 IU/day). Glucocorticoid users need
+      absorption and typically require higher doses (2,000Ã¢â‚¬â€œ5,000 IU/day). Glucocorticoid users need
       supplementation to counter accelerated 25(OH)D catabolism and independent bone-loss effects.
-      Chronic kidney disease impairs the final activation step (1Î±-hydroxylation) â€” these patients
+      Chronic kidney disease impairs the final activation step (1ÃŽÂ±-hydroxylation) Ã¢â‚¬â€ these patients
       often need activated vitamin D analogues (calcitriol, paricalcitol) rather than plain cholecalciferol.
     </p>
 

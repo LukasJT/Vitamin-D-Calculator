@@ -253,6 +253,11 @@ const webAppJsonLd = isHome ? {
               <li><a href="/magnesium" class="hover:text-white transition-colors">Magnesium</a></li>
               <li><a href="/iron" class="hover:text-white transition-colors">Iron</a></li>
               <li><a href="/zinc" class="hover:text-white transition-colors">Zinc</a></li>
+              <li><a href="/calcium" class="hover:text-white transition-colors">Calcium</a></li>
+              <li><a href="/omega-3" class="hover:text-white transition-colors">Omega-3 (EPA/DHA)</a></li>
+              <li><a href="/choline" class="hover:text-white transition-colors">Choline</a></li>
+              <li><a href="/vitamin-b6" class="hover:text-white transition-colors">Vitamin B6</a></li>
+              <li><a href="/vitamin-b1" class="hover:text-white transition-colors">Vitamin B1 (Thiamine)</a></li>
             </ul>
           </div>
           <div>
@@ -315,6 +320,53 @@ const webAppJsonLd = isHome ? {
       .adsterra-desktop { display: none; }
     }
   </style>
+
+  <!-- Adsterra mobile sticky bottom bar — 320x50, dismissable, mobile only -->
+  <div id="adsterra-sticky-mobile" class="adsterra-mobile" style="position:fixed;bottom:0;left:0;right:0;height:60px;background:#111;z-index:60;display:none;align-items:center;justify-content:center;box-shadow:0 -2px 10px rgba(0,0,0,0.3);padding:5px 0;">
+    <button id="adsterra-sticky-close" aria-label="Close ad" style="position:absolute;top:2px;right:6px;background:rgba(0,0,0,0.5);color:#fff;border:none;width:22px;height:22px;border-radius:50%;font-size:14px;line-height:22px;cursor:pointer;z-index:1;">&times;</button>
+    <div style="width:320px;height:50px;">
+      <script is:inline>
+        atOptions = {
+          'key' : 'a24ed02f036c8072b93659a97fc59f02',
+          'format' : 'iframe',
+          'height' : 50,
+          'width' : 320,
+          'params' : {}
+        };
+      </script>
+      <script is:inline src="https://www.highperformanceformat.com/a24ed02f036c8072b93659a97fc59f02/invoke.js"></script>
+    </div>
+  </div>
+  <style is:inline>
+    @media (max-width: 767px) {
+      #adsterra-sticky-mobile { display: flex !important; }
+      body { padding-bottom: 65px; }
+    }
+  </style>
+  <script is:inline>
+    (function() {
+      var STORAGE_KEY = 'adsterra-sticky-dismissed';
+      var el = document.getElementById('adsterra-sticky-mobile');
+      if (!el) return;
+      // Respect user's dismissal for 24 hours
+      try {
+        var dismissedAt = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+        if (Date.now() - dismissedAt < 24 * 60 * 60 * 1000) {
+          el.style.display = 'none';
+          document.body.style.paddingBottom = '';
+        }
+      } catch (e) {}
+      var btn = document.getElementById('adsterra-sticky-close');
+      if (btn) {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          el.style.display = 'none';
+          document.body.style.paddingBottom = '';
+          try { localStorage.setItem(STORAGE_KEY, String(Date.now())); } catch (e) {}
+        });
+      }
+    })();
+  </script>
   <!-- Adsterra 160x600 side skyscrapers (both sides, desktop only) -->
   <aside class="adsterra-skyscraper adsterra-skyscraper-left" aria-hidden="true">
     <script is:inline>

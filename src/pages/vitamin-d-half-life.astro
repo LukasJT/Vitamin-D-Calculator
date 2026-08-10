@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
 import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
 import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
@@ -11,9 +12,9 @@ const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'What is the half-life of vitamin D?', acceptedAnswer: { '@type': 'Answer', text: 'Cholecalciferol (vitamin D3) itself has a serum half-life of only ~24 hours because it is rapidly hydroxylated in the liver to 25(OH)D. The relevant clinical half-life is that of 25(OH)D: apparent single-dose half-life is 15â€“25 days (Jones 2008; Vieth 1999), but the effective terminal half-life extends to 60 days in lean adults and up to 80â€“90+ days in obese adults because cholecalciferol is slowly released from adipose tissue.' } },
-    { '@type': 'Question', name: 'How long does vitamin D stay in your system?', acceptedAnswer: { '@type': 'Answer', text: 'A single dose reaches ~63% decayed after one half-life, ~87% after two, and ~95% after three. With an effective terminal half-life of 60 days, it takes 6â€“9 months for a large dose to substantially clear. This is why a summer of good sun exposure can sustain adequate 25(OH)D through much of the following winter.' } },
-    { '@type': 'Question', name: 'How long does high-dose vitamin D last in the body?', acceptedAnswer: { '@type': 'Answer', text: 'A single 50,000 IU dose peaks in serum 25(OH)D at 1â€“3 weeks and remains detectable for months. In practice this is why weekly-and-forget dosing regimens (e.g., 50,000 IU weekly for 8 weeks) can push 25(OH)D from < 20 ng/mL to > 30 ng/mL and sustain it.' } },
+    { '@type': 'Question', name: 'What is the half-life of vitamin D?', acceptedAnswer: { '@type': 'Answer', text: 'Cholecalciferol (vitamin D3) itself has a serum half-life of only ~24 hours because it is rapidly hydroxylated in the liver to 25(OH)D. The relevant clinical half-life is that of 25(OH)D: apparent single-dose half-life is 15Ã¢â‚¬â€œ25 days (Jones 2008; Vieth 1999), but the effective terminal half-life extends to 60 days in lean adults and up to 80Ã¢â‚¬â€œ90+ days in obese adults because cholecalciferol is slowly released from adipose tissue.' } },
+    { '@type': 'Question', name: 'How long does vitamin D stay in your system?', acceptedAnswer: { '@type': 'Answer', text: 'A single dose reaches ~63% decayed after one half-life, ~87% after two, and ~95% after three. With an effective terminal half-life of 60 days, it takes 6Ã¢â‚¬â€œ9 months for a large dose to substantially clear. This is why a summer of good sun exposure can sustain adequate 25(OH)D through much of the following winter.' } },
+    { '@type': 'Question', name: 'How long does high-dose vitamin D last in the body?', acceptedAnswer: { '@type': 'Answer', text: 'A single 50,000 IU dose peaks in serum 25(OH)D at 1Ã¢â‚¬â€œ3 weeks and remains detectable for months. In practice this is why weekly-and-forget dosing regimens (e.g., 50,000 IU weekly for 8 weeks) can push 25(OH)D from < 20 ng/mL to > 30 ng/mL and sustain it.' } },
   ],
 };
 const medicalJsonLd = {
@@ -35,7 +36,7 @@ const breadcrumbJsonLd = {
 
 <BaseLayout
   title="Vitamin D Half-Life: How Long Does It Stay in Your Body?"
-  description="Vitamin D pharmacokinetics â€” cholecalciferol vs 25(OH)D half-life, effective terminal half-life, adipose sequestration, and why body composition matters."
+  description="Vitamin D pharmacokinetics Ã¢â‚¬â€ cholecalciferol vs 25(OH)D half-life, effective terminal half-life, adipose sequestration, and why body composition matters."
   ogType="article"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
@@ -50,7 +51,7 @@ const breadcrumbJsonLd = {
     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D Half-Life Explained</h1>
     <p class="text-lg text-gray-600 leading-relaxed mb-8">
       "Half-life" is the time for a substance's concentration to fall to 50% of its peak. Vitamin D
-      has three different half-lives depending on which molecule you're measuring â€” cholecalciferol
+      has three different half-lives depending on which molecule you're measuring Ã¢â‚¬â€ cholecalciferol
       itself, the circulating 25(OH)D metabolite, or the whole-body pool including adipose stores.
     </p>
 
@@ -65,19 +66,20 @@ const breadcrumbJsonLd = {
         </thead>
         <tbody class="text-gray-700">
           <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">Cholecalciferol (D<sub>3</sub>)</td><td class="px-4 py-3 font-mono">~24 hours</td><td class="px-4 py-3 hidden md:table-cell">Rapidly 25-hydroxylated in the liver.</td></tr>
-          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">25(OH)D â€” apparent</td><td class="px-4 py-3 font-mono">15â€“25 days</td><td class="px-4 py-3 hidden md:table-cell">Single-dose tracer studies (Jones 2008).</td></tr>
-          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">25(OH)D â€” effective terminal (lean)</td><td class="px-4 py-3 font-mono">~60 days</td><td class="px-4 py-3 hidden md:table-cell">Includes adipose release; matches winter decline curves.</td></tr>
-          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">25(OH)D â€” effective terminal (obese)</td><td class="px-4 py-3 font-mono">80â€“90+ days</td><td class="px-4 py-3 hidden md:table-cell">Larger adipose sink, slower release.</td></tr>
-          <tr><td class="px-4 py-3 font-medium">1,25-dihydroxyvitamin D (calcitriol)</td><td class="px-4 py-3 font-mono">~4â€“6 hours</td><td class="px-4 py-3 hidden md:table-cell">Tightly regulated hormone; not useful for status assessment.</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">25(OH)D Ã¢â‚¬â€ apparent</td><td class="px-4 py-3 font-mono">15Ã¢â‚¬â€œ25 days</td><td class="px-4 py-3 hidden md:table-cell">Single-dose tracer studies (Jones 2008).</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">25(OH)D Ã¢â‚¬â€ effective terminal (lean)</td><td class="px-4 py-3 font-mono">~60 days</td><td class="px-4 py-3 hidden md:table-cell">Includes adipose release; matches winter decline curves.</td></tr>
+          <tr class="border-b border-gray-100"><td class="px-4 py-3 font-medium">25(OH)D Ã¢â‚¬â€ effective terminal (obese)</td><td class="px-4 py-3 font-mono">80Ã¢â‚¬â€œ90+ days</td><td class="px-4 py-3 hidden md:table-cell">Larger adipose sink, slower release.</td></tr>
+          <tr><td class="px-4 py-3 font-medium">1,25-dihydroxyvitamin D (calcitriol)</td><td class="px-4 py-3 font-mono">~4Ã¢â‚¬â€œ6 hours</td><td class="px-4 py-3 hidden md:table-cell">Tightly regulated hormone; not useful for status assessment.</td></tr>
         </tbody>
       </table>
     </div>
 
     <h2 class="text-2xl font-bold text-gray-900 mb-3">Why body composition matters</h2>
+    <MidContentAd />
     <p class="text-gray-700 leading-relaxed mb-3">
       Cholecalciferol is fat-soluble and partitions into adipose tissue. In lean adults, the adipose
       compartment is small and turns over relatively quickly. In obese adults, the compartment is
-      larger and releases stored D<sub>3</sub> more slowly â€” which shows up as a longer terminal
+      larger and releases stored D<sub>3</sub> more slowly Ã¢â‚¬â€ which shows up as a longer terminal
       half-life on serum 25(OH)D but a <em>lower peak</em> for the same input, because the same
       D<sub>3</sub> molecule is more dilute across a larger fat mass.
     </p>
@@ -85,9 +87,9 @@ const breadcrumbJsonLd = {
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical implications</h2>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
       <li><strong>Weekly dosing works.</strong> A dose of 10,000 IU once a week gives essentially the same steady-state 25(OH)D as 1,400 IU/day.</li>
-      <li><strong>Summer stores sustain winter.</strong> Peak summer 25(OH)D can carry you into February at temperate latitudes, but not through spring â€” see our <a href="/vitamin-d-reserves" class="text-amber-700 underline">reserves calculator</a>.</li>
+      <li><strong>Summer stores sustain winter.</strong> Peak summer 25(OH)D can carry you into February at temperate latitudes, but not through spring Ã¢â‚¬â€ see our <a href="/vitamin-d-reserves" class="text-amber-700 underline">reserves calculator</a>.</li>
       <li><strong>Change dose, wait 3 months.</strong> Any dose change takes ~3 half-lives (roughly 6 months) to fully approach the new steady state; 90 days is when the trend is clear.</li>
-      <li><strong>Obese people need more.</strong> Roughly 2Ã— the standard dose to reach the same 25(OH)D target.</li>
+      <li><strong>Obese people need more.</strong> Roughly 2Ãƒâ€” the standard dose to reach the same 25(OH)D target.</li>
     </ul>
 
     <RelatedArticles current="/vitamin-d-half-life" />

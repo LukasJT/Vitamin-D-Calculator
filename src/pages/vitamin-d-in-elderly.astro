@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
 import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
 import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
@@ -30,7 +31,7 @@ const breadcrumbJsonLd = {
 
 <BaseLayout
   title="Vitamin D in the Elderly: Falls, Fractures, and Dosing After 65"
-  description="Why older adults need more vitamin D â€” declining cutaneous 7-DHC, reduced sun exposure, fall prevention, hip fracture reduction, and evidence-based supplementation."
+  description="Why older adults need more vitamin D Ã¢â‚¬â€ declining cutaneous 7-DHC, reduced sun exposure, fall prevention, hip fracture reduction, and evidence-based supplementation."
   ogType="article"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
@@ -49,44 +50,45 @@ const breadcrumbJsonLd = {
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mb-3">Why levels drop with age</h2>
+    <MidContentAd />
     <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
       <li><strong>Cutaneous 7-DHC declines</strong> ~40% between ages 20 and 80 (MacLaughlin &amp; Holick 1985). Older skin makes less vitamin D<sub>3</sub> per unit UVB.</li>
       <li><strong>Less outdoor time.</strong> Reduced mobility, cognitive change, and institutional living all lower sun exposure.</li>
-      <li><strong>Renal 1Î±-hydroxylation drops.</strong> With age and chronic kidney disease, the conversion of 25(OH)D to active calcitriol is impaired.</li>
+      <li><strong>Renal 1ÃŽÂ±-hydroxylation drops.</strong> With age and chronic kidney disease, the conversion of 25(OH)D to active calcitriol is impaired.</li>
       <li><strong>Impaired absorption.</strong> Reduced gastric acid and bile acid production, and higher rates of malabsorption disorders, reduce oral vitamin D uptake.</li>
       <li><strong>Medications.</strong> Glucocorticoids, phenytoin, and other anticonvulsants induce CYP24A1 and accelerate 25(OH)D catabolism.</li>
     </ol>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Fall prevention</h2>
     <p class="text-gray-700 leading-relaxed">
-      Falls are the leading cause of injury and injury death in adults â‰¥65. Meta-analyses of trials
-      in adults â‰¥65 show cholecalciferol 700â€“1,000 IU/day reduces fall risk by ~19% (Bischoff-Ferrari
-      2009). The effect is mediated by improved lower-limb strength and postural control â€” vitamin D
+      Falls are the leading cause of injury and injury death in adults Ã¢â€°Â¥65. Meta-analyses of trials
+      in adults Ã¢â€°Â¥65 show cholecalciferol 700Ã¢â‚¬â€œ1,000 IU/day reduces fall risk by ~19% (Bischoff-Ferrari
+      2009). The effect is mediated by improved lower-limb strength and postural control Ã¢â‚¬â€ vitamin D
       acts directly on muscle. Very-high-dose bolus regimens (e.g., 500,000 IU annually) have shown
       paradoxical increases in falls (Sanders 2010) and are not recommended.
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Hip fracture prevention</h2>
     <p class="text-gray-700 leading-relaxed">
-      Combined vitamin D (â‰¥ 800 IU/day) plus calcium (1,000â€“1,200 mg/day) reduces hip fracture risk
-      by ~15% in adults â‰¥65 (Bischoff-Ferrari 2012). Vitamin D alone at doses below 800 IU/day
-      shows no benefit. The dose response is real: 400 IU/day is not enough, 800â€“1,000 IU/day is.
+      Combined vitamin D (Ã¢â€°Â¥ 800 IU/day) plus calcium (1,000Ã¢â‚¬â€œ1,200 mg/day) reduces hip fracture risk
+      by ~15% in adults Ã¢â€°Â¥65 (Bischoff-Ferrari 2012). Vitamin D alone at doses below 800 IU/day
+      shows no benefit. The dose response is real: 400 IU/day is not enough, 800Ã¢â‚¬â€œ1,000 IU/day is.
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Recommended dosing after 65</h2>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
       <li><strong>RDA:</strong> 800 IU/day (IOM 2011).</li>
-      <li><strong>Endocrine Society:</strong> 1,500â€“2,000 IU/day for adults â‰¥65 to maintain serum 25(OH)D â‰¥ 30 ng/mL.</li>
+      <li><strong>Endocrine Society:</strong> 1,500Ã¢â‚¬â€œ2,000 IU/day for adults Ã¢â€°Â¥65 to maintain serum 25(OH)D Ã¢â€°Â¥ 30 ng/mL.</li>
       <li><strong>Test if uncertain.</strong> A single serum 25(OH)D measurement clarifies whether standard or higher dosing is needed.</li>
-      <li><strong>Combine with calcium 1,000â€“1,200 mg/day</strong>, preferably from food (dairy, greens, sardines).</li>
+      <li><strong>Combine with calcium 1,000Ã¢â‚¬â€œ1,200 mg/day</strong>, preferably from food (dairy, greens, sardines).</li>
       <li><strong>Avoid very high bolus doses.</strong> Daily or weekly is preferred over annual or 6-monthly megadoses.</li>
     </ul>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Institutional and home-bound older adults</h2>
     <p class="text-gray-700 leading-relaxed">
       Nursing-home and long-term-care residents have the highest deficiency rates. Universal
-      supplementation at 800â€“1,000 IU/day is standard-of-care in most jurisdictions and is
-      supported by cost-effectiveness modelling â€” one prevented hip fracture more than pays for
+      supplementation at 800Ã¢â‚¬â€œ1,000 IU/day is standard-of-care in most jurisdictions and is
+      supported by cost-effectiveness modelling Ã¢â‚¬â€ one prevented hip fracture more than pays for
       years of universal supplementation.
     </p>
 

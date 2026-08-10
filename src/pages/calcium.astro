@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/calcium`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Calcium Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Calcium', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Calcium: Daily Needs, Food Sources, and Carbonate vs Citrate"
+  description="Complete calcium reference — RDA, bone density, food-first approach, calcium carbonate vs citrate absorption, and the arterial calcification debate."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/calcium", label: "Calcium" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Calcium</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Calcium is the most abundant mineral in the body — 99% is stored in bone and teeth,
+      the remaining 1% is critical for muscle contraction, nerve signalling, blood clotting,
+      and enzyme activation. It cannot function without vitamin D, which enables intestinal
+      absorption.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Ages 19–50:</strong> 1,000 mg/day.</li>
+      <li><strong>Women 51+ and men 71+:</strong> 1,200 mg/day.</li>
+      <li><strong>Pregnancy / lactation:</strong> 1,000–1,300 mg (depending on age).</li>
+      <li><strong>Tolerable Upper Intake Level:</strong> 2,000–2,500 mg/day (depending on age).</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food-first approach</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Dietary calcium is safer and more effective than supplements. Population studies suggest
+      calcium supplements above ~500 mg per dose may modestly increase cardiovascular risk
+      (Bolland 2010; disputed by other analyses), while dietary calcium does not. Aim to meet
+      the RDA from food; use supplements only to fill gaps.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Best food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Plain yogurt (1 cup): 300–450 mg</li>
+      <li>Milk (1 cup): 300 mg</li>
+      <li>Fortified plant milks: 300 mg</li>
+      <li>Cheese, cheddar (1.5 oz): 300 mg</li>
+      <li>Sardines with bones (3 oz): 325 mg</li>
+      <li>Tofu, calcium-set (½ cup): 250 mg</li>
+      <li>Kale (1 cup cooked): 245 mg</li>
+      <li>Collard greens (1 cup cooked): 268 mg</li>
+      <li>Almonds (1 oz): 76 mg</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Carbonate vs citrate</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Calcium carbonate</strong> — 40% elemental calcium; cheapest; requires stomach acid so take with meals. Common in Tums, generic supplements.</li>
+      <li><strong>Calcium citrate</strong> — 21% elemental; absorbed with or without acid; preferred if you take a PPI or have atrophic gastritis.</li>
+      <li><strong>Split doses:</strong> maximum single-dose absorption plateaus at ~500 mg elemental. If you need 1,000 mg from supplements, split into two doses.</li>
+      <li><strong>Don't take with iron:</strong> calcium blocks iron absorption. Separate by 2+ hours.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Calcium and vitamin D — the paired story</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Without adequate vitamin D, only 10–15% of dietary calcium is absorbed. With sufficient
+      vitamin D (25(OH)D ≥ 30 ng/mL), absorption rises to 30–40%. Osteoporosis and fracture-
+      prevention trials that use both calcium and vitamin D produce larger effects than either
+      alone. See our <a href="/vitamin-d-and-osteoporosis" class="text-amber-700 underline">osteoporosis page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Kidney stones</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Counterintuitively, higher <em>dietary</em> calcium reduces kidney stone risk (by binding
+      dietary oxalate in the gut). Calcium <em>supplements</em> may modestly increase risk,
+      especially if taken between meals. If you're prone to calcium-oxalate stones, prioritise
+      food calcium consumed with oxalate-containing meals and stay well hydrated.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Chronic kidney disease, hyperparathyroidism, and
+      sarcoidosis all alter calcium handling — discuss any supplement change with your
+      physician if you have those conditions.
+    </div>
+
+    <RelatedArticles current="/calcium" />
+  </main>
+</BaseLayout>

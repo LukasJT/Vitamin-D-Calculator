@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
 import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
 import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
@@ -14,11 +15,11 @@ const howToJsonLd = {
   description: 'Order the right test (25-hydroxyvitamin D), prepare correctly, and interpret the result against clinical reference ranges.',
   totalTime: 'PT30M',
   step: [
-    { '@type': 'HowToStep', position: 1, name: 'Ask for the right test', text: 'Order serum 25-hydroxyvitamin D (25(OH)D, also known as calcidiol). Do not order 1,25-dihydroxyvitamin D â€” that measures the active hormone and is not appropriate for status screening.' },
-    { '@type': 'HowToStep', position: 2, name: 'Skip fasting and clock timing', text: 'No fasting required; serum 25(OH)D is stable and shows negligible circadian variation. Do continue your usual supplement â€” the goal is to measure your true status.' },
-    { '@type': 'HowToStep', position: 3, name: 'Pause high-dose biotin', text: 'If you take a hair-and-nails supplement with biotin >5 mg/day, pause for 48 hours before the draw â€” biotin can interfere with some 25(OH)D immunoassays.' },
-    { '@type': 'HowToStep', position: 4, name: 'Have the sample drawn', text: 'Physician-ordered venous draw is covered by most insurance with risk factors present. Direct-to-consumer options (Quest, LabCorp direct, Everlywell, LetsGetChecked) run $40â€“75 without a prescription; at-home fingerstick kits are similar cost.' },
-    { '@type': 'HowToStep', position: 5, name: 'Interpret the result', text: 'Under 20 ng/mL is deficient; 20â€“30 ng/mL is insufficient; 30â€“50 ng/mL is sufficient; above 100 ng/mL is high. Use our online interpreter for full context.' },
+    { '@type': 'HowToStep', position: 1, name: 'Ask for the right test', text: 'Order serum 25-hydroxyvitamin D (25(OH)D, also known as calcidiol). Do not order 1,25-dihydroxyvitamin D Ã¢â‚¬â€ that measures the active hormone and is not appropriate for status screening.' },
+    { '@type': 'HowToStep', position: 2, name: 'Skip fasting and clock timing', text: 'No fasting required; serum 25(OH)D is stable and shows negligible circadian variation. Do continue your usual supplement Ã¢â‚¬â€ the goal is to measure your true status.' },
+    { '@type': 'HowToStep', position: 3, name: 'Pause high-dose biotin', text: 'If you take a hair-and-nails supplement with biotin >5 mg/day, pause for 48 hours before the draw Ã¢â‚¬â€ biotin can interfere with some 25(OH)D immunoassays.' },
+    { '@type': 'HowToStep', position: 4, name: 'Have the sample drawn', text: 'Physician-ordered venous draw is covered by most insurance with risk factors present. Direct-to-consumer options (Quest, LabCorp direct, Everlywell, LetsGetChecked) run $40Ã¢â‚¬â€œ75 without a prescription; at-home fingerstick kits are similar cost.' },
+    { '@type': 'HowToStep', position: 5, name: 'Interpret the result', text: 'Under 20 ng/mL is deficient; 20Ã¢â‚¬â€œ30 ng/mL is insufficient; 30Ã¢â‚¬â€œ50 ng/mL is sufficient; above 100 ng/mL is high. Use our online interpreter for full context.' },
     { '@type': 'HowToStep', position: 6, name: 'Re-test at 3 months if you change your dose', text: 'Serum 25(OH)D approaches a new steady state slowly. Three months is the standard interval after starting or changing supplementation.' },
   ],
 };
@@ -63,8 +64,9 @@ const breadcrumbJsonLd = {
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mb-3">Which test to order</h2>
+    <MidContentAd />
     <p class="text-gray-700 leading-relaxed mb-3">
-      Ask for <strong>25-hydroxyvitamin D</strong> â€” sometimes written as <em>25(OH)D</em>,
+      Ask for <strong>25-hydroxyvitamin D</strong> Ã¢â‚¬â€ sometimes written as <em>25(OH)D</em>,
       <em>calcidiol</em>, or <em>vitamin D, 25-OH total</em>. This is the correct test for
       assessing vitamin D status: it reflects several weeks of cumulative intake plus cutaneous
       synthesis, and it's what all the clinical thresholds refer to.
@@ -72,7 +74,7 @@ const breadcrumbJsonLd = {
     <p class="text-gray-700 leading-relaxed">
       Do <strong>not</strong> order <em>1,25-dihydroxyvitamin D</em> (calcitriol) for routine
       screening. That's the active hormone form, tightly regulated by PTH, and it does not
-      reflect stores. It's ordered only for specific clinical situations â€” sarcoidosis,
+      reflect stores. It's ordered only for specific clinical situations Ã¢â‚¬â€ sarcoidosis,
       chronic kidney disease, hypercalcaemia workup.
     </p>
 
@@ -80,21 +82,21 @@ const breadcrumbJsonLd = {
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
       <li><strong>No fasting required.</strong> Unlike lipid panels, 25(OH)D is stable in serum and unaffected by recent meals.</li>
       <li><strong>Time of day doesn't matter.</strong> 25(OH)D shows minimal circadian variation.</li>
-      <li><strong>Don't stop your supplement</strong> before testing â€” the goal is to measure your actual status on your current regimen.</li>
+      <li><strong>Don't stop your supplement</strong> before testing Ã¢â‚¬â€ the goal is to measure your actual status on your current regimen.</li>
       <li><strong>Do note biotin intake.</strong> High-dose biotin (&gt; 5 mg/day) can interfere with some immunoassay methods for 25(OH)D. Pause for 48 hours if you take a hair-and-nails supplement.</li>
     </ul>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cost and access</h2>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
       <li><strong>Physician-ordered:</strong> covered by most insurance plans for individuals with risk factors (bone disease, malabsorption, chronic corticosteroid use, obesity, dark skin at high latitude).</li>
-      <li><strong>Direct-to-consumer:</strong> ~US$40â€“75 without physician order (Quest, LabCorp direct, Everlywell, LetsGetChecked). Results usually within a week.</li>
-      <li><strong>At-home fingerstick:</strong> ~US$50â€“75. Slightly less precise than venous draw but adequate for status screening.</li>
+      <li><strong>Direct-to-consumer:</strong> ~US$40Ã¢â‚¬â€œ75 without physician order (Quest, LabCorp direct, Everlywell, LetsGetChecked). Results usually within a week.</li>
+      <li><strong>At-home fingerstick:</strong> ~US$50Ã¢â‚¬â€œ75. Slightly less precise than venous draw but adequate for status screening.</li>
     </ul>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">When to re-test after starting supplementation</h2>
     <p class="text-gray-700 leading-relaxed">
       <strong>Three months</strong> after starting or changing a dose. This is roughly one and a
-      half half-lives of 25(OH)D â€” long enough for the trajectory to be clear, short enough to
+      half half-lives of 25(OH)D Ã¢â‚¬â€ long enough for the trajectory to be clear, short enough to
       catch under- or over-shooting the target early.
     </p>
     <p class="text-gray-700 leading-relaxed mt-3">
@@ -107,7 +109,7 @@ const breadcrumbJsonLd = {
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Interpreting the result</h2>
     <p class="text-gray-700 leading-relaxed">
       Use our <a href="/blood-test-interpreter" class="text-amber-700 underline font-semibold">blood test interpreter</a>
-      to convert units (ng/mL â†” nmol/L) and see your result against IOM and Endocrine Society
+      to convert units (ng/mL Ã¢â€ â€ nmol/L) and see your result against IOM and Endocrine Society
       thresholds with plain-language interpretation.
     </p>
 

@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-b1`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin B1 (Thiamine) Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Vitamin B1', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin B1 (Thiamine): Beriberi, Wernicke's, and Refeeding Syndrome"
+  description="Thiamine reference — RDA, wet and dry beriberi, Wernicke-Korsakoff, refeeding syndrome, and the alcohol/loop-diuretic depletion risk."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/vitamin-b1", label: "Vitamin B1" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin B1 (Thiamine)</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Thiamine was the first vitamin to be isolated (1926) — its deficiency causes beriberi,
+      the disease that first proved certain "accessory food factors" were essential. Thiamine
+      pyrophosphate (TPP) is a coenzyme for pyruvate dehydrogenase, α-ketoglutarate
+      dehydrogenase, and transketolase — central to carbohydrate metabolism. Body stores are
+      small (~30 mg); deficiency can develop within 2–3 weeks of poor intake.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adult men:</strong> 1.2 mg/day.</li>
+      <li><strong>Adult women:</strong> 1.1 mg/day.</li>
+      <li><strong>Pregnancy / lactation:</strong> 1.4 mg/day.</li>
+      <li><strong>No Tolerable Upper Intake Level</strong> — oral thiamine has no known toxicity.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Who is at risk</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Chronic alcoholism</strong> — the #1 cause in high-income countries. Alcohol impairs GI absorption and hepatic storage.</li>
+      <li><strong>Loop diuretics</strong> (furosemide, torsemide, bumetanide) — increase urinary thiamine losses; heart-failure patients are commonly deficient.</li>
+      <li><strong>Bariatric surgery</strong> — especially with post-op vomiting.</li>
+      <li><strong>Refeeding syndrome</strong> — starving patients suddenly given carbohydrates deplete residual thiamine catastrophically.</li>
+      <li><strong>Hyperemesis gravidarum</strong> — prolonged pregnancy vomiting.</li>
+      <li><strong>Total parenteral nutrition without adequate supplementation.</strong></li>
+      <li><strong>Milled-rice diets</strong> in low-income settings (thiamine is in the germ, removed by polishing).</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency syndromes</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Wet beriberi</strong> — high-output cardiac failure, oedema, dyspnoea, tachycardia. Reversible with prompt thiamine repletion.</li>
+      <li><strong>Dry beriberi</strong> — symmetric peripheral neuropathy, muscle weakness, foot drop.</li>
+      <li><strong>Wernicke encephalopathy</strong> — acute triad of ophthalmoplegia (eye movement paralysis), ataxia, and confusion. Neurological emergency; give IV/IM thiamine, do NOT wait for tests.</li>
+      <li><strong>Korsakoff syndrome</strong> — chronic irreversible amnesia with confabulation, often follows untreated Wernicke's.</li>
+      <li><strong>Infantile beriberi</strong> — breastfed infants of thiamine-deficient mothers; historically fatal without prompt treatment.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The "banana bag" and glucose caution</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Emergency departments routinely give thiamine before IV dextrose to malnourished or
+      alcoholic patients — administering glucose to a thiamine-deficient patient accelerates
+      metabolic demand and can precipitate acute Wernicke's. Standard dosing: 100–500 mg IV
+      thiamine, often bundled with folate and magnesium (a "banana bag").
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Fortified breakfast cereal (1 serving): 1.5 mg</li>
+      <li>Pork chop (3 oz): 0.7 mg</li>
+      <li>Enriched white rice (1 cup cooked): 0.3 mg</li>
+      <li>Black beans (½ cup cooked): 0.2 mg</li>
+      <li>Sunflower seeds (1 oz): 0.4 mg</li>
+      <li>Pecans (1 oz): 0.2 mg</li>
+      <li>Whole wheat bread (1 slice): 0.1 mg</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Any adult on a loop diuretic for heart failure who
+      develops new neuropathy, confusion, or worsening dyspnoea should have thiamine status
+      considered — the deficiency is easy to miss and easy to treat.
+    </div>
+
+    <RelatedArticles current="/vitamin-b1" />
+  </main>
+</BaseLayout>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
 import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
 import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
@@ -21,7 +22,7 @@ const BENEFITS = [
   {
     title: 'Muscle strength and fall prevention',
     evidence: 'Moderate',
-    body: 'Meta-analyses of trials in adults >65 show that daily doses of 700â€“1,000 IU cholecalciferol reduce the risk of falling by ~19%. The effect appears to be mediated through improved lower-limb strength and postural sway.',
+    body: 'Meta-analyses of trials in adults >65 show that daily doses of 700Ã¢â‚¬â€œ1,000 IU cholecalciferol reduce the risk of falling by ~19%. The effect appears to be mediated through improved lower-limb strength and postural sway.',
   },
   {
     title: 'Cardiovascular disease',
@@ -31,12 +32,12 @@ const BENEFITS = [
   {
     title: 'Cancer',
     evidence: 'Modest',
-    body: 'VITAL (25,000 participants, 5 years) showed no reduction in total cancer incidence with 2,000 IU/day. However, subgroup and post-hoc analyses suggested a small reduction in cancer mortality, particularly in normal-weight individuals â€” hypothesis-generating rather than definitive.',
+    body: 'VITAL (25,000 participants, 5 years) showed no reduction in total cancer incidence with 2,000 IU/day. However, subgroup and post-hoc analyses suggested a small reduction in cancer mortality, particularly in normal-weight individuals Ã¢â‚¬â€ hypothesis-generating rather than definitive.',
   },
   {
     title: 'Type 2 diabetes prevention',
     evidence: 'Modest',
-    body: 'D2d randomised 2,423 adults with prediabetes to 4,000 IU/day cholecalciferol or placebo. Primary outcome (progression to diabetes) was not significant overall (HR 0.88, p=0.12), but in participants who reached â‰¥ 40 ng/mL 25(OH)D, risk fell substantially.',
+    body: 'D2d randomised 2,423 adults with prediabetes to 4,000 IU/day cholecalciferol or placebo. Primary outcome (progression to diabetes) was not significant overall (HR 0.88, p=0.12), but in participants who reached Ã¢â€°Â¥ 40 ng/mL 25(OH)D, risk fell substantially.',
   },
   {
     title: 'Depression and mood',
@@ -46,7 +47,7 @@ const BENEFITS = [
   {
     title: 'Pregnancy outcomes',
     evidence: 'Moderate',
-    body: 'Deficiency in pregnancy is associated with preeclampsia, gestational diabetes, and small-for-gestational-age infants. Cochrane reviews conclude supplementation probably reduces preeclampsia and low birth weight; the current expert consensus is 600 IU/day in pregnancy, with higher doses (1,500â€“2,000 IU/day) for known deficiency.',
+    body: 'Deficiency in pregnancy is associated with preeclampsia, gestational diabetes, and small-for-gestational-age infants. Cochrane reviews conclude supplementation probably reduces preeclampsia and low birth weight; the current expert consensus is 600 IU/day in pregnancy, with higher doses (1,500Ã¢â‚¬â€œ2,000 IU/day) for known deficiency.',
   },
 ];
 
@@ -111,6 +112,7 @@ const breadcrumbJsonLd = {
         <article class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
           <div class="flex items-baseline justify-between flex-wrap gap-2 mb-2">
             <h2 class="text-xl font-bold text-gray-900">{b.title}</h2>
+    <MidContentAd />
             <span class={`text-xs font-semibold px-2 py-0.5 rounded-full ${evidenceColor[b.evidence] || 'bg-gray-100'}`}>
               Evidence: {b.evidence}
             </span>

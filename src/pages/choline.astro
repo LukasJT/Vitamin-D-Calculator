@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/choline`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Choline Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Choline', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Choline: Brain, Liver, Fatty Liver, and the Nutrient 90% Don't Get Enough Of"
+  description="Choline reference — brain development, non-alcoholic fatty liver, pregnancy dosing, egg yolk as top source, and why most adults fall short of the AI."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/choline", label: "Choline" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Choline</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Choline is an essential nutrient (recognised by the IOM in 1998) required for
+      phosphatidylcholine synthesis, acetylcholine production, methyl-group metabolism, and
+      hepatic fat transport. About 90% of Americans consume less than the Adequate Intake —
+      one of the largest population-scale nutrient shortfalls.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily Adequate Intake (AI)</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adult men:</strong> 550 mg/day.</li>
+      <li><strong>Adult women:</strong> 425 mg/day.</li>
+      <li><strong>Pregnancy:</strong> 450 mg/day.</li>
+      <li><strong>Lactation:</strong> 550 mg/day.</li>
+      <li><strong>Tolerable Upper Intake Level:</strong> 3,500 mg/day — above this, hypotension, sweating, and fishy body odour occur.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Brain and fetal neurodevelopment</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Choline is critical for fetal brain development — it's the precursor to acetylcholine
+      and to phosphatidylcholine (the main membrane phospholipid). Meta-analyses of maternal
+      choline supplementation trials show improved infant visual memory and attention.
+      Prenatal vitamins have historically under-supplied choline (many contain 0 mg or &lt;
+      100 mg); this is changing but check the label.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Non-alcoholic fatty liver disease</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Choline is required for hepatic export of triglycerides as VLDL. Deficiency causes
+      fatty liver even in the absence of alcohol. Observational studies link low choline
+      intake with NAFLD prevalence. Supplementation trials are small but favourable for
+      improving hepatic steatosis.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Beef liver (3 oz): 356 mg — highest single food source</li>
+      <li>Egg yolk (1 large): 147 mg</li>
+      <li>Beef top round (3 oz): 117 mg</li>
+      <li>Chicken breast (3 oz): 72 mg</li>
+      <li>Fish, cod (3 oz): 71 mg</li>
+      <li>Soybeans (½ cup): 107 mg</li>
+      <li>Wheat germ (1 oz): 51 mg</li>
+      <li>Milk (1 cup): 43 mg</li>
+      <li>Peanuts (1 oz): 24 mg</li>
+    </ul>
+    <p class="text-gray-700 leading-relaxed mt-3">
+      Two eggs a day gets you to ~50–70% of the AI. Vegetarians and vegans who avoid eggs
+      often fall well short and are candidates for supplementation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Choline bitartrate</strong> — cheapest; 41% choline by weight.</li>
+      <li><strong>Phosphatidylcholine</strong> — from lecithin; 13% choline; used clinically for NAFLD.</li>
+      <li><strong>Alpha-GPC</strong> — 40% choline; crosses the blood-brain barrier better; marketed for cognition.</li>
+      <li><strong>CDP-choline (citicoline)</strong> — supports cognition after stroke; used clinically in some countries.</li>
+      <li>Standard supplemental dose: 300–500 mg/day if diet is low.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">TMAO and cardiovascular concerns</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Gut bacteria convert some dietary choline to trimethylamine, which the liver oxidises
+      to TMAO. Elevated TMAO has been associated with cardiovascular risk in observational
+      studies. However, egg and choline intake do not increase cardiovascular events in the
+      overall body of RCT and cohort evidence. The TMAO concern remains a research topic
+      rather than a reason to limit choline below the AI.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Trimethylaminuria ("fish odour syndrome") is a
+      rare genetic condition that requires limiting choline intake — most people don't have
+      it and don't need to limit choline.
+    </div>
+
+    <RelatedArticles current="/choline" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/omega-3`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Omega-3 Fatty Acids Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Omega-3', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Omega-3 (EPA & DHA): Cardiovascular Evidence, ALA & Algae Sources"
+  description="Complete omega-3 reference — EPA and DHA needs, fish oil vs algae, cardiovascular RCTs (REDUCE-IT, STRENGTH, VITAL), triglyceride reduction, and vegan sources."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/omega-3", label: "Omega-3" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Omega-3 Fatty Acids</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Omega-3s are essential polyunsaturated fatty acids the body cannot make. Three matter:
+      short-chain <strong>ALA</strong> (α-linolenic acid, from plants) and long-chain
+      <strong>EPA</strong> and <strong>DHA</strong> (from marine sources). Only long-chain
+      forms have robust clinical evidence — ALA conversion to EPA/DHA is inefficient (~5–10%).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>ALA (adequate intake):</strong> 1.6 g/day men, 1.1 g/day women.</li>
+      <li><strong>EPA + DHA:</strong> no formal RDA; expert consensus 250–500 mg/day combined for cardiovascular health, 1,000+ mg for established heart disease.</li>
+      <li><strong>Pregnancy / lactation:</strong> at least 200–300 mg DHA/day for fetal neurodevelopment.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cardiovascular evidence</h2>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      The largest recent trials have produced mixed results:
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>REDUCE-IT</strong> (2019) — icosapent ethyl (highly purified EPA) 4 g/day cut major cardiovascular events by 25% in high-risk patients on statins.</li>
+      <li><strong>STRENGTH</strong> (2020) — mixed EPA+DHA at 4 g/day showed no benefit vs corn oil placebo. The EPA-only formulation, not "fish oil in general," appears to drive the REDUCE-IT signal.</li>
+      <li><strong>VITAL</strong> (2019) — 1 g/day of standard fish oil in the general population showed no reduction in major cardiovascular events, small reduction in myocardial infarction.</li>
+      <li><strong>Standard OTC fish oil (1 g/day)</strong> — modest triglyceride reduction (~10–15%), unclear clinical event impact for primary prevention.</li>
+    </ul>
+    <p class="text-gray-700 leading-relaxed mt-3">
+      For post-MI or high triglyceride patients, prescription EPA (icosapent ethyl) is the
+      evidence-based choice. For general prevention, eating fatty fish twice a week is more
+      supported than a supplement.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Best sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Salmon, farmed (3 oz): 1,800 mg EPA+DHA</li>
+      <li>Mackerel, Atlantic (3 oz): 1,000 mg</li>
+      <li>Sardines (3 oz): 840 mg</li>
+      <li>Anchovies (3 oz): 950 mg</li>
+      <li>Herring (3 oz): 1,700 mg</li>
+      <li>Flaxseed (1 tbsp ground): 2,400 mg ALA (~120–240 mg EPA/DHA equivalent after conversion)</li>
+      <li>Chia seeds (1 oz): 5,000 mg ALA</li>
+      <li>Walnuts (1 oz): 2,500 mg ALA</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Fish oil vs algae oil</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Algae oil provides direct EPA and DHA — fish get their omega-3s by eating algae in the
+      first place. Algae oil is vegan, cleaner (no methylmercury or persistent-pollutant
+      concerns), and equally effective. Cost has fallen; it's a legitimate substitute for
+      fish oil.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Fish oil supplement quality</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Read the label: look for combined EPA+DHA per serving, not total "fish oil" mass. A 1,000 mg fish oil capsule typically has only 300 mg EPA+DHA.</li>
+      <li>Freshness matters — rancid fish oil (fishy burps, off smell) is common and may be harmful. Cold-store after opening.</li>
+      <li>Third-party tested for oxidation and heavy metals (IFOS, USP) is worth the small premium.</li>
+      <li>Triglyceride and re-esterified triglyceride forms absorb better than ethyl ester forms.</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> High-dose omega-3 (&gt; 3 g/day) modestly increases
+      bleeding time — discuss with your prescriber if you take anticoagulants. Some studies
+      have flagged a small atrial fibrillation risk at high doses; the clinical significance
+      is debated.
+    </div>
+
+    <RelatedArticles current="/omega-3" />
+  </main>
+</BaseLayout>

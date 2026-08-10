@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
 import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
 import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
@@ -29,7 +30,7 @@ const breadcrumbJsonLd = {
 
 <BaseLayout
   title="Magnesium: Deficiency, Forms Compared, and Which to Take"
-  description="Magnesium reference — RDA, deficiency signs, food sources, and comparison of magnesium glycinate, citrate, oxide, threonate, malate, and taurate."
+  description="Magnesium reference â€” RDA, deficiency signs, food sources, and comparison of magnesium glycinate, citrate, oxide, threonate, malate, and taurate."
   ogType="article"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
@@ -48,18 +49,19 @@ const breadcrumbJsonLd = {
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <MidContentAd />
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
-      <li><strong>Adult men (19–30):</strong> 400 mg/day.</li>
+      <li><strong>Adult men (19â€“30):</strong> 400 mg/day.</li>
       <li><strong>Adult men (31+):</strong> 420 mg/day.</li>
-      <li><strong>Adult women (19–30):</strong> 310 mg/day.</li>
+      <li><strong>Adult women (19â€“30):</strong> 310 mg/day.</li>
       <li><strong>Adult women (31+):</strong> 320 mg/day.</li>
-      <li><strong>Pregnancy:</strong> 350–400 mg/day.</li>
+      <li><strong>Pregnancy:</strong> 350â€“400 mg/day.</li>
       <li><strong>Tolerable Upper Intake Level (from supplements only):</strong> 350 mg elemental Mg/day.</li>
     </ul>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency</h2>
     <p class="text-gray-700 leading-relaxed">
-      Serum magnesium is not a sensitive test — only 1% of body magnesium is in serum. Chronic
+      Serum magnesium is not a sensitive test â€” only 1% of body magnesium is in serum. Chronic
       subclinical deficiency is common and hard to detect. Symptoms of overt deficiency
       include muscle cramps, twitching, fatigue, irritability, palpitations, migraines, and
       difficulty sleeping. Severe hypomagnesaemia causes tetany and cardiac arrhythmia.
@@ -68,7 +70,7 @@ const breadcrumbJsonLd = {
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Common causes of magnesium deficiency</h2>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
       <li>Diet low in leafy greens, legumes, nuts, and whole grains</li>
-      <li>Chronic alcohol use — impairs absorption, increases renal loss</li>
+      <li>Chronic alcohol use â€” impairs absorption, increases renal loss</li>
       <li>Proton pump inhibitors (chronic use)</li>
       <li>Diuretics (loop, thiazide)</li>
       <li>Type 2 diabetes (renal wasting)</li>
@@ -99,27 +101,27 @@ const breadcrumbJsonLd = {
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Evidence-based clinical uses</h2>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
-      <li><strong>Migraine prophylaxis</strong> — 400–600 mg/day (glycinate or citrate); modest reduction in frequency.</li>
-      <li><strong>Sleep quality</strong> — small trials show benefit for insomnia in older adults.</li>
-      <li><strong>Constipation</strong> — magnesium citrate or oxide at 200–400 mg.</li>
-      <li><strong>Preeclampsia</strong> — IV magnesium sulphate is standard obstetric care for severe preeclampsia and eclampsia prevention.</li>
-      <li><strong>Type 2 diabetes</strong> — small improvements in insulin sensitivity in deficient patients.</li>
+      <li><strong>Migraine prophylaxis</strong> â€” 400â€“600 mg/day (glycinate or citrate); modest reduction in frequency.</li>
+      <li><strong>Sleep quality</strong> â€” small trials show benefit for insomnia in older adults.</li>
+      <li><strong>Constipation</strong> â€” magnesium citrate or oxide at 200â€“400 mg.</li>
+      <li><strong>Preeclampsia</strong> â€” IV magnesium sulphate is standard obstetric care for severe preeclampsia and eclampsia prevention.</li>
+      <li><strong>Type 2 diabetes</strong> â€” small improvements in insulin sensitivity in deficient patients.</li>
     </ul>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
       <li>Pumpkin seeds (1 oz): 156 mg</li>
       <li>Almonds (1 oz): 80 mg</li>
-      <li>Spinach (½ cup cooked): 78 mg</li>
+      <li>Spinach (Â½ cup cooked): 78 mg</li>
       <li>Cashews (1 oz): 74 mg</li>
-      <li>Black beans (½ cup cooked): 60 mg</li>
+      <li>Black beans (Â½ cup cooked): 60 mg</li>
       <li>Dark chocolate (1 oz, 70%): 65 mg</li>
-      <li>Whole-grain bread, brown rice, quinoa — 30–70 mg/serving</li>
+      <li>Whole-grain bread, brown rice, quinoa â€” 30â€“70 mg/serving</li>
     </ul>
 
     <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
       <strong>Not medical advice.</strong> Consult your physician before high-dose magnesium
-      if you have kidney disease (reduced excretion → toxicity risk), take digoxin, or use
+      if you have kidney disease (reduced excretion â†’ toxicity risk), take digoxin, or use
       other cardiac medications.
     </div>
 

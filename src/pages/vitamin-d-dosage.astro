@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
 import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
 import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
@@ -8,19 +9,19 @@ const SITE = 'https://vitamindcalculator.net';
 const PAGE_URL = `${SITE}/vitamin-d-dosage`;
 
 const DOSAGE_TABLE = [
-  { group: 'Infants 0Ã¢â‚¬â€œ6 months', rda: 400, ul: 1000, notes: 'AI (Adequate Intake). Breastfed infants require supplementation.' },
-  { group: 'Infants 7Ã¢â‚¬â€œ12 months', rda: 400, ul: 1500, notes: 'AI.' },
-  { group: 'Children 1Ã¢â‚¬â€œ3 years', rda: 600, ul: 2500, notes: 'RDA.' },
-  { group: 'Children 4Ã¢â‚¬â€œ8 years', rda: 600, ul: 3000, notes: 'RDA.' },
-  { group: 'Ages 9Ã¢â‚¬â€œ70', rda: 600, ul: 4000, notes: 'RDA. Includes pregnant and lactating women.' },
+  { group: 'Infants 0ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“6 months', rda: 400, ul: 1000, notes: 'AI (Adequate Intake). Breastfed infants require supplementation.' },
+  { group: 'Infants 7ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“12 months', rda: 400, ul: 1500, notes: 'AI.' },
+  { group: 'Children 1ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“3 years', rda: 600, ul: 2500, notes: 'RDA.' },
+  { group: 'Children 4ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“8 years', rda: 600, ul: 3000, notes: 'RDA.' },
+  { group: 'Ages 9ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“70', rda: 600, ul: 4000, notes: 'RDA. Includes pregnant and lactating women.' },
   { group: 'Ages 71+', rda: 800, ul: 4000, notes: 'RDA. Reduced cutaneous synthesis and higher fracture risk.' },
 ];
 
 const REPLETION_PROTOCOLS = [
-  { serum: '< 12 ng/mL (severe)', regimen: '50,000 IU/week Ãƒâ€” 8 wk Ã¢â€ â€™ 1,500Ã¢â‚¬â€œ2,000 IU/d maintenance', note: 'Under physician supervision. Check labs including PTH and calcium.' },
-  { serum: '12Ã¢â‚¬â€œ20 ng/mL (deficient)', regimen: '6,000 IU/d Ãƒâ€” 8 wk Ã¢â€ â€™ 1,500Ã¢â‚¬â€œ2,000 IU/d maintenance', note: 'Recheck 25(OH)D after 3 months.' },
-  { serum: '20Ã¢â‚¬â€œ30 ng/mL (insufficient)', regimen: '1,000Ã¢â‚¬â€œ2,000 IU/d', note: 'Retest after 3 months; adjust based on response.' },
-  { serum: '30Ã¢â‚¬â€œ50 ng/mL (sufficient)', regimen: '600Ã¢â‚¬â€œ1,000 IU/d maintenance', note: 'Adjust seasonally; higher in winter if minimal sun exposure.' },
+  { serum: '< 12 ng/mL (severe)', regimen: '50,000 IU/week ÃƒÆ’Ã¢â‚¬â€ 8 wk ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ 1,500ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“2,000 IU/d maintenance', note: 'Under physician supervision. Check labs including PTH and calcium.' },
+  { serum: '12ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“20 ng/mL (deficient)', regimen: '6,000 IU/d ÃƒÆ’Ã¢â‚¬â€ 8 wk ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ 1,500ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“2,000 IU/d maintenance', note: 'Recheck 25(OH)D after 3 months.' },
+  { serum: '20ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“30 ng/mL (insufficient)', regimen: '1,000ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“2,000 IU/d', note: 'Retest after 3 months; adjust based on response.' },
+  { serum: '30ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“50 ng/mL (sufficient)', regimen: '600ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“1,000 IU/d maintenance', note: 'Adjust seasonally; higher in winter if minimal sun exposure.' },
 ];
 
 const softwareJsonLd = {
@@ -59,11 +60,12 @@ const breadcrumbJsonLd = {
     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D Dosage Guide</h1>
     <p class="text-lg text-gray-600 leading-relaxed mb-8">
       Recommended and upper-limit intakes of cholecalciferol (vitamin&nbsp;D<sub>3</sub>) by age,
-      plus repletion protocols indexed to baseline serum 25-hydroxyvitamin D Ã¢â‚¬â€ pulled from
+      plus repletion protocols indexed to baseline serum 25-hydroxyvitamin D ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â pulled from
       the Institute of Medicine (2011) and Endocrine Society (2011) guidelines.
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mb-4">Daily intake by age (IOM RDA)</h2>
+    <MidContentAd />
     <div class="overflow-x-auto bg-white border border-gray-200 rounded-xl shadow-sm mb-10">
       <table class="w-full text-sm">
         <thead class="bg-gray-50 border-b border-gray-200 text-gray-700">
@@ -90,7 +92,7 @@ const breadcrumbJsonLd = {
     <h2 class="text-2xl font-bold text-gray-900 mb-4">Repletion protocols by baseline 25(OH)D</h2>
     <p class="text-gray-700 leading-relaxed mb-4">
       Below are typical clinical repletion regimens for adults, drawn from the Endocrine Society
-      2011 clinical practice guideline. These are starting points Ã¢â‚¬â€ actual protocols vary by
+      2011 clinical practice guideline. These are starting points ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â actual protocols vary by
       body weight, comorbidities, and medications.
     </p>
     <div class="space-y-3 mb-10">
@@ -106,7 +108,7 @@ const breadcrumbJsonLd = {
     <h2 class="text-2xl font-bold text-gray-900 mb-4">Cholecalciferol (D<sub>3</sub>) vs ergocalciferol (D<sub>2</sub>)</h2>
     <p class="text-gray-700 leading-relaxed mb-3">
       Both raise serum 25(OH)D, but per-mole they differ. Tripkovic et al.'s 2012 meta-analysis
-      found D<sub>3</sub> approximately <strong>60Ã¢â‚¬â€œ90% more effective</strong> than D<sub>2</sub>
+      found D<sub>3</sub> approximately <strong>60ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“90% more effective</strong> than D<sub>2</sub>
       at raising 25(OH)D at equivalent oral doses. In practice, if your prescription reads
       "ergocalciferol 50,000 IU," ask whether you can substitute cholecalciferol at the same dose
       for better response.
@@ -115,12 +117,12 @@ const breadcrumbJsonLd = {
     <h2 class="text-2xl font-bold text-gray-900 mb-4">Unit conversion</h2>
     <div class="grid grid-cols-2 gap-4 mb-10">
       <div class="bg-white border border-gray-200 rounded-xl p-4">
-        <p class="text-xs uppercase text-gray-500">IU to Ã‚Âµg</p>
-        <p class="text-2xl font-bold font-mono">40 IU = 1 Ã‚Âµg</p>
+        <p class="text-xs uppercase text-gray-500">IU to Ãƒâ€šÃ‚Âµg</p>
+        <p class="text-2xl font-bold font-mono">40 IU = 1 Ãƒâ€šÃ‚Âµg</p>
       </div>
       <div class="bg-white border border-gray-200 rounded-xl p-4">
-        <p class="text-xs uppercase text-gray-500">Ã‚Âµg to IU</p>
-        <p class="text-2xl font-bold font-mono">1 Ã‚Âµg = 40 IU</p>
+        <p class="text-xs uppercase text-gray-500">Ãƒâ€šÃ‚Âµg to IU</p>
+        <p class="text-2xl font-bold font-mono">1 Ãƒâ€šÃ‚Âµg = 40 IU</p>
       </div>
     </div>
 

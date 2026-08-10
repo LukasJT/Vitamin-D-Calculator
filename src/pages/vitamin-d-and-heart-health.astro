@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
 import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
 import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
@@ -31,7 +32,7 @@ const breadcrumbJsonLd = {
 
 <BaseLayout
   title="Vitamin D and Heart Health: Blood Pressure, CVD & the VITAL Trial"
-  description="What the largest cardiovascular RCT (VITAL) actually showed for vitamin D — blood pressure, stroke, heart attack, heart failure. When supplementation helps and when it does not."
+  description="What the largest cardiovascular RCT (VITAL) actually showed for vitamin D â€” blood pressure, stroke, heart attack, heart failure. When supplementation helps and when it does not."
   ogType="article"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
@@ -45,11 +46,12 @@ const breadcrumbJsonLd = {
     <p class="text-lg text-gray-600 leading-relaxed mb-8">
       Observational studies show a strong inverse relationship between serum 25(OH)D and
       cardiovascular disease. Randomised supplementation trials have been much less
-      encouraging — a pattern that likely reflects reverse causality (people with heart
+      encouraging â€” a pattern that likely reflects reverse causality (people with heart
       disease spend less time outdoors) rather than a therapeutic gap.
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mb-3">The VITAL trial</h2>
+    <MidContentAd />
     <p class="text-gray-700 leading-relaxed mb-3">
       VITAL (Manson et al., 2019) is the largest and most authoritative cardiovascular
       vitamin D trial: 25,871 US adults randomised to 2,000 IU/day cholecalciferol or
@@ -67,7 +69,7 @@ const breadcrumbJsonLd = {
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Blood pressure</h2>
     <p class="text-gray-700 leading-relaxed">
       Meta-analyses of BP trials show a very small reduction in systolic BP with
-      supplementation (roughly 1–2 mmHg) in vitamin-D–deficient hypertensive patients.
+      supplementation (roughly 1â€“2 mmHg) in vitamin-Dâ€“deficient hypertensive patients.
       In sufficient individuals, no measurable effect. Vitamin D is not a substitute for
       ACE inhibitors, ARBs, thiazides, or calcium channel blockers.
     </p>
@@ -77,8 +79,8 @@ const breadcrumbJsonLd = {
       High-dose vitamin D (typically &gt; 4,000 IU/day chronically) combined with high
       calcium intake theoretically risks arterial calcification, but the human trial
       evidence for harm at these doses is weak. Vitamin K<sub>2</sub> is proposed as
-      protective — see our <a href="/vitamin-d-magnesium-k2" class="text-amber-700 underline">cofactor page</a>.
-      In practice, keeping cholecalciferol at or below 2,000–4,000 IU/day and getting
+      protective â€” see our <a href="/vitamin-d-magnesium-k2" class="text-amber-700 underline">cofactor page</a>.
+      In practice, keeping cholecalciferol at or below 2,000â€“4,000 IU/day and getting
       calcium primarily from food is a sensible cardiovascular-safe strategy.
     </p>
 
@@ -88,19 +90,19 @@ const breadcrumbJsonLd = {
       improvements in cardiac remodelling markers with 4,000 IU/day cholecalciferol but no
       change in mortality or hospitalisation. Given that heart failure patients are commonly
       deficient (limited outdoor time, medication interactions), targeted repletion is
-      reasonable — but not a replacement for guideline-directed medical therapy.
+      reasonable â€” but not a replacement for guideline-directed medical therapy.
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guidance</h2>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
-      <li>Correct deficiency for its own sake — it doesn't reduce your CV event risk directly, but it addresses a common laboratory abnormality with proven benefit for bones, immunity, and muscle.</li>
-      <li>Continue all evidence-based cardiovascular care — statins, BP medications, aspirin (where indicated), smoking cessation, Mediterranean-pattern diet, moderate exercise.</li>
-      <li>If you're deficient and hypertensive, expect at most a 1–2 mmHg systolic BP reduction from correction.</li>
-      <li>Don't take high-dose vitamin D expecting cardiovascular protection — the trials have decisively answered no.</li>
+      <li>Correct deficiency for its own sake â€” it doesn't reduce your CV event risk directly, but it addresses a common laboratory abnormality with proven benefit for bones, immunity, and muscle.</li>
+      <li>Continue all evidence-based cardiovascular care â€” statins, BP medications, aspirin (where indicated), smoking cessation, Mediterranean-pattern diet, moderate exercise.</li>
+      <li>If you're deficient and hypertensive, expect at most a 1â€“2 mmHg systolic BP reduction from correction.</li>
+      <li>Don't take high-dose vitamin D expecting cardiovascular protection â€” the trials have decisively answered no.</li>
     </ul>
 
     <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
-      <strong>Not medical advice.</strong> Cardiovascular risk management is complex —
+      <strong>Not medical advice.</strong> Cardiovascular risk management is complex â€”
       individualised discussion with a physician using a validated risk calculator
       (ASCVD, QRISK) remains the standard of care.
     </div>

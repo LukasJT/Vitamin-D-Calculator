@@ -52,6 +52,11 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/magnesium', title: 'Magnesium', description: 'Cofactor for 300+ enzymes; glycinate/citrate/oxide compared.', date: '2026-06-01' },
   { slug: '/iron', title: 'Iron', description: 'Iron deficiency anaemia, ferritin, alternate-day dosing.', date: '2026-06-01' },
   { slug: '/zinc', title: 'Zinc', description: 'Immunity, wound healing, cold lozenge evidence.', date: '2026-06-01' },
+  { slug: '/calcium', title: 'Calcium', description: 'RDA, food-first approach, carbonate vs citrate, kidney stones and arterial calcification debate.', date: '2026-08-10' },
+  { slug: '/omega-3', title: 'Omega-3 (EPA and DHA)', description: 'REDUCE-IT, STRENGTH, VITAL trial evidence; fish oil vs algae oil; triglyceride reduction.', date: '2026-08-10' },
+  { slug: '/choline', title: 'Choline', description: 'Brain and fetal neurodevelopment, non-alcoholic fatty liver, and the nutrient 90% of adults miss.', date: '2026-08-10' },
+  { slug: '/vitamin-b6', title: 'Vitamin B6 (Pyridoxine)', description: 'Morning sickness, PMS, and the sensory neuropathy toxicity risk with chronic high-dose supplements.', date: '2026-08-10' },
+  { slug: '/vitamin-b1', title: 'Vitamin B1 (Thiamine)', description: 'Beriberi, Wernicke-Korsakoff, refeeding syndrome, and the alcohol and loop-diuretic depletion risk.', date: '2026-08-10' },
 ];
 
 export const GET: APIRoute = async () => {

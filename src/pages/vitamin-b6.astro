@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-b6`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin B6 (Pyridoxine) Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Vitamin B6', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin B6 (Pyridoxine): PMS, Morning Sickness, and Toxicity Risk"
+  description="Vitamin B6 reference — RDA, deficiency signs, morning sickness dosing, PMS evidence, and the sensory neuropathy toxicity concern with high-dose supplements."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/vitamin-b6", label: "Vitamin B6" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin B6 (Pyridoxine)</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin B6 is a family of six related compounds; pyridoxal-5-phosphate (PLP) is the
+      active coenzyme form. It participates in over 100 enzymatic reactions — protein
+      metabolism, neurotransmitter synthesis (serotonin, dopamine, GABA), and haemoglobin
+      formation. It has one of the narrowest safety margins among water-soluble vitamins.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adults 19–50:</strong> 1.3 mg/day.</li>
+      <li><strong>Men 51+:</strong> 1.7 mg/day.</li>
+      <li><strong>Women 51+:</strong> 1.5 mg/day.</li>
+      <li><strong>Pregnancy:</strong> 1.9 mg/day.</li>
+      <li><strong>Lactation:</strong> 2.0 mg/day.</li>
+      <li><strong>Tolerable Upper Intake Level:</strong> 100 mg/day — above this, risk of sensory neuropathy rises with duration.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Toxicity — the sensory neuropathy risk</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Chronic supplementation at 100–200 mg/day or more for months to years can cause a
+      dose-dependent sensory neuropathy — tingling, numbness, and impaired proprioception in
+      hands and feet. Reports exist even below the UL. If you take a B-complex, check the B6
+      dose — many products contain 25–100 mg per pill, and stacking with a multivitamin can
+      easily exceed safe chronic intake. Symptoms are usually reversible if caught early.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Clinical uses with evidence</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Morning sickness (nausea of pregnancy)</strong> — B6 10–25 mg every 6–8 hours is a first-line, safe intervention (ACOG guideline). Often combined with doxylamine (Diclegis / Diclectin).</li>
+      <li><strong>PMS symptoms</strong> — B6 up to 80 mg/day showed modest benefit in a Cochrane meta-analysis. Doses above 100 mg increase neuropathy risk with limited additional benefit.</li>
+      <li><strong>Hyperemesis gravidarum</strong> — adjunctive to standard antiemetic therapy.</li>
+      <li><strong>Carpal tunnel syndrome</strong> — traditional use lacks good randomised evidence.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Rare in isolation; more often part of general B-complex deficiency in alcoholism,
+      malabsorption, or extended isoniazid therapy for tuberculosis (which depletes B6).
+      Symptoms: microcytic anaemia, dermatitis, glossitis, depression, confusion, and
+      seizures in severe cases. Isoniazid patients are routinely co-prescribed pyridoxine
+      25–50 mg/day.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Chickpeas (1 cup cooked): 1.1 mg</li>
+      <li>Beef liver (3 oz): 0.9 mg</li>
+      <li>Yellowfin tuna (3 oz): 0.9 mg</li>
+      <li>Salmon (3 oz): 0.6 mg</li>
+      <li>Chicken breast (3 oz): 0.5 mg</li>
+      <li>Potato (1 medium baked): 0.4 mg</li>
+      <li>Banana (1 medium): 0.4 mg</li>
+      <li>Fortified breakfast cereal: 0.5–2 mg</li>
+    </ul>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Persistent tingling or numbness in hands/feet
+      while on a B6-containing supplement warrants stopping the supplement and consulting a
+      physician.
+    </div>
+
+    <RelatedArticles current="/vitamin-b6" />
+  </main>
+</BaseLayout>

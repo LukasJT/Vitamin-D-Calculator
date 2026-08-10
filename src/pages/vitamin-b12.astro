@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
 import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
 import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
@@ -32,7 +33,7 @@ const breadcrumbJsonLd = {
 
 <BaseLayout
   title="Vitamin B12 (Cobalamin): Deficiency, Sources, and Optimal Dosing"
-  description="Complete evidence-based reference on vitamin B12 — pernicious anaemia, neurological deficiency, methylcobalamin vs cyanocobalamin, dosing for vegans and older adults."
+  description="Complete evidence-based reference on vitamin B12 â€” pernicious anaemia, neurological deficiency, methylcobalamin vs cyanocobalamin, dosing for vegans and older adults."
   ogType="article"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
@@ -46,16 +47,17 @@ const breadcrumbJsonLd = {
     <p class="text-lg text-gray-600 leading-relaxed mb-8">
       B12 is a cobalt-containing water-soluble vitamin that the body cannot synthesise. It is
       required for DNA synthesis, red blood cell formation, and myelin maintenance in nerves.
-      Deficiency is common — up to 20% of adults over 60 have marginal or low B12 — and
+      Deficiency is common â€” up to 20% of adults over 60 have marginal or low B12 â€” and
       neurological damage can be irreversible if left untreated.
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <MidContentAd />
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
-      <li><strong>Adults:</strong> 2.4 µg/day (IOM RDA).</li>
-      <li><strong>Pregnancy:</strong> 2.6 µg/day.</li>
-      <li><strong>Lactation:</strong> 2.8 µg/day.</li>
-      <li><strong>No Tolerable Upper Intake Level</strong> — B12 has no known toxicity from oral intake.</li>
+      <li><strong>Adults:</strong> 2.4 Âµg/day (IOM RDA).</li>
+      <li><strong>Pregnancy:</strong> 2.6 Âµg/day.</li>
+      <li><strong>Lactation:</strong> 2.8 Âµg/day.</li>
+      <li><strong>No Tolerable Upper Intake Level</strong> â€” B12 has no known toxicity from oral intake.</li>
     </ul>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency causes</h2>
@@ -64,19 +66,19 @@ const breadcrumbJsonLd = {
       animal-derived in nature). Absorption problems are more common than dietary shortage:
     </p>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
-      <li><strong>Pernicious anaemia</strong> — autoimmune destruction of gastric parietal cells; loss of intrinsic factor.</li>
-      <li><strong>Atrophic gastritis</strong> — age-related reduction in stomach acid; affects ~10–30% of adults ≥ 60.</li>
-      <li><strong>Proton pump inhibitors and H₂ blockers</strong> — chronic acid suppression impairs cleavage of B12 from food proteins.</li>
-      <li><strong>Metformin</strong> — long-term use lowers serum B12 by ~10–30%.</li>
-      <li><strong>Bariatric surgery</strong> — bypass of gastric acid production.</li>
-      <li><strong>Crohn's, coeliac disease, ileal resection</strong> — reduced ileal absorption.</li>
+      <li><strong>Pernicious anaemia</strong> â€” autoimmune destruction of gastric parietal cells; loss of intrinsic factor.</li>
+      <li><strong>Atrophic gastritis</strong> â€” age-related reduction in stomach acid; affects ~10â€“30% of adults â‰¥ 60.</li>
+      <li><strong>Proton pump inhibitors and Hâ‚‚ blockers</strong> â€” chronic acid suppression impairs cleavage of B12 from food proteins.</li>
+      <li><strong>Metformin</strong> â€” long-term use lowers serum B12 by ~10â€“30%.</li>
+      <li><strong>Bariatric surgery</strong> â€” bypass of gastric acid production.</li>
+      <li><strong>Crohn's, coeliac disease, ileal resection</strong> â€” reduced ileal absorption.</li>
     </ul>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Symptoms of deficiency</h2>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
       <li>Fatigue and weakness (macrocytic anaemia)</li>
-      <li>Peripheral neuropathy — numbness, tingling, burning in hands and feet</li>
-      <li>Cognitive changes — brain fog, memory impairment, confusion</li>
+      <li>Peripheral neuropathy â€” numbness, tingling, burning in hands and feet</li>
+      <li>Cognitive changes â€” brain fog, memory impairment, confusion</li>
       <li>Balance problems and gait instability (posterior column dysfunction)</li>
       <li>Glossitis (smooth, red, painful tongue)</li>
       <li>Depression and psychiatric symptoms in severe cases</li>
@@ -84,30 +86,30 @@ const breadcrumbJsonLd = {
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
     <p class="text-gray-700 leading-relaxed">
-      Clams (up to 84 µg per 3 oz), beef liver (70 µg per 3 oz), fortified nutritional yeast
-      (10 µg per 2 tbsp), salmon, tuna, beef, milk, eggs. Vegans <strong>must</strong>
+      Clams (up to 84 Âµg per 3 oz), beef liver (70 Âµg per 3 oz), fortified nutritional yeast
+      (10 Âµg per 2 tbsp), salmon, tuna, beef, milk, eggs. Vegans <strong>must</strong>
       supplement or reliably consume fortified foods.
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation</h2>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
-      <li><strong>Cyanocobalamin</strong> — most common and stable form. 500–1,000 µg oral daily is standard for maintenance.</li>
-      <li><strong>Methylcobalamin</strong> — active form, favoured by some clinicians for neuropathy. Cost is higher; efficacy is similar for most people.</li>
-      <li><strong>Sublingual and injectable</strong> — used in pernicious anaemia and severe deficiency (1,000 µg IM weekly × 4, then monthly).</li>
-      <li>Vegans: 1,000 µg/week or 10 µg/day covers requirements safely.</li>
+      <li><strong>Cyanocobalamin</strong> â€” most common and stable form. 500â€“1,000 Âµg oral daily is standard for maintenance.</li>
+      <li><strong>Methylcobalamin</strong> â€” active form, favoured by some clinicians for neuropathy. Cost is higher; efficacy is similar for most people.</li>
+      <li><strong>Sublingual and injectable</strong> â€” used in pernicious anaemia and severe deficiency (1,000 Âµg IM weekly Ã— 4, then monthly).</li>
+      <li>Vegans: 1,000 Âµg/week or 10 Âµg/day covers requirements safely.</li>
     </ul>
 
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Testing</h2>
     <p class="text-gray-700 leading-relaxed">
-      Serum B12 is the first-line test. Normal range 200–900 pg/mL. Values below 200 pg/mL
-      indicate deficiency. Between 200–400 pg/mL is a grey zone; check <strong>methylmalonic
-      acid</strong> (MMA) and <strong>homocysteine</strong> — both are elevated in true
+      Serum B12 is the first-line test. Normal range 200â€“900 pg/mL. Values below 200 pg/mL
+      indicate deficiency. Between 200â€“400 pg/mL is a grey zone; check <strong>methylmalonic
+      acid</strong> (MMA) and <strong>homocysteine</strong> â€” both are elevated in true
       cellular deficiency and confirm the diagnosis.
     </p>
 
     <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
       <strong>Not medical advice.</strong> Neurological B12 deficiency can be permanent if
-      not treated promptly — persistent numbness, balance problems, or unexplained fatigue
+      not treated promptly â€” persistent numbness, balance problems, or unexplained fatigue
       warrant testing.
     </div>
 

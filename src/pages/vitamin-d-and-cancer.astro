@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
 import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
 import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
@@ -28,7 +29,7 @@ const breadcrumbJsonLd = {
 
 <BaseLayout
   title="Vitamin D and Cancer: What VITAL Trial Data Actually Show"
-  description="Vitamin D and cancer risk — what the largest RCTs (VITAL, D-Health, ViDA) show for incidence and mortality. Type-by-type evidence for colon, breast, prostate, and total cancer."
+  description="Vitamin D and cancer risk â€” what the largest RCTs (VITAL, D-Health, ViDA) show for incidence and mortality. Type-by-type evidence for colon, breast, prostate, and total cancer."
   ogType="article"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
@@ -47,13 +48,14 @@ const breadcrumbJsonLd = {
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 mb-3">Cancer incidence</h2>
+    <MidContentAd />
     <p class="text-gray-700 leading-relaxed mb-3">
       Three major trials have answered this directly:
     </p>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
-      <li><strong>VITAL</strong> (n=25,871, 5 years, 2,000 IU/day) — no reduction in total cancer incidence.</li>
-      <li><strong>D-Health</strong> (n=21,315 Australians, 5 years, 60,000 IU/month ≈ 2,000 IU/day) — no reduction in total cancer incidence.</li>
-      <li><strong>ViDA</strong> (n=5,110 New Zealanders, 3.3 years, 100,000 IU/month ≈ 3,300 IU/day) — no reduction in total cancer incidence.</li>
+      <li><strong>VITAL</strong> (n=25,871, 5 years, 2,000 IU/day) â€” no reduction in total cancer incidence.</li>
+      <li><strong>D-Health</strong> (n=21,315 Australians, 5 years, 60,000 IU/month â‰ˆ 2,000 IU/day) â€” no reduction in total cancer incidence.</li>
+      <li><strong>ViDA</strong> (n=5,110 New Zealanders, 3.3 years, 100,000 IU/month â‰ˆ 3,300 IU/day) â€” no reduction in total cancer incidence.</li>
     </ul>
     <p class="text-gray-700 leading-relaxed mt-3">
       The RCT verdict on preventing cancer <em>onset</em> in unselected populations is
@@ -64,7 +66,7 @@ const breadcrumbJsonLd = {
     <p class="text-gray-700 leading-relaxed">
       Here the signal is more interesting. A 2019 meta-analysis of 10 vitamin D
       supplementation trials (~80,000 participants) found a <strong>13% reduction in
-      cancer mortality</strong> (HR 0.87, 95% CI 0.79–0.96). VITAL itself showed a
+      cancer mortality</strong> (HR 0.87, 95% CI 0.79â€“0.96). VITAL itself showed a
       significant 25% reduction in cancer death after excluding the first two years to
       account for occult tumours (which take time to become clinically obvious). D-Health
       also showed modestly lower cancer mortality with continued supplementation.
@@ -94,14 +96,14 @@ const breadcrumbJsonLd = {
     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical recommendation</h2>
     <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
       <li>Vitamin D supplementation is not a cancer-prevention strategy for the general population.</li>
-      <li>If you have a cancer diagnosis and are deficient, correction to ≥ 30 ng/mL is reasonable adjunct — with your oncologist's knowledge.</li>
-      <li>Colorectal cancer patients specifically may benefit from supplementation targeting 30–40 ng/mL (SUNSHINE-suggested).</li>
+      <li>If you have a cancer diagnosis and are deficient, correction to â‰¥ 30 ng/mL is reasonable adjunct â€” with your oncologist's knowledge.</li>
+      <li>Colorectal cancer patients specifically may benefit from supplementation targeting 30â€“40 ng/mL (SUNSHINE-suggested).</li>
       <li>Sun protection remains the primary intervention for skin cancer prevention.</li>
     </ul>
 
     <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
-      <strong>Not medical advice.</strong> Any cancer management decision — including
-      supplementation — should be discussed with your oncologist. Some malignancies
+      <strong>Not medical advice.</strong> Any cancer management decision â€” including
+      supplementation â€” should be discussed with your oncologist. Some malignancies
       (lymphoma, sarcoidosis-associated) can cause hypercalcaemia at high vitamin D doses.
     </div>
 
