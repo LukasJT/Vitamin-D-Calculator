@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/chromium`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Chromium Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Chromium', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Chromium: Blood Sugar Claims, Picolinate, and the EFSA Reclassification"
+  description="Chromium reference — insulin, blood-sugar supplement claims, chromium picolinate evidence in type 2 diabetes, and why EFSA no longer classifies chromium as essential."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/chromium", label: "Chromium" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Chromium</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Chromium is the most controversial "essential" trace mineral. US IOM still classifies
+      it as essential (as chromium picolinate); the European Food Safety Authority (2014)
+      concluded there is no evidence humans require it. It's marketed heavily for blood
+      sugar and weight loss; both claims outrun the trial data.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">IOM Adequate Intake</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adult men 19–50:</strong> 35 µg/day.</li>
+      <li><strong>Adult women 19–50:</strong> 25 µg/day.</li>
+      <li><strong>Men 51+:</strong> 30 µg/day.</li>
+      <li><strong>Women 51+:</strong> 20 µg/day.</li>
+      <li><strong>Pregnancy:</strong> 30 µg/day.</li>
+      <li><strong>No Tolerable Upper Intake Level</strong> — trivalent chromium (Cr³⁺) is generally considered safe up to 1,000 µg/day; hexavalent chromium (Cr⁶⁺, industrial) is toxic and carcinogenic.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Blood sugar — the picolinate claim</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Chromium is presumed to potentiate insulin action. A 2007 meta-analysis of 41
+      studies (Balk) found chromium supplementation modestly reduced HbA1c in patients
+      with type 2 diabetes (~0.6% reduction) but not in non-diabetics. Later trials
+      including the 2014 chromium-in-diabetes trial were largely negative. The current
+      ADA position: not enough evidence to recommend chromium for glycaemic control in
+      type 2 diabetes.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Weight loss</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Chromium picolinate has been marketed for weight and appetite control. A 2013
+      Cochrane review of 9 trials concluded any weight change was small (&lt; 1 kg) and
+      of doubtful clinical significance. Do not use as a weight-loss aid.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The picolinate safety debate</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Chromium picolinate at 600 µg/day generated concerns about DNA damage in early
+      in vitro studies (Stearns 1995). Later human studies have not shown clear harm at
+      supplemental doses, but the theoretical concern about the picolinate form
+      specifically remains. If you use chromium, chromium chloride or nicotinate forms
+      avoid this question entirely.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Broccoli (½ cup): 11 µg</li>
+      <li>Grape juice (1 cup): 8 µg</li>
+      <li>English muffin, whole wheat: 4 µg</li>
+      <li>Potatoes, mashed (1 cup): 3 µg</li>
+      <li>Green beans (½ cup): 1 µg</li>
+      <li>Beef (3 oz): 2 µg</li>
+      <li>Wine (5 oz): 1–13 µg (highly variable)</li>
+    </ul>
+    <p class="text-gray-700 leading-relaxed mt-3">
+      Chromium content of food is variable and difficult to measure — one reason EFSA
+      reached its "not essential" conclusion.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> If you have type 2 diabetes, evidence-based
+      treatments (metformin, GLP-1 agonists, SGLT2 inhibitors, lifestyle change) work far
+      better than any supplement — do not substitute chromium for those.
+    </div>
+
+    <RelatedArticles current="/chromium" />
+  </main>
+</BaseLayout>

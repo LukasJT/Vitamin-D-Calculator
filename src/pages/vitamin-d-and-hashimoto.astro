@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-hashimoto`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: "Vitamin D and Hashimoto's Thyroiditis",
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: "Hashimoto's thyroiditis", code: { '@type': 'MedicalCode', codeValue: 'E06.3', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: "Vitamin D and Hashimoto's", item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Hashimoto's Thyroiditis: TPO Antibodies, Selenium Stack, Dosing"
+  description="Vitamin D deficiency is more common in Hashimoto's than controls, and supplementation reduces TPO antibody titres in trials. Practical dosing and selenium adjunct."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-hashimoto", label: "Vitamin D & Hashimoto's" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Hashimoto's Thyroiditis</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Hashimoto's thyroiditis is the leading cause of hypothyroidism in iodine-sufficient
+      countries. It's a chronic autoimmune destruction of the thyroid, marked by TPO
+      (thyroid peroxidase) and thyroglobulin antibodies. Vitamin D deficiency and low
+      selenium are both more common in Hashimoto's patients than in controls.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The deficiency correlation</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      A 2018 meta-analysis (Wang) of 26 studies found Hashimoto's patients had significantly
+      lower mean 25(OH)D than controls (mean difference ~-6 ng/mL), and higher rates of
+      deficiency (odds ratio 2.99). The association held across regions and adjusted for
+      major confounders.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">TPO antibody trials</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Chaudhary 2016</strong> — cholecalciferol 60,000 IU weekly for 8 weeks reduced TPO antibody titres by 46% vs 15% in placebo, in vitamin D-deficient patients with Hashimoto's.</li>
+      <li><strong>Vahabi Anaraki 2017</strong> — 50,000 IU weekly for 3 months reduced TSH and improved fT4 in patients with subclinical hypothyroidism and low vitamin D.</li>
+      <li><strong>2019 meta-analysis of 8 RCTs</strong> — significant TPO reduction favouring vitamin D, most robust in deficient patients.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Selenium — the paired story</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Multiple RCTs of selenomethionine 200 µg/day for 3–12 months in Hashimoto's show
+      reduced TPO antibodies (usually 30–50% reduction). Selenium and vitamin D operate
+      on different pathways and can be reasonably combined. See our
+      <a href="/selenium" class="text-amber-700 underline">selenium page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Does antibody reduction change clinical course?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      TPO antibody titre correlates with disease activity but the relationship with
+      long-term hypothyroidism progression is imperfect. Whether vitamin D-mediated
+      antibody reduction actually delays levothyroxine requirement or preserves thyroid
+      function long-term is not yet proven with high-quality outcome trials. The
+      supplementation is safe and cheap; the intermediate outcome (antibodies) is
+      supportive but not definitive.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guidance</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D at Hashimoto's diagnosis and annually.</li>
+      <li>Target ≥ 30 ng/mL (some endocrinologists aim 40–60 in autoimmune thyroid disease).</li>
+      <li>Cholecalciferol 2,000–4,000 IU/day; higher if starting deficient.</li>
+      <li>Consider adding selenomethionine 200 µg/day (do not exceed the 400 µg UL).</li>
+      <li>Vitamin D and selenium do not replace levothyroxine when TSH indicates it — they're adjuncts to conventional care.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> If you're on levothyroxine, don't adjust the
+      dose based on vitamin D changes — dose adjustments should follow TSH, not
+      antibody titres.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-hashimoto" />
+  </main>
+</BaseLayout>

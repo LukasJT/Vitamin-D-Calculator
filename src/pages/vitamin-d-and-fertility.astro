@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-fertility`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Fertility',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Fertility', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Fertility: IVF Success Rates, Sperm Parameters, and PCOS"
+  description="Vitamin D and reproductive outcomes — IVF live birth rates, sperm quality trials, PCOS ovulation, and dosing for couples trying to conceive."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-fertility", label: "Vitamin D & Fertility" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Fertility</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D receptors are expressed in ovaries, endometrium, testes, and sperm cells,
+      and calcitriol regulates key genes in reproductive tissues. Deficiency correlates
+      with subfertility in both sexes; supplementation shows modest, condition-specific
+      benefit — clearest in PCOS and in some IVF cohorts.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">IVF outcomes</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Multiple meta-analyses (Chu 2018; Zhao 2019) find women with sufficient 25(OH)D
+      (≥ 30 ng/mL) at IVF cycle start had higher clinical pregnancy rates (RR ~1.34) and
+      live birth rates (RR ~1.33) than women with deficient or insufficient levels. The
+      2023 Cochrane review flagged the evidence as low certainty pending well-powered
+      RCTs, but the signal is consistent enough that many reproductive endocrinologists
+      correct deficiency pre-cycle.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Female subfertility mechanisms</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>AMH regulation in granulosa cells (vitamin D increases AMH gene expression)</li>
+      <li>Endometrial receptivity and HOXA10 expression</li>
+      <li>Immune tolerance at the maternal-fetal interface</li>
+      <li>Insulin sensitivity — particularly relevant in PCOS</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Male fertility</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The 307-man Blomberg-Jensen (2018) trial gave cholecalciferol + calcium to
+      infertile men and showed modest improvements in sperm motility and DNA
+      fragmentation vs placebo, though the live birth endpoint was not significantly
+      different. Meta-analyses find lower 25(OH)D in men with abnormal semen parameters
+      than in normal controls. Correcting deficiency is a reasonable low-cost step in
+      male-factor workup.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">PCOS and ovulation induction</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D + metformin combinations improve ovulation frequency and clomiphene
+      response in PCOS. See our <a href="/vitamin-d-and-pcos" class="text-amber-700 underline">PCOS page</a>
+      for full details.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Pre-conception dosing</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Both partners test 25(OH)D as part of the fertility workup.</li>
+      <li>Correct any deficiency 3+ months before attempted conception or IVF.</li>
+      <li>Target ≥ 30 ng/mL; some fertility clinics aim 40–60.</li>
+      <li>Cholecalciferol 2,000–4,000 IU/day is a safe pre-conception dose for both sexes.</li>
+      <li>Continue through pregnancy — see <a href="/vitamin-d-in-pregnancy" class="text-amber-700 underline">pregnancy page</a>.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Persistent infertility (12 months of unprotected
+      intercourse, or 6 months if the woman is &gt; 35) warrants specialist evaluation —
+      vitamin D is one modifiable factor, not a treatment.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-fertility" />
+  </main>
+</BaseLayout>

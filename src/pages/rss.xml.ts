@@ -87,6 +87,14 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-shift-work', title: 'Vitamin D and Shift Work', description: 'Why night-shift and indoor workers run deficient year-round and how to dose supplements.', date: '2026-08-14' },
   { slug: '/vitamin-d-and-skin-color', title: 'Vitamin D and Skin Color (Fitzpatrick Types)', description: 'How melanin filters UVB, the synthesis gap between Fitzpatrick I and VI, and skin-type-specific supplementation.', date: '2026-08-14' },
   { slug: '/vitamin-d-and-long-covid', title: 'Vitamin D and Long COVID', description: 'Observational associations, mechanistic angles, and reasonable dosing for PASC recovery.', date: '2026-08-14' },
+  { slug: '/copper', title: 'Copper', description: "Ceruloplasmin, zinc-induced deficiency, Wilson's disease, and Menkes disease.", date: '2026-08-15' },
+  { slug: '/chromium', title: 'Chromium', description: 'The blood-sugar and weight-loss claims, chromium picolinate, and the EFSA reclassification.', date: '2026-08-15' },
+  { slug: '/manganese', title: 'Manganese', description: 'MnSOD cofactor, welding-fume manganism, and why supplementation is rarely warranted.', date: '2026-08-15' },
+  { slug: '/molybdenum', title: 'Molybdenum', description: 'Sulfite oxidase and xanthine oxidase cofactor, the Abumrad TPN case, and why food covers it easily.', date: '2026-08-15' },
+  { slug: '/fluoride', title: 'Fluoride', description: 'Water fluoridation, dental fluorosis, skeletal fluorosis, and the caries-prevention evidence.', date: '2026-08-15' },
+  { slug: '/vitamin-d-and-hashimoto', title: "Vitamin D and Hashimoto's Thyroiditis", description: 'TPO antibody reduction in trials, selenium adjunct, and dosing guidance.', date: '2026-08-15' },
+  { slug: '/vitamin-d-and-endometriosis', title: 'Vitamin D and Endometriosis', description: 'Pain reduction evidence, mechanism via NF-κB and COX-2 suppression, dosing.', date: '2026-08-15' },
+  { slug: '/vitamin-d-and-fertility', title: 'Vitamin D and Fertility', description: 'IVF live birth rates, sperm parameters, PCOS ovulation, and pre-conception dosing.', date: '2026-08-15' },
 ];
 
 export const GET: APIRoute = async () => {

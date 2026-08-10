@@ -421,6 +421,46 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://vitamindcalculator.net/copper</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/chromium</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/manganese</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/molybdenum</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/fluoride</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-and-hashimoto</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-and-endometriosis</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-and-fertility</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://vitamindcalculator.net/sitemap</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

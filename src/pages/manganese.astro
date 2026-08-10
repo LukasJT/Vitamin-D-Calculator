@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/manganese`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Manganese Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Manganese', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Manganese: SOD Cofactor, Bone Formation, and Manganism Risk"
+  description="Manganese reference — Adequate Intake, MnSOD antioxidant defence, well-water and welding-fume overexposure (manganism), and food sources."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/manganese", label: "Manganese" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Manganese</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Manganese is a cofactor for manganese superoxide dismutase (MnSOD, a mitochondrial
+      antioxidant), pyruvate carboxylase, and glutamine synthetase. Deficiency in
+      humans is essentially unknown; toxicity, on the other hand, is a real occupational
+      and environmental problem — chronic overexposure produces a Parkinson-like disorder
+      called manganism.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily Adequate Intake</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adult men:</strong> 2.3 mg/day.</li>
+      <li><strong>Adult women:</strong> 1.8 mg/day.</li>
+      <li><strong>Pregnancy:</strong> 2.0 mg/day.</li>
+      <li><strong>Lactation:</strong> 2.6 mg/day.</li>
+      <li><strong>Tolerable Upper Intake Level:</strong> 11 mg/day for adults from food and supplements combined.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Toxicity — manganism</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Chronic inhalational or ingestion overexposure causes manganese accumulation in the
+      basal ganglia, producing a Parkinson-like syndrome — bradykinesia, rigidity, gait
+      disturbance, dystonic postures, and psychiatric changes. Historically an
+      occupational disease of miners and steel welders; today the main risk groups are:
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Welders</strong> with long-term inhalation of welding fumes.</li>
+      <li><strong>Chronic liver disease</strong> — manganese is excreted in bile; hepatic failure causes accumulation.</li>
+      <li><strong>Total parenteral nutrition</strong> — IV manganese bypasses homeostasis; TPN patients need careful monitoring.</li>
+      <li><strong>Well-water consumers</strong> in some regions where groundwater manganese exceeds 300 µg/L; associated with impaired cognition in children.</li>
+      <li><strong>Ephedrone/methcathinone users</strong> (drug production uses potassium permanganate; contamination is severe).</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The bone-formation claim</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Manganese is a cofactor for glycosyltransferases involved in bone matrix formation.
+      Some "bone health" supplements combine manganese with calcium and vitamin D. There
+      is no evidence that manganese supplementation above dietary intake improves bone
+      mineral density in humans with normal manganese status.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Mussels (3 oz): 5.8 mg — extreme outlier</li>
+      <li>Hazelnuts (1 oz): 1.6 mg</li>
+      <li>Pecans (1 oz): 1.3 mg</li>
+      <li>Brown rice (1 cup cooked): 1.1 mg</li>
+      <li>Oatmeal (1 cup cooked): 1.4 mg</li>
+      <li>Whole wheat bread (1 slice): 0.5 mg</li>
+      <li>Pineapple (½ cup): 0.8 mg</li>
+      <li>Tea (1 cup): 0.4–0.5 mg — chronic heavy tea intake can contribute significantly</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Manganese is one supplement to leave alone —
+      dietary intake covers the AI easily, and the risk-benefit ratio of supplementation
+      is unfavourable outside of well-defined TPN or malabsorption scenarios.
+    </div>
+
+    <RelatedArticles current="/manganese" />
+  </main>
+</BaseLayout>

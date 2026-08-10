@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/molybdenum`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Molybdenum Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Molybdenum', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Molybdenum: Sulfite Oxidase, TPN Deficiency, and Why Isolated Supplementation Is Rare"
+  description="Molybdenum reference — RDA, its role as sulfite oxidase and xanthine oxidase cofactor, TPN-induced deficiency (Abumrad case), food sources, and toxicity."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/molybdenum", label: "Molybdenum" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Molybdenum</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Molybdenum is a cofactor for four human enzymes: sulfite oxidase (metabolises
+      sulphur amino acids), xanthine oxidase (catabolises purines to uric acid), aldehyde
+      oxidase, and mitochondrial amidoxime-reducing component. Isolated dietary deficiency
+      has essentially never been documented in humans on normal diets.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adults:</strong> 45 µg/day.</li>
+      <li><strong>Pregnancy:</strong> 50 µg/day.</li>
+      <li><strong>Lactation:</strong> 50 µg/day.</li>
+      <li><strong>Tolerable Upper Intake Level:</strong> 2,000 µg/day.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The Abumrad case — how we know molybdenum is essential</h2>
+    <p class="text-gray-700 leading-relaxed">
+      In 1981, Abumrad et al. reported a patient on long-term TPN who developed intolerance
+      to sulphur amino acids, tachycardia, headache, night blindness, and coma. Molybdenum
+      supplementation reversed everything within days. This is the case that established
+      molybdenum as a human essential trace mineral. Real-world dietary deficiency in
+      free-living adults has not been reported.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Molybdenum cofactor deficiency (genetic)</h2>
+    <p class="text-gray-700 leading-relaxed">
+      A rare autosomal recessive disorder causing loss of sulfite oxidase, xanthine oxidase,
+      and aldehyde oxidase activity. Presents in the neonatal period with intractable
+      seizures, developmental regression, and death in infancy unless treated with cyclic
+      pyranopterin monophosphate (cPMP, fosdenopterin, approved 2021). Not a "dietary
+      molybdenum" issue — the biosynthetic pathway is broken.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Toxicity</h2>
+    <p class="text-gray-700 leading-relaxed">
+      High dietary intake (10–15 mg/day, ~200–300× the RDA) has been reported to cause
+      gout-like syndrome via xanthine oxidase induction and elevated uric acid.
+      Environmental cases in high-molybdenum soil regions (parts of Armenia) documented
+      this in the 1960s. Not a real-world concern from supplements or normal diets in
+      most of the world.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Black-eyed peas (1 cup cooked): 288 µg — 6× the RDA in one serving</li>
+      <li>Lima beans (1 cup cooked): 210 µg</li>
+      <li>Lentils (1 cup cooked): 148 µg</li>
+      <li>Soybeans (1 cup): 130 µg</li>
+      <li>Milk (1 cup): 33 µg</li>
+      <li>Yoghurt (1 cup): 26 µg</li>
+      <li>Peanuts (1 oz): 12 µg</li>
+      <li>Beef liver (3 oz): 40 µg</li>
+    </ul>
+    <p class="text-gray-700 leading-relaxed mt-3">
+      Any diet containing legumes covers molybdenum many times over. Isolated supplementation
+      is essentially unnecessary in normal circumstances.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Neonatal seizures with unusual biochemistry
+      warrant urgent metabolic workup — this is where the rare molybdenum-cofactor
+      deficiency is diagnosed.
+    </div>
+
+    <RelatedArticles current="/molybdenum" />
+  </main>
+</BaseLayout>

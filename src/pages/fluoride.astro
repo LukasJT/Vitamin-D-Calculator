@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/fluoride`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Fluoride Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Fluoride', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Fluoride: Water Fluoridation, Fluorosis, and the Caries Evidence"
+  description="Fluoride reference — Adequate Intake, water fluoridation (0.7 mg/L), enamel and dental fluorosis, skeletal fluorosis, and the caries-prevention evidence."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/fluoride", label: "Fluoride" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Fluoride</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Fluoride is not classically essential — no fluoride-dependent enzyme has been
+      identified — but it substitutes for hydroxyl groups in bone and tooth enamel to
+      form fluorapatite, which is more acid-resistant than hydroxyapatite. This is why
+      fluoride is one of the most successful public-health interventions of the 20th
+      century for dental caries.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily Adequate Intake</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adult men:</strong> 4 mg/day.</li>
+      <li><strong>Adult women:</strong> 3 mg/day.</li>
+      <li><strong>Pregnancy / lactation:</strong> 3 mg/day.</li>
+      <li><strong>Tolerable Upper Intake Level:</strong> 10 mg/day for adults; lower for children (2.2 mg/day for age 4–8) to reduce dental fluorosis risk.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Water fluoridation</h2>
+    <p class="text-gray-700 leading-relaxed">
+      US Public Health Service recommends 0.7 mg/L in community water (lowered from
+      the historical 0.7–1.2 range in 2015 as toothpaste availability has increased).
+      CDC estimates fluoridation reduces childhood caries by 25% in kids and adults. The
+      York Review (2000) and Cochrane 2015 confirm caries reduction but note the evidence
+      is largely from pre-1975 studies before fluoride toothpaste became universal.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Dental fluorosis</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Excess fluoride during tooth formation (age &lt; 8) causes enamel hypomineralisation —
+      white streaks in mild cases, brown pits in severe. Cosmetic, not functional. Rates
+      have risen with widespread fluoride toothpaste use — pea-sized amount, spitting not
+      swallowing, and supervised brushing in young children keep the risk low.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Skeletal fluorosis</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Chronic intake &gt; 10 mg/day for years causes bone pain, joint stiffness, and
+      spinal ligament calcification. Endemic in parts of India, China, and East Africa
+      where groundwater fluoride exceeds 3–5 mg/L. Not a public-health issue in fluoridated
+      water systems at 0.7 mg/L.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Toothpaste and topical use</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Fluoride toothpaste (1,000–1,500 ppm) is the single strongest evidence base for
+      dental caries prevention (Cochrane 2010 — 26% caries reduction across 79 trials).
+      Higher-concentration prescription pastes (5,000 ppm) are used for high-risk adults.
+      Topical action (enamel remineralisation) outweighs systemic action in older
+      children and adults.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The IQ controversy</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Several recent observational studies (Green 2019; Bashash 2017) have reported small
+      IQ decrements associated with prenatal fluoride exposure at community fluoridation
+      levels. The findings are contested — methodological concerns, unadjusted
+      confounders, and results not replicated in comparable populations. Systematic
+      reviews conclude the strongest evidence for cognitive harm applies to
+      groundwater levels much higher than fluoridated water. The debate is ongoing;
+      major public health bodies (WHO, CDC, ADA) currently continue to endorse
+      fluoridation at 0.7 mg/L.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Fluoridated tap water (1 L): 0.7 mg</li>
+      <li>Black tea (1 cup): 0.2–0.4 mg</li>
+      <li>Green tea (1 cup): 0.1–0.3 mg</li>
+      <li>Grapes and raisins: variable (residual insecticide fluoride)</li>
+      <li>Marine fish (3 oz): 0.02–0.05 mg</li>
+      <li>Bottled water — varies from 0 to over 1 mg/L; not standardised</li>
+      <li>Fluoride toothpaste (pea-sized, adult): ~1 mg, most spit out</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Infant fluoride: use fluoride-free water to
+      reconstitute formula (or breastfeed) if your water fluoride is &gt; 0.7 mg/L, to
+      reduce fluorosis risk.
+    </div>
+
+    <RelatedArticles current="/fluoride" />
+  </main>
+</BaseLayout>

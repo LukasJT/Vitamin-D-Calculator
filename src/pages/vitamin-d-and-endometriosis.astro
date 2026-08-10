@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-endometriosis`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Endometriosis',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Endometriosis', code: { '@type': 'MedicalCode', codeValue: 'N80', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Endometriosis', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Endometriosis: Pelvic Pain, CA-125, and Supplementation Evidence"
+  description="What the evidence shows for vitamin D in endometriosis — pain scores, CA-125, and dosing as an adjunct to hormonal or surgical management."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-endometriosis", label: "Vitamin D & Endometriosis" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Endometriosis</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Endometriosis is a chronic oestrogen-dependent inflammatory disease affecting
+      roughly 10% of women of reproductive age. Vitamin D receptors are expressed in
+      endometrial tissue, and vitamin D modulates several pathways implicated in the
+      disease — immune regulation, cell proliferation, angiogenesis, and prostaglandin
+      synthesis.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational data</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Cross-sectional studies find lower 25(OH)D in women with endometriosis than in
+      matched controls, and lower levels correlate with disease stage (rASRM) and pain
+      severity. A 2018 case-control study reported women in the highest 25(OH)D quartile
+      had a 24% lower odds of endometriosis than the lowest quartile.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">RCT evidence</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Almassinokiani 2016</strong> — 45 women post-laparoscopy; 50,000 IU cholecalciferol every 2 weeks for 12 weeks did not reduce pelvic pain vs placebo. Small trial.</li>
+      <li><strong>Nodler 2020</strong> — pilot RCT of adolescents with dysmenorrhoea including endometriosis; vitamin D 60,000 IU/week reduced pain scores.</li>
+      <li><strong>2020 meta-analysis</strong> — significant reduction in dysmenorrhoea VAS scores overall; endometriosis-specific data more limited.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical dosing</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D — many endometriosis patients are deficient.</li>
+      <li>Correct to at least 30 ng/mL with 2,000–4,000 IU/day for 8–12 weeks.</li>
+      <li>Vitamin D is not a substitute for evidence-based endometriosis therapy — NSAIDs, combined hormonal contraceptives, progestin-only options, GnRH agonists/antagonists, and laparoscopic excision remain the core interventions.</li>
+      <li>Consider in the fertility workup — see the <a href="/vitamin-d-for-women" class="text-amber-700 underline">women's page</a>.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mechanism</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D suppresses NF-κB signalling in endometrial stromal cells, reduces
+      cyclooxygenase-2 expression (which drives menstrual pain via PGE2), and modulates
+      NK-cell function that may affect ectopic implant survival. It also increases VDR
+      expression in endometriotic tissue, offering a plausible route for locally
+      antiproliferative effects.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Severe pelvic pain, cyclical bowel/bladder
+      symptoms, or infertility warrant specialist gynaecologic assessment — vitamin D
+      does not replace that workup.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-endometriosis" />
+  </main>
+</BaseLayout>

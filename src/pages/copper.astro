@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/copper`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Copper Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Copper', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Copper: Ceruloplasmin, Zinc-Induced Deficiency, and Wilson's Disease"
+  description="Copper reference — RDA, ceruloplasmin, the zinc-induced myelopathy trap, Menkes and Wilson's disease, and food sources."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/copper", label: "Copper" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Copper</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Copper is a trace mineral required for iron transport (via ceruloplasmin),
+      mitochondrial cytochrome c oxidase, neurotransmitter synthesis, and connective
+      tissue crosslinking. Both deficiency and excess have distinct clinical syndromes;
+      the main real-world deficiency scenario is <strong>zinc-induced copper deficiency</strong>,
+      which is under-recognised.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adults:</strong> 900 µg/day.</li>
+      <li><strong>Pregnancy:</strong> 1,000 µg/day.</li>
+      <li><strong>Lactation:</strong> 1,300 µg/day.</li>
+      <li><strong>Tolerable Upper Intake Level:</strong> 10,000 µg/day.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Zinc-induced copper deficiency</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Chronic zinc intake above ~50 mg/day induces metallothionein in the intestinal
+      mucosa, which preferentially binds copper and prevents its absorption. Case
+      reports abound of adults developing severe copper deficiency causing myelopathy
+      (progressive spastic gait), sensory ataxia, and cytopenias after months to years
+      of high-dose zinc — sometimes from denture-fixation creams that contained zinc,
+      more commonly from OTC zinc lozenges taken for immunity. If you take zinc &gt; 25
+      mg/day chronically, take a copper supplement too (1–2 mg copper per 15 mg zinc).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Copper deficiency signs</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Microcytic or normocytic anaemia unresponsive to iron</li>
+      <li>Neutropenia</li>
+      <li>Myelopathy — spastic gait, sensory ataxia, paraesthesia</li>
+      <li>Osteoporosis (from impaired lysyl oxidase, a copper-dependent enzyme)</li>
+      <li>Hypopigmentation of hair and skin</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Wilson's disease</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Autosomal recessive mutation of the ATP7B copper transporter causes copper
+      accumulation in the liver, brain, and cornea. Presents with liver failure, movement
+      disorders, and Kayser-Fleischer corneal rings. Treated with copper-chelation
+      (penicillamine, trientine) or zinc (which blocks copper absorption — the same
+      mechanism that causes iatrogenic deficiency in healthy adults).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Menkes disease</h2>
+    <p class="text-gray-700 leading-relaxed">
+      X-linked ATP7A mutation causing severe copper deficiency in infancy. Kinky-hair
+      appearance, progressive neurologic decline, connective tissue defects; usually
+      fatal in early childhood despite copper histidinate treatment. Very rare.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Beef liver (3 oz): 12,400 µg — huge overshoot; a small serving covers a week's needs</li>
+      <li>Oysters (3 oz cooked): 4,850 µg</li>
+      <li>Dark chocolate 70–85% (1 oz): 500 µg</li>
+      <li>Cashews (1 oz): 630 µg</li>
+      <li>Sunflower seeds (¼ cup): 610 µg</li>
+      <li>Lentils (1 cup cooked): 500 µg</li>
+      <li>Shiitake mushrooms (½ cup): 650 µg</li>
+      <li>Crab (3 oz): 670 µg</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> New numbness, unsteady gait, or unexplained
+      anaemia in someone taking chronic high-dose zinc — check serum copper, ceruloplasmin,
+      and stop the zinc. Progression to myelopathy can be irreversible.
+    </div>
+
+    <RelatedArticles current="/copper" />
+  </main>
+</BaseLayout>
