@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-asthma`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Asthma',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Asthma', code: { '@type': 'MedicalCode', codeValue: 'J45', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Asthma', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Asthma: Exacerbations, Steroid Use, and the VIDA Trial"
+  description="Does vitamin D reduce asthma attacks? Cochrane meta-analysis of ~1,100 patients, VIDA trial, VDAART pregnancy trial results and dosing guidance."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-asthma", label: "Vitamin D & Asthma" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Asthma</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D deficiency is more common in adults and children with asthma than in
+      controls, and it correlates with worse lung function and more frequent exacerbations
+      in observational cohorts. Trial evidence for supplementation is mixed but positive
+      overall for reducing severe attacks in deficient patients.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The Cochrane evidence</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      A 2016 Cochrane systematic review (nine trials, ~1,100 patients) concluded vitamin D
+      supplementation reduced the rate of asthma exacerbations requiring systemic
+      corticosteroids by roughly 30%, and cut ED-visit or hospitalisation-triggering
+      attacks. The 2023 update found the effect largely confined to adults with baseline
+      deficiency (25(OH)D &lt; 25 nmol/L / &lt; 10 ng/mL).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Key individual trials</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>VIDA (2014)</strong> — 408 adults with mild-moderate asthma and low vitamin D. 100,000 IU bolus + 4,000 IU/day did not improve time-to-treatment-failure primary endpoint, but reduced overall exacerbation rate.</li>
+      <li><strong>VDAART (2016)</strong> — maternal 4,400 IU/day in pregnancy vs 400 IU/day; 20% relative reduction in offspring asthma/recurrent wheeze by age 3, though not statistically significant at the pre-specified threshold.</li>
+      <li><strong>Copenhagen COPSAC (2016)</strong> — similar pregnancy design; 24% reduction in persistent wheeze by age 3.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mechanisms</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D modulates T-helper cell balance (favouring Treg over Th2/Th17 responses),
+      induces the antimicrobial peptide cathelicidin (which may reduce viral triggers of
+      asthma), and influences airway smooth muscle proliferation. Deficiency is associated
+      with steroid resistance in some asthma phenotypes.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guidance</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D in adults with poorly controlled asthma.</li>
+      <li>If deficient (&lt; 20 ng/mL), correct with 2,000–4,000 IU/day for 8–12 weeks, then re-test.</li>
+      <li>If already sufficient, adding more is unlikely to reduce exacerbations.</li>
+      <li>Vitamin D supplementation is an adjunct to, not a replacement for, controller inhalers.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Do not adjust asthma medications based on
+      vitamin D status without your prescriber's input.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-asthma" />
+  </main>
+</BaseLayout>

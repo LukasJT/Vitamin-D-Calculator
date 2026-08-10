@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedArticles from '../components/shared/RelatedArticles.astro';
 import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
 import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
 import EditorialStandards from '../components/shared/EditorialStandards.astro';
 
@@ -106,6 +107,7 @@ const breadcrumbJsonLd = {
       is debated.
     </div>
 
+    <EndOfContentAd />
     <RelatedArticles current="/omega-3" />
   </main>
 </BaseLayout>

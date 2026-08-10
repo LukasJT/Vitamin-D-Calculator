@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-b3`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin B3 (Niacin) Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Vitamin B3', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin B3 (Niacin): Cholesterol, Flush, and NAD+ Precursors"
+  description="Niacin reference — RDA, pellagra, cholesterol effects, the AIM-HIGH/HPS2-THRIVE trial failure, nicotinamide riboside and NAD+ boosting."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/vitamin-b3", label: "Vitamin B3" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin B3 (Niacin)</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin B3 is a family: <strong>nicotinic acid (niacin)</strong>,
+      <strong>nicotinamide (niacinamide)</strong>, and the newer <strong>nicotinamide riboside</strong>
+      and <strong>NMN</strong>. All feed into NAD⁺, the cofactor for hundreds of metabolic
+      reactions. Different forms behave very differently at pharmacologic doses.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Men:</strong> 16 mg NE/day.</li>
+      <li><strong>Women:</strong> 14 mg NE/day.</li>
+      <li><strong>Pregnancy:</strong> 18 mg NE/day.</li>
+      <li><strong>Lactation:</strong> 17 mg NE/day.</li>
+      <li><strong>UL:</strong> 35 mg/day from supplements (based on flushing) — this does NOT apply to food or to prescription cholesterol-lowering doses under medical supervision.</li>
+    </ul>
+    <p class="text-sm text-gray-500 mt-2">NE = niacin equivalents (60 mg dietary tryptophan → 1 mg niacin).</p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Pellagra — the classic deficiency</h2>
+    <p class="text-gray-700 leading-relaxed">
+      "The disease of the four Ds": dermatitis (photosensitive rash on sun-exposed skin),
+      diarrhoea, dementia, and death if untreated. Historically endemic where corn was the
+      dietary staple (corn's niacin is bound and poorly bioavailable unless nixtamalised, as
+      in traditional Mesoamerican preparation). Rare today outside of alcoholism, isoniazid
+      therapy, carcinoid syndrome, and Hartnup disease.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Niacin and cholesterol</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Nicotinic acid at 1,500–2,000 mg/day lowers LDL 15–20%, raises HDL 20–35%, and lowers
+      triglycerides 20–50% — the only supplement with these effects. Yet the large
+      AIM-HIGH (2011) and HPS2-THRIVE (2014) trials showed <strong>no reduction</strong> in
+      cardiovascular events when niacin was added to statin therapy, and increased serious
+      side effects. Niacin is no longer recommended for cardiovascular prevention.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The niacin flush</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Nicotinic acid causes prostaglandin-mediated cutaneous vasodilation — intense
+      warmth, redness, and tingling starting ~15 min after dose. Uncomfortable but harmless.
+      Tolerance develops within weeks. Aspirin 325 mg 30 min before dosing blunts it.
+      Nicotinamide and inositol hexanicotinate do not flush but also do not have the
+      cholesterol effects.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">NAD+ precursors — nicotinamide riboside and NMN</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Newer supplements that raise blood NAD⁺ measurably. Marketing around anti-ageing and
+      metabolic benefit outpaces the human trial evidence, which is small (mostly &lt; 100
+      participants) and short-term. Reasonable safety profile at studied doses (250–1,000
+      mg/day nicotinamide riboside), but keep expectations calibrated to the actual clinical
+      data — modest at best so far.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Turkey breast (3 oz): 10 mg</li>
+      <li>Chicken breast (3 oz): 10 mg</li>
+      <li>Tuna, canned (3 oz): 8.6 mg</li>
+      <li>Salmon (3 oz): 8.5 mg</li>
+      <li>Beef (3 oz): 6 mg</li>
+      <li>Peanuts (1 oz): 4 mg</li>
+      <li>Fortified breakfast cereal: 10–20 mg</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> High-dose niacin can cause hepatotoxicity,
+      especially sustained-release preparations sold OTC — do not self-prescribe pharmacologic
+      doses.
+    </div>
+
+    <RelatedArticles current="/vitamin-b3" />
+  </main>
+</BaseLayout>

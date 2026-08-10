@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-acne`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Acne',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Acne vulgaris', code: { '@type': 'MedicalCode', codeValue: 'L70', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Acne', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Acne: The Deficiency Link and Supplementation Evidence"
+  description="Vitamin D deficiency is more common in acne patients than in matched controls. What the supplementation and topical trials actually show for acne severity."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-acne", label: "Vitamin D & Acne" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Acne</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Case-control studies consistently find vitamin D deficiency is more common and more
+      severe in adults with nodulocystic and inflammatory acne than in matched controls.
+      The mechanism is plausible — vitamin D modulates sebocyte biology, IL-17 and
+      cathelicidin production, and <em>Cutibacterium acnes</em>-driven inflammation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Deficiency prevalence in acne</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      A 2016 case-control study of Korean adults reported 25(OH)D was significantly lower in
+      acne patients (mean ~15 ng/mL) than controls (~22 ng/mL), with an OR of 2.9 for
+      deficiency (&lt; 20 ng/mL) after adjustment. A 2020 meta-analysis pooling six studies
+      confirmed the association, though heterogeneity was high.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation evidence</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>A small 2016 double-blind RCT in Turkey (45 patients with nodulocystic acne and 25(OH)D &lt; 20 ng/mL) reported cholecalciferol 1,000 IU/day for 8 weeks reduced inflammatory lesion count significantly more than placebo.</li>
+      <li>Adjunctive vitamin D correction in patients on isotretinoin or oral antibiotics is a common dermatology recommendation, though large trials are lacking.</li>
+      <li>Topical vitamin D analogues (calcipotriene) are effective for psoriasis but have not shown consistent benefit for acne.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What to do</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Correct deficiency if present — cholecalciferol 1,000–2,000 IU/day for 8–12 weeks in mild-moderate deficiency.</li>
+      <li>Don't expect vitamin D alone to clear moderate-to-severe acne — it's an adjunct to dermatologic therapy.</li>
+      <li>Sun exposure has mixed effects on acne — some people flare, some improve. Follow your own experience.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Persistent or severe acne benefits from evaluation
+      by a dermatologist — topical retinoids, oral antibiotics, hormonal therapy, and
+      isotretinoin have far larger evidence bases than any nutrient.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-acne" />
+  </main>
+</BaseLayout>

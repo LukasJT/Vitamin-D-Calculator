@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-multiple-sclerosis`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Multiple Sclerosis',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Multiple sclerosis', code: { '@type': 'MedicalCode', codeValue: 'G35', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Multiple Sclerosis', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Multiple Sclerosis: Latitude, Risk, and Supplementation Evidence"
+  description="MS risk rises with latitude and falls with sun exposure. What the evidence shows about vitamin D for prevention, relapse rate, and disease progression."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-multiple-sclerosis", label: "Vitamin D & MS" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Multiple Sclerosis</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Multiple sclerosis (MS) has one of the strongest and most consistent latitude
+      gradients in medicine — prevalence rises sharply above 40°N and below 40°S. Vitamin D
+      status is a leading explanation for the pattern, and it is one of the few modifiable
+      risk factors identified for the disease.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The latitude gradient</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      MS prevalence is ~2–3× higher in Scotland (57°N) than in the Mediterranean, and higher
+      in Tasmania than in Queensland. Migration studies suggest the risk is largely fixed
+      before puberty — people who move from a low- to high-latitude country in childhood
+      acquire the higher risk of their new home; those who move as adults keep their
+      original risk.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Genetic evidence — Mendelian randomisation</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Studies using genetic variants that lower 25(OH)D as instruments (Mendelian
+      randomisation) find genetically low vitamin D is associated with higher MS risk. This
+      design is less confounded than conventional observational studies, and it supports
+      the deficiency-causes-MS hypothesis rather than reverse causation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation trials</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>SOLAR (2018)</strong> — cholecalciferol 14,000 IU/day for 48 weeks in relapsing-remitting MS on interferon-β; no reduction in new MRI lesion primary endpoint.</li>
+      <li><strong>CHOLINE (2019)</strong> — 100,000 IU every 2 weeks; reduced new T2 lesions but not annualised relapse rate.</li>
+      <li><strong>PrevANZ / D-Lay MS</strong> — ongoing prevention trials in high-risk relatives.</li>
+    </ul>
+    <p class="text-gray-700 leading-relaxed mt-3">
+      Overall: supplementation may reduce inflammatory MRI activity but the disease-modifying
+      effect is smaller than expected from observational data. Vitamin D adjunctive therapy
+      is reasonable in deficient MS patients; it does not replace disease-modifying drugs.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Target 25(OH)D in MS</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Most MS neurology consensus statements suggest maintaining 25(OH)D between 40–60
+      ng/mL (100–150 nmol/L) in people with MS, using cholecalciferol 2,000–5,000 IU/day
+      titrated to serum level. Doses above the 4,000 IU/day IOM upper limit are commonly
+      used under specialist supervision.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> If you have MS, discuss vitamin D targets with
+      your neurologist — very high doses require calcium monitoring.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-multiple-sclerosis" />
+  </main>
+</BaseLayout>

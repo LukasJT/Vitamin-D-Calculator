@@ -57,6 +57,13 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/choline', title: 'Choline', description: 'Brain and fetal neurodevelopment, non-alcoholic fatty liver, and the nutrient 90% of adults miss.', date: '2026-08-10' },
   { slug: '/vitamin-b6', title: 'Vitamin B6 (Pyridoxine)', description: 'Morning sickness, PMS, and the sensory neuropathy toxicity risk with chronic high-dose supplements.', date: '2026-08-10' },
   { slug: '/vitamin-b1', title: 'Vitamin B1 (Thiamine)', description: 'Beriberi, Wernicke-Korsakoff, refeeding syndrome, and the alcohol and loop-diuretic depletion risk.', date: '2026-08-10' },
+  { slug: '/vitamin-b3', title: 'Vitamin B3 (Niacin)', description: 'Pellagra, the AIM-HIGH and HPS2-THRIVE failures, niacin flush, and the newer NAD+ precursors (NR, NMN).', date: '2026-08-11' },
+  { slug: '/biotin', title: 'Biotin (Vitamin B7)', description: 'The hair-and-nails evidence check and the FDA warning about biotin interfering with troponin and thyroid tests.', date: '2026-08-11' },
+  { slug: '/selenium', title: 'Selenium', description: "Thyroid, Hashimoto's TPO evidence, SELECT trial, brazil-nut dosing and the narrowest nutrient safety margin.", date: '2026-08-11' },
+  { slug: '/vitamin-d-and-covid', title: 'Vitamin D and COVID-19', description: 'Observational deficiency signal vs the CORONAVIT and Cochrane 2023 randomised-trial verdict.', date: '2026-08-11' },
+  { slug: '/vitamin-d-and-multiple-sclerosis', title: 'Vitamin D and Multiple Sclerosis', description: 'Latitude gradient, Mendelian-randomisation evidence, SOLAR and CHOLINE trials, MS-specific 25(OH)D targets.', date: '2026-08-11' },
+  { slug: '/vitamin-d-and-asthma', title: 'Vitamin D and Asthma', description: 'Cochrane meta-analysis, VIDA trial, VDAART pregnancy trial, and dosing for adults with poorly controlled asthma.', date: '2026-08-11' },
+  { slug: '/vitamin-d-and-acne', title: 'Vitamin D and Acne', description: 'The deficiency link in inflammatory acne and what the small supplementation RCTs actually show.', date: '2026-08-11' },
 ];
 
 export const GET: APIRoute = async () => {

@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/selenium`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Selenium Reference',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamins & Minerals', item: `${SITE}/vitamins` },
+    { '@type': 'ListItem', position: 3, name: 'Selenium', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Selenium: Thyroid, Brazil Nuts, and the Narrowest Nutrient Safety Margin"
+  description="Selenium reference — RDA, thyroid function, Hashimoto's TPO evidence, the SELECT prostate cancer trial, brazil nut dosing, and how easy it is to overshoot."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamins", label: "Vitamins & Minerals" }, { href: "/selenium", label: "Selenium" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Selenium</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Selenium is a trace mineral incorporated into selenoproteins — most importantly
+      glutathione peroxidase (antioxidant defence), iodothyronine deiodinases (thyroid
+      hormone activation), and thioredoxin reductases. The gap between adequate and toxic
+      intake is one of the narrowest of any nutrient.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Daily requirements</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Adults:</strong> 55 µg/day.</li>
+      <li><strong>Pregnancy:</strong> 60 µg/day.</li>
+      <li><strong>Lactation:</strong> 70 µg/day.</li>
+      <li><strong>Tolerable Upper Intake Level:</strong> 400 µg/day — this is roughly 7× the RDA, the tightest safety margin in the fat- and water-soluble vitamin/mineral list.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Thyroid — Hashimoto's and Graves'</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The thyroid gland has the highest selenium concentration of any organ in the body.
+      Multiple RCTs of selenomethionine 200 µg/day for 3–12 months in Hashimoto's
+      thyroiditis show a modest but significant reduction in TPO antibody titres. Whether
+      that translates to reduced hypothyroidism progression or clinical benefit is less
+      clear. In Graves' orbitopathy, selenium 200 µg/day BID for 6 months improved eye
+      symptoms and quality of life in a multicentre European trial.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cancer — the SELECT surprise</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The 35,000-man SELECT trial (2011) tested selenium (200 µg) and/or vitamin E for
+      prostate cancer prevention. Not only did selenium not prevent cancer, it may have
+      increased type 2 diabetes risk in men with high baseline selenium. This overturned a
+      decade of enthusiasm from earlier smaller trials and is a good example of why single
+      positive trials don't warrant supplementation across the general population.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Toxicity — selenosis</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Chronic intake &gt; 400 µg/day causes selenosis: garlic breath, brittle/lost hair and
+      nails, GI upset, and peripheral neuropathy. High-dose supplement mishaps have caused
+      acute poisonings. Because content varies wildly, brazil nuts can push you into
+      excess: a single large nut ranges from 68 to 91 µg, and one poorly sourced batch
+      analysed at 500+ µg per nut. Two brazil nuts a day is a sensible ceiling.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food sources</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Brazil nuts (1 oz, 6–8 nuts): 544 µg — highest of any food; wildly variable</li>
+      <li>Tuna, yellowfin (3 oz): 92 µg</li>
+      <li>Halibut (3 oz): 47 µg</li>
+      <li>Sardines (3 oz): 45 µg</li>
+      <li>Turkey (3 oz): 31 µg</li>
+      <li>Beef (3 oz): 33 µg</li>
+      <li>Egg (1 large): 15 µg</li>
+      <li>Brown rice (1 cup cooked): 19 µg</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Selenium status can be measured (plasma or
+      erythrocyte selenium) if there's a specific clinical reason. Don't stack a multivitamin
+      containing 55 µg with additional selenium capsules and daily brazil nuts.
+    </div>
+
+    <RelatedArticles current="/selenium" />
+  </main>
+</BaseLayout>

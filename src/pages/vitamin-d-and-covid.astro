@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-covid`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and COVID-19',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-08-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and COVID-19', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and COVID-19: What the Evidence Actually Shows"
+  description="Evidence review — observational deficiency correlations, RCT results (CORONAVIT, CovidVIT-D), and where hype outran the data on vitamin D and COVID."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-covid", label: "Vitamin D & COVID-19" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and COVID-19</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Early in the pandemic, vitamin D deficiency correlated strongly with worse COVID
+      outcomes in observational cohorts. Randomised trials that followed produced a more
+      modest picture — reasonable to correct deficiency, weak evidence that
+      supplementation reduces severity in already-sufficient adults.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The observational signal</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Dozens of cohort studies from 2020–2021 found deficient adults (25(OH)D &lt; 20 ng/mL)
+      had higher rates of hospitalisation, ICU admission, and death. The effect held after
+      adjusting for age, BMI, and comorbidities in many cohorts but not all. The signal is
+      real; the question is whether deficiency causes worse outcomes or simply flags
+      generally poor health (obesity, chronic disease, indoor lifestyle) that itself drives
+      severity.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Randomised trial results</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>CORONAVIT (UK, 2022)</strong> — 6,200 adults; 800 IU/day or 3,200 IU/day vs no offer. No reduction in COVID-19 or acute respiratory infection.</li>
+      <li><strong>CovidVIT-D and successors</strong> — Spanish and Argentine RCTs of calcifediol (25(OH)D) in hospitalised patients suggested benefit; larger CARED-TRIAL was equivocal.</li>
+      <li><strong>Cochrane 2023 review</strong> — no evidence supplementation prevents infection or reduces mortality; low-certainty evidence for hospital length of stay.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical takeaway</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>If your 25(OH)D is &lt; 20 ng/mL, correct it — for many good reasons, not just COVID.</li>
+      <li>If your 25(OH)D is &gt; 30 ng/mL, adding more won't reduce COVID risk based on current trials.</li>
+      <li>Vaccination and, when indicated, antivirals remain the evidence-based interventions for COVID.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> This page summarises published research and is
+      not a substitute for clinical decision-making.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-covid" />
+  </main>
+</BaseLayout>
