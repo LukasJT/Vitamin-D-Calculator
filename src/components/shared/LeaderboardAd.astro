@@ -1,0 +1,51 @@
+---
+/**
+ * 728x90 leaderboard — highest-CPM banner format. Renders only ≥ 768px viewport;
+ * falls back to 468x60 responsive banner on tablet, 320x50 on mobile via CSS.
+ * Used for top-of-page and bottom-of-page slots in BaseLayout.
+ */
+---
+<div class="my-4 flex justify-center">
+  <div class="ad-leaderboard-728" style="width:728px;height:90px;max-width:100%;">
+    <script is:inline>
+      atOptions = {
+        'key' : '366c800f3dbd64ea2352ac3338e3e1a2',
+        'format' : 'iframe',
+        'height' : 90,
+        'width' : 728,
+        'params' : {}
+      };
+    </script>
+    <script is:inline src="https://www.highperformanceformat.com/366c800f3dbd64ea2352ac3338e3e1a2/invoke.js"></script>
+  </div>
+  <div class="ad-leaderboard-468" style="width:468px;height:60px;max-width:100%;">
+    <script is:inline>
+      atOptions = {
+        'key' : 'c1ae2784baad856c72f3ba1d209deeac',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script is:inline src="https://www.highperformanceformat.com/c1ae2784baad856c72f3ba1d209deeac/invoke.js"></script>
+  </div>
+  <div class="ad-leaderboard-320" style="width:320px;height:50px;">
+    <script is:inline>
+      atOptions = {
+        'key' : 'a24ed02f036c8072b93659a97fc59f02',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script is:inline src="https://www.highperformanceformat.com/a24ed02f036c8072b93659a97fc59f02/invoke.js"></script>
+  </div>
+</div>
+<style>
+  .ad-leaderboard-728, .ad-leaderboard-468, .ad-leaderboard-320 { display: none; }
+  @media (min-width: 768px) and (max-width: 999px) { .ad-leaderboard-468 { display: block; } }
+  @media (min-width: 1000px) { .ad-leaderboard-728 { display: block; } }
+  @media (max-width: 767px) { .ad-leaderboard-320 { display: block; } }
+</style>

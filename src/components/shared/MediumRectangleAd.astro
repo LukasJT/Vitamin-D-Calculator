@@ -1,0 +1,25 @@
+---
+/**
+ * 300x250 medium rectangle — the highest-CPM single display unit in the IAB spec.
+ * Drops in mid-article on content pages; falls back to 320x50 responsive on tiny
+ * viewports.
+ */
+---
+<div class="my-8 flex flex-col items-center">
+  <span class="text-[10px] uppercase tracking-widest text-gray-400 mb-2">Advertisement</span>
+  <div class="ad-mrec-300" style="width:300px;height:250px;max-width:100%;">
+    <script is:inline>
+      atOptions = {
+        'key' : '280ba3d2020d58a74ba737022abb777f',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300,
+        'params' : {}
+      };
+    </script>
+    <script is:inline src="https://www.highperformanceformat.com/280ba3d2020d58a74ba737022abb777f/invoke.js"></script>
+  </div>
+</div>
+<style>
+  .ad-mrec-300 { display: block; }
+</style>
