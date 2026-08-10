@@ -95,6 +95,14 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-hashimoto', title: "Vitamin D and Hashimoto's Thyroiditis", description: 'TPO antibody reduction in trials, selenium adjunct, and dosing guidance.', date: '2026-08-15' },
   { slug: '/vitamin-d-and-endometriosis', title: 'Vitamin D and Endometriosis', description: 'Pain reduction evidence, mechanism via NF-κB and COX-2 suppression, dosing.', date: '2026-08-15' },
   { slug: '/vitamin-d-and-fertility', title: 'Vitamin D and Fertility', description: 'IVF live birth rates, sperm parameters, PCOS ovulation, and pre-conception dosing.', date: '2026-08-15' },
+  { slug: '/vitamin-d-and-ibs', title: 'Vitamin D and Irritable Bowel Syndrome', description: 'Deficiency prevalence, IBS-SSS trial results with intermittent bolus dosing, and where the evidence is weaker.', date: '2026-08-16' },
+  { slug: '/vitamin-d-and-back-pain', title: 'Vitamin D and Chronic Low Back Pain', description: 'Osteomalacia mimicry, the Al Faraj study, and how correction helps deficient patients.', date: '2026-08-16' },
+  { slug: '/vitamin-d-and-gout', title: 'Vitamin D and Gout', description: 'Uric acid observational associations, VITAL substudy null, and what actually reduces attacks.', date: '2026-08-16' },
+  { slug: '/vitamin-d-and-adhd', title: 'Vitamin D and ADHD', description: 'Deficiency link in ADHD children, adjunctive trials with methylphenidate, and where to be sceptical.', date: '2026-08-16' },
+  { slug: '/vitamin-d-and-autism', title: 'Vitamin D and Autism Spectrum Disorder', description: 'Prenatal maternal 25(OH)D associations, small ASD supplementation trials, and warning on unproven high-dose protocols.', date: '2026-08-16' },
+  { slug: '/vitamin-d-and-chronic-pain', title: 'Vitamin D and Chronic Pain', description: 'Pain-clinic deficiency prevalence, RCT evidence by pain type, and opioid-sparing potential.', date: '2026-08-16' },
+  { slug: '/vitamin-d-and-vitiligo', title: 'Vitamin D and Vitiligo', description: 'Topical calcipotriene, narrowband UVB, oral repletion, and where JAK inhibitors changed the field.', date: '2026-08-16' },
+  { slug: '/vitamin-d-and-alopecia-areata', title: 'Vitamin D and Alopecia Areata', description: 'Deficiency correlation with SALT score, topical calcipotriol, and where baricitinib and ritlecitinib fit in.', date: '2026-08-16' },
 ];
 
 export const GET: APIRoute = async () => {

@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-back-pain`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Chronic Low Back Pain',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Back Pain', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Chronic Low Back Pain: Osteomalacia Mimicry and the Evidence"
+  description="Chronic low back pain and vitamin D — how vitamin D-deficient osteomalacia mimics musculoskeletal back pain, RCT evidence, and when to test."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-back-pain", label: "Vitamin D & Back Pain" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Chronic Low Back Pain</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Chronic non-specific low back pain is one of the most common presentations in
+      primary care. Vitamin D deficiency causes a soft-bone condition (osteomalacia)
+      that can mimic musculoskeletal back pain — deep, diffuse, worse with bearing weight,
+      and often accompanied by proximal muscle weakness. Undiagnosed deficiency is a
+      correctable cause worth screening for.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The Al Faraj study</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      A landmark 2003 Saudi Arabian study (Al Faraj) of 360 adults with chronic low back
+      pain found 83% had 25(OH)D deficiency. Supplementation with cholecalciferol
+      5,000–10,000 IU/day for 3 months resulted in clinical improvement in 95% of
+      patients. This study has been criticised for lack of blinding and control, but the
+      magnitude and the mechanism are consistent with osteomalacia.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Subsequent trial evidence</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Sandoughi 2015</strong> — 53 deficient patients; 50,000 IU weekly × 8 weeks reduced pain intensity and functional disability vs placebo.</li>
+      <li><strong>Ghai 2017 (India)</strong> — 68 patients; 60,000 IU weekly × 8 weeks improved VAS pain and Modified Oswestry Disability Index.</li>
+      <li><strong>2018 meta-analysis of 8 RCTs</strong> — significant reduction in pain scores favouring vitamin D, effect largest in patients with baseline 25(OH)D &lt; 20 ng/mL.</li>
+      <li><strong>General population trials</strong> — no benefit in unselected patients without deficiency.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Osteomalacia — the mechanism</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Severe vitamin D deficiency (25(OH)D &lt; 10 ng/mL, usually with elevated PTH and
+      alkaline phosphatase) causes defective bone mineralisation. Trabecular and cortical
+      bone accumulates unmineralised osteoid, which is painful and mechanically weak.
+      Classical presentation: bone pain, proximal myopathy, difficulty rising from a
+      chair. Diagnosis: 25(OH)D, calcium, phosphate, PTH, alkaline phosphatase; imaging
+      may show Looser's zones on X-ray.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical approach</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Chronic back pain persisting &gt; 6 weeks: test 25(OH)D, calcium, and PTH.</li>
+      <li>Baseline 25(OH)D &lt; 20 ng/mL: correct with 4,000–5,000 IU/day for 8–12 weeks or 50,000 IU/week × 8 weeks; expect improvement over 6–12 weeks.</li>
+      <li>Baseline &gt; 30 ng/mL: vitamin D unlikely to be your answer; focus on physical therapy, movement, and appropriate imaging if red flags.</li>
+      <li>Vitamin D adjunct does not replace exercise therapy, NSAIDs, or referral for imaging when there are red flags (fever, night pain, neurology, cancer history).</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Cauda equina syndrome (saddle numbness, bowel/
+      bladder disturbance, bilateral leg weakness) is a surgical emergency — do not
+      attribute urgent neurology to a vitamin deficiency.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-back-pain" />
+  </main>
+</BaseLayout>

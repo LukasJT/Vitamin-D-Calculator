@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-vitiligo`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Vitiligo',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Vitiligo', code: { '@type': 'MedicalCode', codeValue: 'L80', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Vitiligo', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Vitiligo: Topical Calcipotriene, Oral Adjunct, and Narrowband UVB"
+  description="What the evidence shows for topical calcipotriene, oral vitamin D repletion, and how narrowband UVB works in vitiligo — both directly and via vitamin D synthesis."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-vitiligo", label: "Vitamin D & Vitiligo" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Vitiligo</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitiligo is an autoimmune loss of melanocytes causing depigmented skin patches.
+      Vitamin D links to vitiligo on three fronts: topical vitamin D analogues as
+      adjunctive therapy, oral repletion for the frequent underlying deficiency, and
+      narrowband UVB phototherapy which itself raises 25(OH)D.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Deficiency prevalence</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Multiple studies find lower mean 25(OH)D in vitiligo patients than controls, and
+      higher rates of deficiency. The 2015 Iranian study by Aghaei found 68% of vitiligo
+      patients had 25(OH)D &lt; 20 ng/mL vs 40% of controls. Vitiligo shares associations
+      with other autoimmune conditions (thyroid disease, alopecia areata) where vitamin D
+      deficiency is also common.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Topical calcipotriene / calcipotriol</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Calcipotriene is a synthetic vitamin D analogue. Used alone it produces modest
+      repigmentation in vitiligo, but combining it with narrowband UVB (Kumaran 2006)
+      or topical steroids (Newman 2016) improves repigmentation rates over either alone.
+      Common practice in dermatology for stable, localised vitiligo.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Narrowband UVB (311 nm)</h2>
+    <p class="text-gray-700 leading-relaxed">
+      NB-UVB is a first-line phototherapy for generalised vitiligo, with 60–70% of
+      patients achieving at least moderate repigmentation over 6–12 months. It works via
+      direct melanocyte stimulation and immunomodulation — the vitamin D synthesis is a
+      bonus but not the primary mechanism. Some dermatologists check pre-treatment
+      25(OH)D and supplement deficient patients to potentiate response.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Oral vitamin D supplementation</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Small trials of high-dose oral vitamin D (35,000 IU/day for 6 months, Finamor
+      2013) reported repigmentation in some previously refractory patients. Such doses
+      require calcium monitoring and are not standard care. Correcting deficiency to
+      standard target (≥ 30 ng/mL) is a reasonable adjunct without controversy; going
+      to hypertherapeutic doses is experimental.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D at diagnosis — vitiligo patients frequently deficient.</li>
+      <li>Correct to ≥ 30 ng/mL with 2,000–4,000 IU/day cholecalciferol.</li>
+      <li>Combine with dermatologist-directed therapy — topical calcipotriene ± steroids, NB-UVB, JAK inhibitors (ruxolitinib cream approved 2022 for vitiligo).</li>
+      <li>Do not use high-dose oral vitamin D as a first-line vitiligo therapy without dermatology involvement.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Sudden or rapidly spreading depigmentation
+      warrants prompt dermatology evaluation — early treatment offers better
+      repigmentation prospects than delayed treatment.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-vitiligo" />
+  </main>
+</BaseLayout>

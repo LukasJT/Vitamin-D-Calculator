@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-ibs`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Irritable Bowel Syndrome (IBS)',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Irritable bowel syndrome', code: { '@type': 'MedicalCode', codeValue: 'K58', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and IBS', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and IBS: Deficiency Link, Supplementation Trials, and Practical Dosing"
+  description="Vitamin D deficiency is more common in IBS than controls. What supplementation trials show for IBS-SSS symptom scores and quality of life — and how to dose."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-ibs", label: "Vitamin D & IBS" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Irritable Bowel Syndrome</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Irritable bowel syndrome (IBS) is a functional GI disorder affecting 10–15% of
+      adults worldwide. Vitamin D deficiency is significantly more common in IBS patients
+      than in matched controls, and small supplementation trials have reported meaningful
+      improvements in symptom severity scores.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Deficiency prevalence</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      A 2018 systematic review pooled 7 studies and found IBS patients had a 3.6-fold
+      higher odds of vitamin D deficiency than controls, and lower mean 25(OH)D (weighted
+      mean difference −7.7 ng/mL). Whether deficiency causes IBS or IBS-associated
+      restrictive eating causes deficiency is unclear from observational data.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation trials</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Jalili 2019 (Iran RCT)</strong> — 88 IBS patients; 50,000 IU cholecalciferol every 2 weeks for 6 months significantly improved IBS-SSS symptom score and quality of life vs placebo.</li>
+      <li><strong>Abbasnezhad 2016</strong> — 88 IBS patients; 50,000 IU every 2 weeks for 6 weeks improved global IBS symptom score, quality of life, and disease severity.</li>
+      <li><strong>Williams 2022 (UK VIBRANT trial)</strong> — 135 IBS patients; 3,000 IU/day for 12 weeks: 25(OH)D rose but no significant symptom improvement.</li>
+      <li><strong>2022 meta-analysis</strong> — pooled significant reduction in IBS-SSS score, particularly with intermittent high-dose bolus regimens; less clear with daily standard dosing.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Why the mixed results</h2>
+    <p class="text-gray-700 leading-relaxed">
+      IBS is heterogeneous — IBS-C, IBS-D, IBS-M subtypes have different biology and
+      likely respond differently. Placebo response rates in IBS trials are notoriously
+      high (30–40%). Studies with the largest signal used intermittent high-dose
+      cholecalciferol; whether this reflects true dose-response or trial-specific
+      artefact is unclear.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D — most IBS patients would benefit from knowing their level.</li>
+      <li>Correct any deficiency with 2,000–4,000 IU/day for 8–12 weeks.</li>
+      <li>If already sufficient, additional supplementation is unlikely to help IBS symptoms.</li>
+      <li>Vitamin D is an adjunct to evidence-based IBS interventions — dietary trials (low-FODMAP), soluble fibre, antispasmodics, gut-directed hypnotherapy, and (subtype-specific) rifaximin, linaclotide, or eluxadoline.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Red flags in bowel symptoms — blood, weight
+      loss, nocturnal symptoms, family history of colon cancer, onset after 50 — need
+      evaluation to exclude organic disease, not a vitamin D trial.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-ibs" />
+  </main>
+</BaseLayout>

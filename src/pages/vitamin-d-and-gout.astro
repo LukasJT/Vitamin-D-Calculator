@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-gout`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Gout',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Gout', code: { '@type': 'MedicalCode', codeValue: 'M10', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Gout', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Gout: Uric Acid, Kidney Function, and the Cherry Distraction"
+  description="What the evidence shows about vitamin D and serum uric acid, gout attack frequency, and why the intervention that actually reduces attacks is not a supplement."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-gout", label: "Vitamin D & Gout" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Gout</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Gout is caused by monosodium urate crystal deposition when serum uric acid persistently
+      exceeds ~6.8 mg/dL. Vitamin D has been examined as both a modulator of uric acid
+      levels and a potential adjunct to gout management. The evidence is modest — vitamin
+      D is not a substitute for urate-lowering therapy.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The observational data</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      NHANES analyses (Chen 2014) found lower 25(OH)D associated with higher serum uric
+      acid in the general US population, and a 2019 meta-analysis of 12 studies
+      confirmed the inverse correlation. The magnitude is small and could reflect shared
+      risk factors (obesity, CKD, sedentary lifestyle) rather than causation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation trials</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Peng 2013</strong> — hyperuricaemic patients; cholecalciferol raised 25(OH)D but did not significantly reduce serum uric acid.</li>
+      <li><strong>Merlino 2021</strong> — post-hoc analysis of the VITAL trial: 2,000 IU/day for 5 years did not reduce incident gout compared with placebo.</li>
+      <li>No RCT to date has shown supplementation reduces gout flare frequency or reduces the need for urate-lowering therapy.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Kidney disease — the bidirectional link</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Gout and CKD are common comorbidities — hyperuricaemia is both a consequence and a
+      driver of kidney function decline. CKD patients often have vitamin D deficiency
+      (both nutritional and activation), and gout treatment (allopurinol, febuxostat,
+      probenecid) requires dose adjustment in CKD. Vitamin D dosing in CKD gout patients
+      should follow CKD-MBD principles — see our <a href="/vitamin-d-and-kidney-disease" class="text-amber-700 underline">CKD page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What actually reduces gout attacks</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Allopurinol or febuxostat</strong> titrated to serum uric acid &lt; 6 mg/dL (&lt; 5 mg/dL if tophi).</li>
+      <li><strong>Weight loss</strong> — significant reductions in uric acid with modest weight loss.</li>
+      <li><strong>Reduce alcohol</strong> — particularly beer and spirits.</li>
+      <li><strong>Reduce high-fructose corn syrup</strong> — fructose is uniquely uric-acid raising among sugars.</li>
+      <li><strong>Reduce organ meats and shellfish</strong> if you have frequent attacks.</li>
+      <li><strong>Increase low-fat dairy and cherries</strong> — modest uric acid-lowering effect (Zhang 2012 for cherries).</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guidance</h2>
+    <p class="text-gray-700 leading-relaxed">
+      There's no evidence to recommend vitamin D supplementation for the primary purpose
+      of gout management. If a gout patient happens to be vitamin D deficient, correction
+      is reasonable for the general benefits — bones, muscle, immunity — but expect no
+      direct reduction in gout attacks.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> A hot, swollen, painful joint in a patient
+      without known gout warrants prompt evaluation to exclude septic arthritis — do not
+      assume it's a gout flare and self-treat.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-gout" />
+  </main>
+</BaseLayout>

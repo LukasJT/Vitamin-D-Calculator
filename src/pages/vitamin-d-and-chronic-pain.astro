@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-chronic-pain`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Chronic Pain',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Chronic Pain', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Chronic Pain: Widespread Musculoskeletal Pain, Neuropathy, and the Trial Data"
+  description="Chronic pain patients often run low on vitamin D. What the RCT evidence shows for musculoskeletal pain, neuropathy, and opioid-sparing effects."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-chronic-pain", label: "Vitamin D & Chronic Pain" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Chronic Pain</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Chronic pain — persisting or recurring for more than 3 months — affects one in five
+      adults. Vitamin D deficiency is common in chronic pain populations and, in a
+      subset, is a directly correctable contributor. The most consistent evidence is for
+      musculoskeletal pain and diabetic neuropathy; general fibromyalgia and neuropathic
+      pain evidence is weaker.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Deficiency prevalence in chronic pain clinics</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Multiple observational studies from pain clinics find 50–75% of chronic pain
+      patients have 25(OH)D &lt; 30 ng/mL, and a substantial minority &lt; 20 ng/mL.
+      Deficiency correlates with pain intensity, functional disability, and reduced
+      quality of life across pain diagnoses.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The mechanism gap</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D influences neuromodulation at multiple sites — modulating nerve growth
+      factor, TRPV1 sensitivity, cytokine production, and mitochondrial function in
+      pain-associated tissues. Whether these mechanisms translate to clinical pain relief
+      depends on the underlying pain generator: osteomalacia-type pain responds well to
+      correction; neuropathic pain from other causes responds less.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Trial evidence by condition</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Diabetic peripheral neuropathy</strong> — Ghadiri-Anari 2019: 50,000 IU weekly × 8 weeks reduced neuropathic pain scores significantly vs placebo.</li>
+      <li><strong>Chronic musculoskeletal pain</strong> — 2015 meta-analysis showed significant pain reduction favouring vitamin D, biggest effect in patients starting deficient.</li>
+      <li><strong>Fibromyalgia</strong> — mixed results; Wepner 2014 showed pain and functional benefit; larger 2020 review inconclusive. See our <a href="/vitamin-d-and-fibromyalgia" class="text-amber-700 underline">fibromyalgia page</a>.</li>
+      <li><strong>Post-surgical pain</strong> — small RCTs of preoperative repletion suggest reduced acute post-op opioid use.</li>
+      <li><strong>Chronic pelvic pain (non-endometriosis)</strong> — limited evidence.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Opioid-sparing potential</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Small studies have hinted that correcting vitamin D deficiency may reduce opioid
+      requirements in chronic pain patients. The mechanism could be direct pain
+      modulation or indirect via mood and sleep improvement. In the context of the
+      opioid crisis, this is a low-risk intervention worth including in any
+      multimodal pain plan for deficient patients.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical approach</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>All chronic pain patients — test 25(OH)D once.</li>
+      <li>Correct deficiency: 2,000–4,000 IU/day for 8–12 weeks, then re-test.</li>
+      <li>Reassess pain in 6–12 weeks — expect partial improvement in 30–50% of the deficient patients; do not expect much in the vitamin D-replete.</li>
+      <li>Vitamin D is one component of multimodal chronic pain care (physical therapy, cognitive-behavioural therapy for chronic pain, appropriate pharmacotherapy).</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> New severe pain, pain associated with weight
+      loss or systemic symptoms, or pain unresponsive to standard measures needs
+      thorough medical evaluation — vitamin D is not a shortcut for that workup.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-chronic-pain" />
+  </main>
+</BaseLayout>

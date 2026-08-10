@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-autism`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Autism Spectrum Disorder',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Autism spectrum disorder', code: { '@type': 'MedicalCode', codeValue: 'F84.0', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Autism', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Autism Spectrum Disorder: What the Evidence Does and Doesn't Support"
+  description="Prenatal maternal 25(OH)D and autism risk associations, supplementation trials in ASD children, and where the science stands vs where marketing claims run ahead."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-autism", label: "Vitamin D & Autism" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Autism Spectrum Disorder</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D has been examined as a factor in autism spectrum disorder (ASD) both
+      prenatally (maternal levels and offspring risk) and postnatally (as a possible
+      adjunct in ASD children who happen to be deficient). The evidence is preliminary
+      and marketing has run ahead of the science.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Prenatal maternal 25(OH)D</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      A 2019 Australian cohort (Vinkhuyzen) reported children born to mothers with
+      25(OH)D &lt; 25 nmol/L at 20 weeks gestation had higher rates of autism-related
+      traits at age 6. The 2020 Danish register study (Sourander) found similar signals.
+      Mendelian randomisation studies have been mixed and do not definitively support
+      causation. Adequate prenatal vitamin D is a reasonable general recommendation
+      independent of the ASD question.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency in ASD children</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cross-sectional studies find children with ASD have lower 25(OH)D than typically
+      developing peers — likely from a combination of restrictive eating patterns,
+      reduced outdoor play, and (in some cases) shared genetic risk factors.
+      Approximately 50–70% of ASD children have insufficient or deficient 25(OH)D in
+      several cohorts.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation trials</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Saad 2018 (Egypt)</strong> — 109 ASD children; 300 IU/kg/day (max 5,000 IU) for 4 months significantly improved Childhood Autism Rating Scale (CARS) scores vs placebo in deficient children.</li>
+      <li><strong>Feng 2017</strong> — 215 ASD children; 150,000 IU IM monthly + 400 IU/day oral × 3 months improved core symptoms.</li>
+      <li><strong>2019 meta-analysis</strong> — trials to date show modest signal but heterogeneous designs and small samples; not enough to establish standard clinical practice.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Where to be careful</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Some ASD supplement protocols promoted online use pharmacologic doses (up to
+      15,000 IU/day) or add several other agents (omega-3, methyl-B12, folinic acid) in
+      complex regimens marketed for large sums. These protocols are not standard of care;
+      RCT evidence for such stacks is limited or absent, and hypercalcaemia can occur with
+      the higher vitamin D doses.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D in ASD children, especially those with restrictive eating patterns.</li>
+      <li>Correct deficiency with standard paediatric dosing (600–2,000 IU/day cholecalciferol depending on age and baseline).</li>
+      <li>Continue guideline-based ASD interventions — early intensive behavioural intervention (ABA, ESDM), speech and language therapy, occupational therapy.</li>
+      <li>Do not use vitamin D as a rationale for delaying or replacing evidence-based ASD care.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Be very cautious of any online protocol
+      promising to "recover" or "cure" autism — no such intervention has evidence support,
+      and some are actively harmful.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-autism" />
+  </main>
+</BaseLayout>
