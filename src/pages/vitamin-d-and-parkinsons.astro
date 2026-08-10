@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-parkinsons`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: "Vitamin D and Parkinson's Disease",
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: "Parkinson's disease", code: { '@type': 'MedicalCode', codeValue: 'G20', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: "Vitamin D and Parkinson's", item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Parkinson's Disease: UPDRS, Falls Prevention, Substantia Nigra VDR"
+  description="Parkinson's patients are consistently deficient — dosing, UPDRS supplementation trial evidence, fall reduction, and the substantia nigra vitamin D receptor biology."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-parkinsons", label: "Vitamin D & Parkinson's" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Parkinson's Disease</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Parkinson's disease patients have among the highest rates of vitamin D deficiency
+      in any chronic disease cohort (50–70%). The substantia nigra — where PD's
+      dopaminergic neurodegeneration is centred — has the highest density of vitamin D
+      receptors in the brain, providing a biological rationale for a role in the disease.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Deficiency prevalence</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Sato 1997 reported severely low 25(OH)D in Japanese PD patients. Subsequent
+      studies from Europe, North America, and Asia confirm rates of 25(OH)D &lt; 20 ng/mL
+      in 50–70% of PD patients — significantly higher than age-matched controls.
+      Reduced sun exposure from mobility limitation and cognitive changes contributes,
+      but the disparity persists after adjustment.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation trials</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Suzuki 2013</strong> — 114 PD patients (Japan); 1,200 IU/day for 12 months significantly slowed UPDRS progression vs placebo, particularly in patients with the FokI VDR polymorphism.</li>
+      <li><strong>Habibi 2017</strong> — 51 PD patients; 50,000 IU biweekly × 8 weeks: significant reduction in UPDRS-III (motor) subscale.</li>
+      <li><strong>Cohort follow-ups</strong> — sufficient 25(OH)D associated with slower motor progression and cognitive decline.</li>
+      <li>Larger definitive trials still lacking.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Falls prevention in PD</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Falls are a major cause of morbidity in PD — postural instability, freezing of
+      gait, and orthostatic hypotension all contribute. Vitamin D + muscle strength/
+      balance training reduces falls in older adults generally, and by extension in
+      PD patients. Correcting deficiency is standard care independent of disease-
+      modifying speculation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D at PD diagnosis and annually.</li>
+      <li>Correct deficiency: 2,000–4,000 IU/day cholecalciferol.</li>
+      <li>Combine with structured balance / gait training and physical therapy.</li>
+      <li>DEXA and osteoporosis workup — PD patients have elevated fracture risk.</li>
+      <li>Vitamin D is adjunctive to standard PD therapy (levodopa, dopamine agonists, MAO-B inhibitors, DBS in appropriate patients).</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> PD is a specialist-managed neurological
+      disease — coordinate any supplement changes with the treating neurologist.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-parkinsons" />
+  </main>
+</BaseLayout>

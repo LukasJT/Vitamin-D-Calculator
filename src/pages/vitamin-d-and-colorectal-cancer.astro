@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-colorectal-cancer`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Colorectal Cancer',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Colorectal cancer', code: { '@type': 'MedicalCode', codeValue: 'C18', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Colorectal Cancer', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Colorectal Cancer: SUNSHINE Trial, Adenoma Prevention, Survival"
+  description="Colorectal cancer and vitamin D — SUNSHINE trial for metastatic disease, VITAL cancer results, adenoma recurrence, and survival evidence in stage III-IV disease."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-colorectal-cancer", label: "Vitamin D & Colorectal Cancer" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Colorectal Cancer</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Colorectal cancer has one of the strongest ecological correlations with vitamin D
+      status of any malignancy — incidence rises with latitude, falls with sun exposure,
+      and is inversely related to serum 25(OH)D. Randomised trial evidence for prevention
+      is modest; for survival after diagnosis, it is more encouraging.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational evidence</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Meta-analyses (Ma 2011, Song 2018) find adults in the highest quintile of 25(OH)D
+      have ~30% lower colorectal cancer incidence than the lowest. The dose-response is
+      linear across the sufficient range, suggesting even mid-normal 25(OH)D may not be
+      optimal. Mendelian randomisation is mixed — some studies support causation, others
+      do not.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Prevention RCTs</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>VITAL (2019)</strong> — 25,000 adults; 2,000 IU/day for 5.3 years: no reduction in colorectal cancer incidence overall. Longer follow-up analyses (2023) hint at reduction in later years.</li>
+      <li><strong>Vitamin D/Calcium Polyp Prevention Study (Baron 2015)</strong> — 2,259 adults with prior adenoma; 1,000 IU vitamin D + 1,200 mg calcium did NOT reduce adenoma recurrence at 3–5 years.</li>
+      <li><strong>WHI-CaD</strong> — 400 IU vitamin D + 1,000 mg calcium × 7 years: no colorectal cancer reduction.</li>
+      <li>Doses tested may be too low for a prevention signal; the ongoing D-Health Trial and higher-dose trials will inform this.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Survival — the SUNSHINE trial</h2>
+    <p class="text-gray-700 leading-relaxed">
+      SUNSHINE (2019) randomised 139 patients with metastatic colorectal cancer to
+      high-dose vitamin D (8,000 IU/day loading for 2 weeks, then 4,000 IU/day) vs
+      standard-dose (400 IU/day) alongside chemotherapy. The high-dose arm showed
+      significantly longer progression-free survival (13.0 vs 11.0 months, HR 0.64,
+      p = 0.02). Overall survival did not reach significance but trended favourably.
+      The results are being confirmed in the larger SOLARIS trial.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Non-metastatic disease</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Observational studies of stage I–III colorectal cancer show 25(OH)D at diagnosis
+      correlates with better disease-free and overall survival. Ng 2019 (Cheney) reported
+      2,000 IU/day vitamin D + omega-3 supplementation improved chemotherapy tolerance.
+      Higher-quality confirmatory trials pending.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Colorectal cancer diagnosis: test 25(OH)D; target ≥ 30 ng/mL, some oncologists 40–50.</li>
+      <li>2,000–4,000 IU/day cholecalciferol appropriate for most patients; higher in metastatic disease under specialist supervision (SUNSHINE regimen).</li>
+      <li>Vitamin D is adjunctive to standard therapy (surgery, chemotherapy, targeted therapy, immunotherapy for MSI-H tumours).</li>
+      <li>Screening — vitamin D does not replace age-appropriate colonoscopy / FIT / Cologuard.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Rectal bleeding, unexplained iron-deficiency
+      anaemia, or persistent change in bowel habit warrants prompt evaluation — do not
+      attribute red-flag symptoms to a vitamin question.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-colorectal-cancer" />
+  </main>
+</BaseLayout>

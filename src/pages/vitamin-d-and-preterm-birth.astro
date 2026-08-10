@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-preterm-birth`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Preterm Birth',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Preterm Birth', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Preterm Birth: What the Evidence Shows for Prevention"
+  description="Maternal 25(OH)D and preterm birth risk — observational associations, RCT trial evidence, dosing during pregnancy, and neonatal implications for preterm infants."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-preterm-birth", label: "Vitamin D & Preterm Birth" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Preterm Birth</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Preterm birth (before 37 weeks) is a leading cause of infant mortality and
+      long-term morbidity worldwide. Maternal vitamin D deficiency has been examined as
+      a modifiable risk factor, with observational associations that supplementation
+      trials partly confirm.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational associations</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Multiple cohort studies find lower maternal 25(OH)D associated with higher rates
+      of preterm birth. A 2015 meta-analysis reported adjusted OR ~1.3 for deficient
+      vs sufficient women. The MUSC study (Wagner 2016) found each 10 ng/mL increase
+      in maternal 25(OH)D was associated with 40% reduction in early preterm delivery
+      (&lt; 32 weeks).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">RCT evidence</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Wagner NICHD trial (2011)</strong> — 494 pregnant women; 4,400 IU/day cholecalciferol vs 400 IU/day. No difference in preterm birth rate in the primary analysis but strong dose-response signal in secondary analysis.</li>
+      <li><strong>MUSC Charleston (2013)</strong> — expanded 2011 trial; women achieving 25(OH)D &gt; 40 ng/mL had 60% lower risk of preterm birth.</li>
+      <li><strong>Meta-analyses (Palacios 2019 Cochrane)</strong> — pooled trials show reduction in preterm birth with vitamin D vs placebo (RR ~0.7), moderate-certainty evidence.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mechanism</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D regulates immune responses at the maternal-fetal interface, modulates
+      inflammation (which is causally linked to premature membrane rupture and preterm
+      labour), and affects placental development. Vitamin D deficiency correlates with
+      bacterial vaginosis and cervicovaginal infection, both preterm-labour risk factors.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Preterm infant vitamin D</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Preterm infants have very low body stores of vitamin D at birth (most vitamin D
+      accrual is in the third trimester). Prevention of preterm rickets and metabolic
+      bone disease of prematurity requires:
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>200–400 IU/kg/day vitamin D in preterm infants &lt; 1,500 g (ESPGHAN 2010, US paediatric guideline).</li>
+      <li>Preterm formulas or breastmilk fortifiers deliver vitamin D at higher concentrations than standard products.</li>
+      <li>Calcium and phosphorus supplementation is also critical — vitamin D alone won't prevent metabolic bone disease in very preterm babies.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Preconception and first-trimester: test 25(OH)D and correct to ≥ 30 ng/mL (some obstetricians target 40+).</li>
+      <li>Continue 1,000–4,000 IU/day cholecalciferol throughout pregnancy. See <a href="/vitamin-d-in-pregnancy" class="text-amber-700 underline">pregnancy page</a>.</li>
+      <li>History of previous preterm birth: aggressive vitamin D correction is one of several evidence-based interventions (progesterone, cervical cerclage as indicated).</li>
+      <li>Postpartum breastfeeding: see maternal 6,400 IU/day option in the <a href="/vitamin-d-for-infants" class="text-amber-700 underline">infants page</a>.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Preterm birth risk factors require
+      specialised obstetric care — vitamin D is one of many considerations in a pregnancy
+      at risk.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-preterm-birth" />
+  </main>
+</BaseLayout>

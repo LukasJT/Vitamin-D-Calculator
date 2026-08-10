@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-flu`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Influenza',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Flu', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Influenza: Martineau Meta-Analysis, Urashima Trial, Practical Dosing"
+  description="What the vitamin D flu evidence actually shows — Martineau IPD meta-analysis, Japanese school children trial, and why daily/weekly dosing works but bolus doesn't."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-flu", label: "Vitamin D & Flu" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Influenza</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D's role in respiratory infection prevention is one of its better-supported
+      applications. It won't replace the flu vaccine, but for people who won't or can't
+      get vaccinated, or as an adjunct, vitamin D at physiologic doses reduces flu and
+      other acute respiratory infection risk in trials.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The Martineau IPD meta-analysis</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Martineau 2017 (BMJ) pooled individual participant data from 25 RCTs (10,933
+      participants) of vitamin D vs placebo. Vitamin D reduced acute respiratory tract
+      infections (all-cause) by ~12% overall, and by ~70% in participants with baseline
+      25(OH)D &lt; 25 nmol/L. Daily/weekly dosing worked; large bolus doses did not.
+      Updated 2021 IPD analysis (46 trials, 75,541 people) confirmed the daily/weekly
+      benefit.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The Urashima Japanese school children trial</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Urashima 2010 randomised 334 Japanese schoolchildren to 1,200 IU/day cholecalciferol
+      vs placebo during a Dec–March flu season. Vitamin D reduced influenza A incidence
+      by 42% (RR 0.58). Effect was more pronounced in children not previously taking
+      vitamin D. This single trial had a large impact on the "vitamin D for flu"
+      discussion.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mechanism</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cathelicidin — an antimicrobial peptide upregulated by vitamin D — has broad
+      activity against enveloped viruses including influenza. Vitamin D also modulates
+      T-cell responses (favouring Treg over pro-inflammatory Th1/Th17), which may
+      reduce the "cytokine storm" component of severe flu. The seasonal pattern of flu
+      (winter peak, when 25(OH)D is lowest) has long been noted as consistent with a
+      vitamin D role.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Get the annual flu vaccine — its evidence base for reducing severe flu is far larger than vitamin D's.</li>
+      <li>Maintain 25(OH)D ≥ 30 ng/mL year-round with 1,000–2,000 IU/day cholecalciferol.</li>
+      <li>Daily dosing preferred; weekly is a reasonable alternative for compliance.</li>
+      <li>Do not use one-off high bolus doses for flu — evidence supports daily/weekly, not bolus.</li>
+      <li>Vitamin D is a general immune adequacy measure, not a treatment for active flu — for that, oseltamivir/baloxavir taken early is the evidence-based option.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> High fever, breathing difficulty, or symptoms
+      of severe flu warrant medical assessment — antivirals work best if started within
+      48 hours of symptom onset.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-flu" />
+  </main>
+</BaseLayout>

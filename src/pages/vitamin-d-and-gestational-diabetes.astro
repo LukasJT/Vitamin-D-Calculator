@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-gestational-diabetes`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Gestational Diabetes',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Gestational diabetes', code: { '@type': 'MedicalCode', codeValue: 'O24.4', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Gestational Diabetes', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Gestational Diabetes: Prevention, HbA1c, and DALI Trial"
+  description="What the evidence shows about vitamin D and gestational diabetes — deficiency association, DALI trial results, dosing during pregnancy, and postpartum implications."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-gestational-diabetes", label: "Vitamin D & GDM" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Gestational Diabetes</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Gestational diabetes mellitus (GDM) affects 6–10% of pregnancies and increases
+      short-term (macrosomia, preeclampsia) and long-term (maternal type 2 diabetes,
+      offspring metabolic) risk. Vitamin D deficiency is common in pregnancy and has
+      been examined as both a risk factor and a therapeutic target.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Deficiency and GDM risk</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      A 2018 meta-analysis of 26 observational studies (Amraei) found women with
+      25(OH)D &lt; 20 ng/mL in early pregnancy had ~40% higher odds of developing GDM
+      than sufficient women. Mendelian randomisation analyses are mixed on causation,
+      but the association is consistent.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation trials</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Asemi 2013</strong> — 54 women with GDM; 50,000 IU vitamin D + 1,000 mg calcium × 3 doses reduced fasting glucose and insulin resistance vs placebo.</li>
+      <li><strong>DALI trial (2016)</strong> — 154 obese pregnant women; 1,600 IU/day + lifestyle intervention did not reduce GDM incidence vs placebo.</li>
+      <li><strong>Rodrigues 2019 meta-analysis</strong> — 20 RCTs; vitamin D supplementation modestly reduced fasting glucose, insulin, HOMA-IR in women with GDM, but did not prevent GDM.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Postpartum considerations</h2>
+    <p class="text-gray-700 leading-relaxed">
+      GDM in one pregnancy carries roughly 40–60% lifetime risk of type 2 diabetes for
+      the mother. Sustained vitamin D adequacy is one modifiable factor in that
+      trajectory. See our <a href="/vitamin-d-and-diabetes" class="text-amber-700 underline">diabetes page</a>
+      for the T2D prevention evidence (D2d trial and others).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Preconception and early pregnancy: test 25(OH)D; correct deficiency to ≥ 30 ng/mL.</li>
+      <li>Standard prenatal vitamin (typically 400–600 IU cholecalciferol) may not be enough — many pregnant women need an additional 1,000–2,000 IU/day.</li>
+      <li>GDM diagnosis: continue vitamin D supplementation alongside medical nutrition therapy, glucose monitoring, and (if needed) metformin or insulin.</li>
+      <li>Postpartum: continue supplementation, especially while breastfeeding — see <a href="/vitamin-d-in-pregnancy" class="text-amber-700 underline">pregnancy page</a> for maternal doses that transfer to breastmilk.</li>
+      <li>Post-GDM follow-up: screen for T2D at 6–12 weeks postpartum and every 1–3 years thereafter.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> GDM management should always involve an
+      obstetrician and often a maternal-fetal medicine or endocrinology specialist —
+      vitamin D is not a substitute for medical management of hyperglycaemia in pregnancy.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-gestational-diabetes" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-for-infants`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D for Infants',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D for Infants', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D for Infants: AAP 400 IU, Rickets Prevention, Breastfed vs Formula-Fed"
+  description="AAP-recommended vitamin D dosing for infants, why breastfed babies need drops from day 1, formula-fed dosing, rickets prevention, and the maternal 6,400 IU alternative."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-for-infants", label: "Vitamin D for Infants" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D for Infants</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Every infant born in the developed world should receive vitamin D — via drops
+      (breastfed), formula (formula-fed), or maternal high-dose supplementation that
+      passes through breastmilk. Rickets in infants is preventable, and undiagnosed
+      hypocalcaemic seizures still occur in exclusively breastfed babies without
+      supplementation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">AAP dosing recommendation</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>All breastfed and partially breastfed infants</strong> — 400 IU cholecalciferol/day from the first few days of life, continued as long as they take &lt; 1 L (32 oz) of vitamin D-fortified formula per day.</li>
+      <li><strong>Formula-fed infants</strong> — no supplementation needed once they consistently drink 1 L (32 oz) of vitamin D-fortified formula per day (fortified at 400 IU/L).</li>
+      <li><strong>Continue through year 1</strong> and beyond as diet transitions to solid food.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Why breastfed infants need drops</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Breastmilk is the biologically superior food for most reasons, but has one
+      historically low nutrient: vitamin D. A mother with normal 25(OH)D (around 30
+      ng/mL) supplies only ~25–50 IU/L in breastmilk — well short of the 400 IU/day
+      infant target. Without supplementation, breastfed infants (especially with
+      dark skin, in northern latitudes, or in winter) are at real risk of rickets.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The 6,400 IU maternal alternative</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Wagner and Hollis's 2015 landmark trial showed that a breastfeeding mother taking
+      6,400 IU cholecalciferol/day transfers enough vitamin D via breastmilk that her
+      infant achieves the same 25(OH)D as an infant on 400 IU/day of drops. This is a
+      practical alternative for mothers who prefer taking a pill themselves over
+      dosing the infant directly. It's safe with monitoring, and often more compliant.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Rickets — the preventable disease</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Nutritional rickets is still occurring in high-income countries: exclusively
+      breastfed infants of dark-skinned mothers, veiled women, and prolonged breastfeeding
+      without supplementation are the classic scenarios. Presentation includes
+      hypocalcaemic seizures in the first year, delayed milestones, bowed legs, rachitic
+      rosary, craniotabes, and delayed fontanelle closure. All entirely preventable with
+      400 IU/day.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical dosing</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Products: D-Vi-Sol, Baby Ddrops (1 drop = 400 IU concentrated), Enfamil D drops.</li>
+      <li>Give directly into the mouth, or onto the nipple before nursing, or in a small amount of expressed milk.</li>
+      <li>Don't add to a full bottle — vitamin D drops may not disperse and the infant may not drink the full bottle.</li>
+      <li>Overdose risk: concentrated drops (2,000 IU/drop products exist) require careful measurement — nine cases of infant hypercalcaemia reported from mis-dosed concentrated products in a 2019 review.</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Infant twitching, poor feeding, delayed
+      milestones, or bone deformity warrants prompt paediatric evaluation — hypocalcaemic
+      seizures are a medical emergency.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-for-infants" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-prostate-cancer`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Prostate Cancer',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Prostate cancer', code: { '@type': 'MedicalCode', codeValue: 'C61', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Prostate Cancer', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Prostate Cancer: Active Surveillance, Marshall Trial, and DHEA-S Angles"
+  description="Evidence review — SELECT, VITAL, active surveillance trials (Marshall 2018), androgen deprivation bone protection, and racial disparities in vitamin D and prostate cancer."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-prostate-cancer", label: "Vitamin D & Prostate Cancer" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Prostate Cancer</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Prostate cancer is the most common non-skin cancer in men. Vitamin D has been
+      examined in prevention, active surveillance progression, and androgen deprivation
+      therapy bone side-effects. Evidence is mixed for prevention, more encouraging for
+      active surveillance, and strong for ADT bone protection.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Ecological and observational data</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Prostate cancer mortality is inversely correlated with ambient UVB exposure and
+      serum 25(OH)D in ecological studies. Black men (who make less vitamin D at temperate
+      latitudes) have higher prostate cancer incidence and mortality, though multiple
+      other factors contribute. Individual-level observational studies have been
+      inconsistent — some show reduced risk with higher 25(OH)D, others show U-shaped
+      relationships.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Prevention trials</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>SELECT (2011)</strong> — 35,000 men; selenium and vitamin E; vitamin D not directly tested but combination arm showed no benefit and slight harm in some subgroups.</li>
+      <li><strong>VITAL (2019)</strong> — 2,000 IU/day for 5.3 years: no reduction in prostate cancer incidence.</li>
+      <li>No RCT supports vitamin D supplementation for primary prostate cancer prevention.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Active surveillance — the Marshall trial</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Marshall 2018 randomised 44 men with low-risk prostate cancer on active surveillance
+      to vitamin D 4,000 IU/day vs placebo × 2 years. The vitamin D arm showed a
+      significant reduction in patients requiring reclassification to higher-risk
+      disease at surveillance biopsy. Small trial, but generated interest in vitamin D
+      as a possible adjunct to active surveillance. Larger trials pending.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Androgen deprivation therapy bone loss</h2>
+    <p class="text-gray-700 leading-relaxed">
+      GnRH agonists and antagonists used in advanced prostate cancer cause dramatic
+      bone loss (~5% BMD in the first year). Vitamin D + calcium is foundational; add
+      bisphosphonate or denosumab if osteoporosis or high fracture risk. Standard
+      guideline: 1,000–2,000 mg calcium and 800–1,000 IU vitamin D daily for men on ADT,
+      with baseline DEXA and follow-up.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Racial disparities</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Black men in the US have ~60% higher prostate cancer incidence and ~2× the
+      mortality of white men. Contributing factors include genetic, socioeconomic, and
+      access-to-care disparities. Chronic vitamin D deficiency (which is substantially
+      more common in Black men at northern latitudes) has been proposed as one
+      contributor. See our <a href="/vitamin-d-and-skin-color" class="text-amber-700 underline">skin color page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D at prostate cancer diagnosis; correct to ≥ 30 ng/mL.</li>
+      <li>On ADT: 800–2,000 IU vitamin D + 1,000 mg calcium daily; DEXA at baseline and yearly.</li>
+      <li>Active surveillance: reasonable to maintain 30–50 ng/mL; talk to your urologist about the Marshall data before initiating any high-dose regimen.</li>
+      <li>Vitamin D is adjunctive to evidence-based care (surveillance, surgery, radiation, ADT, chemotherapy, PARP inhibitors).</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> New urinary symptoms in an older man, or a
+      rising PSA, needs urological evaluation — vitamin D does not treat prostate cancer.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-prostate-cancer" />
+  </main>
+</BaseLayout>

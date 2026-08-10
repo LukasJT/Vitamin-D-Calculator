@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-skin-cancer`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Skin Cancer',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Skin Cancer', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Skin Cancer: BCC, SCC, Melanoma — Untangling the Sun/Vitamin D Trade-off"
+  description="Why sun exposure both makes vitamin D and causes skin cancer, the differential relationships with BCC, SCC and melanoma, and the case for supplementing instead of tanning."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-skin-cancer", label: "Vitamin D & Skin Cancer" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Skin Cancer</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      The sun that makes vitamin D also causes the DNA damage behind non-melanoma and
+      melanoma skin cancers. This is the most fundamental tension in vitamin D
+      discussion. Understanding the three skin cancer types separately clarifies the
+      trade-off.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Basal cell carcinoma (BCC)</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      The most common human cancer. Chronic cumulative sun exposure drives it — the same
+      sun that produces vitamin D. Fair-skinned adults with high lifetime UV exposure
+      have highest risk. BCC rarely metastasises but causes significant local morbidity
+      and disfigurement, and treatment is expensive.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Squamous cell carcinoma (SCC)</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Also linked to cumulative UV exposure, tanning bed use, and immunosuppression.
+      SCC can metastasise (~2–5% overall, higher for lip, ear, and immunosuppressed
+      patients). Rates are rising as populations age and outdoor activity accumulates.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Melanoma</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Complex relationship with sun. Intense intermittent exposure (holidays, sunburns
+      especially in childhood) and tanning bed use are the strongest risk factors, more
+      than cumulative occupational exposure. Melanoma is the deadly one — early
+      detection and modern immunotherapy (pembrolizumab, ipilimumab, nivolumab) have
+      dramatically improved survival, but prevention still matters.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Does vitamin D reduce skin cancer risk?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Some observational studies suggest higher 25(OH)D correlates with lower melanoma
+      mortality and thinner melanomas at diagnosis. Two interpretations: vitamin D
+      biology protects against melanoma progression, or vitamin D reflects better health
+      surveillance overall. RCTs to date (VITAL, WHI) do not show reduced melanoma
+      incidence with supplementation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The rational compromise</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Do not use sun exposure as your primary vitamin D strategy.</strong> The dermatology community broadly rejects deliberate tanning-for-vitamin-D.</li>
+      <li><strong>Supplement</strong> — an OTC cholecalciferol capsule is safer, cheaper, and more precise than any sun regimen.</li>
+      <li><strong>Sun protection remains recommended</strong> — daily broad-spectrum SPF 30+, hats, protective clothing for prolonged exposure, avoidance of tanning beds.</li>
+      <li><strong>Skin cancer screening</strong> — annual dermatology screening for anyone with heavy sun history, personal or family history of skin cancer, or many nevi.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Sunscreen and vitamin D synthesis</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Real-world sunscreen use does not cause vitamin D deficiency — people rarely
+      apply enough sunscreen densely enough to fully block UVB, and vitamin D
+      synthesis proceeds despite typical use. Marketing that pits "vitamin D vs
+      sunscreen" is misleading. Use sunscreen for its protective purpose;
+      supplement for vitamin D.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> A changing mole, new pigmented lesion,
+      non-healing sore, or asymmetric/irregular skin lesion needs prompt dermatology
+      review — vitamin D is not a substitute for that assessment.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-skin-cancer" />
+  </main>
+</BaseLayout>

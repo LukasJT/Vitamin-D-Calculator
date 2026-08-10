@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-breast-cancer`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Breast Cancer',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Breast cancer', code: { '@type': 'MedicalCode', codeValue: 'C50', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Breast Cancer', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Breast Cancer: VITAL, WHI, and Survival vs Prevention Evidence"
+  description="What the evidence shows for vitamin D in breast cancer prevention (VITAL, WHI) vs survival after diagnosis, aromatase-inhibitor arthralgia, and reasonable dosing."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-breast-cancer", label: "Vitamin D & Breast Cancer" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Breast Cancer</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Breast cancer is the most common cancer in women worldwide. Vitamin D has been
+      examined as a factor in incidence, prognosis, and treatment tolerance — with
+      results that are mixed for prevention and more consistent for survival after
+      diagnosis.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Prevention trials</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>VITAL (2019)</strong> — 25,000 adults; 2,000 IU/day cholecalciferol for 5.3 years: no reduction in invasive breast cancer overall.</li>
+      <li><strong>WHI-CaD (2013)</strong> — 36,000 women; 400 IU vitamin D + 1,000 mg calcium for 7 years: no reduction in breast cancer.</li>
+      <li><strong>Marshall-Lappe 2017</strong> — 2,300 postmenopausal women; 2,000 IU + 1,500 mg calcium: trended toward lower cancer incidence but not significant for breast cancer specifically.</li>
+      <li><strong>Overall</strong> — no clear preventive effect of standard-dose vitamin D on breast cancer incidence in adults with normal baseline 25(OH)D.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Survival after diagnosis</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Meta-analyses (Hu 2018; Yao 2014) find breast cancer patients with sufficient
+      25(OH)D at diagnosis have 30–40% lower all-cause and breast cancer-specific
+      mortality than deficient patients. Whether correcting deficiency changes that
+      trajectory is less clear from randomised evidence, but correction is safe and
+      cheap.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Aromatase inhibitor arthralgia</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Aromatase inhibitors (anastrozole, letrozole, exemestane) reduce oestrogen after
+      breast cancer but cause joint pain in ~50% of women — a common reason for
+      discontinuation. The 2010 Rastelli RCT showed vitamin D loading (50,000 IU weekly)
+      reduced the incidence of new musculoskeletal symptoms in letrozole-treated women.
+      Standard practice now includes checking and correcting 25(OH)D in women starting
+      aromatase inhibitors.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Bone health on breast cancer therapy</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Aromatase inhibitors accelerate bone loss substantially. All women starting an
+      aromatase inhibitor should have DEXA and vitamin D testing; osteopenia/
+      osteoporosis triggers bisphosphonate or denosumab. Vitamin D + calcium is
+      foundational.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D at breast cancer diagnosis; correct to ≥ 30 ng/mL.</li>
+      <li>Continue supplementation through treatment — supports bone health during chemotherapy and endocrine therapy.</li>
+      <li>Higher doses (2,000–4,000 IU/day) commonly used in survivorship; individualise to serum level.</li>
+      <li>Vitamin D is adjunctive — do not use it as a substitute for evidence-based breast cancer therapy.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Any new breast lump, skin change, nipple
+      discharge, or lymphadenopathy needs prompt evaluation — vitamin D is not a
+      substitute for imaging and biopsy.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-breast-cancer" />
+  </main>
+</BaseLayout>

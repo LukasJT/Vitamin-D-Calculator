@@ -111,6 +111,15 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-obesity', title: 'Vitamin D and Obesity', description: 'The volumetric dilution effect, dosing adjustments by BMI, and what weight loss does to serum 25(OH)D.', date: '2026-08-17' },
   { slug: '/vitamin-d-drug-interactions', title: 'Vitamin D Drug Interactions', description: 'Anticonvulsants, glucocorticoids, thiazides, digoxin, orlistat, cholestyramine, ketoconazole — the interaction list.', date: '2026-08-17' },
   { slug: '/vitamin-d-and-alcohol', title: 'Vitamin D and Alcohol', description: 'Why chronic alcohol causes severe deficiency (hepatic, malabsorption, dietary), bone consequences, and dosing.', date: '2026-08-17' },
+  { slug: '/vitamin-d-and-breast-cancer', title: 'Vitamin D and Breast Cancer', description: 'VITAL and WHI prevention evidence, survival data, and aromatase inhibitor arthralgia relief.', date: '2026-08-18' },
+  { slug: '/vitamin-d-and-colorectal-cancer', title: 'Vitamin D and Colorectal Cancer', description: 'SUNSHINE trial in metastatic disease, adenoma prevention, and observational survival data.', date: '2026-08-18' },
+  { slug: '/vitamin-d-and-prostate-cancer', title: 'Vitamin D and Prostate Cancer', description: 'SELECT, VITAL, Marshall active surveillance trial, ADT bone protection, racial disparities.', date: '2026-08-18' },
+  { slug: '/vitamin-d-and-skin-cancer', title: 'Vitamin D and Skin Cancer', description: 'BCC, SCC, melanoma — untangling the sun/vitamin D trade-off and why supplementing beats tanning.', date: '2026-08-18' },
+  { slug: '/vitamin-d-and-parkinsons', title: "Vitamin D and Parkinson's Disease", description: 'High deficiency prevalence, UPDRS supplementation trials, substantia nigra VDR biology, falls prevention.', date: '2026-08-18' },
+  { slug: '/vitamin-d-and-flu', title: 'Vitamin D and Influenza', description: 'Martineau IPD meta-analysis, Urashima school children trial, why daily/weekly works and bolus does not.', date: '2026-08-18' },
+  { slug: '/vitamin-d-and-gestational-diabetes', title: 'Vitamin D and Gestational Diabetes', description: 'Deficiency association, DALI trial, dosing during pregnancy, and postpartum T2D risk.', date: '2026-08-18' },
+  { slug: '/vitamin-d-for-infants', title: 'Vitamin D for Infants', description: 'AAP 400 IU recommendation, breastfed vs formula-fed, rickets prevention, and the maternal 6,400 IU alternative.', date: '2026-08-18' },
+  { slug: '/vitamin-d-and-preterm-birth', title: 'Vitamin D and Preterm Birth', description: 'Maternal 25(OH)D and preterm risk, RCT evidence, preterm-infant dosing and metabolic bone disease.', date: '2026-08-18' },
 ];
 
 export const GET: APIRoute = async () => {
