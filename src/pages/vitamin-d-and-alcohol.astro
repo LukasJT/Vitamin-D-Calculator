@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-alcohol`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Alcohol Use',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Alcohol', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Alcohol: Liver, Bones, and the Chronic Deficiency Story"
+  description="Why chronic alcohol use causes severe vitamin D deficiency, alcoholic liver disease and hepatic activation, and how alcohol-related bone loss compounds."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-alcohol", label: "Vitamin D & Alcohol" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Alcohol</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Chronic alcohol use causes vitamin D deficiency by multiple compounding
+      mechanisms: impaired hepatic 25-hydroxylation, reduced dietary intake, malabsorption
+      from pancreatic insufficiency, and altered gut microbiome. Prevalence of vitamin
+      D deficiency in adults with alcohol use disorder reaches 60–80%.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Mechanisms</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Hepatic activation</strong> — alcohol-related liver disease impairs 25-hydroxylase; even normal cholecalciferol intake may fail to raise 25(OH)D.</li>
+      <li><strong>Reduced intake</strong> — displacement of nutrient-dense food by alcohol calories.</li>
+      <li><strong>Pancreatic insufficiency</strong> — chronic pancreatitis (common in heavy alcohol users) causes fat and fat-soluble vitamin malabsorption.</li>
+      <li><strong>Altered vitamin D binding protein</strong> — hepatic synthesis of DBP is reduced.</li>
+      <li><strong>Reduced sun exposure</strong> — social patterns often include limited outdoor activity.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Bone consequences</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Alcohol directly inhibits osteoblast function and reduces bone formation. Combined
+      with vitamin D deficiency, this dramatically elevates fracture risk. Long-term
+      chronic drinking is associated with 2–3× increased hip fracture risk in men, with
+      the trauma often occurring in falls related to intoxication or peripheral
+      neuropathy. Vitamin D + calcium repletion is standard alongside abstinence
+      counselling.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Alcohol-related liver disease</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Alcoholic fatty liver, hepatitis, and cirrhosis all show high rates of vitamin D
+      deficiency. See our <a href="/vitamin-d-and-liver-disease" class="text-amber-700 underline">liver disease page</a>
+      for dosing in cirrhosis and the potential role of calcifediol when hepatic
+      25-hydroxylation is impaired.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Moderate alcohol — different story</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Occasional or moderate alcohol consumption (≤ 1 drink/day for women, ≤ 2 for men)
+      does not appreciably affect 25(OH)D in cohort studies. The deficiency association
+      is tied to heavy chronic use and to alcohol use disorder, not to occasional
+      drinking.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D in adults with heavy alcohol use or AUD.</li>
+      <li>Correct deficiency with 2,000–4,000 IU/day cholecalciferol; higher if liver disease.</li>
+      <li>Check calcium, magnesium, phosphate, thiamine — these are frequently co-deficient. Wernicke's encephalopathy in undernourished heavy drinkers requires urgent IV thiamine.</li>
+      <li>DEXA and fracture-risk assessment in adults with chronic heavy use.</li>
+      <li>Vitamin D adjunct does not replace addiction treatment (motivational interviewing, brief interventions, medication-assisted treatment with naltrexone or acamprosate).</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> If you or someone you care about has alcohol
+      use disorder, evidence-based treatment is available and effective — the SAMHSA
+      helpline (1-800-662-4357) is a starting point.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-alcohol" />
+  </main>
+</BaseLayout>

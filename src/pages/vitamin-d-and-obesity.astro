@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-obesity`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Obesity',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Obesity', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Obesity: Why BMI ≥ 30 Requires 2–3× the Standard Dose"
+  description="Why obesity dilutes serum 25(OH)D by sequestering vitamin D in adipose tissue, dosing adjustments for BMI, and what weight loss does to vitamin D levels."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-obesity", label: "Vitamin D & Obesity" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Obesity</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Obesity is one of the strongest predictors of vitamin D deficiency in the
+      developed world. The mechanism is volumetric — vitamin D is fat-soluble and
+      distributes into adipose tissue, effectively "diluting" serum 25(OH)D at any given
+      total body dose. Standard adult dosing routinely fails to raise 25(OH)D in
+      patients with BMI ≥ 30.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The dilution effect</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Wortsman 2000 gave 50,000 IU cholecalciferol to lean and obese subjects and measured
+      serum 25(OH)D response. Obese subjects (BMI &gt; 30) achieved 50% lower 25(OH)D
+      response despite receiving the same dose. Follow-up studies estimate obese adults
+      need 2–3× standard adult doses to reach the same 25(OH)D target as normal-weight
+      adults.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Dose adjustment by BMI</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>BMI 25–30:</strong> standard adult dosing usually adequate — 1,500–2,000 IU/day maintenance.</li>
+      <li><strong>BMI 30–35:</strong> 3,000–4,000 IU/day for maintenance; higher for correction.</li>
+      <li><strong>BMI 35–40:</strong> 5,000–6,000 IU/day for maintenance often needed.</li>
+      <li><strong>BMI &gt; 40:</strong> 6,000–10,000 IU/day; monitor 25(OH)D quarterly.</li>
+    </ul>
+    <p class="text-gray-700 leading-relaxed mt-3">
+      These are approximate. Always titrate to serum 25(OH)D; some patients respond
+      faster or slower than BMI predicts.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Weight loss and 25(OH)D</h2>
+    <p class="text-gray-700 leading-relaxed">
+      When adipose tissue is mobilised (during dieting, GLP-1 agonist use, or after
+      bariatric surgery), vitamin D stored in fat is released. Serum 25(OH)D often rises
+      transiently during rapid weight loss without any change in intake — sometimes to
+      surprisingly high levels. Once weight loss plateaus and adipose remodelling
+      slows, serum levels normalise. This is not a permanent solution; ongoing
+      supplementation is still required.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Reverse causation and confounding</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Observational studies link low 25(OH)D to obesity, insulin resistance, and metabolic
+      syndrome. Mendelian randomisation (Vimaleswaran 2013) suggests obesity causes low
+      vitamin D, not the reverse. This matters for interpreting supplementation trials:
+      giving vitamin D to obese patients corrects the deficiency but doesn't fix the
+      underlying obesity or its metabolic consequences.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Does vitamin D help weight loss?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Correcting deficiency modestly improves insulin sensitivity in trials but does not
+      reliably cause weight loss. See our
+      <a href="/vitamin-d-and-weight-loss" class="text-amber-700 underline">weight loss page</a>
+      for the full evidence review. Bottom line: vitamin D corrects a common deficiency of
+      obesity; it does not treat obesity.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> If you're planning bariatric surgery, see our
+      <a href="/vitamin-d-and-bariatric-surgery" class="text-amber-700 underline">bariatric surgery page</a>
+      for post-op-specific dosing.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-obesity" />
+  </main>
+</BaseLayout>

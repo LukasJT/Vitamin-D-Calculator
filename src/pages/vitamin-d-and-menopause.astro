@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-menopause`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Menopause',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Menopause', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Menopause: Bone Loss, Muscle Strength, and What It Doesn't Do"
+  description="Menopause and vitamin D — bone-loss prevention alongside HRT/bisphosphonates, muscle function, and why hot flashes are NOT a vitamin D story."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-menopause", label: "Vitamin D & Menopause" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Menopause</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Menopause — the permanent cessation of menstrual cycles, average age 51 in the US
+      — creates a hormonal shift that accelerates bone loss and changes vitamin D's role.
+      What vitamin D does and doesn't do around menopause is often misunderstood.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Post-menopausal bone loss</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Oestrogen withdrawal causes rapid bone resorption in the first 5–7 years after
+      menopause — women lose roughly 2% of BMD per year in the trabecular spine.
+      Vitamin D alone doesn't prevent this loss, but vitamin D adequacy is a necessary
+      condition for calcium absorption; deficiency accelerates the loss. Anti-resorptive
+      therapy (bisphosphonates, denosumab) and hormone therapy work more effectively when
+      vitamin D is replete. See our <a href="/vitamin-d-and-osteoporosis" class="text-amber-700 underline">osteoporosis page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Muscle and falls</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Post-menopausal women have accelerated sarcopenia, and vitamin D deficiency causes
+      proximal myopathy. Trials of 800–1,000 IU/day + calcium in older women have shown
+      reduced falls (Bischoff-Ferrari 2009 meta-analysis) — a preventable cause of
+      fractures. The falls-prevention effect is one of the more consistent vitamin D
+      trial findings.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What vitamin D doesn't do at menopause</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Hot flashes / night sweats</strong> — no consistent RCT evidence of vasomotor symptom relief.</li>
+      <li><strong>Vaginal atrophy / GSM</strong> — no benefit; vaginal oestrogen is the evidence-based therapy.</li>
+      <li><strong>Cognitive changes of menopause</strong> — no clear vitamin D effect distinct from age-related cognitive concerns.</li>
+      <li><strong>Weight gain</strong> — see our <a href="/vitamin-d-and-weight-loss" class="text-amber-700 underline">weight loss page</a>; menopausal weight gain is not fixed by vitamin D.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cardiovascular</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Post-menopausal women have accelerated cardiovascular risk. The VITAL trial showed
+      2,000 IU/day for 5 years did not reduce major cardiovascular events in the general
+      population, and post-hoc analyses in women did not reveal a differential benefit.
+      Correcting deficiency remains reasonable for the general effects; do not expect
+      cardioprotection from adding vitamin D on top of already-sufficient status.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical dosing at menopause</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D at menopause onset and every 1–2 years.</li>
+      <li>Target ≥ 30 ng/mL, some clinicians aim 40–50 with osteoporosis therapy.</li>
+      <li>Standard dosing 1,000–2,000 IU/day cholecalciferol.</li>
+      <li>Ensure adequate calcium (1,200 mg/day total, food-preferred over supplements).</li>
+      <li>DEXA scan at 65 (earlier if fracture, family history, chronic steroid, hypogonadism).</li>
+      <li>Weight-bearing and resistance exercise is at least as important as any supplement.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Post-menopausal bleeding is not normal — get
+      it evaluated. Vaginal atrophy responds well to prescription therapy.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-menopause" />
+  </main>
+</BaseLayout>

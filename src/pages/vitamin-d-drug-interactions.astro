@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-drug-interactions`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D Drug Interactions',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D Drug Interactions', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D Drug Interactions: Anticonvulsants, Steroids, Thiazides, Digoxin, Orlistat"
+  description="Complete list of medications that increase vitamin D requirements or cause interactions — anticonvulsants, glucocorticoids, thiazides, orlistat, digoxin, and more."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-drug-interactions", label: "Vitamin D Drug Interactions" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D Drug Interactions</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      A number of commonly prescribed drugs alter vitamin D metabolism or interact with
+      its downstream effects. Some accelerate vitamin D catabolism (creating deficiency
+      even on standard supplementation), some reduce absorption, and some create
+      calcium-related risks when combined with vitamin D at higher doses.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Drugs that reduce vitamin D levels</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Anticonvulsants</strong> — phenytoin, phenobarbital, carbamazepine, primidone, oxcarbazepine induce CYP3A4/CYP24A1 and accelerate vitamin D catabolism. Patients on chronic anticonvulsants often need 2–4× standard doses; osteomalacia and osteoporosis rates are elevated. Newer anticonvulsants (levetiracetam, lamotrigine) have less impact.</li>
+      <li><strong>Glucocorticoids</strong> — chronic prednisone reduces calcium absorption, increases urinary calcium loss, and impairs osteoblast function. Standard practice: calcium 1,000–1,200 mg + vitamin D 800–1,000 IU/day, plus bisphosphonate for prolonged high-dose steroids.</li>
+      <li><strong>Rifampin</strong> — CYP3A4 induction; accelerates 25(OH)D degradation.</li>
+      <li><strong>Isoniazid</strong> — inhibits 1α-hydroxylase; may reduce calcitriol.</li>
+      <li><strong>Antiretrovirals</strong> — efavirenz reduces 25(OH)D; tenofovir causes renal phosphate wasting and can worsen bone mineral density.</li>
+      <li><strong>Cholestyramine, colestipol</strong> — bind fat-soluble vitamins; take vitamin D 4+ hours apart.</li>
+      <li><strong>Orlistat</strong> — reduces fat absorption; take vitamin D 2+ hours after orlistat.</li>
+      <li><strong>Mineral oil, olestra</strong> — reduce fat-soluble vitamin absorption.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Drugs where vitamin D can cause problems</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Thiazide diuretics</strong> (HCTZ, chlorthalidone, indapamide) — reduce urinary calcium; combined with high-dose vitamin D can cause hypercalcaemia. Use standard doses cautiously; monitor calcium if using both.</li>
+      <li><strong>Digoxin</strong> — hypercalcaemia potentiates digoxin toxicity. Avoid vitamin D overdose in patients on digoxin.</li>
+      <li><strong>Calcium channel blockers</strong> — verapamil in particular; hypercalcaemia can reduce efficacy.</li>
+      <li><strong>Lithium</strong> — vitamin D-induced hypercalcaemia can precipitate lithium toxicity.</li>
+      <li><strong>Aluminium-containing antacids</strong> — chronic vitamin D combined with aluminium antacid can increase aluminium absorption; potential toxicity in CKD.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Drugs that raise 25(OH)D</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Ketoconazole, itraconazole, voriconazole</strong> — inhibit CYP24A1 (vitamin D catabolism) and can transiently raise 25(OH)D.</li>
+      <li><strong>Thiazides (mild)</strong> — via reduced urinary calcium.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Diseases that require caution with vitamin D</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Granulomatous disease</strong> (sarcoidosis, tuberculosis, chronic berylliosis) — extra-renal 1α-hydroxylase converts 25(OH)D to calcitriol without regulation; standard doses of vitamin D can cause hypercalcaemia.</li>
+      <li><strong>Lymphoma</strong> — similar risk to granulomatous disease.</li>
+      <li><strong>Primary hyperparathyroidism</strong> — pre-existing hypercalcaemia; correcting associated vitamin D deficiency needs careful monitoring.</li>
+      <li><strong>Nephrolithiasis</strong> — calcium-based stones; high-dose vitamin D combined with calcium supplements can increase risk.</li>
+      <li><strong>Chronic kidney disease</strong> — see our <a href="/vitamin-d-and-kidney-disease" class="text-amber-700 underline">CKD page</a>.</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> This is a complex area — always tell every
+      prescriber about your supplements, and don't self-adjust doses on a drug that
+      affects vitamin D metabolism.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-drug-interactions" />
+  </main>
+</BaseLayout>

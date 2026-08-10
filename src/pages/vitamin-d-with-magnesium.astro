@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-with-magnesium`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D With Magnesium',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D With Magnesium', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D With Magnesium: Why the Cofactor Matters and When to Combine"
+  description="Magnesium is a required cofactor for vitamin D activation. Deficiency of one worsens the other — when combining supplementation makes sense and the best magnesium forms."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-with-magnesium", label: "Vitamin D With Magnesium" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D With Magnesium</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Every enzyme in the vitamin D activation cascade — 25-hydroxylase, 1α-hydroxylase,
+      24-hydroxylase, and vitamin D receptor binding — requires magnesium. Chronic
+      magnesium deficiency limits how effectively the body can activate vitamin D, and
+      is one reason some patients don't respond to supplementation as expected.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The activation cascade</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Cholecalciferol (D3) → 25(OH)D in the liver (25-hydroxylase, Mg-dependent) →
+      1,25(OH)₂D in the kidney (1α-hydroxylase, Mg-dependent). Vitamin D receptor
+      transactivation and vitamin D binding protein synthesis also require magnesium.
+      Severely magnesium-deficient patients can have low 25(OH)D that fails to rise on
+      standard cholecalciferol doses until magnesium is corrected.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Prevalence of magnesium deficiency</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Half of US adults consume less than the RDA (310–420 mg/day). NHANES data
+      suggests ~48% of Americans get less than the estimated average requirement.
+      Chronic subclinical deficiency is common but rarely tested — serum magnesium is a
+      poor marker (only 1% of body magnesium is extracellular).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Combined dosing</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Vitamin D 2,000 IU/day + magnesium 300–400 mg/day</strong> is a reasonable general adult stack.</li>
+      <li><strong>Preferred magnesium forms:</strong> glycinate (well tolerated, no GI effects), citrate (mild osmotic laxative — helpful if constipated), malate.</li>
+      <li><strong>Avoid magnesium oxide</strong> for repletion — poor bioavailability (~4%).</li>
+      <li><strong>Take separately from calcium</strong> — they compete for absorption.</li>
+      <li><strong>Take with food</strong> — vitamin D absorbs better with fat.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Signs that suggest combined deficiency</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Muscle cramps, especially in calves overnight</li>
+      <li>Twitching, restless legs</li>
+      <li>Palpitations without heart disease</li>
+      <li>Constipation</li>
+      <li>Difficulty raising 25(OH)D despite adequate cholecalciferol dosing</li>
+      <li>Persistent secondary hyperparathyroidism despite normal calcium</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Vitamin K2 — the third partner</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Some stacks add K2 (MK-7). The rationale: vitamin D increases calcium absorption;
+      K2 activates osteocalcin (directing calcium to bone) and matrix Gla protein
+      (inhibiting vascular calcification). Evidence for combined D+K2 improving cardiovascular
+      or bone outcomes over D+Mg alone is limited — see our
+      <a href="/vitamin-d-magnesium-k2" class="text-amber-700 underline">D + Mg + K2 page</a>.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Chronic kidney disease patients: don't add
+      magnesium supplements without checking with your nephrologist — CKD alters
+      magnesium homeostasis.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-with-magnesium" />
+  </main>
+</BaseLayout>

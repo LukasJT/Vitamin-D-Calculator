@@ -103,6 +103,14 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-chronic-pain', title: 'Vitamin D and Chronic Pain', description: 'Pain-clinic deficiency prevalence, RCT evidence by pain type, and opioid-sparing potential.', date: '2026-08-16' },
   { slug: '/vitamin-d-and-vitiligo', title: 'Vitamin D and Vitiligo', description: 'Topical calcipotriene, narrowband UVB, oral repletion, and where JAK inhibitors changed the field.', date: '2026-08-16' },
   { slug: '/vitamin-d-and-alopecia-areata', title: 'Vitamin D and Alopecia Areata', description: 'Deficiency correlation with SALT score, topical calcipotriol, and where baricitinib and ritlecitinib fit in.', date: '2026-08-16' },
+  { slug: '/vitamin-d-and-cystic-fibrosis', title: 'Vitamin D and Cystic Fibrosis', description: 'CF Foundation targets, water-miscible cholecalciferol, CF-related bone disease and CFTR modulator questions.', date: '2026-08-17' },
+  { slug: '/vitamin-d-and-bariatric-surgery', title: 'Vitamin D After Bariatric Surgery', description: 'ASMBS dosing by procedure (sleeve, RYGB, BPD-DS), water-miscible formulations, secondary hyperparathyroidism.', date: '2026-08-17' },
+  { slug: '/vitamin-d-and-menopause', title: 'Vitamin D and Menopause', description: 'Bone loss with HRT/bisphosphonates, falls prevention, and what vitamin D does NOT treat (hot flashes, weight gain, GSM).', date: '2026-08-17' },
+  { slug: '/vitamin-d-with-magnesium', title: 'Vitamin D With Magnesium', description: 'Magnesium as a cofactor for every enzyme in vitamin D activation, best forms, and combined dosing.', date: '2026-08-17' },
+  { slug: '/vitamin-d-drops-vs-capsules', title: 'Vitamin D Drops vs Capsules vs Sprays', description: 'Head-to-head of vitamin D formulations, when to use each, and cost per IU.', date: '2026-08-17' },
+  { slug: '/vitamin-d-and-obesity', title: 'Vitamin D and Obesity', description: 'The volumetric dilution effect, dosing adjustments by BMI, and what weight loss does to serum 25(OH)D.', date: '2026-08-17' },
+  { slug: '/vitamin-d-drug-interactions', title: 'Vitamin D Drug Interactions', description: 'Anticonvulsants, glucocorticoids, thiazides, digoxin, orlistat, cholestyramine, ketoconazole — the interaction list.', date: '2026-08-17' },
+  { slug: '/vitamin-d-and-alcohol', title: 'Vitamin D and Alcohol', description: 'Why chronic alcohol causes severe deficiency (hepatic, malabsorption, dietary), bone consequences, and dosing.', date: '2026-08-17' },
 ];
 
 export const GET: APIRoute = async () => {

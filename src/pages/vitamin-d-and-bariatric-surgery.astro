@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-bariatric-surgery`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D After Bariatric Surgery',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D After Bariatric Surgery', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D After Bariatric Surgery: Sleeve, RYGB, BPD-DS Dosing"
+  description="Bariatric surgery causes lifelong vitamin D malabsorption. Post-op dosing by procedure — sleeve gastrectomy, Roux-en-Y, BPD-DS — and how to prevent secondary hyperparathyroidism."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-bariatric-surgery", label: "Vitamin D After Bariatric Surgery" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D After Bariatric Surgery</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      All bariatric procedures cause some degree of vitamin D malabsorption; the
+      malabsorptive procedures (Roux-en-Y gastric bypass and biliopancreatic diversion
+      with duodenal switch) cause severe, lifelong requirement for supplementation and
+      monitoring. Untreated deficiency leads to secondary hyperparathyroidism, bone
+      loss, and increased fracture risk after weight loss.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Baseline: obesity itself</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      People presenting for bariatric surgery are usually already vitamin D deficient
+      before the operation. Vitamin D distributes into adipose tissue, and adults with
+      class III obesity often have 25(OH)D 30–40% lower than normal-weight controls
+      for equivalent intake. Correcting pre-op deficiency (target ≥ 30 ng/mL) is
+      standard preparation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Post-op dosing by procedure (ASMBS 2019)</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Sleeve gastrectomy</strong> — 3,000 IU/day cholecalciferol; adjust to keep 25(OH)D &gt; 30 ng/mL.</li>
+      <li><strong>Roux-en-Y gastric bypass (RYGB)</strong> — 3,000 IU/day baseline; typically need higher doses due to duodenal bypass reducing absorption.</li>
+      <li><strong>Biliopancreatic diversion / duodenal switch (BPD-DS)</strong> — 3,000+ IU/day; frequently need 10,000+ IU/day or intramuscular dosing; hardest post-op nutritional profile.</li>
+      <li><strong>Single-anastomosis duodeno-ileal bypass with sleeve (SADI-S)</strong> — dosing similar to BPD-DS.</li>
+      <li><strong>Adjustable gastric band</strong> — 3,000 IU/day usually sufficient; least malabsorptive.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Water-miscible forms</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Oil-based OTC cholecalciferol may not absorb well post-RYGB or BPD-DS because of
+      reduced bile-mediated micelle formation in the reduced proximal small bowel.
+      Water-miscible bariatric multivitamins (e.g. Bariatric Advantage, ProCare Health,
+      Celebrate) provide vitamin D in more absorbable forms. If serum levels stay low
+      despite adherence, switch formulation before increasing dose.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Monitoring</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>25(OH)D</strong> every 3–6 months in the first year, then yearly if stable.</li>
+      <li><strong>Calcium, phosphate, PTH, alkaline phosphatase</strong> — rising PTH signals inadequate calcium/vitamin D even if 25(OH)D looks acceptable.</li>
+      <li><strong>DEXA at baseline and every 2 years post-op</strong>, or annually if osteoporosis.</li>
+      <li><strong>Calcium citrate</strong> is preferred over carbonate post-op — better absorbed with reduced stomach acid.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Pregnancy after bariatric surgery</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Pregnancy after bariatric surgery carries elevated risk of vitamin D deficiency in
+      both mother and fetus, plus increased small-for-gestational-age risk. Preconception
+      counselling includes optimising 25(OH)D and continuing dedicated bariatric-formulation
+      supplements throughout pregnancy.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Post-bariatric nutrition is a lifelong
+      commitment — don't stop supplements after early weight loss. Bone loss and
+      fractures accumulate silently for years.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-bariatric-surgery" />
+  </main>
+</BaseLayout>

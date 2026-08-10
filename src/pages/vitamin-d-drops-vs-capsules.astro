@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-drops-vs-capsules`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D Drops vs Capsules vs Softgels',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Drops vs Capsules', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D Drops vs Capsules vs Sprays: Absorption, Cost, and When to Choose Each"
+  description="Head-to-head vitamin D formulations — softgels, tablets, liquid drops, chewables, sublingual sprays. Which absorbs better, what to give infants, and cost per IU."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-drops-vs-capsules", label: "Drops vs Capsules" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D Drops vs Capsules vs Sprays</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D comes in more forms than any other over-the-counter vitamin — oil-based
+      softgels, tablets, liquid drops, chewables, gummies, sublingual sprays. The
+      absorption is broadly similar between properly formulated products; the differences
+      that matter are compliance, dose accuracy, and cost.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Softgels (oil-based)</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      The gold standard. Vitamin D is a fat-soluble molecule and dissolves cleanly in
+      olive, MCT, or safflower oil. Absorption is 60–80% when taken with a meal
+      containing 10+ g of fat. Cheapest per IU. Sizes range from 400 IU to 50,000 IU.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Tablets (dry-form)</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D adsorbed onto cellulose or lactose. Slightly less bioavailable than
+      oil-based forms per Grossmann 2010 (~ 15% less), but the difference matters mainly
+      for very low fat meals. Cheap; long shelf life; good for people who can't swallow
+      softgels.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Liquid drops</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D dissolved in MCT or olive oil. Widely used for infants (400 IU/drop
+      typical). Also useful for adults with dysphagia, swallowing difficulty, or those
+      who want fine dose titration. Read the label carefully — potency per drop varies
+      widely (some are 400 IU/drop, others are 2,000 IU/drop). One extra drop of a
+      concentrated formulation is a substantial dose.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Chewables and gummies</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Good for compliance in children and adults who dislike swallowing pills. Gummies
+      often contain added sugar, gelatin, and colouring — a downside for daily use.
+      Potency varies more than encapsulated forms; check third-party testing.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Sublingual sprays</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Marketing promotes "faster absorption" and "bypasses digestion." In reality,
+      sublingual absorption of vitamin D is limited (Todd 2016 head-to-head showed no
+      significant advantage over oral). Sprays are convenient but generally more
+      expensive per IU. Reasonable for people with GI malabsorption for whom oral doesn't
+      raise 25(OH)D adequately.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">D3 vs D2</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cholecalciferol (D3) raises 25(OH)D more than ergocalciferol (D2) at equivalent
+      doses. Prefer D3 unless you are vegan and cannot source lichen-derived D3 (lichen
+      D3 is available; most sheep-lanolin D3 is not vegan). See our
+      <a href="/vitamin-d-vs-vitamin-d3" class="text-amber-700 underline">D vs D3 page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cost per 1,000 IU (approximate US 2026)</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Bulk softgels (Kirkland, Nature Made, Costco): $0.005–$0.02 per 1,000 IU</li>
+      <li>Chewables: $0.03–$0.06 per 1,000 IU</li>
+      <li>Standard drops: $0.02–$0.10 per 1,000 IU</li>
+      <li>Sprays: $0.15–$0.40 per 1,000 IU</li>
+      <li>Prescription 50,000 IU capsules: often free with insurance, otherwise ~$0.10 per 1,000 IU</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Buy from brands that participate in third-party
+      testing (USP, NSF, ConsumerLab). Content assays of vitamin D supplements
+      historically show ± 25% deviation from label claim in ~30% of tested products.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-drops-vs-capsules" />
+  </main>
+</BaseLayout>
