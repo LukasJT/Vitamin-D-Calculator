@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-kidney-disease`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Chronic Kidney Disease',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Chronic kidney disease', code: { '@type': 'MedicalCode', codeValue: 'N18', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Kidney Disease', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Chronic Kidney Disease: Calcitriol, Paricalcitol, and CKD-MBD"
+  description="Why the kidney is central to vitamin D activation, the CKD-MBD framework, and when nephrologists use active vitamin D (calcitriol, paricalcitol) instead of cholecalciferol."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-kidney-disease", label: "Vitamin D & CKD" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Chronic Kidney Disease</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      The kidney is the only organ in the body that can activate 25(OH)D into calcitriol
+      (1,25(OH)₂D) — the hormonally active form. As kidney function declines, so does
+      that conversion, and the entire mineral metabolism cascade breaks down. Vitamin D
+      management in CKD is different from the general population and requires nephrology
+      input.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The CKD-MBD cascade</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      "CKD-Mineral and Bone Disorder" describes the linked derangements of calcium,
+      phosphorus, parathyroid hormone (PTH), and vitamin D that develop from CKD stage 3
+      onward. As eGFR falls: 1α-hydroxylase activity drops → calcitriol falls → intestinal
+      calcium absorption falls → PTH rises → phosphorus accumulates → vascular
+      calcification and renal osteodystrophy develop.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cholecalciferol vs calcitriol vs analogues</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Cholecalciferol / ergocalciferol</strong> — the "nutritional" vitamin D you buy OTC. Useful in early CKD to correct 25(OH)D deficiency, but as the kidney fails there's less activation.</li>
+      <li><strong>Calcitriol (1,25(OH)₂D)</strong> — the active hormone; used in dialysis patients to suppress PTH. Risks hypercalcaemia; requires monitoring.</li>
+      <li><strong>Paricalcitol, doxercalciferol</strong> — synthetic vitamin D analogues designed to suppress PTH with less hypercalcaemia. Standard in advanced CKD and dialysis.</li>
+      <li><strong>Calcifediol (25(OH)D)</strong> — bypasses hepatic 25-hydroxylation; useful when malabsorption or hepatic disease coexists.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">KDIGO guidance</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Kidney Disease: Improving Global Outcomes (KDIGO 2017 update): correct 25(OH)D
+      deficiency in CKD stages 3–5 with standard cholecalciferol. Do not routinely give
+      calcitriol or vitamin D analogues in CKD 3–4; reserve for CKD 4–5 with progressively
+      rising PTH. In dialysis, active vitamin D and calcimimetics (cinacalcet, etelcalcetide)
+      target PTH suppression with defined ranges.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What you should NOT do</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Don't self-prescribe high-dose vitamin D if you have advanced CKD — hypercalcaemia in CKD accelerates vascular calcification.</li>
+      <li>Don't use "potassium-sparing" salt substitutes or start high-potassium supplements without discussing with your nephrologist.</li>
+      <li>Don't take calcium supplements above what's prescribed — CKD patients often accumulate calcium.</li>
+      <li>Do report new symptoms — bone pain, itching, muscle weakness — to your kidney team.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> CKD is one of the few conditions where standard
+      OTC vitamin D dosing recommendations do NOT apply directly. Work with your
+      nephrologist on any changes.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-kidney-disease" />
+  </main>
+</BaseLayout>

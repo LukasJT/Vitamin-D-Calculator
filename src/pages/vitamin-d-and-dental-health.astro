@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-dental-health`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Dental Health',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Dental Health', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Dental Health: Caries, Periodontitis, and Implant Osseointegration"
+  description="How vitamin D affects tooth enamel, caries risk in children, periodontal disease, and dental implant success — with practical dosing guidance."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-dental-health", label: "Vitamin D & Dental" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Dental Health</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Teeth are calcified tissue and require vitamin D for calcium handling, just like
+      bone. Vitamin D also modulates the innate immune response in the periodontium and
+      affects cathelicidin-mediated bacterial defence. Deficiency has been linked to
+      caries, periodontal disease progression, and implant failure.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Caries in children</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      A 2013 meta-analysis of 24 pediatric studies (2,827 children) reported vitamin D
+      supplementation was associated with a 47% reduction in dental caries incidence.
+      Effect largest in children with baseline deficiency. Vitamin D contributes to
+      formation of the primary and permanent dentition during the pre-eruption window,
+      and to salivary immune function post-eruption.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Periodontitis</h2>
+    <p class="text-gray-700 leading-relaxed">
+      NHANES data (Dietrich 2004) found adults with 25(OH)D in the lowest quintile had
+      more alveolar bone loss than those in the highest. Cross-sectional and longitudinal
+      studies consistently link lower vitamin D with worse periodontal probing depths and
+      attachment loss. Randomised trials of adjunctive vitamin D during periodontal
+      treatment are small but favourable.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Dental implants</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Retrospective studies suggest vitamin D deficiency (&lt; 20 ng/mL) is associated with
+      higher rates of early implant failure and impaired osseointegration. Some oral
+      surgeons check and correct 25(OH)D pre-implant, particularly for grafting and
+      sinus-lift cases where bone healing is critical.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Rickets, enamel, and the classic dental sign</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Severe childhood vitamin D deficiency (rickets) causes enamel hypoplasia — visible
+      as pitted, discoloured enamel, delayed tooth eruption, and increased caries
+      susceptibility. The classic dental sign of nutritional rickets is a defective
+      enamel band that indicates when the deficiency occurred developmentally.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical dental guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Standard vitamin D adequacy (25(OH)D ≥ 30 ng/mL) supports dental health.</li>
+      <li>Fluoride, tooth brushing with fluoridated toothpaste, and dietary sugar restriction remain the primary caries interventions.</li>
+      <li>Pregnant and breastfeeding mothers: adequate vitamin D contributes to healthy tooth development in the child.</li>
+      <li>Pre-implant vitamin D correction is a reasonable pre-procedure step for deficient patients.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Vitamin D does not replace regular brushing,
+      flossing, professional cleanings, or dietary sugar control.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-dental-health" />
+  </main>
+</BaseLayout>

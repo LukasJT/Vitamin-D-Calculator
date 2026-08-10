@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-rheumatoid-arthritis`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Rheumatoid Arthritis',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Rheumatoid arthritis', code: { '@type': 'MedicalCode', codeValue: 'M06', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Rheumatoid Arthritis', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Rheumatoid Arthritis: DAS28, Pain, and VITAL Trial Prevention Data"
+  description="Vitamin D deficiency is very common in RA, correlates with disease activity. What the VITAL prevention trial showed and how to dose vitamin D alongside DMARDs."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-rheumatoid-arthritis", label: "Vitamin D & RA" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Rheumatoid Arthritis</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Rheumatoid arthritis (RA) is an autoimmune synovitis driven by dysregulated T-cell
+      and cytokine biology — the same immune pathways vitamin D modulates. Deficiency is
+      more common in RA patients than in matched controls, and correlates inversely with
+      disease activity scores.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational data</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Meta-analyses consistently find lower 25(OH)D in RA patients vs controls, and higher
+      Disease Activity Score (DAS28) in the lowest 25(OH)D quartiles. Whether this reflects
+      causation, reverse causation (limited outdoor activity due to joint pain), or shared
+      confounding (BMI, socioeconomic status) is not settled.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Prevention — the VITAL trial</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The 25,000-person VITAL trial (2022 autoimmune substudy) reported cholecalciferol
+      2,000 IU/day for 5 years reduced incident autoimmune disease by 22% vs placebo;
+      combined with omega-3 the effect was larger. RA was one of the diseases contributing
+      to the composite endpoint. This is the strongest evidence to date that vitamin D
+      supplementation might prevent RA in older adults.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation in established RA</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Small RCTs (Chandrashekara 2012; Salesi 2012) reported reduced DAS28 with adjunctive vitamin D 500–50,000 IU regimens.</li>
+      <li>2020 meta-analysis of 11 RCTs: modest improvement in pain scores and DAS28, most robust in patients starting deficient.</li>
+      <li>Bone health is a separate reason — RA patients on chronic glucocorticoids need vitamin D + calcium for osteoporosis prevention regardless of the DAS28 evidence.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D at diagnosis and annually.</li>
+      <li>Correct to at least 30 ng/mL; some rheumatologists target 40–60 ng/mL.</li>
+      <li>Standard dosing 1,000–2,000 IU/day; higher (up to 4,000 IU/day) if starting deficient.</li>
+      <li>If on glucocorticoids, calcium 1,000–1,200 mg/day + vitamin D per ACR osteoporosis guidance.</li>
+      <li>Vitamin D is an adjunct — methotrexate, sulfasalazine, hydroxychloroquine, biologics, and JAK inhibitors are the disease-modifying core.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Don't reduce DMARD therapy on the strength of a
+      vitamin D trial — RA is a joint-destroying disease; time to treatment matters.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-rheumatoid-arthritis" />
+  </main>
+</BaseLayout>

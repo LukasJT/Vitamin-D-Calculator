@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-lupus`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Systemic Lupus Erythematosus',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Systemic lupus erythematosus', code: { '@type': 'MedicalCode', codeValue: 'M32', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Lupus', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Lupus (SLE): The Photosensitivity Paradox and Supplementation"
+  description="Lupus patients avoid sun, run consistently low 25(OH)D, and may benefit from supplementation. What the trials show for SLEDAI, fatigue, and disease flares."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-lupus", label: "Vitamin D & Lupus" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Lupus (SLE)</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Systemic lupus erythematosus (SLE) has a built-in vitamin D problem: patients are
+      told to strictly avoid sun (photosensitivity triggers flares), which removes their
+      main source of vitamin D. Rigorous sun avoidance plus sunscreen produces some of the
+      lowest 25(OH)D levels seen in any chronic disease population.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Deficiency prevalence</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Studies find mean 25(OH)D 15–20 ng/mL in SLE cohorts vs 25–30 in controls; 60–80%
+      of SLE patients are deficient (&lt; 20 ng/mL). The rate is even higher in Black
+      lupus patients, whose already-lower baseline synthesis compounds with sun avoidance.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Disease activity link</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cross-sectional and longitudinal studies find inverse correlations between 25(OH)D
+      and SLEDAI (SLE Disease Activity Index), anti-dsDNA antibody titres, and fatigue
+      scores. The 2013 Australian Lupus Registry showed vitamin D-deficient patients had
+      more flares and worse renal function over follow-up.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation trials</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Aranow 2015</strong> — 100,000 IU weekly for 4 weeks then monthly; no effect on interferon signature.</li>
+      <li><strong>Abou-Raya 2013</strong> — 2,000 IU/day for 12 months reduced fatigue and disease activity scores.</li>
+      <li><strong>Andreoli 2015</strong> — repletion improved anti-dsDNA and complement levels in deficient patients.</li>
+      <li><strong>VITAL autoimmune substudy (2022)</strong> — 22% reduction in incident autoimmune disease with 2,000 IU/day in older adults.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical management</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>All SLE patients should have 25(OH)D measured at diagnosis and yearly.</li>
+      <li>Target ≥ 30 ng/mL, ideally 40–60.</li>
+      <li>Standard dosing 2,000–4,000 IU/day; deficient patients often need loading regimens.</li>
+      <li>Don't relax photoprotection — sun exposure is not an acceptable substitute for supplementation in lupus.</li>
+      <li>Lupus nephritis patients: dose vitamin D under nephrology supervision, monitor calcium and PTH.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Vitamin D is an adjunct in SLE — never substitute
+      it for hydroxychloroquine, mycophenolate, belimumab, or other prescribed therapy.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-lupus" />
+  </main>
+</BaseLayout>

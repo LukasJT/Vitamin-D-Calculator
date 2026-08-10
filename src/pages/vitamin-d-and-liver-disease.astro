@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-liver-disease`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Liver Disease',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Liver Disease', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Liver Disease: NAFLD, Cirrhosis, and When to Use Calcifediol"
+  description="Why chronic liver disease causes vitamin D deficiency, the NAFLD supplementation evidence, and when hepatologists switch to calcifediol (25-hydroxyvitamin D)."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-liver-disease", label: "Vitamin D & Liver" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Liver Disease</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      The liver performs the first hydroxylation of vitamin D — cholecalciferol from
+      skin or diet is converted to 25(OH)D in hepatocytes. Chronic liver disease impairs
+      this conversion, and the resulting deficiency is nearly universal in advanced
+      cirrhosis.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Deficiency in NAFLD and cirrhosis</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Cross-sectional studies find 50–70% of adults with non-alcoholic fatty liver
+      disease (NAFLD) are 25(OH)D deficient, and severity correlates with hepatic
+      steatosis grade. Rates climb higher in compensated cirrhosis (~65%) and higher
+      still in decompensated cirrhosis (~90%). Contributing factors: reduced hepatic
+      25-hydroxylation, fat malabsorption from cholestasis, reduced sun exposure, and
+      poor nutritional intake.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">NAFLD supplementation evidence</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Barchetta 2016</strong> — 65 NAFLD adults; 2,000 IU/day for 6 months did NOT reduce hepatic fat by MRI vs placebo, though 25(OH)D and insulin sensitivity improved.</li>
+      <li><strong>2018 Cochrane review</strong> — insufficient high-quality evidence that vitamin D reduces liver enzymes or improves histology in NAFLD.</li>
+      <li>Correcting deficiency remains reasonable for the general benefits (bone, muscle, immune) even if the liver-specific benefit is modest.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">When to switch to calcifediol</h2>
+    <p class="text-gray-700 leading-relaxed">
+      In advanced cirrhosis with impaired hepatic 25-hydroxylation, oral cholecalciferol
+      may fail to raise 25(OH)D even at high doses. Calcifediol (already-25-hydroxylated
+      vitamin D) bypasses this step. It's licensed in several European countries and
+      available through specialty pharmacies in the US. Hepatologists use it for
+      transplant candidates and patients with persistent deficiency despite oral
+      cholecalciferol.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cholestatic disease and fat malabsorption</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Primary biliary cholangitis, primary sclerosing cholangitis, and any cause of chronic
+      cholestasis reduce bile flow and impair fat-soluble vitamin absorption (A, D, E, K).
+      These patients need higher doses, water-miscible vitamin D preparations, or IM
+      cholecalciferol. Vitamin K deficiency is a separate concern — clinicians monitor
+      INR and supplement as needed.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Any chronic liver disease diagnosis: check 25(OH)D at baseline and yearly.</li>
+      <li>Correct to at least 30 ng/mL. NAFLD: 2,000–4,000 IU/day cholecalciferol.</li>
+      <li>Cirrhosis or cholestasis: higher doses often needed; consider calcifediol if oral cholecalciferol fails.</li>
+      <li>Osteopenia/osteoporosis is common — DEXA and appropriate treatment reduce fracture risk.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Advanced liver disease alters drug metabolism —
+      always tell your hepatologist about supplements, including vitamin D.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-liver-disease" />
+  </main>
+</BaseLayout>

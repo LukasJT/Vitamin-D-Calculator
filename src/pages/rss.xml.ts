@@ -71,6 +71,14 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-ibd', title: "Vitamin D and IBD (Crohn's & UC)", description: 'Deficiency is the norm; latitude gradient, MR evidence, supplementation trials, malabsorption dosing.', date: '2026-08-12' },
   { slug: '/vitamin-d-and-migraine', title: 'Vitamin D and Migraine', description: 'What supplementation trials show, mechanism via neuroinflammation, and combining with riboflavin and magnesium.', date: '2026-08-12' },
   { slug: '/vitamin-d-and-eczema', title: 'Vitamin D and Eczema (Atopic Dermatitis)', description: 'Winter flares, cathelicidin and skin barrier defence, RCT evidence for SCORAD improvement.', date: '2026-08-12' },
+  { slug: '/vitamin-d-and-rheumatoid-arthritis', title: 'Vitamin D and Rheumatoid Arthritis', description: 'DAS28 correlations, the VITAL autoimmune substudy, and dosing alongside DMARDs and glucocorticoids.', date: '2026-08-13' },
+  { slug: '/vitamin-d-and-lupus', title: 'Vitamin D and Lupus (SLE)', description: 'The photosensitivity paradox, SLEDAI evidence, and supplementation dosing when sun exposure is off-limits.', date: '2026-08-13' },
+  { slug: '/vitamin-d-and-copd', title: 'Vitamin D and COPD', description: 'ViDiCO trial, Cochrane review, and the strong deficient-subgroup exacerbation benefit.', date: '2026-08-13' },
+  { slug: '/vitamin-d-and-kidney-disease', title: 'Vitamin D and Chronic Kidney Disease', description: 'CKD-MBD, calcitriol vs paricalcitol vs cholecalciferol, and KDIGO guidance across CKD stages.', date: '2026-08-13' },
+  { slug: '/vitamin-d-and-liver-disease', title: 'Vitamin D and Liver Disease', description: 'NAFLD supplementation evidence, cirrhosis universal deficiency, and when calcifediol is required.', date: '2026-08-13' },
+  { slug: '/vitamin-d-and-dental-health', title: 'Vitamin D and Dental Health', description: 'Caries reduction, periodontitis progression, implant osseointegration, and enamel hypoplasia.', date: '2026-08-13' },
+  { slug: '/vitamin-d-and-eye-health', title: 'Vitamin D and Eye Health', description: 'AMD, dry eye, myopia and diabetic retinopathy — what evidence supports and what it does not.', date: '2026-08-13' },
+  { slug: '/vitamin-d-for-athletes', title: 'Vitamin D for Athletes', description: 'Indoor-sport deficiency, muscle strength and stress fractures, target 40–50 ng/mL for elite performance.', date: '2026-08-13' },
 ];
 
 export const GET: APIRoute = async () => {

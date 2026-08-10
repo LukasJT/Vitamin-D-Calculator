@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-eye-health`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Eye Health',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Eye Health', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Eye Health: AMD, Dry Eye, Myopia, and Diabetic Retinopathy"
+  description="What the evidence shows for vitamin D in age-related macular degeneration, dry eye, myopia progression in children, and diabetic retinopathy."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-eye-health", label: "Vitamin D & Eyes" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Eye Health</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D receptors are present in the retina, corneal epithelium, and lacrimal
+      gland. Deficiency associations exist for several eye conditions; supplementation
+      evidence is generally strongest for dry eye and weakest for AMD.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Age-related macular degeneration (AMD)</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Meta-analyses find lower 25(OH)D is associated with higher AMD prevalence, but the
+      AREDS2 supplementation trial did not test vitamin D directly. The Carotenoids in
+      Age-Related Eye Disease Study (CAREDS) found women with 25(OH)D &lt; 12 ng/mL had a
+      6.7-fold higher risk of early AMD than women with sufficient vitamin D. No
+      randomised trial has yet proven supplementation slows AMD progression — that
+      evidence is still awaited.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Dry eye disease</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Multiple RCTs (Bae 2016; Yildirim 2016) reported vitamin D repletion improved
+      tear film stability, Schirmer score, and OSDI symptom scores in patients with dry
+      eye and baseline deficiency. Vitamin D modulates lacrimal gland inflammation and
+      goblet cell function. Reasonable adjunct to artificial tears, warm compresses,
+      and (in refractory cases) cyclosporine or lifitegrast eye drops.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Myopia in children</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Time spent outdoors is one of the most consistent factors linked to reduced myopia
+      progression in children — but the mechanism appears to be light intensity on the
+      retina (driving dopamine release), not vitamin D per se. Mendelian randomisation
+      studies suggest 25(OH)D is not causally related to myopia. The outdoor recommendation
+      stands; the vitamin D angle does not.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Diabetic retinopathy</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Observational data links lower 25(OH)D with more severe diabetic retinopathy in type
+      2 diabetes. Small trials suggest supplementation may slow progression, but
+      well-powered evidence is limited. Glycaemic control, blood pressure control, and
+      anti-VEGF therapy for proliferative disease remain the primary interventions.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Uveitis and other inflammatory eye disease</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cross-sectional studies find lower 25(OH)D in patients with anterior uveitis and
+      keratoconjunctivitis. Given vitamin D's immunomodulatory role, correcting
+      deficiency in inflammatory eye disease is reasonable adjunctive care.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Sudden vision change, floaters, flashes, or
+      curtain-like vision loss is a medical emergency requiring same-day ophthalmology
+      review — this is not the time for a vitamin trial.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-eye-health" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-copd`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and COPD',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Chronic obstructive pulmonary disease', code: { '@type': 'MedicalCode', codeValue: 'J44', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and COPD', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and COPD: Exacerbations, ViDiCO Trial, and Deficiency Correction"
+  description="Vitamin D deficiency correlates with COPD exacerbation frequency. What ViDiCO and Cochrane show for supplementation — the effect is largest in the deficient."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-copd", label: "Vitamin D & COPD" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and COPD</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Chronic obstructive pulmonary disease patients have high rates of vitamin D
+      deficiency — over half in most cohorts. Reduced sun exposure, low BMI (or the
+      opposite: obesity), chronic corticosteroid use, and reduced mobility all
+      contribute. Deficiency correlates with more frequent exacerbations.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The ViDiCO trial</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      The 240-patient ViDiCO trial (Martineau 2015) gave 120,000 IU cholecalciferol every 2
+      months vs placebo to COPD patients. Overall: no significant reduction in moderate-to-
+      severe exacerbations. But pre-specified subgroup analysis showed a 45% reduction in
+      exacerbations in patients with baseline 25(OH)D &lt; 20 ng/mL — the same pattern seen
+      in asthma trials.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cochrane meta-analysis</h2>
+    <p class="text-gray-700 leading-relaxed">
+      A 2019 Cochrane review pooling 4 trials found a 43% reduction in exacerbation rate
+      in adults with baseline 25(OH)D &lt; 25 nmol/L (&lt; 10 ng/mL). No benefit in
+      vitamin D-replete patients. The evidence supports correcting deficiency, not
+      supplementing indiscriminately.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mechanism</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cathelicidin (LL-37) is a vitamin D-inducible antimicrobial peptide that helps
+      clear the respiratory pathogens (Streptococcus pneumoniae, Haemophilus influenzae,
+      viruses) that trigger COPD exacerbations. Vitamin D also downregulates airway
+      inflammation and remodelling pathways.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical dosing</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D in all COPD patients, especially those with ≥ 2 exacerbations per year.</li>
+      <li>If &lt; 20 ng/mL: 2,000–4,000 IU/day for 8–12 weeks, then re-test.</li>
+      <li>Target maintenance 30–50 ng/mL.</li>
+      <li>Chronic inhaled or oral corticosteroids also warrant DEXA and osteoporosis workup — vitamin D + calcium is standard.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Vitamin D is adjunctive — bronchodilators,
+      inhaled steroids for eosinophilic COPD, smoking cessation, pulmonary rehab, and
+      vaccination are the evidence-based interventions that change the disease course.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-copd" />
+  </main>
+</BaseLayout>

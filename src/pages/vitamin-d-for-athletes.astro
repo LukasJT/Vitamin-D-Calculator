@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-for-athletes`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D for Athletes',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D for Athletes', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D for Athletes: Performance, Stress Fractures, and Indoor-Sport Deficiency"
+  description="Why indoor athletes and dark-skinned athletes at higher latitudes run consistently deficient, effects on strength and VO2max, and how vitamin D affects stress fracture risk."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-for-athletes", label: "Vitamin D for Athletes" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D for Athletes</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Skeletal muscle carries vitamin D receptors, and vitamin D affects fast-twitch
+      fibre function, calcium handling, and post-exercise recovery. Deficiency is
+      surprisingly common in elite athletes — particularly those in indoor sports
+      (gymnastics, basketball, ice hockey, dance) and those with darker skin training
+      at high latitudes.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Deficiency prevalence</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Screening studies of Division I US college athletes report 30–70% deficient
+      (&lt; 30 ng/mL) depending on sport and latitude. NBA players (indoor sport, mostly
+      Black athletes) had 32% severely deficient (&lt; 20 ng/mL) and 47% insufficient
+      (20–32 ng/mL) in a 2015 study. European football (soccer) squads show similar
+      winter deficiency rates.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Performance evidence</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Muscle strength</strong> — meta-analyses show correcting deficiency modestly improves grip strength, jump height, and sprint performance. Effect largest in most-deficient athletes.</li>
+      <li><strong>VO2max</strong> — mixed evidence; small trials suggest improved aerobic capacity when starting deficient.</li>
+      <li><strong>Recovery</strong> — vitamin D reduces exercise-induced muscle damage markers (CK, myoglobin) in some studies.</li>
+      <li><strong>Sufficient athletes</strong> — supplementation beyond 30–40 ng/mL doesn't enhance performance further. There's no ergogenic effect in already-replete athletes.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Stress fractures</h2>
+    <p class="text-gray-700 leading-relaxed">
+      A landmark 2008 study of female Navy recruits found 800 IU vitamin D + 2,000 mg
+      calcium daily reduced stress fracture incidence by 20% during 8 weeks of basic
+      training. Similar signals exist in ballet dancers and runners. Screen and correct
+      any athlete presenting with stress fracture.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical protocol</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D early season and mid-winter for all serious athletes at latitudes above 35°.</li>
+      <li>Target 40–50 ng/mL (100–125 nmol/L) — the athletic target is often higher than the general-population sufficiency threshold.</li>
+      <li>Deficient athletes: 4,000–5,000 IU/day cholecalciferol for 8–12 weeks, then re-test and titrate to 2,000 IU/day maintenance.</li>
+      <li>Take with dietary fat (breakfast or main meal) for optimal absorption.</li>
+      <li>Vitamin D is not on any anti-doping banned list — regular supplementation is compatible with WADA rules.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Persistent bone pain in a training athlete is a
+      stress fracture until proven otherwise — get imaging, not just a supplement bottle.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-for-athletes" />
+  </main>
+</BaseLayout>
