@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-vacation`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Vacation',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Vacation', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Vacation: How Much a Sunny Trip Actually Boosts Your Levels"
+  description="A week in Cancun in February — real 25(OH)D impact, how long the boost lasts, the sunburn/melanoma trade-off, and why you still need supplementation at home."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-vacation", label: "Vitamin D & Vacation" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Vacation</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      A February beach week in Mexico, the Caribbean, or Southern Europe delivers a
+      genuine but temporary vitamin D boost. The magnitude often surprises people — a
+      few days of tropical sun can raise 25(OH)D by 10–20 ng/mL — but so does how
+      quickly the boost fades once you're back home. Vacation is not a year-round
+      vitamin D strategy.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Typical numbers</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Fair-skinned adult starting at 20 ng/mL (winter deficient) — a week of beach sun in the tropics with realistic exposure (2–3 hours daily, some sunscreen) typically raises 25(OH)D to 35–45 ng/mL over the following 2–3 weeks.</li>
+      <li>Darker-skinned adult starting at 15 ng/mL — smaller boost, maybe to 25–30 ng/mL.</li>
+      <li>The boost peaks 2–3 weeks after vacation return (lag reflects 25(OH)D pharmacokinetics).</li>
+      <li>Serum 25(OH)D then declines with normal winter kinetics — ~1–2 ng/mL per month back at high latitude without sun or supplement.</li>
+      <li>By 3–4 months post-vacation, you're back to baseline.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The reserves angle</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Some vitamin D from vacation exposure gets stored in adipose tissue and slowly
+      released. See our <a href="/vitamin-d-reserves" class="text-amber-700 underline">reserves calculator</a>
+      for a pharmacokinetic model. Adipose stores buffer the decline somewhat but don't
+      prevent it. A single summer holiday won't carry you through the following winter.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The sunburn / melanoma trade-off</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Intermittent intense sun exposure — like a vacation from a temperate country to
+      a tropical destination — is the single strongest recognised risk factor for
+      melanoma, particularly if it produces sunburns. This is where the vitamin D
+      trade-off becomes unfavourable: gaining 15 ng/mL of 25(OH)D on a vacation isn't
+      worth a childhood sunburn or a serious melanoma risk factor. Sunscreen, hats,
+      and gradual acclimation are essential.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical vacation vitamin D</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Enjoy the sunshine benefit — brief unprotected exposure (5–15 minutes, arms and legs) at the start of the day multiple times during the trip provides most of the vitamin D benefit with least burn risk.</li>
+      <li>Then apply sunscreen for the rest of the day.</li>
+      <li>Never seek sunburn to boost vitamin D — it doesn't work faster, and the cancer risk is real.</li>
+      <li>Continue supplementation after the vacation — the boost fades within months.</li>
+      <li>If you tend toward winter deficiency, one tropical vacation isn't the answer; year-round supplementation is.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The Northern European "sun holiday" pattern</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cross-sectional data from UK, Danish, and Swedish cohorts show adults who take
+      annual Mediterranean holidays have modestly higher year-round 25(OH)D than
+      non-travellers. The effect is measurable but modest — 3–5 ng/mL average
+      annual difference. Individual variation is large.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Winter vacation strategy for high-latitude residents</h2>
+    <p class="text-gray-700 leading-relaxed">
+      A February beach week can meaningfully improve late-winter mood and 25(OH)D.
+      But it doesn't replace supplementation. Northern European or Canadian adults who
+      choose winter holidays for vitamin D benefit should still supplement year-round
+      — treat the vacation as a bonus, not the strategy.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Tan preservation is not a vitamin D goal;
+      neither is deliberate darkening of skin. Prioritise skin health.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-vacation" />
+  </main>
+</BaseLayout>

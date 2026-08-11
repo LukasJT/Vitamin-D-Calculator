@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-supplementation-guide`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Complete Vitamin D Supplementation Guide',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Supplementation Guide', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D Supplementation Guide: Dose, Form, Timing, Cofactors, and Monitoring"
+  description="Complete evidence-based guide to vitamin D supplementation — how to pick a dose, D2 vs D3, timing with food, cofactor stacking, monitoring 25(OH)D, and when to see a doctor."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-supplementation-guide", label: "Supplementation Guide" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D Supplementation — The Complete Guide</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D supplementation is one of the simplest, cheapest, most well-studied
+      interventions in medicine — and one where people commonly make small mistakes
+      that reduce effectiveness. This guide covers dose selection, formulation choice,
+      timing, cofactors, and monitoring so you can supplement effectively.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Step 1 — Test 25(OH)D</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Before starting any regimen, know your starting number. A single 25(OH)D test
+      costs $30–$100 out of pocket and is often covered by insurance with an ordering
+      diagnosis. Without a baseline, you're guessing. Categories used in this guide:
+      <strong>deficient</strong> &lt; 20 ng/mL, <strong>insufficient</strong> 20–29
+      ng/mL, <strong>sufficient</strong> 30–60 ng/mL, <strong>high normal</strong>
+      60–100 ng/mL, <strong>excess</strong> &gt; 100 ng/mL.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Step 2 — Pick a dose</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Sufficient starting 25(OH)D (≥ 30 ng/mL)</strong> — 1,000–2,000 IU/day maintenance keeps you there in most adults.</li>
+      <li><strong>Insufficient (20–29 ng/mL)</strong> — 2,000–4,000 IU/day for 8–12 weeks, then re-test.</li>
+      <li><strong>Deficient (&lt; 20 ng/mL)</strong> — loading regimen: 50,000 IU weekly × 8 weeks (Endocrine Society) or 6,000 IU/day × 8 weeks, then re-test and titrate to maintenance.</li>
+      <li><strong>Severe deficiency (&lt; 12 ng/mL)</strong> or symptomatic — same loading, expect longer time to full replenishment; see specialist if any osteomalacia symptoms.</li>
+      <li><strong>Obesity (BMI ≥ 30)</strong> — 2–3× standard doses (see our <a href="/vitamin-d-and-obesity" class="text-amber-700 underline">obesity page</a>).</li>
+      <li><strong>Malabsorption</strong> — often need 4,000–10,000 IU/day; consider water-miscible or calcifediol.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Step 3 — Pick a form</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>D3 (cholecalciferol)</strong> is preferred — raises 25(OH)D more effectively than D2 at equivalent dose.</li>
+      <li><strong>Softgel with olive/MCT oil</strong> — cheapest, best absorption.</li>
+      <li><strong>Liquid drops</strong> — good for children, adults with dysphagia, precise titration.</li>
+      <li><strong>D2 (ergocalciferol)</strong> — used in some US prescription 50,000 IU capsules and by vegans not accessing lichen D3. Less potent per IU than D3.</li>
+      <li><strong>Lichen D3</strong> — the vegan-friendly D3; equivalent to sheep-lanolin D3.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Step 4 — Take it correctly</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Take with a meal containing at least 10–20 g fat — vitamin D absorption improves 30–50% vs an empty stomach.</li>
+      <li>Consistency beats timing — daily is better than weekly for compliance and 25(OH)D stability.</li>
+      <li>Don't stack calcium in the same dose over 500 mg — split intake for absorption.</li>
+      <li>See our <a href="/best-time-of-day-for-vitamin-d" class="text-amber-700 underline">best time of day page</a>.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Step 5 — Consider cofactors</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Magnesium 300–400 mg/day</strong> — required cofactor for every vitamin D activation enzyme.</li>
+      <li><strong>Calcium 1,000 mg/day total (food + supplement)</strong> — needed for the calcium-related benefits of vitamin D; not needed alone with vitamin D unless dietary intake is low.</li>
+      <li><strong>Vitamin K2 100 µg/day</strong> — theoretical benefit for directing calcium to bone; evidence modest but low harm.</li>
+      <li>See <a href="/vitamin-d-magnesium-k2" class="text-amber-700 underline">D + Mg + K2 page</a>.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Step 6 — Re-test and titrate</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Re-test 25(OH)D 8–12 weeks after starting or changing dose (that's roughly the
+      steady-state time for daily oral supplementation). Adjust dose:
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Under target: increase by 1,000–2,000 IU/day.</li>
+      <li>Over target: reduce by 1,000 IU/day.</li>
+      <li>Over 100 ng/mL: stop for 4 weeks, then restart at half the dose.</li>
+    </ul>
+    <p class="text-gray-700 leading-relaxed mt-3">
+      Once you find your maintenance dose, re-test yearly. Adjust for season if you
+      pause supplementation in summer.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Step 7 — Know when to see a doctor</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>You take 4,000+ IU/day and 25(OH)D still won't rise — possible malabsorption, genetic variation, or drug interaction.</li>
+      <li>You have symptoms of vitamin D toxicity — nausea, vomiting, constipation, kidney stones, confusion — while supplementing.</li>
+      <li>You have chronic kidney disease, sarcoidosis, hyperparathyroidism, or lymphoma — dosing requires specialist input.</li>
+      <li>Bone pain, proximal myopathy, or hypocalcaemic symptoms — need workup, not just supplementation.</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> The doses above are population guides.
+      Individual response varies. If you have any chronic disease or take multiple
+      medications, discuss vitamin D dosing with your prescriber.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-supplementation-guide" />
+  </main>
+</BaseLayout>

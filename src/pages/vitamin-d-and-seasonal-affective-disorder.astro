@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-seasonal-affective-disorder`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Seasonal Affective Disorder',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Seasonal affective disorder', code: { '@type': 'MedicalCode', codeValue: 'F33', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and SAD', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Seasonal Affective Disorder (SAD): Two Different Winter Problems"
+  description="SAD lamps vs vitamin D — they treat different things. SAD is a circadian problem; vitamin D deficiency is an endocrine one. Both can coexist in winter."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-seasonal-affective-disorder", label: "Vitamin D & SAD" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Seasonal Affective Disorder</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Both vitamin D deficiency and seasonal affective disorder (SAD) intensify in
+      winter and can produce overlapping symptoms — low mood, fatigue, sleep changes.
+      They are, however, distinct problems with different mechanisms and different
+      treatments. Both can be present at once; getting the right diagnosis matters.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">SAD — a circadian and phototransduction problem</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      SAD is a recurrent major depressive disorder with seasonal pattern (usually
+      autumn-winter onset, spring remission). Onset correlates with day length and
+      light exposure; the core biology involves reduced retinal light input,
+      dysregulated melatonin timing, and (in some patients) reduced serotonin
+      turnover in winter. It responds to bright light therapy (10,000 lux for 30
+      minutes in the morning), SSRIs, and CBT — not to vitamin D specifically.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Vitamin D deficiency — an endocrine problem</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Winter vitamin D deficiency has its own mood effects — chronic musculoskeletal
+      pain, fatigue, lower mood scores in some studies. Meta-analyses suggest
+      correcting deficiency modestly improves depression symptoms in patients with
+      baseline &lt; 20 ng/mL 25(OH)D. It does not treat classical SAD; it treats
+      the deficiency-associated mood component.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The overlap</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Winter northern-latitude adults with mood symptoms often have both problems.
+      Days are short (SAD trigger) and 25(OH)D is low (deficiency). Ideal management
+      addresses both: bright light box for SAD + vitamin D repletion for deficiency.
+      Neither substitutes for the other.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Bright light box ≠ UVB lamp</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Standard 10,000-lux SAD lamps emit visible white or full-spectrum light with
+      minimal UV. They do not produce vitamin D. Marketing that conflates the two is
+      misleading. See our <a href="/uv-lamps-for-vitamin-d" class="text-amber-700 underline">UV lamps page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Trial evidence</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Kjaergaard 2012</strong> — high-dose vitamin D vs placebo in overweight subjects with low mood; some symptom improvement.</li>
+      <li><strong>Frandsen 2014</strong> — 2,800 IU/day in patients with SAD; no additional benefit over placebo when both had winter light exposure.</li>
+      <li><strong>Cochrane 2020 review</strong> — vitamin D for depression: small overall effect, larger effect in deficient patients.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical winter mood plan</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Get morning bright light exposure — outdoor walk within 1 hour of waking is ideal; 10,000-lux light box is a substitute.</li>
+      <li>Correct vitamin D deficiency — 2,000 IU/day baseline; test if symptoms are significant.</li>
+      <li>Regular exercise and sleep hygiene — dose-dependent effects on mood in both SAD and general depression.</li>
+      <li>See a clinician for persistent symptoms — SSRIs (bupropion is uniquely FDA-approved for SAD prevention) and CBT have strong evidence.</li>
+      <li>Do not use bright light therapy alone if you have bipolar disorder without psychiatric input — can trigger hypomania.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Persistent depressed mood, especially with
+      suicidal ideation, deserves urgent mental health evaluation — not a vitamin bottle.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-seasonal-affective-disorder" />
+  </main>
+</BaseLayout>

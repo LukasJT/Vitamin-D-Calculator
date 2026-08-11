@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-supplement-buyers-guide`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: "Vitamin D Supplement Buyer's Guide",
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: "Buyer's Guide", item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D Supplement Buyer's Guide: Third-Party Testing, Bioavailability, Value"
+  description="How to choose a vitamin D supplement — third-party testing (USP, NSF, ConsumerLab), formulation quality, cost per IU, and red flags to avoid."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-supplement-buyers-guide", label: "Buyer's Guide" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D Supplement Buyer's Guide</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Choosing a vitamin D supplement is not a high-stakes decision most of the time —
+      almost any cholecalciferol product from a mainstream retailer will do the job.
+      But some products are wildly overpriced, some have poor formulation, and dietary
+      supplement content-verification testing routinely finds label deviations of
+      ±25% or more in a subset of tested products. Here's what to actually look for.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">1. Choose D3 (cholecalciferol) unless you have a reason not to</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      D3 raises 25(OH)D more effectively than D2 at equal dose (evidence: multiple
+      head-to-head RCTs, meta-analysed). D2 is fine if you have a specific reason
+      (prescription-only product, strict veganism without lichen access) — otherwise
+      pay attention to the "D3" designation on the label.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">2. Third-party testing</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Look for one of these seals on the label:
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>USP Verified</strong> — US Pharmacopeia; strict content and purity verification.</li>
+      <li><strong>NSF Contents Certified</strong> — content and label accuracy verification.</li>
+      <li><strong>NSF Certified for Sport</strong> — additional banned-substance screening; useful for athletes.</li>
+      <li><strong>Informed-Sport / Informed-Choice</strong> — batch-level banned-substance testing.</li>
+      <li><strong>ConsumerLab.com approval</strong> — independent lab testing (subscription-based reports).</li>
+    </ul>
+    <p class="text-gray-700 leading-relaxed mt-3">
+      These add roughly $0.01–0.05 per dose in price. Worth the small premium for
+      content verification.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">3. Read the "supplement facts" panel properly</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Look for IU per serving (not per bottle).</li>
+      <li>Check serving size — "1 softgel" vs "2 softgels" changes what a "5,000 IU" label means per capsule.</li>
+      <li>Check "other ingredients" for the carrier oil (olive, MCT, safflower are fine; hydrogenated oils are avoidable).</li>
+      <li>Beware of proprietary blends — they don't tell you the actual vitamin D dose.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">4. Formulation choice</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Softgel with olive/MCT oil</strong> — best absorption, cheapest per IU.</li>
+      <li><strong>Liquid drops in oil</strong> — good for infants, dysphagia, precise titration.</li>
+      <li><strong>Tablets (dry-form)</strong> — slightly less bioavailable but still effective; useful if you can't swallow softgels.</li>
+      <li><strong>Chewables / gummies</strong> — good for compliance in children; often contain sugar; watch potency variance.</li>
+      <li><strong>Sublingual sprays</strong> — no absorption advantage over oral in head-to-head studies; more expensive; useful for GI malabsorption.</li>
+      <li>See our <a href="/vitamin-d-drops-vs-capsules" class="text-amber-700 underline">drops vs capsules page</a>.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">5. Cost per IU — approximate 2026 US pricing</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Kirkland (Costco), Nature Made, Nature's Bounty bulk softgels: $0.005–0.02 per 1,000 IU.</li>
+      <li>Now Foods, Solgar, Jarrow (mid-tier third-party tested): $0.02–0.05 per 1,000 IU.</li>
+      <li>Thorne, Pure Encapsulations, Metagenics (professional lines): $0.05–0.15 per 1,000 IU.</li>
+      <li>Sublingual sprays and specialty drops: $0.15–0.40 per 1,000 IU.</li>
+      <li>MLM-brand supplements: often 5–20× the price of equivalent grocery-store products, without better content verification.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">6. Red flags</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>"Micro-dose" or "activated" claims without science — usually marketing filler.</li>
+      <li>"Proprietary blend" hiding actual vitamin D dose.</li>
+      <li>Claims to cure diseases or replace prescribed medications.</li>
+      <li>Astronomically high doses (25,000+ IU/capsule) sold direct-to-consumer without prescription — hypercalcaemia risk from casual overdosing.</li>
+      <li>MLM structure — the "clinical formula" argument is a sales pitch, not evidence.</li>
+      <li>"Free trial" that auto-enrols you in monthly shipments — common supplement scam.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">7. Storage and shelf life</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D is reasonably stable but degrades with heat and light. Store in a cool
+      dark cupboard, not on the kitchen counter or in the bathroom (humidity). Expiration
+      dates are conservative — products usually retain most of their potency 1–2 years
+      beyond, but replace expired bottles rather than dose-guessing.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> The best supplement is the one you'll
+      actually take consistently. Cheap, tested, easy-to-swallow beats premium and
+      forgotten in the drawer.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-supplement-buyers-guide" />
+  </main>
+</BaseLayout>

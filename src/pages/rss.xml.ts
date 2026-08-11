@@ -130,6 +130,11 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-air-pollution', title: 'Vitamin D and Air Pollution', description: 'How particulate haze, wildfire smoke, ozone and volcanic dust reduce UVB reaching the ground.', date: '2026-08-19' },
   { slug: '/vitamin-d-and-altitude', title: 'Vitamin D and Altitude', description: 'The 4%-per-300m UVB gain, snow reflectance nearly doubling exposure, and mountain sunburn hazard.', date: '2026-08-19' },
   { slug: '/vitamin-d-and-time-of-day', title: 'Vitamin D and Time of Day', description: "Why noon sun makes vitamin D and morning/evening sun doesn't — the shadow rule and 35° threshold.", date: '2026-08-19' },
+  { slug: '/vitamin-d-supplementation-guide', title: 'Complete Vitamin D Supplementation Guide', description: 'Dose, form, timing, cofactors, and monitoring — the seven-step guide to effective supplementation.', date: '2026-08-20' },
+  { slug: '/vitamin-d-and-seasonal-affective-disorder', title: 'Vitamin D and SAD', description: 'SAD lamps vs vitamin D — two different winter problems, two different treatments, and where they overlap.', date: '2026-08-20' },
+  { slug: '/vitamin-d-and-vacation', title: 'Vitamin D and Vacation', description: 'How much a sunny trip actually boosts 25(OH)D, how long it lasts, and the melanoma trade-off.', date: '2026-08-20' },
+  { slug: '/vitamin-d-and-hot-climates', title: 'Vitamin D in Hot and Desert Climates', description: 'Why the sunniest countries have some of the highest deficiency rates — Saudi Arabia, UAE, Iran.', date: '2026-08-20' },
+  { slug: '/vitamin-d-supplement-buyers-guide', title: "Vitamin D Supplement Buyer's Guide", description: 'Third-party testing, bioavailability, cost per IU, and supplement red flags to avoid.', date: '2026-08-20' },
 ];
 
 export const GET: APIRoute = async () => {
