@@ -135,6 +135,13 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-vacation', title: 'Vitamin D and Vacation', description: 'How much a sunny trip actually boosts 25(OH)D, how long it lasts, and the melanoma trade-off.', date: '2026-08-20' },
   { slug: '/vitamin-d-and-hot-climates', title: 'Vitamin D in Hot and Desert Climates', description: 'Why the sunniest countries have some of the highest deficiency rates — Saudi Arabia, UAE, Iran.', date: '2026-08-20' },
   { slug: '/vitamin-d-supplement-buyers-guide', title: "Vitamin D Supplement Buyer's Guide", description: 'Third-party testing, bioavailability, cost per IU, and supplement red flags to avoid.', date: '2026-08-20' },
+  { slug: '/vitamin-d-and-humidity', title: 'Vitamin D and Humidity', description: 'Does humidity meaningfully change UVB? Why sweat does not wash off freshly-synthesised cholecalciferol.', date: '2026-08-21' },
+  { slug: '/vitamin-d-and-tanning-beds', title: 'Vitamin D and Tanning Beds', description: 'The melanoma trade-off, IARC Group 1 classification, and why supplements are always the better answer.', date: '2026-08-21' },
+  { slug: '/vitamin-d-and-shade', title: 'Vitamin D and Shade', description: 'How umbrellas, canopy, dappled shade still transmit meaningful UVB — and the sunburn deception.', date: '2026-08-21' },
+  { slug: '/vitamin-d-food-meal-plan', title: 'High-Vitamin D Meal Plan Ideas', description: 'Three sample days that hit the RDA from food alone, plus a vegan variant, and the reality check.', date: '2026-08-21' },
+  { slug: '/vitamin-d-and-fatigue', title: 'Vitamin D and Fatigue', description: 'When correcting deficiency actually improves tiredness — and when to look elsewhere for the cause.', date: '2026-08-21' },
+  { slug: '/vitamin-d-and-common-cold', title: 'Vitamin D and the Common Cold', description: 'Martineau meta-analysis specifics, cathelicidin biology, and why daily works for cold prevention.', date: '2026-08-21' },
+  { slug: '/vitamin-d-and-headaches', title: 'Vitamin D and Headaches', description: 'Non-migraine headache types — tension, cluster, cervicogenic — and where vitamin D fits.', date: '2026-08-21' },
 ];
 
 export const GET: APIRoute = async () => {

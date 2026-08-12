@@ -661,6 +661,41 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-and-humidity</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-and-tanning-beds</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-and-shade</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-food-meal-plan</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-and-fatigue</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-and-common-cold</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-and-headaches</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://vitamindcalculator.net/sitemap</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

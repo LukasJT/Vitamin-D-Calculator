@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-common-cold`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and the Common Cold',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Common Cold', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and the Common Cold: Reduce Frequency or Not?"
+  description="What the evidence shows for vitamin D preventing the common cold — the Martineau meta-analysis specifics, why daily works and bolus doesn't, and reasonable dosing."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-common-cold", label: "Vitamin D & Common Cold" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and the Common Cold</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D is one of the few over-the-counter supplements with reasonable trial
+      evidence for reducing acute respiratory infections — including colds. The
+      effect is small in the vitamin D-sufficient and larger in the deficient. As
+      always, daily/weekly dosing works; bolus doesn't.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Martineau meta-analysis</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Martineau 2017 BMJ (25 RCTs, 10,933 participants) and 2021 update (46 trials,
+      75,541) both showed vitamin D reduced acute respiratory tract infections
+      (which include colds, flu, and lower respiratory infections). Reduction ~10%
+      overall, ~70% in profoundly deficient (25(OH)D &lt; 25 nmol/L) subgroups.
+      See our fuller <a href="/vitamin-d-and-flu" class="text-amber-700 underline">flu page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mechanism against viruses</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D upregulates cathelicidin (LL-37) — an antimicrobial peptide with
+      broad activity against respiratory viruses including rhinoviruses (the
+      most common cold viruses), influenza, and RSV. It also modulates T-cell
+      responses, dampening the excessive inflammation of severe upper respiratory
+      infection.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Doesn't treat active colds</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D's evidence is for prevention, not treatment. Taking a mega-dose
+      when you already have a cold has no evidence for shortening it, and one-off
+      high-dose regimens don't reduce future infection rates. If you catch a cold,
+      rest, fluids, and symptomatic care (analgesics, decongestants, saline nasal)
+      are what actually help.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Maintain 25(OH)D ≥ 30 ng/mL year-round with 1,000–2,000 IU/day cholecalciferol.</li>
+      <li>Daily dosing preferred; weekly acceptable for compliance.</li>
+      <li>Don't rely on vitamin D as a substitute for other cold-prevention basics — handwashing, adequate sleep, minimising exposure during peak cold season.</li>
+      <li>Zinc lozenges started within 24 hours of symptom onset have modest evidence for reducing cold duration (see our <a href="/zinc" class="text-amber-700 underline">zinc page</a>).</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Cold symptoms lasting &gt; 10 days,
+      high fever, ear pain, or shortness of breath warrant medical evaluation.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-common-cold" />
+  </main>
+</BaseLayout>

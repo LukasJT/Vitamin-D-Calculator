@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-shade`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Shade',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Shade', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Shade: Do You Make Vitamin D Under a Tree?"
+  description="How trees, umbrellas, buildings, and dappled shade affect UVB — scatter can deliver 30-50% of direct UVB, which matters more than most people think."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-shade", label: "Vitamin D and Shade" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Shade</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Shade isn't zero-UVB. Scattered UV from the sky reaches shaded skin, and dense
+      tree canopy or a beach umbrella still transmits 30–50% of ambient UVB. This
+      matters for both sunburn risk (more than you'd think) and vitamin D synthesis
+      (still meaningful in shaded midday outdoor time).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The scatter physics</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      UV reaches skin via two paths: direct (from the solar disk) and diffuse
+      (Rayleigh-scattered from the whole hemisphere of sky). Under shade, direct is
+      blocked but diffuse continues. On a clear day, diffuse UV is roughly 40–60%
+      of total ambient UV — that's what shade delivers to shielded skin.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Shade types and transmission</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Dense evergreen canopy</strong> — 5–15% UVB transmission.</li>
+      <li><strong>Deciduous canopy in full leaf</strong> — 10–20%.</li>
+      <li><strong>Dappled shade</strong> — 20–40% (highly variable; sunflecks can approach 100%).</li>
+      <li><strong>Beach umbrella</strong> — 40–60%. Direct blocked, diffuse mostly through.</li>
+      <li><strong>Pergola / gazebo</strong> — 30–50%.</li>
+      <li><strong>Solid roof / awning</strong> — 5–15% (direct blocked, side-scattered UV).</li>
+      <li><strong>Between buildings, urban shade</strong> — 30–60% depending on sky visibility.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Beach umbrella deception</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Studies of beach umbrellas (McKenzie 2017) found that shaded sunbathers still
+      accumulated meaningful UVB exposure — enough that after 3–4 hours under an
+      umbrella at a sunny beach, some subjects had light sunburns. Shade reduces
+      exposure; it doesn't eliminate it. Sunscreen remains recommended for extended
+      shade-only time in tropical or high-UV conditions.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Vitamin D synthesis in shade</h2>
+    <p class="text-gray-700 leading-relaxed">
+      An hour under a beach umbrella at midday tropical sun delivers roughly the
+      vitamin D equivalent of 20–30 minutes in direct sun — still substantial.
+      Sitting in dappled shade for an afternoon walking in a park produces
+      meaningful synthesis. Shade is not a vitamin D-blocking strategy; direct
+      sun-avoidance under bright sky still permits synthesis.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical takeaway</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Shade is not an on/off switch — it's a partial reduction.</li>
+      <li>You can be in the shade all day at a sunny beach and still get sunburned; use sunscreen.</li>
+      <li>You can be in dappled shade in a park and still make useful vitamin D.</li>
+      <li>Full indoor time is different — see our <a href="/vitamin-d-and-windows" class="text-amber-700 underline">windows page</a>.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Shade seeking is a smart general sun-safety
+      practice; don't assume it fully protects, but do use it in combination with
+      sunscreen and clothing.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-shade" />
+  </main>
+</BaseLayout>

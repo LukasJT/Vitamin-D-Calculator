@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-fatigue`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Fatigue',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Fatigue', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Fatigue: When Correcting Deficiency Actually Fixes Tiredness"
+  description="What the evidence shows about vitamin D and fatigue — the ViDiFatiCS trial, chronic fatigue, and how to know if your fatigue is likely to respond to correction."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-fatigue", label: "Vitamin D and Fatigue" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Fatigue</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Fatigue is one of the most common symptoms associated with vitamin D deficiency
+      in observational studies, and one of the outcomes patients most hope
+      supplementation will fix. The reality is nuanced — correction helps some
+      people, particularly the severely deficient, and doesn't help many others.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The ViDiFatiCS trial</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Nowak 2016 randomised 120 adults with self-reported fatigue and 25(OH)D
+      &lt; 20 ng/mL to either 100,000 IU cholecalciferol bolus or placebo. At
+      4 weeks, the vitamin D group had significantly greater fatigue reduction
+      on validated fatigue scales. This trial specifically enrolled the deficient
+      — the population most likely to respond.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Meta-analyses</h2>
+    <p class="text-gray-700 leading-relaxed">
+      2020 Cochrane-style pooled analysis of RCTs of vitamin D for fatigue: modest
+      benefit overall, with effect size larger in patients starting below 20 ng/mL
+      and negligible in those starting above 30 ng/mL. Consistent with the general
+      pattern of vitamin D trials.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Chronic fatigue syndrome / ME/CFS</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D deficiency is common in ME/CFS cohorts, but supplementation trials
+      have not shown reliable disease-modifying benefit. Correcting deficiency is
+      reasonable general care; ME/CFS specific management is a specialist area with
+      distinct interventions (pacing, symptom-directed therapy).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Fatigue causes not fixed by vitamin D</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Poor sleep hygiene or untreated sleep apnoea.</li>
+      <li>Iron-deficiency anaemia (especially in menstruating women; see our <a href="/iron" class="text-amber-700 underline">iron page</a>).</li>
+      <li>Untreated hypothyroidism (check TSH).</li>
+      <li>Depression or anxiety.</li>
+      <li>Overtraining or under-recovery in athletes.</li>
+      <li>Occult chronic disease (diabetes, kidney disease, cancer).</li>
+      <li>Medications with fatigue as side effect (beta-blockers, antihistamines, statins).</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical approach</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Persistent fatigue &gt; 1 month: check 25(OH)D, TSH, CBC (for anaemia), ferritin, B12, glucose.</li>
+      <li>Vitamin D &lt; 20 ng/mL: correct with 2,000–4,000 IU/day for 8–12 weeks; expect partial improvement in a subset of patients.</li>
+      <li>Vitamin D &gt; 30 ng/mL and still fatigued: look elsewhere; more vitamin D won't help.</li>
+      <li>Persistent unexplained fatigue: comprehensive medical workup, not another supplement.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Fatigue with weight loss, night sweats,
+      new severe headaches, chest pain, or bleeding needs urgent medical evaluation,
+      not a supplement trial.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-fatigue" />
+  </main>
+</BaseLayout>

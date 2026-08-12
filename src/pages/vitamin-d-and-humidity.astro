@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-humidity`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Humidity',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Humidity', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Humidity: Does Sweaty Skin Change UVB Absorption?"
+  description="Whether humidity affects UVB reaching the ground, sweat interference with vitamin D synthesis, and why tropical humid climates aren't a sun-exposure penalty."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-humidity", label: "Humidity" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Humidity</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Humidity's effect on UVB is small. Atmospheric water vapour absorbs some UV
+      but the effect is dwarfed by cloud cover, latitude, and time of day. The
+      practical relevance for vitamin D is minimal — humid tropical climates
+      generally still deliver plentiful UVB.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Water vapour and UVB</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Water vapour absorbs UV weakly across the 290–315 nm band relevant to vitamin D
+      synthesis. Even in very humid conditions (dew point &gt; 24 °C), the reduction
+      in ground-level UVB is at most 3–8% versus a dry-air reference — negligible
+      compared with a 30–50% reduction from moderate cloud cover.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Sweat and skin synthesis</h2>
+    <p class="text-gray-700 leading-relaxed">
+      A common myth: showering right after sun exposure "washes off" freshly made
+      vitamin D. Not true. Cholecalciferol is produced inside the epidermis (not on
+      the skin surface) from 7-dehydrocholesterol, and it gradually diffuses into
+      the bloodstream over hours to a day. Sweat, water, and soap do not remove it.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The behavioural angle</h2>
+    <p class="text-gray-700 leading-relaxed">
+      What humidity does affect is behaviour — hot humid climates drive people
+      indoors during midday hours. Bangkok, Miami, Singapore all have high UVB
+      years-round but urban deficiency rates that rival northern climates because
+      residents avoid outdoor midday time. See our
+      <a href="/vitamin-d-and-hot-climates" class="text-amber-700 underline">hot climates page</a>.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Don't worry about humidity as a vitamin
+      D variable. Worry about behaviour (indoor time), clothing, and latitude.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-humidity" />
+  </main>
+</BaseLayout>

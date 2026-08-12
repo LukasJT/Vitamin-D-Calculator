@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-food-meal-plan`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D Meal Plan Ideas',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D Meal Plan', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="High-Vitamin D Meal Plan Ideas: Breakfast, Lunch, Dinner That Hit the RDA"
+  description="Sample days of eating that reach the 600–800 IU RDA from food alone — breakfast, lunch, dinner, and snack ideas built around salmon, fortified dairy, mushrooms, and eggs."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-food-meal-plan", label: "Meal Plan Ideas" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">High-Vitamin D Meal Plan Ideas</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Hitting the vitamin D RDA (600–800 IU) from food alone is possible but requires
+      deliberate choices — vitamin D content of most everyday foods is small. Here are
+      sample days that get there without supplementation. These are food ideas, not
+      prescriptions; supplementation is still often the more reliable strategy.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Day 1 — the salmon dinner day (~940 IU)</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Breakfast:</strong> 2 large eggs (80 IU) + 1 cup vitamin D-fortified milk (120 IU) + toast = 200 IU.</li>
+      <li><strong>Lunch:</strong> Salad with 3 oz canned tuna (150 IU), 1 oz vitamin D-fortified cheese, vinaigrette = 200 IU.</li>
+      <li><strong>Dinner:</strong> 4 oz baked wild salmon (600 IU), roasted vegetables, quinoa = 600 IU.</li>
+      <li><strong>Snack:</strong> Yoghurt cup (~40 IU if fortified) = 40 IU.</li>
+      <li><strong>Total: ~1,040 IU</strong></li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Day 2 — the omelette-and-mushroom day (~610 IU)</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Breakfast:</strong> 3-egg omelette (120 IU) with 1 cup UV-exposed mushrooms (200 IU), whole-grain toast = 320 IU.</li>
+      <li><strong>Lunch:</strong> Sardine salad — 3 oz canned sardines (170 IU) on greens with olive oil = 170 IU.</li>
+      <li><strong>Dinner:</strong> Roast chicken with vitamin D-fortified milk-based mashed potatoes (~100 IU) = 100 IU.</li>
+      <li><strong>Snack:</strong> Fortified orange juice (100 IU) = 100 IU.</li>
+      <li><strong>Total: ~690 IU</strong></li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Day 3 — the trout dinner (~810 IU)</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Breakfast:</strong> Bowl of vitamin D-fortified cereal (100 IU) with milk (120 IU) = 220 IU.</li>
+      <li><strong>Lunch:</strong> 2 hard-boiled eggs (80 IU) + fortified cottage cheese (~60 IU) + fruit = 140 IU.</li>
+      <li><strong>Dinner:</strong> 4 oz rainbow trout (500 IU), rice, greens = 500 IU.</li>
+      <li><strong>Snack:</strong> Almonds and dried fruit = 0 IU.</li>
+      <li><strong>Total: ~860 IU</strong></li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Vegan variant (harder — approximately 400 IU max from food)</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Breakfast:</strong> UV-exposed mushrooms omelette-substitute + fortified plant milk (120 IU) = 320 IU.</li>
+      <li><strong>Lunch:</strong> Salad with fortified nutritional yeast + fortified plant milk = 50 IU.</li>
+      <li><strong>Dinner:</strong> Vegan bowl with UV-exposed mushrooms and fortified plant milk = 200 IU.</li>
+      <li><strong>Total: ~570 IU</strong> — often under the RDA. Supplementation with lichen D3 is standard for vegans in northern climates.</li>
+      <li>See our <a href="/vitamin-d-for-vegans" class="text-amber-700 underline">vegan page</a>.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Top vitamin D foods to work into meals</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Wild salmon, 4 oz cooked: 600–1,000 IU</li>
+      <li>Farmed salmon, 4 oz: 300–500 IU</li>
+      <li>Rainbow trout, 4 oz: 500–700 IU</li>
+      <li>Canned sardines, 3 oz: 170 IU</li>
+      <li>Canned tuna, 3 oz: 130 IU</li>
+      <li>Egg, 1 large: 40 IU</li>
+      <li>UV-exposed maitake mushrooms, 1 cup: 786 IU</li>
+      <li>Standard fortified milk, 1 cup: 100–120 IU</li>
+      <li>Fortified plant milk, 1 cup: 100–120 IU</li>
+      <li>Fortified breakfast cereal, 1 serving: 40–100 IU</li>
+      <li>Fortified orange juice, 1 cup: 100 IU</li>
+      <li>Beef liver, 3 oz: 42 IU</li>
+      <li>Cod liver oil, 1 tsp: 450 IU</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The realistic take</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Most adults do not eat oily fish daily, mushrooms are only vitamin D-rich if
+      UV-exposed (rare in supermarkets), and fortified products provide modest
+      amounts. Food-based vitamin D adequacy is possible with deliberate planning
+      but not automatic. Supplementation remains the more reliable strategy,
+      especially in winter or if you don't eat fish. See the full
+      <a href="/vitamin-d-foods" class="text-amber-700 underline">foods list</a>.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> These are food ideas, not prescriptions;
+      vitamin D content varies by species, farming practices, cooking method, and
+      product formulation.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-food-meal-plan" />
+  </main>
+</BaseLayout>

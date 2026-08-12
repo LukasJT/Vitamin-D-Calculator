@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-tanning-beds`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Tanning Beds',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Tanning Beds', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Tanning Beds: The Melanoma Trade-Off That's Never Worth It"
+  description="Why dermatology bodies universally reject tanning-bed use for vitamin D — the melanoma risk math, UVA-vs-UVB tube variance, and why a supplement is the answer."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-tanning-beds", label: "Tanning Beds" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Tanning Beds</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Tanning-bed manufacturers have long marketed vitamin D synthesis as a benefit. It
+      isn't. Dermatology bodies worldwide — American Academy of Dermatology, WHO IARC
+      (classifies tanning devices as Group 1 carcinogens), Cancer Council Australia —
+      reject tanning-bed use as a vitamin D strategy. Melanoma risk is the deciding
+      factor.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Do tanning beds produce vitamin D?</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Some do, some don't. Older tanning beds emitted mostly UVA (315–400 nm), which
+      produces a tan but not vitamin D. Newer beds may include UVB tubes and produce
+      cholecalciferol synthesis. Consumers rarely know which they're using; commercial
+      beds vary widely.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The melanoma math</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Meta-analyses find tanning-bed use before age 35 raises melanoma risk by ~75%
+      per lifetime use. First-use before age 25 is worse. Even brief use — one
+      session per year for a "vitamin D boost" — produces measurable DNA damage. The
+      benefit ceiling (a 10–20 ng/mL rise in 25(OH)D) is achieved cheaper and safer
+      with a $5 bottle of cholecalciferol.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Legal restrictions</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Brazil banned tanning beds in 2009. Australia banned commercial tanning bed use
+      in 2015. Many US states restrict under-18 use. UK and EU regulations tightened
+      after 2010. The direction of policy is clear: recognition that tanning beds are
+      unsafe.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guidance</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Don't use tanning beds for vitamin D. Ever. If you want a tan for cosmetic
+      reasons, understand the melanoma cost. If you want vitamin D, take a
+      cholecalciferol capsule. It's cheaper, safer, and more precise.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> A dermatology skin check is a smarter
+      investment than any tanning-bed session, especially for anyone with sun damage
+      history.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-tanning-beds" />
+  </main>
+</BaseLayout>

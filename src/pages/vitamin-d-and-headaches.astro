@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-headaches`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Headaches',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Headaches', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Headaches (Non-Migraine): Tension, Cluster, Cervicogenic"
+  description="What the evidence shows for vitamin D across non-migraine headache types — tension-type, cluster, cervicogenic — and when correcting deficiency helps."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-headaches", label: "Vitamin D and Headaches" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Headaches</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Beyond the well-studied migraine evidence, vitamin D has been examined in
+      tension-type headaches, cluster headaches, and other headache disorders.
+      Deficiency is more common in chronic headache patients than in controls, but
+      the specific-headache-type evidence for supplementation benefit is more
+      limited than for migraine.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Tension-type headaches</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      The most common headache type — pressing, bilateral, mild-to-moderate. Chronic
+      tension-type headache patients have lower mean 25(OH)D than controls in
+      several studies. Prakash 2010 reported symptom improvement with high-dose
+      vitamin D + calcium in patients with deficiency-related bone pain and
+      headache. Standard first-line management is stress reduction, sleep, hydration,
+      and NSAIDs; vitamin D is an adjunct in the deficient.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cluster headaches</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Severe unilateral orbital pain, autonomic features, cyclical. Case series
+      have reported cluster headache improvement with high-dose vitamin D
+      supplementation, most notably by Peter Goadsby's group observing seasonal
+      cluster patterns. The Northwestern "vitamin D3 anti-inflammatory protocol"
+      (Batcheller et al.) uses cholecalciferol 10,000 IU/day plus cofactors; small
+      series suggests reduction in attack frequency in some patients. Trial-level
+      evidence is lacking; work with a headache specialist if considering
+      high-dose regimens.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cervicogenic headaches</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Headache from cervical spine dysfunction. Chronic musculoskeletal pain
+      populations (of which this is one) show benefit from vitamin D correction
+      in deficient patients; specific cervicogenic trials are limited.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">See migraine page for migraine</h2>
+    <p class="text-gray-700 leading-relaxed">
+      For migraine-specific evidence including trials, mechanisms, and stacking
+      with riboflavin and magnesium, see our
+      <a href="/vitamin-d-and-migraine" class="text-amber-700 underline">migraine page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Frequent or chronic headache patients: test 25(OH)D.</li>
+      <li>Correct deficiency to ≥ 30 ng/mL with standard dosing.</li>
+      <li>Continue evidence-based headache management (identifying triggers, appropriate acute and preventive medication).</li>
+      <li>Red-flag headaches (thunderclap, associated neurology, new after 50, worsening pattern) need urgent evaluation — not a vitamin trial.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Headache with fever + stiff neck, or
+      the worst-headache-of-life pattern, is a medical emergency.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-headaches" />
+  </main>
+</BaseLayout>
