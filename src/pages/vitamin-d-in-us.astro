@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-in-us`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D in the United States',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D in US', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D in the United States: IOM vs Endocrine Society, NHANES Data, Fortification"
+  description="US vitamin D — the IOM vs Endocrine Society RDA debate, NHANES deficiency prevalence, milk fortification history, and state-by-state seasonal patterns."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-in-us", label: "Vitamin D in US" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D in the United States</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      The US has two major sets of vitamin D recommendations — from the Institute
+      of Medicine (now NASEM) and from the Endocrine Society — which don't fully
+      agree. Milk fortification since the 1930s largely eliminated childhood
+      rickets. Adult vitamin D adequacy varies dramatically by latitude, ethnicity,
+      and lifestyle.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">IOM vs Endocrine Society</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>IOM 2011 (still official reference):</strong> RDA 600 IU/day ages 1–70, 800 IU age 71+. Target 25(OH)D ≥ 20 ng/mL sufficient. Upper limit 4,000 IU/day.</li>
+      <li><strong>Endocrine Society 2011:</strong> 1,500–2,000 IU/day for adults at risk. Target 25(OH)D ≥ 30 ng/mL. Upper limit up to 10,000 IU/day for correction.</li>
+      <li>IOM designed for population bone health; Endocrine Society for individual clinical management. Both defensible for their purposes.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">NHANES data</h2>
+    <p class="text-gray-700 leading-relaxed">
+      National Health and Nutrition Examination Survey (NHANES) has tracked US
+      25(OH)D since 1988. Key findings:
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>~24% of US adults have 25(OH)D &lt; 20 ng/mL (IOM deficient).</li>
+      <li>~40% have &lt; 30 ng/mL (Endocrine Society insufficient).</li>
+      <li>Highest deficiency rates: non-Hispanic Black adults (~76% &lt; 30 ng/mL), Hispanic (~54%), non-Hispanic White (~29%).</li>
+      <li>Winter deficiency rates higher across all groups.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">State-by-state seasonal patterns</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Above the "37° line" (roughly from Kansas City through Louisville to
+      Washington DC), meaningful vitamin D winter runs November through March.
+      Below that line (from Los Angeles through Dallas to Atlanta), vitamin D
+      synthesis is possible year-round in fair-skinned adults. See our
+      <a href="/vitamin-d-by-latitude" class="text-amber-700 underline">latitude page</a>
+      for city-by-city detail.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Milk fortification</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Since the 1930s, US fluid milk has been fortified with vitamin D at
+      100 IU/cup. Combined with butter/margarine fortification and (later) breakfast
+      cereal fortification, this ended endemic US childhood rickets. Adult
+      supplementation levels from fortified foods remain modest (typically
+      100–300 IU/day dietary contribution) — not enough to prevent adult
+      deficiency without supplementation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Testing 25(OH)D in the US</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Widely available through primary care, LabCorp, Quest, and direct-to-consumer
+      services. Insurance coverage varies with diagnosis code. Out-of-pocket cost
+      $30–100. Direct-to-consumer options (Everlywell, LetsGetChecked, Rupa
+      Health, Function Health) increasingly popular.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical US dosing</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Standard adult maintenance: 1,000–2,000 IU/day cholecalciferol year-round.</li>
+      <li>Above 37° latitude, winter: at least the 1,000–2,000 IU/day; testing recommended if deficiency history.</li>
+      <li>Non-Hispanic Black adults, veiled women, housebound elderly: year-round supplementation regardless of location.</li>
+      <li>Corrective dosing per Endocrine Society: 50,000 IU/week × 8 weeks if deficient, then maintenance.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Ignoring the IOM/Endocrine Society
+      difference: 2,000 IU/day is safe for adults, keeps most people in the
+      sufficient zone, and is cheap.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-in-us" />
+  </main>
+</BaseLayout>

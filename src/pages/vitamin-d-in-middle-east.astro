@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-in-middle-east`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D in the Middle East',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D in the Middle East', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D in the Middle East: Sun-Rich Countries With Global Deficiency Records"
+  description="Why Saudi Arabia, UAE, Iran, and other Middle Eastern countries have 60-95% adult vitamin D deficiency despite year-round intense sun — cultural, climatic, dietary factors."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-in-middle-east", label: "Vitamin D in the Middle East" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D in the Middle East</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Middle Eastern countries — Saudi Arabia, UAE, Qatar, Kuwait, Bahrain, Oman,
+      Iran, Iraq, Jordan, Lebanon, Egypt — enjoy some of the world's most abundant
+      sunlight. They also record some of its highest vitamin D deficiency rates.
+      The paradox is fully explained by cultural dress, heat-avoidance behaviour,
+      indoor air-conditioned lifestyles, and dietary patterns.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Country prevalence data</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Saudi Arabia</strong> — adult women 78–97% deficient (&lt; 20 ng/mL) across multiple studies; men lower but still 40–60%.</li>
+      <li><strong>UAE</strong> — 70–90% of Emirati adults deficient; ex-pat populations vary.</li>
+      <li><strong>Qatar</strong> — 82% of adults deficient in national survey.</li>
+      <li><strong>Kuwait</strong> — 60–70% adult deficiency; up to 90% in women.</li>
+      <li><strong>Iran</strong> — Tehran adults 60–75% deficient.</li>
+      <li><strong>Egypt</strong> — Cairo adults 55–75% deficient.</li>
+      <li><strong>Jordan</strong> — 60–70% adult women deficient.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The compounding factors</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Extreme heat</strong> — midday summer temperatures 40–50 °C drive everyone indoors during peak UVB hours.</li>
+      <li><strong>Air-conditioned indoor life</strong> — malls, cars, offices, homes; contemporary life largely enclosed.</li>
+      <li><strong>Conservative dress</strong> — thawb, abaya, hijab, niqab. Women fully-veiled in public have minimal skin exposure.</li>
+      <li><strong>Dark skin</strong> — Fitzpatrick IV-V predominant; more UVB needed per unit vitamin D.</li>
+      <li><strong>Dietary patterns</strong> — vitamin D-rich foods (oily fish, egg yolk) present but not dominant; regional cuisine largely low in fortified foods.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Regional guidance</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Multiple Gulf and Levantine health authorities have issued vitamin D
+      supplementation recommendations. Saudi Arabia, UAE, and Iran have official
+      guidance for 1,000–2,000 IU/day for adults, with higher doses for veiled
+      women and correction of documented deficiency. Compliance remains modest
+      in many settings.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Fortification programs</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Iran, Turkey, Saudi Arabia, and UAE have implemented dairy fortification at
+      varying levels since 2000. Compliance and consumer awareness vary. Population-
+      wide 25(OH)D improvements are measurable but modest so far.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Health consequences</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Rickets remains present in Middle Eastern children despite year-round sun
+      availability. Osteomalacia and hypocalcaemic seizures more common than in
+      most Western populations. Elevated rates of gestational diabetes, PCOS, and
+      cardiovascular disease have all been linked in part to endemic deficiency.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide for residents</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Assume deficiency — test 25(OH)D.</li>
+      <li>Correct with 50,000 IU weekly × 8 weeks then 2,000 IU/day maintenance.</li>
+      <li>Fully-veiled women may need 4,000 IU/day maintenance.</li>
+      <li>Prenatal supplementation crucial — see <a href="/vitamin-d-in-pregnancy" class="text-amber-700 underline">pregnancy page</a>.</li>
+      <li>See <a href="/vitamin-d-and-hot-climates" class="text-amber-700 underline">hot climates page</a> for related discussion.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Do not attempt to increase sun exposure
+      to correct deficiency in a hot desert climate — the heat, dehydration, and
+      skin cancer risks outweigh the modest vitamin D benefit. Supplementation is
+      the sensible answer.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-in-middle-east" />
+  </main>
+</BaseLayout>

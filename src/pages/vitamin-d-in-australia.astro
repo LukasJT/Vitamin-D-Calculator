@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-in-australia`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D in Australia',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D in Australia', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D in Australia: Sunny But Deficient — Cancer Council Guidance and Slip-Slop-Slap"
+  description="Why Australia — with world-class UVB availability — has 30% adult deficiency rates. Cancer Council's balance between sun-safety and vitamin D, RCH position statement."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-in-australia", label: "Vitamin D in Australia" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D in Australia</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Australia has one of the world's highest melanoma rates and, in parallel, a
+      surprisingly high vitamin D deficiency rate — roughly 30% of adults nationally,
+      higher in Victoria and Tasmania in winter. The "slip-slop-slap" sun-safety
+      campaigns successfully reduced sun exposure; supplementation and modest
+      sensible exposure now fill the vitamin D gap.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Prevalence data</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Australian Health Survey (2011-12) found 23% of adults deficient (25(OH)D
+      &lt; 50 nmol/L), rising to 42% in Victoria in winter. Rates markedly higher
+      in women (particularly veiled), dark-skinned migrants (60–80%), and
+      housebound elderly.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Latitude gradient</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Darwin (12° S) — year-round strong UVB, deficiency mainly from behaviour.
+      Sydney (34° S) — year-round with brief winter reduction.
+      Melbourne (37° S) — meaningful winter reduction; supplementation useful.
+      Hobart (43° S) — Australia's most vitamin D-limited city; winter deficiency
+      common; supplementation strongly warranted.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cancer Council balanced position</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>UV Index ≥ 3</strong> (most of Australia, most of the year): a few minutes of exposure to face + arms most days provides adequate vitamin D. Sun protection required for extended exposure.</li>
+      <li><strong>UV Index &lt; 3</strong> (winter in southern Australia, early morning/late afternoon most times): about 2–3 hours per week of outdoor exposure to face, arms, hands may be needed.</li>
+      <li><strong>Supplementation</strong> recommended for people at risk of deficiency or when sun exposure is difficult.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">NHMRC recommended dietary intakes</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Ages 1–50:</strong> 5 µg/day (200 IU) — lower than US/Canada RDAs; reflects earlier consensus.</li>
+      <li><strong>Age 51–70:</strong> 10 µg/day (400 IU).</li>
+      <li><strong>Age 71+:</strong> 15 µg/day (600 IU).</li>
+      <li>Note: many Australian clinicians now use higher targets, closer to US Endocrine Society levels.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Testing 25(OH)D in Australia</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Medicare covers 25(OH)D testing under specific clinical indications
+      (osteoporosis, malabsorption, hyperparathyroidism, chronic kidney disease,
+      dark skin, veiled women, chronic drug use). Restrictions tightened
+      2014–2020 to reduce inappropriate testing. Private testing is available for
+      $50–100 out of pocket.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Australian dosing practice</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Standard OTC 1,000 IU cholecalciferol widely available; often called "Ostelin" branded product.</li>
+      <li>Prescription 25,000 or 50,000 IU capsules for correction of documented deficiency.</li>
+      <li>Winter maintenance 1,000–2,000 IU/day for southern-Australia adults.</li>
+      <li>Year-round supplementation for dark-skinned, veiled, or housebound Australians.</li>
+      <li>Combine with sensible sun (a few minutes outdoor time when UV is ≥ 3), never with sunburn.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Australia leads the world in melanoma
+      screening — an annual skin check is part of good adult health here, and
+      matters more than any vitamin decision.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-in-australia" />
+  </main>
+</BaseLayout>

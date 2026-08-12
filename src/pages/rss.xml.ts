@@ -142,6 +142,13 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-fatigue', title: 'Vitamin D and Fatigue', description: 'When correcting deficiency actually improves tiredness — and when to look elsewhere for the cause.', date: '2026-08-21' },
   { slug: '/vitamin-d-and-common-cold', title: 'Vitamin D and the Common Cold', description: 'Martineau meta-analysis specifics, cathelicidin biology, and why daily works for cold prevention.', date: '2026-08-21' },
   { slug: '/vitamin-d-and-headaches', title: 'Vitamin D and Headaches', description: 'Non-migraine headache types — tension, cluster, cervicogenic — and where vitamin D fits.', date: '2026-08-21' },
+  { slug: '/vitamin-d-in-the-uk', title: 'Vitamin D in the UK', description: 'PHE guidance, why nobody makes vitamin D in the UK from October to March, and NHS recommendations.', date: '2026-08-22' },
+  { slug: '/vitamin-d-in-canada', title: 'Vitamin D in Canada', description: 'Health Canada RDAs, milk fortification history, and the Nunavut / NWT northern-community deficiency issue.', date: '2026-08-22' },
+  { slug: '/vitamin-d-in-australia', title: 'Vitamin D in Australia', description: 'Cancer Council balance between sun-safety and vitamin D, latitude gradient from Darwin to Hobart.', date: '2026-08-22' },
+  { slug: '/vitamin-d-in-us', title: 'Vitamin D in the United States', description: 'IOM vs Endocrine Society RDA debate, NHANES deficiency data, milk fortification history.', date: '2026-08-22' },
+  { slug: '/vitamin-d-in-india', title: 'Vitamin D in India', description: 'The sun-rich, deficient paradox — urban indoor lifestyles, dark skin, air pollution, vegetarian diet.', date: '2026-08-22' },
+  { slug: '/vitamin-d-in-scandinavia', title: 'Vitamin D in Scandinavia', description: 'Cod liver oil tradition, NNR 2023, polar-night deficiency, and migrant-population rates.', date: '2026-08-22' },
+  { slug: '/vitamin-d-in-middle-east', title: 'Vitamin D in the Middle East', description: 'Global-record deficiency rates in the sunniest countries — the cultural, climatic, and dietary explanation.', date: '2026-08-22' },
 ];
 
 export const GET: APIRoute = async () => {

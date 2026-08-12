@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-in-canada`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D in Canada',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D in Canada', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D in Canada: Health Canada Guidance, Milk Fortification, Northern Communities"
+  description="Canada-specific vitamin D — Health Canada RDA, milk fortification history, why Ontario and westward north of 42° has vitamin D winter, and Nunavut/NWT concerns."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-in-canada", label: "Vitamin D in Canada" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D in Canada</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Canada spans latitudes 42° N (Windsor) to 82° N (northernmost Nunavut) — every
+      Canadian outside the far south experiences meaningful winter vitamin D
+      shortage. Health Canada has recognised this since the 1970s with mandatory
+      milk fortification, and current guidance encourages supplementation for
+      adults over 50 in particular.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Health Canada RDAs</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Ages 1–70:</strong> 600 IU/day (15 µg).</li>
+      <li><strong>Age 70+:</strong> 800 IU/day (20 µg).</li>
+      <li><strong>Pregnancy / lactation:</strong> 600 IU/day.</li>
+      <li><strong>Health Canada supplementation recommendation for adults over 50:</strong> 400 IU/day cholecalciferol year-round in addition to dietary sources.</li>
+      <li><strong>Tolerable upper limit:</strong> 4,000 IU/day for adults.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Milk fortification</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Canadian regulations require vitamin D fortification of all fluid milk and
+      margarine at defined levels (35–45 IU per 100 mL milk; 5.3 µg per 100 g
+      margarine). This has substantially reduced rickets since the 1970s but
+      hasn't eliminated adult winter deficiency, given the modest doses involved.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency prevalence</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Canadian Health Measures Survey data: ~30% of adults have 25(OH)D below the
+      Endocrine Society sufficient threshold in winter. Rates rise to 60–80% in
+      Indigenous northern communities and in South Asian and Black immigrant
+      populations. Nunavut and NWT communities have particular challenges — polar
+      night in the far north, and traditional diet shifts have reduced marine-oil
+      intake.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">When Canadians make vitamin D</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Roughly April through September for southern cities (Vancouver, Toronto,
+      Montreal, Halifax); May through August for northern cities (Edmonton,
+      Winnipeg, Saskatoon). Meaningful synthesis only around midday. Winter sun
+      does not produce vitamin D anywhere in Canada.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Buying supplements in Canada</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>OTC at Shoppers Drug Mart, Rexall, London Drugs, supermarkets, and health-food stores.</li>
+      <li>Standard 1,000 IU cholecalciferol tablets $5–10 for a year's supply.</li>
+      <li>1,000 IU is a widely available size; often described as "the Canadian dose."</li>
+      <li>Higher-strength 2,000–5,000 IU widely available.</li>
+      <li>Prescription-only 50,000 IU capsules for correction of documented deficiency.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Testing 25(OH)D in Canada</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Provincial healthcare coverage of 25(OH)D testing varies. Ontario and some
+      other provinces restricted publicly-funded testing after 2010 (billing rules
+      require specific indications). Private tests cost $30–80 at LifeLabs,
+      Dynacare, or private lab groups. Home finger-prick tests (Vitamin D Council,
+      Better You) are also available.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Canadian winters are a good reason to
+      make vitamin D supplementation as automatic as brushing teeth. 1,000–2,000 IU
+      per day October through April at minimum.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-in-canada" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-in-the-uk`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D in the UK',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D in the UK', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D in the UK: PHE Guidance, Winter Deficiency, and NHS Recommendations"
+  description="UK-specific vitamin D — Public Health England guidance (10 µg / 400 IU year-round), why nobody makes vitamin D Oct–Mar, and NHS recommendations by group."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-in-the-uk", label: "Vitamin D in the UK" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D in the UK</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      The United Kingdom sits between 50° and 60° north — high enough that from
+      October through March, essentially no vitamin D is made from sunlight anywhere
+      in the country. Combined with famous cloud cover, this makes the UK one of
+      the world's paradigmatic vitamin D-deficient developed nations. Public Health
+      England (now UKHSA) recommends year-round supplementation for the whole
+      population.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">PHE / UKHSA guidance (2016, unchanged)</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>All adults and children over 1:</strong> 10 µg (400 IU) per day, particularly autumn and winter.</li>
+      <li><strong>Infants under 1 year, breastfed or receiving &lt; 500 mL formula/day:</strong> 8.5–10 µg per day year-round.</li>
+      <li><strong>Bottle-fed infants receiving 500+ mL formula/day:</strong> no supplement needed (formula is fortified).</li>
+      <li><strong>People at increased risk</strong> (dark skin, limited sun, covered clothing, housebound): 10 µg year-round.</li>
+      <li>Free NHS supplements available through Healthy Start scheme for eligible pregnant women and children.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">UK-specific deficiency data</h2>
+    <p class="text-gray-700 leading-relaxed">
+      NDNS (National Diet and Nutrition Survey) findings: 20–30% of UK adults are
+      deficient (25(OH)D &lt; 25 nmol/L) at some point annually, with peak winter
+      deficiency rates 35–50%. Higher rates in older adults, South Asian and Black
+      British populations, and residents of northern England / Scotland.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">When can you make vitamin D in the UK?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Roughly April through September, and only around midday. Sun exposure for
+      ~10–30 minutes to arms and face several times a week during those months
+      provides useful synthesis for fair-skinned adults. Winter sun in the UK does
+      not produce meaningful vitamin D at any time of day — regardless of how
+      pleasant it feels.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Buying vitamin D in the UK</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>OTC in Boots, Superdrug, supermarkets, and pharmacies.</li>
+      <li>Standard adult dose 10 µg (400 IU) supplements ~£3–5 for a year's supply.</li>
+      <li>Higher-strength 25 µg (1,000 IU) and 50 µg (2,000 IU) available OTC — reasonable for winter supplementation especially in the deficient.</li>
+      <li>Prescription-strength 20,000 IU or 50,000 IU capsules are available with GP referral for correction of documented deficiency.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Testing 25(OH)D in the UK</h2>
+    <p class="text-gray-700 leading-relaxed">
+      NHS GPs can order 25(OH)D testing but often decline unless there's a clinical
+      indication (bone pain, malabsorption, chronic disease, unexplained symptoms).
+      Private testing is available for £30–60 (Medichecks, Thriva, Better You home
+      finger-prick tests). UK 25(OH)D thresholds:
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Deficient: &lt; 25 nmol/L (10 ng/mL) — NHS action level.</li>
+      <li>Insufficient: 25–50 nmol/L (10–20 ng/mL).</li>
+      <li>Adequate: &gt; 50 nmol/L (&gt; 20 ng/mL).</li>
+      <li>Note: US thresholds use ng/mL and a higher target — 30+ ng/mL. See our <a href="/vitamin-d-unit-converter" class="text-amber-700 underline">unit converter</a>.</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> UK winter is not a debate about whether
+      to supplement — take a 10–25 µg cholecalciferol pill daily October through
+      March at minimum.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-in-the-uk" />
+  </main>
+</BaseLayout>

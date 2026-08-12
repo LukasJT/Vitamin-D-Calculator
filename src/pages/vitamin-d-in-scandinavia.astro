@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-in-scandinavia`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D in Scandinavia',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D in Scandinavia', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D in Scandinavia: Cod Liver Oil, NNR 2023, Polar Night, and Migrant Deficiency"
+  description="Nordic vitamin D — traditional cod liver oil, NNR 2023 recommendations, polar-night deficiency in Norway/Sweden/Finland, and severe migrant-population rates."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-in-scandinavia", label: "Vitamin D in Scandinavia" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D in Scandinavia</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Scandinavia — Norway, Sweden, Denmark, Finland, Iceland — sits between
+      55° and 70° N. Vitamin D winter runs 6–7 months in the south and stretches
+      to include polar night in the far north. Traditional Scandinavian diets
+      (oily fish, cod liver oil) preserved vitamin D status for centuries;
+      modern populations rely on supplementation and fortification.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Nordic Nutrition Recommendations 2023</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>All adults:</strong> 10 µg/day (400 IU).</li>
+      <li><strong>Age 75+ and pregnant/breastfeeding women:</strong> 20 µg/day (800 IU).</li>
+      <li><strong>Children 1–17:</strong> 10 µg/day.</li>
+      <li><strong>Infants:</strong> 10 µg/day from age 4 weeks.</li>
+      <li><strong>Upper limit:</strong> 100 µg/day adults, 50 µg/day children.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cod liver oil — the traditional supplement</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Norwegian and Swedish tradition of daily cod liver oil (tran / tran-olja)
+      through winter is not folklore — it delivers 400–1,000 IU vitamin D per
+      teaspoon plus omega-3 and vitamin A. Predates commercial supplements by
+      centuries. Still widely used; Møller's Tran is the classic Norwegian brand.
+      One-tablespoon-a-day of cod liver oil provides roughly 400–1,000 IU
+      cholecalciferol depending on formulation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Fortification</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Finland</strong> — mandatory fluid milk fortification (1 µg/100 mL) since 2003; dropped adult deficiency dramatically.</li>
+      <li><strong>Sweden</strong> — fortified plant milks, low-fat dairy, spreads.</li>
+      <li><strong>Norway</strong> — voluntary fortification of milk, spreads, breakfast cereals.</li>
+      <li><strong>Denmark</strong> — no mandatory dairy fortification; higher deficiency than Finland.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Migrant population deficiency</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Somali, Afghan, Iraqi, and Syrian migrants to Scandinavia (dark skin, often
+      conservative dress, cultural adaptation to lower outdoor time) show among
+      the highest vitamin D deficiency rates recorded — 80–98% in some cohorts.
+      Rickets has re-emerged as a paediatric concern in migrant communities.
+      Nordic public health programmes provide free supplements to at-risk groups.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Polar night</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Above the Arctic Circle (66.5° N — Tromsø, Kiruna, Rovaniemi), the sun does
+      not rise for weeks in mid-winter. Vitamin D synthesis is zero. Traditional
+      Sami diet included substantial reindeer liver, marine mammal fat, and cod
+      liver oil. Modern populations without those foods depend on supplementation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">When Scandinavians can make vitamin D</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Roughly late April through mid-September in the south (Copenhagen, Stockholm,
+      Oslo). May through August in the far north. Even midsummer synthesis is
+      efficient only around midday because sun angle stays modest. Traditional
+      summer culture (long outdoor days, beach and lake outings) traps a
+      meaningful amount of vitamin D for winter.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Take your vitamin D through the winter.
+      The tradition of daily cod liver oil in Nordic countries is grounded in real
+      biology, not superstition.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-in-scandinavia" />
+  </main>
+</BaseLayout>

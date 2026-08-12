@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-in-india`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D in India',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D in India', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D in India: The Paradox of Sun-Rich, Deficient — ICMR Guidance, Urban Prevalence"
+  description="Why India, a sunny country, has 70-90% urban adult vitamin D deficiency — indoor lifestyles, skin colour, air pollution, veiling, and vegetarian diet — with ICMR guidance."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-in-india", label: "Vitamin D in India" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D in India</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      India presents the vitamin D paradox in its starkest form: a country with
+      abundant year-round sunshine at latitudes 8–35° N, and adult urban deficiency
+      rates of 70–90% in multiple studies. The reasons compound: indoor office
+      lifestyles, dark skin filtering UVB, urban air pollution reducing ground-
+      level UVB, cultural preference for pale skin driving sun avoidance, veiling
+      in some populations, and predominantly vegetarian diets low in vitamin D.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Prevalence data</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Delhi urban adults</strong> — 70–90% deficient (&lt; 20 ng/mL) in multiple studies.</li>
+      <li><strong>Mumbai white-collar workers</strong> — 80% deficient.</li>
+      <li><strong>Bangalore IT professionals</strong> — 70–80% deficient.</li>
+      <li><strong>Rural agricultural workers</strong> — lower deficiency (30–50%) — the sun exposure matters.</li>
+      <li><strong>Pregnant women</strong> — 80–90% deficient in urban cohorts, contributing to neonatal deficiency and rickets.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">ICMR RDAs</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Indian Council of Medical Research (2020 revision) recommends 600 IU/day
+      (15 µg) for most adults and pregnant women, 800 IU for adults over 60. This
+      is higher than earlier Indian guidance and aligns with US IOM levels.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Testing and treatment in India</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>25(OH)D testing widely available at private labs (Metropolis, Thyrocare, SRL, Dr Lal PathLabs).</li>
+      <li>Cost typically ₹500–1,500 (~$6–18 USD).</li>
+      <li>Prescription 60,000 IU cholecalciferol sachets (Uprise-D3, D-Rise, Cholecal, others) commonly used — weekly for 8 weeks is standard correction regimen.</li>
+      <li>OTC 1,000 IU and 2,000 IU tablets widely available for maintenance.</li>
+      <li>Fortified milk and edible oils have expanded under FSSAI standards but adoption varies.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Vegetarian dietary challenges</h2>
+    <p class="text-gray-700 leading-relaxed">
+      India has the world's largest vegetarian population. Vitamin D-rich foods
+      (oily fish, egg yolk) are excluded from strict vegetarian diets, and
+      lacto-vegetarian intake of vitamin D from fortified milk depends on
+      consumption levels and fortification quality. Vegetarians in India benefit
+      particularly from supplementation with cholecalciferol (usually sheep-lanolin
+      sourced) or lichen-sourced D3.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Air pollution factor</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Delhi, Kolkata, and other northern Indian cities have among the world's worst
+      particulate air pollution. UVB reaching the ground during severe smog episodes
+      is reduced by 30–50%. Combined with indoor office lifestyles, this creates
+      urban vitamin D deficiency in what should be a sun-rich country.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guidance for India</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Assume urban Indian adult is deficient unless tested otherwise.</li>
+      <li>Test 25(OH)D — inexpensive and widely available.</li>
+      <li>Correct deficiency with weekly 60,000 IU regimen × 8 weeks (with medical supervision), then 1,000–2,000 IU/day maintenance.</li>
+      <li>Sun exposure: 30–45 minutes several times per week to arms and face where practical (morning, before pollution peaks; skin cancer risk from midday tropical sun is real).</li>
+      <li>Fortified milk and edible oils where available.</li>
+      <li>Pregnancy: aggressive testing and correction — offspring rickets is preventable.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> India's endemic vitamin D deficiency is
+      a public health issue on the scale of iron and folic acid — supplementation
+      is a low-cost intervention with big population benefit.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-in-india" />
+  </main>
+</BaseLayout>
