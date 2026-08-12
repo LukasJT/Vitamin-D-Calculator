@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-statins`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Statins',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Statins', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Statins: Does Correcting Deficiency Reduce Statin-Associated Muscle Pain?"
+  description="Statin-associated muscle symptoms (SAMS) evidence for vitamin D correction — Michalska-Kasiczak meta-analysis, real practice, and appropriate testing."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-statins", label: "Vitamin D and Statins" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Statins</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Statin-associated muscle symptoms (SAMS) — myalgia, myopathy, occasional
+      rhabdomyolysis — cause many patients to discontinue statins despite cardiovascular
+      benefit. Vitamin D deficiency is common in these patients, and correcting it
+      may reduce or resolve muscle symptoms in a subset. Understanding when this
+      helps and when it doesn't matters clinically.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The observational data</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Multiple case series (Ahmed 2009; Glueck 2011) reported that patients presenting
+      with statin intolerance who were vitamin D deficient could resume statins with
+      resolved muscle symptoms after vitamin D repletion. Selection bias limits these
+      findings — patients whose symptoms were vitamin D-related preferentially
+      responded.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Meta-analyses</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Michalska-Kasiczak 2015 pooled 7 studies (2,420 patients): statin-intolerant
+      patients had lower mean 25(OH)D than tolerant. Correction of deficiency
+      resolved symptoms in ~85% of previously intolerant patients. Interpretation
+      is complicated by lack of blinded RCT data. The 2020 STOMP trial in
+      unselected statin users did NOT show a benefit of vitamin D on statin-induced
+      muscle symptoms.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mechanism</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D deficiency itself causes proximal myopathy — the muscle pain that
+      accompanies deficiency is well documented. Statins may unmask or worsen this
+      by additional muscle stress. Patients with subclinical vitamin D-related
+      myopathy who start statins can develop overt muscle symptoms; correcting
+      deficiency resolves the underlying myopathy and often allows statin
+      continuation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical approach</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>New statin-associated muscle symptoms — test 25(OH)D as part of workup.</li>
+      <li>If &lt; 20 ng/mL — correct with 2,000–4,000 IU/day or loading regimen; retry statin (possibly at lower dose or with different agent) after correction.</li>
+      <li>If &gt; 30 ng/mL and symptoms persist — the muscle problem is likely genuinely statin-driven; consider dose reduction, alternate-day dosing, hydrophilic statin (pravastatin, rosuvastatin), or non-statin alternatives.</li>
+      <li>Vitamin D testing before starting a statin is not routine but may be considered in high-risk patients (existing deficiency risk factors).</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Statin dose vs vitamin D</h2>
+    <p class="text-gray-700 leading-relaxed">
+      There's no evidence that statins directly affect vitamin D metabolism or
+      status. The interaction is one-directional: vitamin D deficiency worsens
+      statin muscle tolerance; correcting deficiency may improve it. Statins
+      themselves don't cause vitamin D deficiency.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Do not stop a statin without discussing
+      with your prescriber. Cardiovascular benefit is well-established;
+      statin-associated muscle symptoms are often manageable with dose or agent
+      changes rather than discontinuation.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-statins" />
+  </main>
+</BaseLayout>

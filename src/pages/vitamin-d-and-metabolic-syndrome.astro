@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-metabolic-syndrome`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Metabolic Syndrome',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Metabolic Syndrome', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Metabolic Syndrome: Insulin Resistance, Waist Circumference, HDL"
+  description="Vitamin D and metabolic syndrome — the deficiency association, RCT trials on insulin resistance and lipids, and why fixing vitamin D alone is not a metabolic-syndrome cure."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-metabolic-syndrome", label: "Metabolic Syndrome" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Metabolic Syndrome</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Metabolic syndrome — the cluster of central obesity, insulin resistance,
+      dyslipidaemia, and hypertension — is associated with lower serum 25(OH)D
+      in observational studies. Whether correcting deficiency improves metabolic
+      syndrome is a partial "yes" with important caveats.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The consistent observational signal</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Cross-sectional studies (NHANES, EPIC-Norfolk, others) consistently find
+      inverse correlation between 25(OH)D and metabolic syndrome prevalence.
+      Adults in the highest 25(OH)D quintile have 30–40% lower metabolic syndrome
+      prevalence. Individual metabolic syndrome components — waist circumference,
+      insulin resistance (HOMA-IR), triglycerides, HDL — all show similar patterns.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Causation vs confounding</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Metabolic syndrome is causally associated with vitamin D deficiency largely
+      because obesity dilutes serum 25(OH)D (see our
+      <a href="/vitamin-d-and-obesity" class="text-amber-700 underline">obesity page</a>).
+      Vitamin D deficiency is a marker of metabolic syndrome as much as a
+      contributor. Mendelian randomisation studies support obesity → low vitamin D
+      more strongly than the reverse.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation trials</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>D2d trial (2019)</strong> — 2,423 adults with prediabetes, 4,000 IU/day for 2.5 years. Did not prevent progression to type 2 diabetes overall; slight benefit in the deficient subgroup.</li>
+      <li><strong>Meta-analyses of RCTs</strong> — vitamin D supplementation modestly improves insulin resistance (HOMA-IR reduction ~0.4) in patients starting deficient. No consistent improvement in HDL, triglycerides, or waist circumference.</li>
+      <li><strong>BP effect</strong> — modest reduction in some trials in the deficient; more consistent findings for calcium + vitamin D combination.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D in patients with metabolic syndrome — deficiency is common (obesity dilutes serum levels).</li>
+      <li>Correct deficiency with adjusted dose (obese adults need 2-3x standard): 3,000–5,000 IU/day for BMI 30–35, higher above BMI 35.</li>
+      <li>Vitamin D is an adjunct — the metabolic-syndrome interventions that work are weight loss, physical activity, dietary change, and (where indicated) metformin, GLP-1 agonists, or antihypertensives.</li>
+      <li>Do not use vitamin D as a substitute for the evidence-based interventions.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Metabolic syndrome components need
+      independent management — high BP, high glucose, high triglycerides,
+      abdominal obesity — vitamin D adjunct does not replace addressing each.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-metabolic-syndrome" />
+  </main>
+</BaseLayout>

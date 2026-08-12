@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-birth-control`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Birth Control',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Birth Control', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Birth Control: Estrogen Raises Levels, Discontinuation Drops Them"
+  description="How estrogen-containing contraceptives raise measured 25(OH)D, why levels appear to fall when women stop the pill, and what this means for testing and dosing."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-birth-control", label: "Vitamin D & Birth Control" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Birth Control</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Estrogen-containing contraceptives raise serum 25(OH)D levels — not by increasing
+      vitamin D synthesis, but by increasing vitamin D binding protein (DBP). Women
+      switching off the pill often see 25(OH)D fall by 20% or more without any change
+      in intake or sun exposure. Understanding this artefact matters for testing and
+      pre-conception planning.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The Harmon 2016 finding</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      A cohort study by Harmon et al. (published in <em>J Clin Endocrinol Metab</em>)
+      found women on combined oral contraceptives had mean 25(OH)D ~20% higher than
+      women not on hormonal contraception — after adjusting for season, race, BMI,
+      and vitamin D intake. Levels dropped predictably when women discontinued the
+      pill in preparation for pregnancy.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mechanism — DBP, not synthesis</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Estrogen upregulates hepatic synthesis of vitamin D binding protein. Total serum
+      25(OH)D (which is what standard assays measure) is DBP-bound plus albumin-bound
+      plus free. Raising DBP raises the measured total without necessarily raising
+      the biologically active free fraction. This is one reason why 25(OH)D is not a
+      perfect measure of vitamin D adequacy across all contexts.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical implications</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Pre-conception planning</strong> — women stopping the pill to conceive may see 25(OH)D drop 15–25% within a few months. Consider testing 3 months after discontinuation and correcting deficiency before pregnancy.</li>
+      <li><strong>Interpreting borderline levels</strong> — a woman on combined pills with 25(OH)D of 32 ng/mL may effectively have less functional vitamin D than her total suggests.</li>
+      <li><strong>Progestin-only methods</strong> (IUD, mini-pill, implant, injectable) do not appreciably affect DBP or 25(OH)D.</li>
+      <li><strong>Postmenopausal hormone therapy</strong> — estrogen-containing HRT has a similar (smaller) DBP effect.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Other hormonal considerations</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Pregnancy itself markedly increases DBP and 25(OH)D through the same estrogen pathway. Standards for interpreting 25(OH)D in pregnancy should account for this.</li>
+      <li>Testosterone therapy has minimal effect on DBP.</li>
+      <li>Corticosteroid use decreases DBP and often causes measured 25(OH)D to fall.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Should this change your birth-control decision?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      No. The DBP effect is a testing artefact, not a reason to prefer one contraceptive
+      over another. Contraceptive choice should be based on efficacy, side effects,
+      medical history, and personal preference — not on vitamin D binding protein.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> If you're planning pregnancy soon, test
+      25(OH)D 3 months after stopping combined hormonal contraception and correct
+      any deficiency before conception.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-birth-control" />
+  </main>
+</BaseLayout>

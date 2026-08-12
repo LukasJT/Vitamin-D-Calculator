@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-erectile-dysfunction`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Erectile Dysfunction',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Erectile dysfunction', code: { '@type': 'MedicalCode', codeValue: 'N52', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and ED', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Erectile Dysfunction: Endothelial Function, Testosterone, Evidence"
+  description="Vitamin D and ED — the endothelial dysfunction and testosterone mechanisms, observational data, small supplementation trials, and reasonable practical approach."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-erectile-dysfunction", label: "Vitamin D and ED" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Erectile Dysfunction</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Erectile dysfunction (ED) is largely a vascular disease — endothelial
+      dysfunction driven by the same processes that cause coronary and peripheral
+      atherosclerosis. Vitamin D deficiency is a modifiable factor in endothelial
+      dysfunction; correcting it may modestly improve ED alongside evidence-based
+      management.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational data</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Adults with ED have lower mean 25(OH)D than age-matched controls in multiple
+      studies. NHANES data (Farag 2016) found deficient men had 32% higher odds of
+      ED. The Bologna cohort found deficient men had more severe ED and worse
+      penile Doppler flow measures.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mechanisms</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Endothelial function</strong> — vitamin D deficiency associates with reduced flow-mediated dilation and increased oxidative stress; correction can improve endothelial biomarkers.</li>
+      <li><strong>Testosterone</strong> — vitamin D-deficient men may have modestly lower testosterone; correction sometimes helps in the truly deficient (see <a href="/vitamin-d-and-testosterone" class="text-amber-700 underline">testosterone page</a>).</li>
+      <li><strong>Cardiovascular risk factor overlap</strong> — hypertension, diabetes, dyslipidaemia, and obesity all cluster with vitamin D deficiency and drive ED.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation trial evidence</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Small RCTs (Canguven 2017) reported IIEF-5 (International Index of Erectile
+      Function) improvement with vitamin D correction in deficient men. Sample
+      sizes are small and blinding was limited. No large trial has established
+      vitamin D as a first-line ED treatment.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What actually works for ED</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>PDE5 inhibitors (sildenafil, tadalafil, vardenafil, avanafil) — first-line pharmacotherapy.</li>
+      <li>Cardiovascular risk factor management — BP, lipids, glycaemic control, smoking cessation.</li>
+      <li>Weight loss and regular aerobic exercise — meaningful improvements in mild-moderate ED.</li>
+      <li>Address depression and anxiety.</li>
+      <li>Vacuum devices, intracavernosal or intraurethral prostaglandin, or penile implant for refractory ED.</li>
+      <li>Vitamin D correction is a low-cost adjunct, not a stand-alone treatment.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">ED as cardiovascular warning</h2>
+    <p class="text-gray-700 leading-relaxed">
+      New-onset ED in middle-aged men should prompt cardiovascular risk assessment
+      — endothelial dysfunction in penile arteries typically precedes coronary
+      artery disease by 3–5 years. This is a valuable early-warning signal that
+      matters more than any vitamin question.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> ED warrants medical evaluation — both
+      to identify underlying cardiovascular risk and to access effective treatment.
+      Do not skip evaluation in favour of supplements.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-erectile-dysfunction" />
+  </main>
+</BaseLayout>

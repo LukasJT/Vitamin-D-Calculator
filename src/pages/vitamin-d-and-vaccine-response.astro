@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-vaccine-response`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Vaccine Response',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Vaccine Response', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Vaccine Response: Does Correcting Deficiency Boost Antibody Titres?"
+  description="What the evidence shows about vitamin D status and vaccine antibody response — flu, COVID, hepatitis B, and whether repletion before vaccination is worth it."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-vaccine-response", label: "Vitamin D and Vaccine Response" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Vaccine Response</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vaccine effectiveness varies from person to person. Deficiencies in
+      micronutrients that support immune function — vitamin D among them — have
+      been examined as potentially reducing vaccine antibody response. Trial
+      evidence for vitamin D supplementation before vaccination is limited but
+      modestly favourable in deficient adults.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The biology</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D receptors are expressed on activated T-cells and B-cells. Calcitriol
+      modulates the balance between Treg, Th1, Th2, and Th17 responses. Adequate
+      vitamin D status supports both innate (cathelicidin) and adaptive (antibody
+      production, T-cell function) immunity. Deficiency doesn't abolish vaccine
+      response but may modestly reduce it in a subset of patients.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Flu vaccine evidence</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Several observational studies find modestly lower post-vaccination antibody
+      titres in vitamin D-deficient adults. The Chadha 2021 trial randomised older
+      adults to vitamin D or placebo before influenza vaccination; the vitamin D
+      group had modestly higher post-vaccination titres to some strains. The
+      overall clinical significance is small.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">COVID vaccine</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Multiple observational studies examined vitamin D and mRNA COVID vaccine
+      response. The most consistent finding: vitamin D-deficient adults had
+      slightly lower peak antibody titres and slightly faster decline. Whether
+      this reduced real-world protection is unclear — antibody titre correlates
+      imperfectly with vaccine effectiveness.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Hepatitis B vaccine</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Well-studied vaccine with clear correlates of protection (anti-HBs
+      titre &gt; 10 mIU/mL). Vitamin D deficiency associated with hepatitis B
+      vaccine non-response in dialysis patients (Zitt 2012). Repletion before
+      revaccination improved seroconversion in retrospective series.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guidance</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Correct vitamin D deficiency for many reasons, one of which is optimal immune function.</li>
+      <li>Do not delay a vaccine to correct vitamin D deficiency first — the delay is riskier than the modest immunogenicity effect.</li>
+      <li>Chronic vaccine non-responders (hepatitis B, e.g., dialysis patients): checking and correcting vitamin D is a reasonable step alongside standard revaccination.</li>
+      <li>Do not use vitamin D as a rationale for avoiding vaccines — it complements them, doesn't replace them.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Vaccine decisions are best made with your
+      physician; nutritional adequacy supports vaccine response but does not
+      substitute for immunisation.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-vaccine-response" />
+  </main>
+</BaseLayout>

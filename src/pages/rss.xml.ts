@@ -149,6 +149,12 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-in-india', title: 'Vitamin D in India', description: 'The sun-rich, deficient paradox — urban indoor lifestyles, dark skin, air pollution, vegetarian diet.', date: '2026-08-22' },
   { slug: '/vitamin-d-in-scandinavia', title: 'Vitamin D in Scandinavia', description: 'Cod liver oil tradition, NNR 2023, polar-night deficiency, and migrant-population rates.', date: '2026-08-22' },
   { slug: '/vitamin-d-in-middle-east', title: 'Vitamin D in the Middle East', description: 'Global-record deficiency rates in the sunniest countries — the cultural, climatic, and dietary explanation.', date: '2026-08-22' },
+  { slug: '/vitamin-d-and-birth-control', title: 'Vitamin D and Birth Control', description: 'Estrogen-DBP effect on measured 25(OH)D and what it means for pre-conception testing.', date: '2026-08-23' },
+  { slug: '/vitamin-d-and-statins', title: 'Vitamin D and Statins', description: 'Statin-associated muscle symptoms (SAMS) and vitamin D deficiency — when correction helps.', date: '2026-08-23' },
+  { slug: '/vitamin-d-and-vaccine-response', title: 'Vitamin D and Vaccine Response', description: 'Does correcting deficiency improve antibody response to flu, COVID, hepatitis B vaccines?', date: '2026-08-23' },
+  { slug: '/vitamin-d-and-metabolic-syndrome', title: 'Vitamin D and Metabolic Syndrome', description: 'Insulin resistance, HDL, waist circumference — observational signal vs RCT reality.', date: '2026-08-23' },
+  { slug: '/vitamin-d-and-hypertension', title: 'Vitamin D and Hypertension', description: 'RAAS suppression mechanism, MR evidence, and the VITAL null RCT result on blood pressure.', date: '2026-08-23' },
+  { slug: '/vitamin-d-and-erectile-dysfunction', title: 'Vitamin D and Erectile Dysfunction', description: 'Endothelial function, cardiovascular risk overlap, and where vitamin D fits alongside PDE5 inhibitors.', date: '2026-08-23' },
 ];
 
 export const GET: APIRoute = async () => {

@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-hypertension`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Hypertension',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Hypertension', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Hypertension: RAAS, Mendelian Randomization, and RCT Reality Check"
+  description="Vitamin D and blood pressure — the RAAS suppression mechanism, MR evidence for causation, VITAL null result, and dosing for BP outcomes."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-hypertension", label: "Vitamin D and Hypertension" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Hypertension</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D has an established mechanism for blood-pressure regulation (renin
+      suppression via the RAAS system), consistent observational associations with
+      hypertension, promising Mendelian randomisation evidence for causation — and
+      disappointing large randomised trials. It's the classic vitamin D story.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The mechanism</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Calcitriol suppresses renin gene expression via VDR-mediated transcription
+      regulation. Renin drives the renin-angiotensin-aldosterone system, whose
+      activation raises blood pressure. Vitamin D-deficient animals have elevated
+      renin and blood pressure that fall with vitamin D restoration. Human physiology
+      shows the same pattern in short-term studies.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Observational data</h2>
+    <p class="text-gray-700 leading-relaxed">
+      NHANES and other cross-sectional data find inverse correlation between
+      25(OH)D and hypertension prevalence. Adults in the highest quintile have
+      ~20% lower hypertension odds. Meta-analyses of cohort data support the
+      association.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mendelian randomisation</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Studies using genetic variants that lower 25(OH)D as instruments have
+      reported causal-support for higher blood pressure with genetically lower
+      vitamin D (Vimaleswaran 2014). The effect size is modest but consistent
+      across MR studies.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The RCT disappointment</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>VITAL (2019)</strong> — 25,000 adults; 2,000 IU/day for 5 years; no reduction in hypertension incidence or blood pressure overall.</li>
+      <li><strong>Systematic review (Beveridge 2015)</strong> — 46 trials, no overall BP-lowering effect of vitamin D supplementation.</li>
+      <li><strong>DAYLIGHT trial (2014)</strong> — high-dose vs low-dose vitamin D in prehypertension; no BP difference.</li>
+      <li><strong>Deficient subgroups</strong> — modest BP reduction seen with vitamin D correction; effect of ~2–3 mm Hg systolic — real but small.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Reconciling the discrepancy</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The observational and MR data suggest a causal link. The RCT null results
+      likely reflect: (1) target populations already vitamin D-sufficient at
+      baseline (little room for improvement), (2) inadequate dosing to raise
+      25(OH)D to therapeutic levels, (3) modest effect sizes requiring larger
+      trials to detect, and (4) BP being multifactorial — one intervention rarely
+      moves the needle much.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Hypertensive adults: test 25(OH)D once; correct any deficiency.</li>
+      <li>Don't expect meaningful BP reduction from vitamin D alone if already sufficient.</li>
+      <li>The BP interventions that reliably work: DASH diet, sodium reduction, potassium (from food or salt substitutes with caution — see <a href="/potassium" class="text-amber-700 underline">potassium page</a>), weight loss, physical activity, alcohol moderation, and pharmacotherapy.</li>
+      <li>Vitamin D is not a substitute for antihypertensive medication when indicated.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Uncontrolled hypertension is a major
+      cardiovascular risk factor — do not stop or reduce antihypertensive
+      medication based on vitamin D supplementation.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-hypertension" />
+  </main>
+</BaseLayout>
