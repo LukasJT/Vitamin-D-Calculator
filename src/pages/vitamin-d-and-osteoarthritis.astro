@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-osteoarthritis`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Osteoarthritis',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Osteoarthritis', code: { '@type': 'MedicalCode', codeValue: 'M19', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Osteoarthritis', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Osteoarthritis: Does It Slow Joint Damage or Ease Pain?"
+  description="Osteoarthritis is a wear-and-repair joint disease, not an inflammatory one. What the knee-OA trials (VIDEO, and others) actually found about vitamin D, cartilage, and pain."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-osteoarthritis", label: "Vitamin D & Osteoarthritis" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Osteoarthritis</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Osteoarthritis (OA) is the "wear-and-repair" arthritis — cartilage thins, bone remodels
+      underneath, and the joint aches and stiffens. It is not the same as
+      <a href="/vitamin-d-and-rheumatoid-arthritis" class="text-amber-700 underline">rheumatoid arthritis</a>,
+      which is autoimmune. Because vitamin D receptors sit on cartilage and bone cells, it is a
+      reasonable question whether topping up vitamin D protects the joint. The trials give a fairly
+      clear, and fairly deflating, answer.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The observational hint</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Cohort studies produced mixed signals. Some, like early Framingham data, suggested low vitamin D
+      predicted knee OA progression; others found nothing once body weight and physical activity were
+      accounted for. The trouble with these studies is that people with painful knees move less and
+      get outdoors less, so low vitamin D may be a <em>result</em> of the arthritis rather than a
+      cause — the classic reverse-causation trap.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What the randomised trials found</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Randomised trials in symptomatic knee OA have largely been negative for structure. In a widely
+      cited trial (McAlindon 2013), two years of vitamin D that raised 25(OH)D above 36 ng/mL did
+      <strong>not</strong> reduce cartilage volume loss or knee pain compared with placebo. A later
+      Australian trial (Jin 2016, the VIDEO study) in patients with low vitamin D and knee OA similarly
+      found <strong>no benefit</strong> on cartilage loss on MRI or on WOMAC pain over two years.
+      Meta-analyses pooling these trials conclude any effect on pain is small and of doubtful clinical
+      importance.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Where a small effect might hide</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The most plausible place for a genuine benefit is <em>muscle</em>, not cartilage. Vitamin D
+      deficiency causes proximal muscle weakness, and strong quadriceps protect the knee. In someone
+      who is genuinely deficient, correcting that deficiency may modestly improve strength, function,
+      and therefore comfort — but that is a general benefit of not being deficient, not a specific
+      OA therapy. It will not regrow cartilage.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical takeaway</h2>
+    <p class="text-gray-700 leading-relaxed">
+      If you have osteoarthritis and are vitamin D deficient, correcting it is worthwhile for your
+      bones and muscles — but do not expect it to halt joint damage or replace the interventions that
+      actually work: weight management (each kilogram lost meaningfully unloads the knee), structured
+      exercise and strengthening, and appropriate analgesia. Vitamin D is supportive background, not
+      a disease-modifying treatment for OA.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Persistent joint pain deserves a proper diagnosis —
+      osteoarthritis, inflammatory arthritis, and osteomalacia can feel similar but are treated very
+      differently. Correct a genuine deficiency, but pursue the exercise and weight strategies that
+      have the real evidence.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-osteoarthritis" />
+  </main>
+</BaseLayout>

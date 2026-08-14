@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-in-brazil`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D in Brazil',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Vitamin D deficiency', code: { '@type': 'MedicalCode', codeValue: 'E55', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D in Brazil', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D in Brazil: A Sunny Country With Real Deficiency in the South"
+  description="Brazil straddles the equator, yet deficiency is common in its southern, higher-latitude cities and among older and darker-skinned people. The latitude gradient and what it means."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-in-brazil", label: "Vitamin D in Brazil" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D in Brazil</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Brazil is enormous, spanning from about 5°N in the Amazon to 33°S at the Uruguayan border — so
+      talking about "vitamin D in Brazil" as one thing is misleading. The tropical north is bathed in
+      year-round UVB; the subtropical south, around Porto Alegre and Curitiba, has genuine winters and
+      a measurable vitamin D dip. The country contains both extremes of the story this site tells.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The internal latitude gradient</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Brazilian studies show exactly the pattern latitude predicts: deficiency is uncommon near the
+      equator and rises as you move south. Winter 25(OH)D levels in southern cities can fall into the
+      insufficient range for a substantial share of the population, mirroring what happens at similar
+      latitudes elsewhere. It is a natural experiment in how much geography, rather than nationality,
+      drives vitamin D status. See <a href="/vitamin-d-by-latitude" class="text-amber-700 underline">vitamin D by latitude</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Why a sunny country still has deficiency</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Even in sunny regions, Brazilian surveys — especially in older adults and postmenopausal women —
+      find surprisingly high rates of low vitamin D. The reasons are familiar: urban indoor lifestyles,
+      sun avoidance and sunscreen use (Brazil has an active skin-cancer prevention culture), and darker
+      skin across much of the population, which requires more UVB for the same synthesis. Institutional
+      and housebound elderly people are the most affected group of all.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Guidance and testing</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Brazilian endocrinology and pathology societies have issued guidance emphasising that not everyone
+      needs testing — routine screening of healthy young adults is discouraged — but that testing and
+      treatment are warranted in at-risk groups: the elderly, pregnant women, people with osteoporosis,
+      malabsorption, or chronic kidney disease. Target and dosing broadly follow international norms,
+      with sufficiency generally set at 20–30 ng/mL depending on the group. Fortification is limited, so
+      diet contributes modestly.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical takeaway</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>In the tropical north, most healthy, active people make ample vitamin D year-round.</li>
+      <li>In the subtropical south, expect a winter dip — at-risk people should consider supplements.</li>
+      <li>Older adults, darker-skinned individuals, and the housebound are the priority everywhere in Brazil.</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Living in a sunny country is not a guarantee of adequate
+      vitamin D. If you are in an at-risk group, ask your doctor about testing rather than assuming the
+      climate has you covered.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-in-brazil" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-rickets`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Rickets',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Rickets', code: { '@type': 'MedicalCode', codeValue: 'E55.0', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Rickets', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Rickets: The Original Deficiency Disease, Explained"
+  description="Nutritional rickets is the childhood bone disease caused by vitamin D or calcium deficiency. How it develops, the classic signs, who is at risk today, and the doses that prevent and treat it."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-rickets", label: "Vitamin D & Rickets" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Rickets</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Rickets is the disease that put vitamin D on the map. It is a failure of the growing skeleton
+      to mineralise — soft, weak bone laid down at the growth plates — and in the industrial cities
+      of the 19th century it affected the majority of children. Cod liver oil and, later, the
+      discovery of vitamin D nearly eliminated it. It has not disappeared, and the children who get
+      it today are almost always the ones nobody was supplementing.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">What actually goes wrong</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Bone grows at the epiphyseal growth plates, where cartilage is progressively replaced by
+      mineralised bone. That mineralisation needs adequate calcium and phosphate at the site — and
+      vitamin D is the hormone that keeps blood calcium and phosphate high enough to supply it. When
+      25(OH)D falls low enough, calcium absorption drops, parathyroid hormone rises to defend blood
+      calcium, and phosphate is dumped in the urine. The growth plate is left without the raw
+      material to harden, so it widens and the newly formed bone stays soft (osteoid). The result is
+      bowing, swelling, and fractures under a child's own body weight.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The classic signs</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Bowed legs (genu varum)</strong> or knock-knees once the child begins to bear weight.</li>
+      <li><strong>Widened wrists and ankles</strong> — palpable swelling at the growth plates.</li>
+      <li><strong>Rachitic rosary</strong> — bead-like swellings where ribs meet cartilage.</li>
+      <li><strong>Delayed closure of the fontanelle</strong>, soft skull bones (craniotabes), and delayed teeth.</li>
+      <li><strong>Delayed walking, muscle weakness, irritability</strong>, and in severe cases hypocalcaemic seizures.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Who gets it today</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Nutritional rickets in high-income countries clusters in a predictable group: exclusively
+      breastfed infants who are not given a vitamin D supplement (breast milk is low in vitamin D),
+      children with darker skin at high latitudes, those with limited sun exposure for cultural or
+      medical reasons, and children on restrictive diets. Calcium-deficiency rickets — with adequate
+      vitamin D but very low dietary calcium — is a major cause in parts of Africa and Asia. See our
+      pages on <a href="/vitamin-d-for-infants" class="text-amber-700 underline">infants</a> and
+      <a href="/vitamin-d-and-skin-color" class="text-amber-700 underline">skin colour and synthesis</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Prevention</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Prevention is cheap and highly effective. Major paediatric bodies recommend
+      <strong>400 IU/day of vitamin D from birth</strong> for all breastfed and partially breastfed
+      infants, continued until they are taking at least ~1,000 mL/day of fortified formula. The
+      2016 global consensus on nutritional rickets endorses 400 IU/day in the first year and
+      600 IU/day thereafter, alongside adequate dietary calcium (~500 mg/day in young children).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Treatment</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Established rickets is treated with therapeutic vitamin D — commonly 2,000 IU/day for
+      6–12 weeks, or a single high-dose "stoss" regimen, always with adequate calcium — followed by
+      a maintenance dose to prevent recurrence. Radiographs and biochemistry (25(OH)D, calcium,
+      phosphate, alkaline phosphatase, PTH) guide the response. Healing is usually complete, though
+      severe bowing may need orthopaedic follow-up. Not all rickets is nutritional: hypophosphataemic
+      (X-linked) and vitamin D-dependent rickets are genetic and need specialist care, so a
+      persistent case despite adequate vitamin D warrants investigation.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Suspected rickets — bowing legs, a swollen wrist, delayed
+      walking, or a hypocalcaemic seizure in an infant — needs prompt paediatric assessment, not
+      self-treatment. Doses here are illustrative; a clinician should confirm the diagnosis and
+      supervise treatment.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-rickets" />
+  </main>
+</BaseLayout>

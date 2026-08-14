@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-vertigo`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Vertigo (BPPV)',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Benign paroxysmal positional vertigo', code: { '@type': 'MedicalCode', codeValue: 'H81.1', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Vertigo', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Vertigo (BPPV): Can It Cut Recurrences?"
+  description="Benign paroxysmal positional vertigo involves calcium crystals in the inner ear. A notable randomised trial found vitamin D plus calcium reduced BPPV recurrence in deficient patients."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-vertigo", label: "Vitamin D & Vertigo" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Vertigo (BPPV)</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      The most common cause of true spinning vertigo is benign paroxysmal positional vertigo (BPPV) —
+      brief, intense episodes triggered by head movements like rolling over in bed or looking up. It
+      is caused by tiny calcium-carbonate crystals (otoconia) that have come loose in the inner ear.
+      Because those crystals are made of calcium, and calcium metabolism runs on vitamin D, this is one
+      of the few "vitamin D and…" topics with a genuinely encouraging randomised trial behind it.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The crystal connection</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      The otoconia in the inner ear are calcium-carbonate crystals embedded in a matrix. Their normal
+      turnover and reabsorption depend on local calcium regulation, and vitamin D and oestrogen both
+      influence that biology — which may partly explain why BPPV is more common in older women and in
+      people who are vitamin D deficient. Observational studies have repeatedly found lower 25(OH)D in
+      people with BPPV, and especially in those who suffer <em>recurrent</em> episodes.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The trial worth knowing</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The standout evidence is a large randomised trial by Jeong and colleagues (Neurology, 2020). In
+      patients who had just been successfully treated for BPPV and had low vitamin D, giving
+      <strong>vitamin D 400 IU plus calcium 500 mg twice daily</strong> significantly reduced the
+      recurrence rate over the following year compared with observation — the annual recurrence dropped
+      from about 1.1 to 0.8 episodes per person, roughly a 24% relative reduction, with the benefit
+      concentrated in those who were most deficient at baseline. This is a rare example of a
+      well-designed vitamin D trial with a positive, clinically meaningful result.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What still comes first</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D does not stop an acute attack. The definitive treatment for active BPPV is a
+      <strong>canalith repositioning manoeuvre</strong> — most commonly the Epley manoeuvre — which
+      physically moves the crystals out of the sensitive semicircular canal and resolves symptoms in
+      the great majority of people, often in a single session. Vitamin D and calcium are a
+      <em>prevention</em> strategy layered on top, aimed at reducing how often it comes back in people
+      who are deficient.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical takeaway</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Get positional vertigo properly diagnosed and treated with a repositioning manoeuvre.</li>
+      <li>If you have recurrent BPPV, ask about checking your 25(OH)D.</li>
+      <li>If you are deficient, correcting it (with calcium) is a reasonable, evidence-backed way to lower the recurrence rate.</li>
+      <li>Vertigo has many other causes — sudden vertigo with new hearing loss, double vision, weakness, or severe headache needs urgent assessment.</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Not all dizziness is BPPV. Vertigo accompanied by
+      neurological symptoms, new hearing loss, or a severe headache can signal something serious and
+      should be assessed promptly.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-vertigo" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-muscle-cramps`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Muscle Cramps',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Muscle cramp', code: { '@type': 'MedicalCode', codeValue: 'R25.2', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Muscle Cramps', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Muscle Cramps: Deficiency, Calcium, and What Helps"
+  description="Muscle cramps have many causes. Where does vitamin D fit — through calcium handling and muscle function — and when is a cramp a sign of deficiency worth correcting?"
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-muscle-cramps", label: "Vitamin D & Muscle Cramps" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Muscle Cramps</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Muscle cramps — those sudden, involuntary, painful contractions, classically in the calf at
+      night — are one of the most common reasons people wonder about a mineral or vitamin deficiency.
+      Vitamin D does have a real role in muscle, but it is easy to over-attribute cramps to it. Here is
+      where it genuinely fits and where it does not.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">How vitamin D affects muscle</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Muscle cells carry vitamin D receptors, and vitamin D influences calcium handling within the
+      muscle fibre — the same calcium flux that governs contraction and relaxation. Severe deficiency
+      causes a genuine <em>myopathy</em>: proximal muscle weakness, aching, and difficulty with stairs
+      or rising from a chair, sometimes with cramping. When 25(OH)D is very low (the
+      <a href="/vitamin-d-and-osteomalacia" class="text-amber-700 underline">osteomalacia</a> range),
+      muscle symptoms are part of the picture, and correcting the deficiency reliably improves them.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">But most cramps aren't from vitamin D</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Ordinary nocturnal leg cramps in otherwise well people usually have nothing to do with vitamin D.
+      Common contributors include dehydration, overexertion, prolonged standing, ageing, pregnancy,
+      and medications (diuretics, statins, some asthma drugs). Electrolyte disturbances —
+      <a href="/magnesium" class="text-amber-700 underline">magnesium</a>,
+      <a href="/potassium" class="text-amber-700 underline">potassium</a>, calcium, and sodium — are
+      more directly tied to cramping than vitamin D itself, and vitamin D matters partly <em>through</em>
+      its effect on calcium. Trials of magnesium for idiopathic leg cramps, notably, have been largely
+      disappointing, which is a useful reminder that "a supplement should fix this" often does not hold.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">When to suspect deficiency</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Cramps <em>plus</em> genuine proximal weakness, bone pain, or difficulty climbing stairs.</li>
+      <li>Risk factors for deficiency: little sun exposure, dark skin at high latitude, malabsorption, older age.</li>
+      <li>Cramps that improve when a documented low 25(OH)D is corrected — the meaningful test.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical approach</h2>
+    <p class="text-gray-700 leading-relaxed">
+      For isolated night cramps, the basics come first: stay hydrated, stretch the calf before bed,
+      review your medications, and address any electrolyte issues. If you have risk factors or muscle
+      weakness alongside the cramps, checking and correcting a vitamin D deficiency is reasonable and
+      may help. But do not assume a cramp automatically means you are low in vitamin D — most of the
+      time it does not.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Frequent, severe, or one-sided cramps, or cramps with
+      swelling, weakness, or numbness, deserve medical assessment to rule out circulation, nerve, or
+      metabolic causes.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-muscle-cramps" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-epilepsy`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Epilepsy',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Epilepsy', code: { '@type': 'MedicalCode', codeValue: 'G40', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Epilepsy', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Epilepsy: Why Seizure Medicines Drain Your Levels"
+  description="Many antiseizure medications accelerate vitamin D breakdown, making deficiency and bone loss common in epilepsy. Why it happens, who is at risk, and what monitoring makes sense."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-epilepsy", label: "Vitamin D & Epilepsy" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Epilepsy</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      The strongest connection between vitamin D and epilepsy is not that vitamin D prevents seizures —
+      it is that the drugs used to prevent seizures deplete vitamin D. Long-term antiseizure medication
+      is one of the best-documented causes of drug-induced vitamin D deficiency and bone loss, and it is
+      often overlooked because the effect builds silently over years.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">How antiseizure drugs lower vitamin D</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Several older antiseizure medications — phenytoin, phenobarbital, primidone, and carbamazepine —
+      are <strong>enzyme inducers</strong>: they ramp up liver cytochrome-P450 enzymes that accelerate
+      the breakdown of 25(OH)D into inactive metabolites. The result is a faster clearance of vitamin D
+      and lower circulating levels for any given intake. Valproate works through different mechanisms
+      but is also associated with reduced bone density. Over years, this contributes to osteomalacia,
+      osteoporosis, and increased fracture risk in people with epilepsy — sometimes called
+      "anticonvulsant osteomalacia." See our broader
+      <a href="/vitamin-d-drug-interactions" class="text-amber-700 underline">drug interactions page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Who is most at risk</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>People on enzyme-inducing drugs (phenytoin, phenobarbital, carbamazepine, primidone), especially long-term.</li>
+      <li>Those on multiple antiseizure drugs (polytherapy).</li>
+      <li>People with additional risk factors: limited sun exposure, institutional living, immobility, or dark skin at high latitude.</li>
+      <li>Children and adolescents accruing peak bone mass, and older adults already losing it.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Does vitamin D reduce seizures?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      This is a separate and much weaker question. A few small, mostly uncontrolled studies have
+      suggested that correcting vitamin D deficiency might modestly reduce seizure frequency in some
+      patients, and vitamin D receptors are present in the brain. But there is no robust randomised
+      evidence that vitamin D is an anticonvulsant, and it should never be used in place of prescribed
+      seizure medication. The clear, actionable benefit is protecting bone, not controlling seizures.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Sensible monitoring</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Because the depletion is predictable, many neurologists check 25(OH)D in people on long-term
+      antiseizure medication and supplement to keep it in the sufficient range, sometimes at higher
+      doses than usual to counter the accelerated clearance. Bone density assessment is reasonable after
+      years of therapy, particularly with enzyme-inducing drugs. None of this should be improvised
+      without input from the team managing the epilepsy, since dose adjustments interact with the wider
+      treatment plan.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Never change or stop antiseizure medication on your own —
+      abrupt withdrawal can trigger seizures. Discuss vitamin D and bone monitoring with your neurology
+      team as part of long-term care.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-epilepsy" />
+  </main>
+</BaseLayout>

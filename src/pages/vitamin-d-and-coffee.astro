@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-coffee`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Coffee',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Coffee', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Coffee: Does Caffeine Affect Absorption or Levels?"
+  description="Can you take vitamin D with coffee? Does caffeine deplete it? Separating the weak observational signal from the practical reality of how to time your supplement around your morning brew."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-coffee", label: "Vitamin D & Coffee" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Coffee</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      A popular worry is that your morning coffee is quietly cancelling out your vitamin D. The claim
+      turns up constantly online. The reality is far less dramatic: coffee is not meaningfully
+      "depleting" your vitamin D, and the only genuinely practical point is that taking a supplement
+      with a black coffee — and nothing else — misses the absorption boost you get from food.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Where the concern comes from</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Two threads feed the idea. First, some older laboratory and observational work suggested caffeine
+      might down-regulate the vitamin D receptor (VDR) in certain cells, or that heavy coffee intake
+      correlated with slightly lower bone density in some studies. Second, coffee has a mild diuretic
+      effect and increases urinary calcium a little, which — in the context of a very low calcium intake
+      — could theoretically matter for bones. Neither of these amounts to coffee "destroying" your
+      vitamin D.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What the evidence actually supports</h2>
+    <p class="text-gray-700 leading-relaxed">
+      In practice, moderate coffee drinking (up to ~3–4 cups a day) has not been shown to cause vitamin D
+      deficiency or to appreciably lower 25(OH)D in well-nourished people. The receptor findings are
+      cell-level signals, not evidence of a clinically important effect at normal intakes. The small
+      calcium-loss effect of caffeine is easily offset by an adequate calcium intake and is negligible
+      for most people. In short, your coffee habit is not the reason your vitamin D is low.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The one thing worth changing</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The practical issue is not caffeine — it is <em>what you take the supplement with</em>. If your
+      routine is "vitamin D with a black coffee on an empty stomach," you are missing the roughly 50%
+      absorption gain from taking it with a fatty meal (see
+      <a href="/vitamin-d-with-or-without-food" class="text-amber-700 underline">with or without food</a>).
+      Coffee itself contains no fat to help absorption. So the fix is not to avoid coffee — it is to take
+      your vitamin D with breakfast, or with your largest meal of the day, whether or not coffee is also
+      on the table.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Bottom line</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Moderate coffee does not meaningfully deplete vitamin D — this is largely a myth.</li>
+      <li>You can drink coffee and take vitamin D; there is no direct interaction to fear.</li>
+      <li>Just take the supplement with a meal containing fat, not with coffee alone, for best absorption.</li>
+      <li>If you drink a lot of coffee, make sure your calcium intake is adequate for bone health.</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Coffee is not why your vitamin D is low. If your level is
+      poor, look at dose, sun exposure, and whether you take it with food — see our
+      <a href="/vitamin-d-dosage-calculator" class="underline">dosage calculator</a>.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-coffee" />
+  </main>
+</BaseLayout>

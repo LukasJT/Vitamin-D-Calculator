@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-with-or-without-food`;
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Should vitamin D be taken with food?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Vitamin D is fat-soluble, so taking it with a meal that contains fat improves absorption. One study found taking vitamin D with the largest meal of the day increased blood levels by about 50% compared with taking it on an empty stomach.',
+      },
+    },
+  ],
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D With or Without Food', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Should You Take Vitamin D With Food? Yes — Here's Why"
+  description="Vitamin D is fat-soluble, so a fatty meal boosts absorption by roughly 50%. Which foods help, why empty-stomach dosing wastes some of the dose, and how sprays and drops compare."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-with-or-without-food", label: "With or Without Food" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D: With or Without Food?</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Unlike the morning-versus-night question, this one has a clear, evidence-backed answer:
+      <strong>take vitamin D with food, specifically a meal containing some fat.</strong> Vitamin D is
+      fat-soluble, and the machinery your gut uses to absorb dietary fat is the same machinery that
+      carries vitamin D across the intestinal wall. No fat, less absorption.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The evidence</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      The most-cited study is a small but striking one from the Cleveland Clinic (Mulligan & Licata
+      2010). Patients whose 25(OH)D had plateaued despite supplementation were asked to take the same
+      dose with their largest meal of the day. After a few months their blood levels rose by an average
+      of about <strong>50%</strong>, with no change in dose — the only difference was taking it with
+      food. Other work confirms that a fat-containing meal meaningfully increases vitamin D absorption
+      compared with fasting or a fat-free meal.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">How much fat, and which foods</h2>
+    <p class="text-gray-700 leading-relaxed">
+      You do not need a large amount — even a modest amount of fat in the meal is enough to switch on
+      absorption. Good pairings include eggs, cheese, yoghurt, nuts, avocado, olive oil, or any meal
+      with meat or fish. Oily fish is a nice double-win because it also contains vitamin D itself (see
+      <a href="/vitamin-d-foods" class="text-amber-700 underline">vitamin D foods</a>). The practical
+      rule is simply: take it with your biggest, richest meal rather than with a black coffee or plain
+      toast.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Does the format change this?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Somewhat. Softgel capsules already suspend vitamin D in oil, which helps, but taking them with
+      food still improves uptake. Dry tablets benefit most from a fatty meal. Oil-based
+      <a href="/vitamin-d-drops-vs-capsules" class="text-amber-700 underline">drops and sprays</a> are
+      partly pre-solubilised and are a good option for people with malabsorption, but the with-food rule
+      still does no harm. Whatever the format, pairing with a meal is a free way to get more out of the
+      same dose.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Who should be most careful about this</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Anyone whose 25(OH)D stays stubbornly low despite supplementing — check whether you take it on an empty stomach.</li>
+      <li>People on very low-fat diets or fat-blocking medication (orlistat), where absorption is already impaired.</li>
+      <li>People with <a href="/vitamin-d-absorption-issues" class="text-amber-700 underline">malabsorption</a> conditions, who may also need higher doses or specialised forms.</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> If your level is not responding to supplementation, taking it
+      with a fatty meal is the first easy fix to try — but persistent non-response deserves a check for
+      malabsorption or a dosing review.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-with-or-without-food" />
+  </main>
+</BaseLayout>

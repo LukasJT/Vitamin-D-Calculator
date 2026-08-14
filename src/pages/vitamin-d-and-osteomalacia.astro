@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-osteomalacia`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Osteomalacia',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Osteomalacia', code: { '@type': 'MedicalCode', codeValue: 'M83', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Osteomalacia', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Osteomalacia: The Adult Bone-Softening Disease"
+  description="Osteomalacia is rickets in the adult skeleton — soft, painful bone from severe vitamin D deficiency. How it differs from osteoporosis, the tell-tale signs, and how it is treated."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-osteomalacia", label: "Vitamin D & Osteomalacia" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Osteomalacia</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Osteomalacia is what rickets becomes when it strikes a skeleton that has already stopped
+      growing. The growth plates are closed, so bones do not bow — instead, newly remodelled bone
+      fails to mineralise and the skeleton becomes soft, achy, and prone to a characteristic kind of
+      fracture. It is frequently missed, because its deep bone pain and muscle weakness are easy to
+      write off as fibromyalgia, arthritis, or simply ageing.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Osteomalacia vs osteoporosis</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      These are constantly confused, and the distinction matters because the treatment differs.
+      <strong>Osteoporosis</strong> is a loss of bone <em>quantity</em> — there is less bone, but
+      what remains is normally mineralised, and it is usually painless until a fracture happens.
+      <strong>Osteomalacia</strong> is a defect of bone <em>quality</em> — there is a normal amount
+      of bone matrix (osteoid), but it is inadequately hardened with mineral, and it typically hurts.
+      A DEXA scan can show low density in both; the biochemistry and symptoms separate them. Read our
+      <a href="/vitamin-d-and-osteoporosis" class="text-amber-700 underline">osteoporosis page</a> for the contrast.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The tell-tale features</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Diffuse bone pain</strong> — often in the hips, pelvis, ribs, and lower back, worse with pressure.</li>
+      <li><strong>Proximal muscle weakness</strong> — difficulty rising from a chair or climbing stairs, a waddling gait.</li>
+      <li><strong>Looser zones (pseudofractures)</strong> — ribbon-like lucencies on X-ray at the femoral neck, pubic rami, and scapula, nearly pathognomonic.</li>
+      <li><strong>Biochemistry</strong> — low 25(OH)D (often &lt; 10 ng/mL), low-normal calcium and phosphate, high alkaline phosphatase, and elevated PTH.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Who is at risk</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Osteomalacia requires <em>severe, prolonged</em> deficiency — not the mild insufficiency common
+      in the general population. Risk concentrates in people with fat malabsorption
+      (<a href="/vitamin-d-and-celiac-disease" class="text-amber-700 underline">coeliac disease</a>,
+      Crohn's, <a href="/vitamin-d-and-bariatric-surgery" class="text-amber-700 underline">bariatric surgery</a>),
+      chronic kidney or liver disease, minimal sun exposure combined with dark skin, and long-term use
+      of anticonvulsants that accelerate vitamin D breakdown (see
+      <a href="/vitamin-d-drug-interactions" class="text-amber-700 underline">drug interactions</a>).
+      A rarer cause is tumour-induced osteomalacia, driven by phosphate wasting rather than vitamin D.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Treatment and recovery</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Nutritional osteomalacia responds dramatically to repletion. High-dose vitamin D — commonly a
+      loading course followed by maintenance, with calcium — corrects the biochemistry over weeks and
+      the bone pain and weakness over one to several months as the osteoid finally mineralises. Where
+      malabsorption is the cause, much larger doses or parenteral vitamin D may be needed, and the
+      underlying condition must be treated. Pseudofractures heal on imaging as the disease resolves.
+      Because malabsorptive and renal osteomalacia need tailored dosing, this is not a
+      self-management condition.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Unexplained widespread bone pain with muscle weakness
+      deserves a proper work-up — 25(OH)D, calcium, phosphate, alkaline phosphatase, and PTH — rather
+      than assuming it is deficiency. Osteomalacia is very treatable once correctly identified.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-osteomalacia" />
+  </main>
+</BaseLayout>

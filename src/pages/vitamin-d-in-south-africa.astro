@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-in-south-africa`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D in South Africa',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Vitamin D deficiency', code: { '@type': 'MedicalCode', codeValue: 'E55', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D in South Africa', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D in South Africa: Abundant Sun, Uneven Vitamin D Status"
+  description="South Africa's low latitude means strong UVB most of the year, and deficiency is genuinely low in much of the population — but skin tone, urban life, and winter still create pockets of risk."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-in-south-africa", label: "Vitamin D in South Africa" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D in South Africa</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      South Africa sits at roughly 22–35°S, low enough that useful UVB reaches the ground for most of
+      the year across most of the country. On the whole this is good news: population studies find that
+      severe vitamin D deficiency is genuinely <em>less</em> common here than in Europe. But the picture
+      is uneven, and it is a useful reminder that both extremes — plenty and shortfall — can coexist in
+      one country.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Where the sun does its job</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      For much of South Africa's population, especially people who spend time outdoors, ambient UVB is
+      sufficient to maintain adequate vitamin D through most of the year. This is the flip side of the
+      high-latitude story told elsewhere on this site: closer to the tropics, the sun climbs high enough
+      for skin synthesis across far more of the calendar, so a healthy outdoor lifestyle usually keeps
+      levels up without supplements. See <a href="/vitamin-d-by-latitude" class="text-amber-700 underline">vitamin D by latitude</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Where risk still concentrates</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Deficiency does appear in specific groups. Highly pigmented skin needs substantially more UVB for
+      the same synthesis, so even under a strong sun some individuals with the darkest skin can run low
+      if their exposure is limited. Urbanisation, indoor work, sun avoidance, and covering for cultural
+      reasons all reduce exposure. The higher-altitude, cooler interior (the Highveld around
+      Johannesburg) and the winter months in the far south (the Cape) create seasonal dips. Older adults
+      and the housebound are, as everywhere, most vulnerable.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Diet, fortification, and testing</h2>
+    <p class="text-gray-700 leading-relaxed">
+      South Africa has mandatory fortification of maize meal and wheat flour with several micronutrients,
+      though vitamin D is not the centrepiece of that program, so most vitamin D still comes from sun and
+      a modest amount of diet. Routine screening of healthy people is not recommended; testing and
+      treatment focus on at-risk and symptomatic individuals — the elderly, those with bone disease,
+      malabsorption, or very limited sun exposure.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical takeaway</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Most active South Africans get adequate vitamin D from the abundant sun for much of the year.</li>
+      <li>People with very dark skin and low sun exposure can still run low — the priority group.</li>
+      <li>Winter in the Cape and indoor urban lifestyles create seasonal and situational risk.</li>
+      <li>As always, protect against skin damage in the strong summer sun rather than deliberately over-exposing.</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> A sunny climate helps but does not guarantee sufficiency for
+      everyone. If you have risk factors or symptoms, ask your doctor about a 25(OH)D test.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-in-south-africa" />
+  </main>
+</BaseLayout>

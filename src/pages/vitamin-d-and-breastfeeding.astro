@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-breastfeeding`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Breastfeeding',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Vitamin D deficiency', code: { '@type': 'MedicalCode', codeValue: 'E55', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Breastfeeding', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Breastfeeding: Baby Drops vs High-Dose Maternal Dosing"
+  description="Breast milk is naturally low in vitamin D, so breastfed babies need drops. There is also a high-dose maternal alternative that enriches the milk. Both options, with the evidence."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-breastfeeding", label: "Vitamin D & Breastfeeding" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Breastfeeding</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Breast milk is close to a perfect food — with one well-known gap. It is naturally low in
+      vitamin D, typically supplying well under 80 IU per litre when the mother's own level is normal.
+      That is not enough to prevent deficiency and, in the worst cases,
+      <a href="/vitamin-d-and-rickets" class="text-amber-700 underline">rickets</a> in an exclusively
+      breastfed infant. This is not a failing of breastfeeding — it reflects that human babies were
+      meant to get vitamin D from sunlight, which modern infants sensibly get little of. There are two
+      ways to close the gap.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Option 1: give the baby drops</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      The standard recommendation from paediatric bodies is to give <strong>400 IU/day of vitamin D
+      directly to the breastfed (or partially breastfed) infant from birth</strong>, as liquid drops,
+      continuing until the child is weaned onto at least ~1,000 mL/day of fortified formula or, later,
+      an adequate diet. This is simple, cheap, effective, and the most widely endorsed approach. See
+      our <a href="/vitamin-d-for-infants" class="text-amber-700 underline">infants page</a> for the
+      full detail.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Option 2: high-dose maternal supplementation</h2>
+    <p class="text-gray-700 leading-relaxed">
+      There is a well-studied alternative for families who struggle to give the baby drops reliably.
+      A landmark randomised trial (Hollis 2015) showed that a breastfeeding mother taking
+      <strong>6,400 IU/day</strong> enriches her milk enough to supply the infant's needs, achieving
+      infant vitamin D levels comparable to giving the baby 400 IU directly — and doing so safely for
+      both mother and baby. In other words, you can vitamin-D-supplement the baby <em>through</em> the
+      mother. This higher maternal dose is specifically for enriching milk; it is well above the
+      routine adult dose and should be a deliberate, informed choice.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The mother's own status matters too</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Pregnancy and lactation are demanding, and many mothers are themselves deficient — which further
+      lowers the vitamin D in their milk. Correcting the mother's own deficiency is good for her bones
+      and general health regardless of which infant strategy is chosen. A routine prenatal/postnatal
+      supplement (often ~600 IU as part of a multivitamin) maintains an ordinary level; the 6,400 IU
+      approach is a separate, higher-dose strategy aimed at the milk.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Which to choose</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Infant drops (400 IU/day)</strong> — the default, universally recommended, hard to overdo.</li>
+      <li><strong>Maternal 6,400 IU/day</strong> — a validated alternative if giving drops is impractical, ideally discussed with your clinician.</li>
+      <li><strong>Either way</strong>, do not rely on breast milk alone to supply an infant's vitamin D.</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Confirm your infant's vitamin D plan with your paediatrician
+      or health visitor, especially before using high-dose maternal supplementation. Formula-fed babies
+      taking adequate fortified formula usually do not need extra drops.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-breastfeeding" />
+  </main>
+</BaseLayout>

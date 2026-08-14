@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-in-japan`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D in Japan',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Vitamin D deficiency', code: { '@type': 'MedicalCode', codeValue: 'E55', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D in Japan', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D in Japan: Fish, Sun Avoidance, and a Surprising Deficiency Rate"
+  description="Japan eats a lot of vitamin D-rich fish, yet deficiency is widespread — driven by strong cultural sun avoidance and skin-whitening habits. The paradox, and what the data show."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-in-japan", label: "Vitamin D in Japan" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D in Japan</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Japan is a fascinating case study. It has one of the highest fish intakes in the world — salmon,
+      mackerel, sardines, and dried shiitake are dietary staples, and these are among the few genuinely
+      rich food sources of vitamin D. And yet large studies keep finding that deficiency is remarkably
+      common. The explanation lies less in the diet than in a deep cultural preference for pale skin and
+      avoiding the sun.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The sun-avoidance factor</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      In Japan, fair skin is strongly valued, and sun protection is a year-round habit for many —
+      parasols (higasa), long sleeves, gloves, hats, and heavy use of high-SPF sunscreen and
+      "whitening" cosmetics. This dramatically reduces cutaneous vitamin D synthesis even during the
+      warm months. Combined with a latitude range of roughly 24°N (Okinawa) to 45°N (Hokkaido), the
+      northern half of the country also has a real winter with limited UVB, layering a seasonal deficit
+      on top of the behavioural one.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What the data show</h2>
+    <p class="text-gray-700 leading-relaxed">
+      A large 2023 analysis of over 5,000 Tokyo residents made headlines by reporting that the vast
+      majority had 25(OH)D below 30 ng/mL, with a large share below 20 ng/mL — levels lowest in spring,
+      as expected after winter. Studies in young women, in particular, repeatedly show high deficiency
+      rates, consistent with the strongest sun-avoidance behaviour in that group. The fish-rich diet
+      raises the floor but does not, on its own, compensate for near-total avoidance of sun.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Diet, fortification, and dosing</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Japan does not have the milk-fortification programs common in North America, so intake comes from
+      natural foods. The Japanese dietary reference intake for vitamin D was revised upward in recent
+      years (to around 8.5 µg / 340 IU per day for adults as an adequate intake), reflecting the
+      recognition that levels are low. For those who avoid the sun and eat little fish, a modest daily
+      supplement is a reasonable way to close the gap. Dried mushrooms (sun-dried shiitake) are a useful
+      plant source — see our <a href="/vitamin-d-foods" class="text-amber-700 underline">foods page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The takeaway</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Japan is a clean illustration that <em>behaviour beats latitude and even diet</em> when it comes
+      to vitamin D. A country that eats plenty of the right fish can still be widely deficient if it
+      systematically keeps the sun off the skin. For most people the answer is not to abandon sun
+      protection — Japan's approach protects against skin ageing and cancer — but to lean on diet and a
+      supplement instead.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> If you consistently avoid the sun, consider asking about a
+      25(OH)D test. A sensible dietary and supplement strategy is safer than deliberately increasing sun
+      exposure.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-in-japan" />
+  </main>
+</BaseLayout>

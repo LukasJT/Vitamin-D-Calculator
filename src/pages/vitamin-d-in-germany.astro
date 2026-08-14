@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-in-germany`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D in Germany',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Vitamin D deficiency', code: { '@type': 'MedicalCode', codeValue: 'E55', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D in Germany', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D in Germany: Winter Deficiency, DGE Guidance, and Dosing"
+  description="Germany sits at 47–55°N, so cutaneous vitamin D synthesis stops for roughly half the year. What the DGE and RKI advise, how common deficiency is, and sensible winter dosing."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-in-germany", label: "Vitamin D in Germany" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D in Germany</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Germany stretches from about 47°N at the Alpine border to 55°N on the Baltic coast — the same
+      band of latitude that gives most of the country a genuine "vitamin D winter." For roughly October
+      through March the sun never climbs high enough for the skin to make meaningful vitamin D, so
+      whatever you banked in summer has to last, or come from diet and supplements.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">How common is deficiency?</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      German population data are unusually good. The Robert Koch Institute's national health survey
+      (DEGS) found that a substantial share of adults fall below 30 nmol/L (12 ng/mL) — the severe-
+      deficiency threshold — particularly in the winter and spring months, and the great majority are
+      below the 50 nmol/L (20 ng/mL) mark that the DGE uses as its target at least part of the year.
+      Levels swing markedly with season, tracking the loss of UVB.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What German guidance says</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The German Nutrition Society (Deutsche Gesellschaft für Ernährung, DGE) sets an "estimated value
+      for adequate intake" of <strong>800 IU/day (20 µg)</strong> for all ages above one year <em>when
+      endogenous synthesis is absent</em> — i.e. as a winter figure — and emphasises that sensible sun
+      exposure in summer is the primary source. Infants receive a routine
+      <strong>400–500 IU/day</strong> (as vitamin D tablets) in the first year to prevent rickets, a
+      long-standing and highly successful German public-health practice.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Diet and the fortification gap</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Unlike the US or Canada, Germany does <em>not</em> broadly fortify milk with vitamin D, so dietary
+      intake is low — mostly oily fish, eggs, and some margarine. That places more weight on summer sun
+      and on supplements through winter. Practically, an 800 IU/day supplement from about October to
+      March is a reasonable default for most adults who are not getting tested, with higher, monitored
+      doses for people found to be deficient. See our
+      <a href="/vitamin-d-winter" class="text-amber-700 underline">vitamin D winter</a> and
+      <a href="/vitamin-d-dosage" class="text-amber-700 underline">dosage</a> pages.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Who should pay extra attention</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Older adults, especially in care homes, and anyone housebound.</li>
+      <li>People with darker skin, who need more UVB to make the same vitamin D.</li>
+      <li>Those who cover up for cultural reasons or avoid the sun.</li>
+      <li>Infants — the routine first-year supplement is important.</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Figures reflect DGE/RKI guidance for a general audience.
+      Anyone with symptoms or risk factors should ask their Hausarzt about a 25(OH)D test rather than
+      guessing at a dose.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-in-germany" />
+  </main>
+</BaseLayout>

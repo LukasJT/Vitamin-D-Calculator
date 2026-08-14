@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-celiac-disease`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Celiac Disease',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Coeliac disease', code: { '@type': 'MedicalCode', codeValue: 'K90.0', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Celiac Disease', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Celiac Disease: Malabsorption, Bone Loss, and Dosing"
+  description="Celiac disease damages the very part of the gut that absorbs vitamin D and calcium. Why deficiency is common at diagnosis, what a gluten-free diet fixes, and how repletion differs here."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-celiac-disease", label: "Vitamin D & Celiac Disease" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Celiac Disease</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Coeliac disease is an autoimmune reaction to gluten that flattens the lining of the small
+      intestine — and the upper small intestine is exactly where fat, fat-soluble vitamins, and
+      calcium are absorbed. So low vitamin D is not a coincidence in coeliac disease; it is a direct
+      consequence of the damaged surface, and it is one of the reasons untreated coeliac disease
+      quietly costs people bone.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Why deficiency is so common at diagnosis</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Villous atrophy reduces the absorptive area and impairs fat digestion, and because vitamin D is
+      fat-soluble it is malabsorbed along with dietary fat. Add reduced calcium absorption and the
+      body responds with secondary
+      <a href="/vitamin-d-and-hyperparathyroidism" class="text-amber-700 underline">hyperparathyroidism</a>,
+      pulling calcium from the skeleton. Studies consistently find low 25(OH)D and reduced bone
+      density in newly diagnosed adults, and untreated coeliac disease is a recognised secondary cause
+      of osteoporosis and, rarely, adult
+      <a href="/vitamin-d-and-osteomalacia" class="text-amber-700 underline">osteomalacia</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What the gluten-free diet does</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The single most important treatment is a strict, lifelong gluten-free diet, which allows the
+      intestinal lining to heal over months to a couple of years. As the villi recover, absorption of
+      vitamin D and calcium improves and bone density typically increases — most markedly in the first
+      year. In other words, the diet treats the <em>cause</em> of the deficiency, not just the number.
+      Persistently low vitamin D despite a genuinely gluten-free diet should prompt a check for ongoing
+      gluten exposure or incomplete mucosal healing.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">How repletion differs</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Test at diagnosis.</strong> 25(OH)D, calcium, and often a bone density scan are part of the standard coeliac work-up in adults.</li>
+      <li><strong>Expect to need more, at least early on.</strong> Until the gut heals, absorption of oral vitamin D is reduced, so higher or more frequent doses may be required to correct a deficiency.</li>
+      <li><strong>Re-test and re-adjust.</strong> Once the mucosa recovers, absorption normalises and the maintenance dose usually comes down. This is why coeliac dosing should be monitored rather than fixed.</li>
+      <li><strong>Mind other nutrients.</strong> Iron, folate, and B12 are commonly low too, for the same absorptive reasons.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The bigger picture</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Coeliac disease sits alongside Crohn's, cystic fibrosis, and bariatric surgery as a
+      <a href="/vitamin-d-absorption-issues" class="text-amber-700 underline">malabsorptive</a> reason
+      that 25(OH)D stays stubbornly low despite supplementation. The lesson is that the number on the
+      lab report is downstream of gut health — fix the absorption problem and the vitamin D usually
+      follows.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Do not start a gluten-free diet before coeliac testing — it
+      can mask the diagnosis. If you have coeliac disease, let your clinician guide vitamin D dosing and
+      bone monitoring, because the doses that work change as your gut heals.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-celiac-disease" />
+  </main>
+</BaseLayout>

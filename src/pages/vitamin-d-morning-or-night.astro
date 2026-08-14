@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-morning-or-night`;
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is it better to take vitamin D in the morning or at night?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'There is no strong evidence that time of day changes how well vitamin D works. The most important factor is taking it consistently, ideally with the largest fatty meal of the day for best absorption. Some people find nighttime dosing may affect sleep, so if you notice that, take it in the morning.',
+      },
+    },
+  ],
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D: Morning or Night', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Should You Take Vitamin D in the Morning or at Night?"
+  description="Does timing matter for your vitamin D supplement? The short answer: consistency and taking it with fat matter far more than clock time — but there's a sleep caveat worth knowing."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-morning-or-night", label: "Morning or Night" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D: Morning or Night?</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      This is one of the most-asked vitamin D questions, and the reassuring answer is that it barely
+      matters. Vitamin D is a fat-soluble vitamin with a long half-life measured in weeks — your body
+      does not care whether a given dose arrived at 8am or 10pm. What actually moves your blood level is
+      taking it <em>consistently</em> and taking it <em>with fat</em>. Still, there are a couple of real
+      nuances worth knowing.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Why the clock hardly matters</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Once absorbed, cholecalciferol is converted in the liver to 25(OH)D, which then circulates for
+      weeks (effective half-life ~2–3 months when body stores are included — see our
+      <a href="/vitamin-d-half-life" class="text-amber-700 underline">half-life page</a>). A single
+      day's dose is a small addition to a large, slowly turning pool. There is no meaningful
+      "absorption window" tied to time of day, and no trial showing morning versus evening dosing
+      changes 25(OH)D outcomes. So the honest answer is: take it whenever you will actually remember.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What does matter: fat and consistency</h2>
+    <p class="text-gray-700 leading-relaxed">
+      A well-known study (Mulligan & Licata 2010) found that taking vitamin D with the largest meal of
+      the day raised 25(OH)D by around 50% compared with taking it on an empty stomach or with a light
+      meal. Because vitamin D needs dietary fat to be absorbed, pairing it with a proper meal is the
+      single most useful timing tip — more so than morning versus night. See our page on
+      <a href="/vitamin-d-with-or-without-food" class="text-amber-700 underline">taking it with food</a>.
+      Consistency is the other lever: a dose you remember every day beats a "perfectly timed" one you
+      forget.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The sleep caveat</h2>
+    <p class="text-gray-700 leading-relaxed">
+      There is a plausible but not proven idea that vitamin D can suppress melatonin, and some people
+      report worse sleep when they take it late in the evening. The evidence is anecdotal and mixed
+      rather than from solid trials, but it costs nothing to act on: if you take vitamin D at night and
+      your sleep seems disturbed, simply switch to the morning and see if it helps. For most people it
+      makes no difference either way. See <a href="/vitamin-d-and-sleep" class="text-amber-700 underline">vitamin D and sleep</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The bottom line</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Best default:</strong> with your largest fatty meal, at whatever time that falls.</li>
+      <li><strong>Consistency &gt; timing:</strong> attach it to a daily habit so you never miss it.</li>
+      <li><strong>If nighttime dosing hurts your sleep,</strong> move it to the morning.</li>
+      <li><strong>Don't overthink it</strong> — the long half-life makes day-to-day timing almost irrelevant.</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Timing is a minor detail compared with taking the right dose
+      for your level. Use our <a href="/vitamin-d-dosage-calculator" class="underline">dosage calculator</a>
+      and confirm significant doses with a clinician.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-morning-or-night" />
+  </main>
+</BaseLayout>

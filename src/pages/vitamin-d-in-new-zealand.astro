@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-in-new-zealand`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D in New Zealand',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Vitamin D deficiency', code: { '@type': 'MedicalCode', codeValue: 'E55', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D in New Zealand', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D in New Zealand: Sun Safety, Latitude, and Winter Dosing"
+  description="New Zealand spans 34–47°S with intense summer UV but a real southern winter. How the Ministry of Health balances skin-cancer risk against vitamin D, and who needs a supplement."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-in-new-zealand", label: "Vitamin D in New Zealand" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D in New Zealand</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      New Zealand faces the same balancing act as Australia, sharpened by geography. It runs from about
+      34°S in the far north to 47°S at the bottom of the South Island, so the north is nearly
+      subtropical while the south has a proper cool-temperate winter. Add some of the clearest air and
+      highest summer UV levels on Earth, and you get a country that has to warn people <em>away</em> from
+      the sun in summer and worry about vitamin D in winter — often for the same person.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The sun-safety tension</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      New Zealand and Australia have among the highest melanoma rates in the world, so the public-health
+      message in summer is firmly protective — hat, shade, sunscreen, especially between 10am and 4pm.
+      The official position, shared with Australian bodies, is that in <strong>summer</strong> most
+      people make plenty of vitamin D incidentally and do not need deliberate sun exposure. In
+      <strong>winter</strong>, particularly in the lower South Island, the calculus flips: a bit of
+      midday sun on exposed skin becomes helpful, and some people need a supplement.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">How common is deficiency?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      National survey data show that a meaningful minority of New Zealanders have low vitamin D, with
+      levels dropping in winter and spring and lowest in the south. Rates are higher among Māori,
+      Pacific, and South Asian populations with darker skin, in older adults, and in those who avoid the
+      sun. As with Australia, "sunny country" does not mean "vitamin D replete" once behaviour and
+      season are taken into account.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Guidance and dosing</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The Ministry of Health does not recommend routine supplementation for the general population, but
+      targets at-risk groups: people with naturally very dark skin, those who are housebound or cover
+      up, and certain older adults, for whom a supplement (commonly a monthly higher-dose tablet in
+      practice, or a daily dose) is used. Fortification is limited, so diet contributes little. See our
+      <a href="/vitamin-d-in-australia" class="text-amber-700 underline">Australia</a> and
+      <a href="/vitamin-d-and-sun-safety" class="text-amber-700 underline">sun-safety</a> pages for the
+      shared reasoning.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical takeaway</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>In summer: sun-protect — you will make enough vitamin D incidentally.</li>
+      <li>In winter, especially in the South Island: a little midday sun helps, and at-risk people should consider a supplement.</li>
+      <li>Darker-skinned, housebound, and older New Zealanders are the priority groups for testing or supplementation.</li>
+    </ul>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> New Zealand's UV can cause skin damage in minutes in summer —
+      never trade sun safety for vitamin D. If you think you are at risk of deficiency, ask your GP
+      rather than sunbathing.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-in-new-zealand" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-sarcoidosis`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Sarcoidosis',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Sarcoidosis', code: { '@type': 'MedicalCode', codeValue: 'D86', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Sarcoidosis', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Sarcoidosis: Why Supplements Can Be Dangerous Here"
+  description="Sarcoidosis is the classic condition where vitamin D flips from helpful to harmful. Granulomas make active vitamin D uncontrollably, risking hypercalcaemia. What patients need to know."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-sarcoidosis", label: "Vitamin D & Sarcoidosis" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Sarcoidosis</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Almost everywhere on this site, vitamin D is something to top up. Sarcoidosis is the important
+      exception. It is the textbook example of a disease in which ordinary — even modest — vitamin D
+      supplementation can cause a dangerously high blood calcium. If you have sarcoidosis, the rules
+      you have read elsewhere do not apply to you without medical supervision.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Why the normal safety valve fails</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      In healthy people, the kidney tightly controls how much 25(OH)D is converted to the active
+      hormone 1,25-dihydroxyvitamin D (calcitriol): when calcium is adequate, conversion is switched
+      off. In sarcoidosis, the granulomas themselves — clusters of activated immune cells — express
+      the activating enzyme <em>1α-hydroxylase</em>, and this production is <strong>unregulated</strong>.
+      Feed the pathway more raw material (25(OH)D, whether from sun or supplements) and the granulomas
+      keep making active hormone regardless of calcium status. The result can be hypercalcaemia
+      (roughly 10% of patients) and hypercalciuria (up to a third), which threaten the kidneys.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The paradox of low 25(OH)D</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Confusingly, many sarcoidosis patients have <em>low</em> 25(OH)D on testing — precisely because
+      it is being rapidly converted to the active form. A low 25(OH)D here should not be reflexively
+      "corrected" the way it would be in someone without the disease. What matters is the
+      <strong>active</strong> 1,25(OH)₂D and the serum and urine calcium, which is why specialists
+      often measure the active hormone rather than acting on 25(OH)D alone. Sun exposure can raise
+      calcium too, so some patients are advised to moderate it and to be cautious with high-dose
+      fortified products.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What patients should do</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Do not start vitamin D on your own.</strong> Any supplementation should be decided and monitored by the team managing your sarcoidosis.</li>
+      <li><strong>Watch calcium, not just 25(OH)D.</strong> Serum and urinary calcium guide safety; a "low" 25(OH)D can be misleading.</li>
+      <li><strong>Bone health still matters.</strong> Corticosteroids used to treat sarcoidosis themselves weaken bone, so bone protection is handled carefully and individually — sometimes with cautious, monitored vitamin D and calcium.</li>
+      <li><strong>Report symptoms of high calcium</strong> — excessive thirst and urination, nausea, constipation, confusion, kidney stones — promptly.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The wider lesson</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Sarcoidosis is the best-known granulomatous cause of vitamin D-mediated hypercalcaemia, but the
+      same mechanism operates in tuberculosis, some lymphomas, and other granulomatous diseases. It is
+      a reminder that "vitamin D is safe and everyone should take more" is a population statement with
+      real exceptions. For most people the
+      <a href="/vitamin-d-toxicity" class="text-amber-700 underline">toxicity threshold</a> is very
+      high; in these conditions it is not.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice — and an important safety note.</strong> If you have sarcoidosis or
+      another granulomatous disease, do not take vitamin D supplements without your specialist's
+      guidance and calcium monitoring. This page is educational and does not replace that care.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-sarcoidosis" />
+  </main>
+</BaseLayout>

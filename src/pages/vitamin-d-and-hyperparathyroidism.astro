@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-hyperparathyroidism`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Hyperparathyroidism',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Hyperparathyroidism', code: { '@type': 'MedicalCode', codeValue: 'E21', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Hyperparathyroidism', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Hyperparathyroidism: Primary vs Secondary Explained"
+  description="Vitamin D and parathyroid hormone are locked together. Why deficiency drives secondary hyperparathyroidism, why vitamin D is often low in primary hyperparathyroidism, and when repletion is safe."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-hyperparathyroidism", label: "Vitamin D & Hyperparathyroidism" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Hyperparathyroidism</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Parathyroid hormone (PTH) and vitamin D run the calcium economy together, so when one is
+      disturbed the other almost always moves. Understanding the direction of that relationship is
+      what separates a harmless, self-correcting picture from one that needs surgery — and it changes
+      whether taking vitamin D is helpful or hazardous.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Secondary hyperparathyroidism: deficiency is the cause</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      When 25(OH)D falls, the gut absorbs less calcium, blood calcium tends to drift down, and the
+      parathyroid glands respond exactly as designed — they raise PTH to pull calcium from bone and
+      conserve it in the kidney. This is <strong>secondary</strong> hyperparathyroidism: the glands
+      are behaving normally in response to a deficiency. Calcium is usually normal or low. PTH begins
+      to climb as 25(OH)D falls below roughly 30 ng/mL and rises steeply under 20 ng/mL — one of the
+      reasons those thresholds are used. Here, correcting vitamin D <em>lowers</em> PTH and protects
+      the skeleton. Chronic kidney disease produces its own, more complex form of secondary
+      hyperparathyroidism (see <a href="/vitamin-d-and-kidney-disease" class="text-amber-700 underline">CKD</a>).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Primary hyperparathyroidism: the gland is the problem</h2>
+    <p class="text-gray-700 leading-relaxed">
+      In <strong>primary</strong> hyperparathyroidism, an adenoma (or hyperplasia) autonomously
+      over-secretes PTH regardless of calcium, so blood calcium is <em>high</em> with an
+      inappropriately high or high-normal PTH. Vitamin D is often low in these patients, partly
+      because high PTH accelerates conversion of 25(OH)D to active 1,25(OH)₂D. For years clinicians
+      feared that giving vitamin D would worsen hypercalcaemia — but trials (e.g. Rolighed 2014) show
+      that cautious repletion in mildly hypercalcaemic patients lowers PTH and improves bone density
+      without dangerous calcium rises, provided calcium is monitored. It should still be done under
+      supervision, not self-directed.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Reading the labs</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>High calcium + high PTH</strong> → primary hyperparathyroidism (or familial hypocalciuric hypercalcaemia).</li>
+      <li><strong>Low/normal calcium + high PTH + low 25(OH)D</strong> → secondary, from vitamin D deficiency.</li>
+      <li><strong>High calcium + low PTH</strong> → look elsewhere: malignancy, granulomatous disease, or vitamin D excess.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The practical takeaway</h2>
+    <p class="text-gray-700 leading-relaxed">
+      A raised PTH is not a reason to avoid vitamin D — most of the time it is a sign you need it,
+      because deficiency is driving the gland. But a raised <em>calcium</em> changes everything: it
+      means the parathyroid picture must be characterised before dosing, because a minority have
+      primary disease or another cause of hypercalcaemia in which unsupervised high-dose vitamin D is
+      unwise. Anyone with an elevated calcium should have it worked up rather than reaching for a
+      supplement.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> If your blood calcium is elevated, do not start or continue
+      high-dose vitamin D without medical review — the cause needs to be identified first. Secondary
+      hyperparathyroidism from deficiency, by contrast, generally improves with proper repletion.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-hyperparathyroidism" />
+  </main>
+</BaseLayout>

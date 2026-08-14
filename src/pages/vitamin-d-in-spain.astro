@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-in-spain`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D in Spain',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Vitamin D deficiency', code: { '@type': 'MedicalCode', codeValue: 'E55', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D in Spain', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D in Spain: The Mediterranean Paradox Explained"
+  description="Sunny Spain has surprisingly high vitamin D deficiency — the 'Mediterranean paradox.' Why latitude, midday-avoidance, skin tone, and indoor life combine to lower levels."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-in-spain", label: "Vitamin D in Spain" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D in Spain</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Spain is the poster child for what researchers call the "Mediterranean paradox": a sun-drenched
+      country where vitamin D deficiency is nonetheless common — often <em>more</em> common than in
+      cloudier, higher-latitude northern Europe. It seems to defy sense until you look at the details of
+      latitude, skin, and daily habits.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The latitude surprise</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Mainland Spain lies at roughly 36–43°N — further north than many people assume, and on a par with
+      the northern United States. Above about 35°N, the winter sun sits too low for effective UVB for
+      part of the year, so Spain does have a vitamin D winter, especially in the north. The abundant
+      Spanish sunshine is real, but much of it is either too low-angle (winter) or arrives at hours when
+      people deliberately stay out of it.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Behaviour and skin</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Spanish culture famously avoids the fierce midday sun — the siesta and late schedule keep people
+      indoors during the very hours when UVB is strongest. Southern Europeans also tend to have somewhat
+      more pigmented skin (Fitzpatrick III–IV) than northern Europeans, needing more UVB for the same
+      synthesis, and sunscreen use is high. Add air-conditioned indoor lifestyles and you get a
+      population that lives beside the sun without absorbing much of it.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What the studies find</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Spanish cohorts, particularly of older adults and postmenopausal women, repeatedly report high
+      rates of 25(OH)D below 20 ng/mL, with winter troughs. Deficiency is well documented in the elderly
+      and in institutionalised populations. Spain, like most of southern Europe, does not fortify foods
+      broadly, so dietary vitamin D is low and cannot compensate. The result is that "we live in Spain,
+      we get plenty of sun" is one of the least reliable assumptions in nutrition.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical takeaway</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Don't assume Spanish sunshine equals sufficiency — behaviour and season matter more.</li>
+      <li>Older adults and postmenopausal women are the priority groups for testing and supplements.</li>
+      <li>A little non-midday sun on exposed skin in the warmer months helps; deliberate midday exposure is not worth the skin risk.</li>
+    </ul>
+
+    <p class="text-gray-700 leading-relaxed mt-3">
+      For the wider reasoning, see our page on
+      <a href="/vitamin-d-and-hot-climates" class="text-amber-700 underline">hot and sunny climates</a>.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> The Mediterranean paradox is real — sunny surroundings do not
+      guarantee good vitamin D status. If you are older or at risk, ask your médico about a test.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-in-spain" />
+  </main>
+</BaseLayout>

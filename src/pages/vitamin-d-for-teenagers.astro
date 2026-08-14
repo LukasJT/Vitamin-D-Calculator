@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-for-teenagers`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D for Teenagers',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Vitamin D deficiency', code: { '@type': 'MedicalCode', codeValue: 'E55', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D for Teenagers', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D for Teenagers: Dose, Bone Growth, and Why Teens Run Low"
+  description="Adolescence is peak bone-building time, yet teenagers are among the most vitamin D-deficient groups. Recommended intakes, why levels drop in the teen years, and practical dosing."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-for-teenagers", label: "Vitamin D for Teenagers" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D for Teenagers</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Adolescence is the single most important window for building bone. Roughly a quarter of adult
+      bone mass is laid down during the two or three years of the pubertal growth spurt, and peak bone
+      mass — reached in the late teens to mid-twenties — is one of the strongest predictors of
+      osteoporosis risk decades later. Yet teenagers are one of the most vitamin D-deficient age groups
+      in surveys worldwide. It is an unfortunate mismatch.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Why teens run low</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      The reasons are mostly behavioural. Teenagers spend more time indoors on screens, cover up or
+      wear sunscreen when outside, drink less milk than younger children, and — during the growth spurt
+      — have a genuinely higher demand as the skeleton mineralises rapidly. Rapid weight gain and
+      higher body fat in some teens also dilute vitamin D into a larger volume. Deficiency is more
+      pronounced in those with darker skin, at higher latitudes, and through winter.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">How much do teenagers need?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The recommended dietary allowance for ages 9–18 is <strong>600 IU/day (15 µg)</strong> under the
+      Institute of Medicine, the same figure used across most of childhood and adult life. The Endocrine
+      Society suggests that teens at risk of deficiency may need 600–1,000 IU/day to reach a sufficient
+      blood level, and the tolerable upper intake level for this age group is 4,000 IU/day. Most teens
+      who are not deficient do well on a standard 600–1,000 IU/day supplement through the darker months.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Groups that need particular attention</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Athletes</strong> — especially indoor-sport athletes; deficiency is linked to stress fractures (see <a href="/vitamin-d-for-athletes" class="text-amber-700 underline">athletes</a>).</li>
+      <li><strong>Teens with darker skin</strong> at temperate latitudes.</li>
+      <li><strong>Those with eating disorders or very restrictive diets</strong>, where bone health is doubly threatened.</li>
+      <li><strong>Vegetarian and vegan teens</strong> — check the source of their vitamin D (see <a href="/vitamin-d-for-vegans" class="text-amber-700 underline">vegan D</a>).</li>
+      <li><strong>Teens on long-term steroids or antiseizure drugs</strong>, which impair bone and vitamin D.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The bigger picture</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D alone does not build strong bones — it works alongside adequate
+      <a href="/calcium" class="text-amber-700 underline">calcium</a>, protein, and, crucially,
+      weight-bearing physical activity, which is the most powerful bone-building stimulus in
+      adolescence. The goal for the teenage years is simple: enough vitamin D and calcium, plenty of
+      movement, and correcting deficiency where it exists, to bank as much bone as possible while the
+      window is open.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> A healthy teenager with a normal diet and some sun usually
+      needs only a modest supplement in winter. Persistent bone pain, frequent fractures, or growth
+      concerns should be assessed by a clinician.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-for-teenagers" />
+  </main>
+</BaseLayout>

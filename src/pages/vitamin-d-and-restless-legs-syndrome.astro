@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-restless-legs-syndrome`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Restless Legs Syndrome',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Restless legs syndrome', code: { '@type': 'MedicalCode', codeValue: 'G25.81', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Restless Legs Syndrome', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Restless Legs Syndrome: Is There a Link?"
+  description="Some small studies tie low vitamin D to worse restless legs syndrome, but iron is the far bigger player. What the evidence supports and what to check first."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-restless-legs-syndrome", label: "Vitamin D & RLS" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Restless Legs Syndrome</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Restless legs syndrome (RLS) is an irresistible urge to move the legs, usually with an unpleasant
+      crawling sensation, that comes on at rest in the evening and eases with movement. It is a
+      dopamine- and iron-related disorder of the nervous system — which is worth stating up front,
+      because the most important deficiency to check in RLS is not vitamin D.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The vitamin D evidence</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      A handful of small studies have linked low 25(OH)D to RLS. Case-control work has reported lower
+      vitamin D in RLS patients than controls, and a small open-label study (Wali 2015) found that
+      correcting deficiency reduced symptom-severity scores in patients who were deficient. Because
+      dopaminergic pathways in the brain express vitamin D receptors, a mechanism is at least
+      plausible. But the studies are small, mostly uncontrolled, and prone to the same reverse-causation
+      and publication-bias problems seen across the vitamin D literature. There is no large randomised
+      trial establishing that supplementation reliably treats RLS.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Iron is the priority</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The best-established modifiable factor in RLS is <strong>iron</strong>, specifically brain iron,
+      reflected imperfectly by serum ferritin. Guidelines recommend checking ferritin and transferrin
+      saturation in everyone with significant RLS, and treating with iron when ferritin is low
+      (commonly a threshold around 50–75 µg/L, higher than the usual "normal" cut-off). Iron repletion
+      has far stronger evidence than vitamin D. See our <a href="/iron" class="text-amber-700 underline">iron page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">A sensible approach</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Get the basics checked</strong> — ferritin and iron studies first, plus kidney function; RLS is common in pregnancy and kidney disease.</li>
+      <li><strong>Review triggers</strong> — some antihistamines, antidepressants, and antipsychotics worsen RLS, as can caffeine and alcohol late in the day.</li>
+      <li><strong>Correct a genuine vitamin D deficiency</strong> if found — it is reasonable and low-risk, and may help a subset, but treat it as a bonus rather than the main strategy.</li>
+      <li><strong>See a clinician for persistent symptoms</strong> — effective prescription treatments exist when lifestyle and iron measures are not enough.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Bottom line</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The vitamin D–RLS link is a genuine but weak signal. If you are deficient, correcting it is
+      worthwhile and may ease symptoms in some people, but it should not distract from checking iron,
+      which is where the real leverage is.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> New or worsening restless legs deserves iron studies and a
+      medication review. Do not self-supplement iron without testing — iron overload is harmful.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-restless-legs-syndrome" />
+  </main>
+</BaseLayout>

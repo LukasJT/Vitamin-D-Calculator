@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-anxiety`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Anxiety',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Anxiety disorder', code: { '@type': 'MedicalCode', codeValue: 'F41', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Anxiety', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Anxiety: What the Evidence Actually Supports"
+  description="The vitamin D–anxiety link is thinner than the depression evidence. What observational studies and the few trials show, and why correcting a deficiency is worth doing but rarely a cure."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-anxiety", label: "Vitamin D & Anxiety" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Anxiety</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D receptors are found throughout the brain, including regions that regulate mood and
+      fear, so it is reasonable to ask whether low vitamin D contributes to anxiety. The honest answer
+      is that the evidence for anxiety is <em>weaker</em> than for
+      <a href="/vitamin-d-and-mental-health" class="text-amber-700 underline">depression</a>, and much
+      of it is tangled up with the effects of light, season, and lifestyle rather than the vitamin
+      itself.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">What the observational data show</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Cross-sectional studies do find that people with lower 25(OH)D report more anxiety symptoms on
+      average, and anxiety is more common in winter and at high latitudes. But this is exactly the
+      setting where confounding is hardest to escape: people who are anxious may go outside less, be
+      less active, sleep worse, and eat differently — all of which lower vitamin D. Reduced daylight
+      itself affects mood through circadian and serotonergic pathways independent of vitamin D. So a
+      correlation between low vitamin D and anxiety does not tell us the vitamin is the cause.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The trial evidence</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Randomised trials with anxiety as a primary outcome are few and small. Some studies in specific
+      groups — for example women with type 2 diabetes and anxiety symptoms — have reported modest
+      improvements with supplementation, but these are small, short, and not consistently replicated.
+      Large mood-focused trials and the mental-health arms of big vitamin D studies have generally not
+      shown that supplementing an already-sufficient population reduces anxiety. The pattern, as with
+      depression, is that any benefit is most plausible in people who start out genuinely deficient.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">A reasonable, honest approach</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Check the level if you have symptoms and risk factors</strong> — deficiency is common and easy to correct.</li>
+      <li><strong>Correct a genuine deficiency</strong> — low-risk, generally worthwhile, and may help a subset.</li>
+      <li><strong>Do not expect it to replace treatment.</strong> The interventions with strong evidence for anxiety are psychological therapy (especially CBT), regular exercise, sleep, and, where indicated, medication.</li>
+      <li><strong>Get outdoors.</strong> Daylight, movement, and nature exposure plausibly help mood through several routes at once — vitamin D is only one of them.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Bottom line</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Fixing a real vitamin D deficiency is sensible and might take the edge off symptoms for some
+      people, but the evidence does not support vitamin D as a treatment for anxiety. If anxiety is
+      affecting your life, the therapies that actually move the needle deserve first call on your
+      attention.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> If anxiety is persistent or interfering with daily life,
+      please speak to a healthcare professional. Effective treatments exist, and vitamin D is at best a
+      minor supporting player.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-anxiety" />
+  </main>
+</BaseLayout>

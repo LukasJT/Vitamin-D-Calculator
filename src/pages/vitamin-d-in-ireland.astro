@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-in-ireland`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D in Ireland',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Vitamin D deficiency', code: { '@type': 'MedicalCode', codeValue: 'E55', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D in Ireland', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D in Ireland: One of Europe's Cloudiest, Highest-Latitude Countries"
+  description="At 51–55°N with famously grey skies, Ireland has a long vitamin D winter. FSAI guidance, the all-ages supplement advice, infant drops, and why the cloud makes it worse."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-in-ireland", label: "Vitamin D in Ireland" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D in Ireland</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Ireland is a near-perfect recipe for low vitamin D: a latitude of 51–55°N, a maritime climate
+      that keeps the skies overcast for much of the year, and a population that is largely fair-skinned
+      but spends the winter indoors. The sun sits too low from roughly late October to March to drive
+      any skin synthesis at all — and even in summer, the famous cloud cover steals a chunk of the UVB
+      that does arrive.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">How widespread is deficiency?</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Irish studies consistently find high rates of low vitamin D, especially in winter and spring and
+      among older adults. The National Adult Nutrition Survey and TILDA (the Irish Longitudinal Study on
+      Ageing) have reported that a large minority of older Irish adults are deficient, with rates
+      climbing further in those who are housebound. Deficiency is also common in people with darker skin
+      and in pregnancy.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Official guidance</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The Food Safety Authority of Ireland (FSAI) has moved toward broad, all-ages supplement advice
+      because of how reliably levels fall in the Irish winter. Recommendations include a routine
+      <strong>daily supplement for infants</strong> (around 5 µg / 200 IU in the first year in older
+      guidance, with more recent advice specifying continued supplementation) and a winter supplement
+      of the order of <strong>10–15 µg (400–600 IU) per day</strong> for older children and adults,
+      with the FSAI's more recent framework recommending year-round or extended supplementation for many
+      groups. Public messaging encourages fortified foods and supplements rather than relying on sun.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Why the cloud matters</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Latitude sets the ceiling on how much UVB is even possible; cloud then removes a further share.
+      Heavy overcast can cut UVB by half or more, so an Irish summer delivers less synthesis than the
+      same latitude would in a drier, sunnier climate. This is why Irish guidance leans harder on
+      supplements than some continental neighbours. See our pages on
+      <a href="/vitamin-d-and-cloud-cover" class="text-amber-700 underline">cloud cover</a> and
+      <a href="/vitamin-d-by-latitude" class="text-amber-700 underline">latitude</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical takeaway</h2>
+    <p class="text-gray-700 leading-relaxed">
+      For most people in Ireland, a daily vitamin D supplement in the 10–15 µg (400–600 IU) range
+      through the winter half of the year — and often year-round for at-risk groups — is a sensible
+      default, with infant drops as a routine measure and testing reserved for those with symptoms or
+      risk factors.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Guidance reflects FSAI/HSE public advice for a general
+      audience. Check specifics with your GP or pharmacist, especially for infants, pregnancy, and
+      anyone with a medical condition.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-in-ireland" />
+  </main>
+</BaseLayout>

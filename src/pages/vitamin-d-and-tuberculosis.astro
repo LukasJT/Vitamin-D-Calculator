@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-tuberculosis`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Tuberculosis',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Tuberculosis', code: { '@type': 'MedicalCode', codeValue: 'A15', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-08-14',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Tuberculosis', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Tuberculosis: The Sanatorium, Cathelicidin, and the Trials"
+  description="Before antibiotics, TB patients were sent to sun-drenched sanatoriums. Vitamin D genuinely helps macrophages kill the TB bacterium — but do supplement trials speed recovery?"
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-tuberculosis", label: "Vitamin D & Tuberculosis" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Tuberculosis</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Long before anyone had isolated vitamin D, doctors noticed that tuberculosis patients did better
+      in the sun. The sanatorium movement of the 19th and early 20th centuries sent people with TB to
+      sunny, mountain-air retreats, and "heliotherapy" — deliberate sun exposure — was a mainstream
+      treatment. It turns out the biology behind that folk observation is real, even if the modern
+      supplement trials are more nuanced.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The cathelicidin mechanism</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      When a macrophage engulfs <em>Mycobacterium tuberculosis</em>, the bacterium's cell-wall
+      components trigger the immune cell to activate vitamin D locally, converting 25(OH)D into the
+      active hormone right at the site. That active vitamin D switches on the gene for
+      <strong>cathelicidin</strong>, an antimicrobial peptide that helps the macrophage kill the
+      mycobacterium (Liu 2006). This is one of the most elegant and well-documented immune roles of
+      vitamin D — and it means a macrophage starved of 25(OH)D is a less effective TB-killer. It also
+      neatly explains the sanatorium-era observation.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency and risk</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Low vitamin D is common in people with active TB, and some studies link deficiency and certain
+      vitamin D receptor gene variants to higher susceptibility. As always, direction is uncertain —
+      chronic illness and reduced sun exposure lower vitamin D too — but the mechanistic link makes a
+      causal contribution plausible in a way it is not for many other conditions.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What the treatment trials show</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Randomised trials of vitamin D <em>added to standard TB antibiotics</em> have been mixed on the
+      headline outcome (time to sputum culture conversion). The most important finding came from an
+      individual-patient-data meta-analysis (Jolliffe 2019): overall, vitamin D did not significantly
+      speed culture conversion — <strong>but</strong> in the subgroup with multidrug-resistant TB, it
+      did accelerate clearance. In other words, standard TB drugs do the heavy lifting; vitamin D
+      appears to add measurable value mainly where the drugs are struggling. Adjunctive vitamin D is
+      cheap and safe, so it is a reasonable add-on in deficient patients, not a treatment on its own.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The takeaway</h2>
+    <p class="text-gray-700 leading-relaxed">
+      TB is one of the clearest cases where vitamin D has a real, mechanistic immune role — the
+      cathelicidin pathway is textbook immunology, not wishful thinking. But "real mechanism" does not
+      equal "cure": antibiotics remain the treatment, and vitamin D is a supportive adjunct whose
+      biggest measured benefit is in drug-resistant disease.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Tuberculosis is a serious, notifiable infection that
+      requires a full course of prescribed antibiotics under medical supervision. Vitamin D never
+      substitutes for that treatment.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-tuberculosis" />
+  </main>
+</BaseLayout>
