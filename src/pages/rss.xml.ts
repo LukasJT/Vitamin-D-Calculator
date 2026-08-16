@@ -179,6 +179,10 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-atrial-fibrillation', title: 'Vitamin D and Atrial Fibrillation', description: 'Deficiency signal, U-shaped high-dose concern, and evidence-based AF anticoagulation priorities.', date: '2026-08-27' },
   { slug: '/vitamin-d-and-postpartum-depression', title: 'Vitamin D and Postpartum Depression', description: 'Cohort deficiency associations, EPDS trial evidence, and lactation-safe evidence-based PPD care.', date: '2026-08-27' },
   { slug: '/vitamin-d-and-athletic-performance', title: 'Vitamin D and Athletic Performance', description: 'Strength, VO2max, recovery, screening protocols and WADA-compliant dosing for elite athletes.', date: '2026-08-27' },
+  { slug: '/vitamin-d-immune-mechanisms', title: 'Vitamin D Immune Mechanisms', description: 'Cathelicidin, macrophage killing, T-cell balance, and the tolerogenic autoimmune-protection story.', date: '2026-08-28' },
+  { slug: '/vitamin-d-and-chronic-kidney-stones', title: 'Vitamin D and Kidney Stones', description: 'The calcium-oxalate stone paradox, VITAL and WHI data, and safe dosing in stone-formers.', date: '2026-08-28' },
+  { slug: '/vitamin-d-and-lyme-disease', title: 'Vitamin D and Lyme Disease', description: 'PTLDS deficiency signal, why Marshall Protocol is wrong, evidence-based Lyme management.', date: '2026-08-28' },
+  { slug: '/vitamin-d-and-tuberculosis', title: 'Vitamin D and Tuberculosis', description: 'Historical sanatorium, macrophage killing biology, modern adjunctive trials, and isoniazid B6.', date: '2026-08-28' },
 ];
 
 export const GET: APIRoute = async () => {

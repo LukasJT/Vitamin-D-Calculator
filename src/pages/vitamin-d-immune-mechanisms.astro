@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-immune-mechanisms`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D Immune Mechanisms',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Immune Mechanisms', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and the Immune System — the Mechanisms in Detail"
+  description="A deeper look at how vitamin D modulates innate and adaptive immunity — cathelicidin, Th1/Th2/Th17 balance, Treg induction, and VDR-driven gene expression."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-immune-mechanisms", label: "Immune Mechanisms" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and the Immune System — the Mechanisms</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D's immune role is one of the best-characterised non-classical
+      functions. The vitamin D receptor (VDR) is expressed in almost every immune
+      cell type. Calcitriol modulates innate and adaptive immunity through
+      direct transcription of hundreds of genes. This is the deep-dive companion
+      to our <a href="/vitamin-d-and-immunity" class="text-amber-700 underline">immunity overview</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Cathelicidin — the innate antimicrobial</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Cathelicidin (LL-37 in humans) is an antimicrobial peptide with broad
+      activity against bacteria, enveloped viruses, and some fungi. The
+      cathelicidin gene (CAMP) has vitamin D response elements — its
+      transcription is directly driven by calcitriol/VDR binding. This is the
+      most-cited single mechanism for vitamin D's respiratory-infection
+      benefits.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Macrophage function</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Macrophages activated by TLR2/1 pathogen recognition upregulate their
+      own 1α-hydroxylase and VDR, producing local calcitriol that drives
+      cathelicidin expression and phagosome function. This is why tuberculosis
+      historically responded to sun exposure — the mechanism was vitamin D-
+      driven macrophage killing of mycobacteria.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">T-cell modulation</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Th1 (cell-mediated immunity)</strong> — suppressed by calcitriol.</li>
+      <li><strong>Th2 (humoral immunity)</strong> — mildly promoted.</li>
+      <li><strong>Th17 (pro-inflammatory, autoimmune)</strong> — suppressed.</li>
+      <li><strong>Treg (regulatory T cells)</strong> — expanded and functionally enhanced.</li>
+      <li>Net effect: tolerogenic, anti-inflammatory, autoimmunity-protective.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">B-cell effects</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Calcitriol inhibits B-cell proliferation, plasma-cell differentiation,
+      and IgG/IgM production. Excessive suppression is not clinically observed
+      at physiological 25(OH)D. Vitamin D deficiency may impair vaccine
+      responses (see our <a href="/vitamin-d-and-vaccine-response" class="text-amber-700 underline">vaccine page</a>).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Dendritic cell effects</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Calcitriol keeps dendritic cells in an "immature," tolerogenic state,
+      reducing antigen presentation and pro-inflammatory cytokine output.
+      Contributes to autoimmunity protection.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The autoimmune protection story</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Multiple sclerosis, type 1 diabetes, Crohn's, lupus, rheumatoid arthritis
+      — all show inverse ecological correlations with 25(OH)D and stronger
+      latitude gradients than would be expected by chance. The VITAL 2022
+      autoimmune substudy showed 22% reduction in incident autoimmune disease
+      with 2,000 IU/day for 5 years. This is one of the strongest recent
+      supplementation-trial signals.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical takeaway</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Immune biology plausibility is strong. Clinical trial evidence is
+      strongest for respiratory infection reduction (daily/weekly dosing) and
+      autoimmune-disease prevention in older adults (VITAL substudy). Correct
+      deficiency to at least 30 ng/mL as reasonable general immune adequacy.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Vitamin D adequacy supports normal
+      immunity; it does not replace vaccines, appropriate antibiotics or
+      antivirals, or evidence-based autoimmune therapy.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-immune-mechanisms" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-chronic-kidney-stones`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Kidney Stones',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Kidney Stones', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Kidney Stones: When Supplementation Is Safe and When to Worry"
+  description="Vitamin D and kidney stones — the calcium-oxalate stone paradox, VITAL and WHI-CaD data, dietary vs supplemental calcium, and safe dosing in stone-formers."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-chronic-kidney-stones", label: "Kidney Stones" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Kidney Stones</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Kidney stones (predominantly calcium oxalate) affect ~10% of adults over
+      a lifetime. Vitamin D's role is nuanced — routine supplementation
+      probably doesn't increase stone risk, but combining vitamin D with
+      high-dose calcium supplements does. Dietary calcium (paradoxically)
+      protects. Stone-formers can safely take vitamin D with attention to
+      dosing and calcium source.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The trial data</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>VITAL (2019)</strong> — 25,000 adults; 2,000 IU/day vitamin D: no significant increase in kidney stones vs placebo over 5 years.</li>
+      <li><strong>WHI-CaD (2006)</strong> — 36,000 women; 400 IU vitamin D + 1,000 mg calcium: 17% increase in kidney stones vs placebo. The signal traced to the calcium supplement, not vitamin D per se.</li>
+      <li><strong>D-Health (2023)</strong> — 21,000 adults; 60,000 IU monthly: no increase in urolithiasis.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Dietary vs supplemental calcium</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Counterintuitively, higher dietary calcium REDUCES kidney stone risk
+      (Curhan 1993, 1997). Dietary calcium binds oxalate in the gut,
+      preventing absorption and urinary excretion. Supplemental calcium taken
+      away from meals doesn't bind oxalate and slightly increases stone risk.
+      Take calcium supplements WITH meals if you're a stone-former.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Safe vitamin D dosing in stone-formers</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Vitamin D 1,000-2,000 IU/day is generally safe.</li>
+      <li>If calcium supplement is needed, keep dose ≤ 500 mg per dose and take with meals.</li>
+      <li>Prefer dietary calcium (dairy, fortified foods) over supplements.</li>
+      <li>Hydration matters more than dosing tweaks — aim for &gt; 2 L urine output daily.</li>
+      <li>Reduce dietary oxalate (spinach, rhubarb, nuts, chocolate, tea) if you form calcium-oxalate stones.</li>
+      <li>Reduce sodium and animal protein — both raise urinary calcium.</li>
+      <li>Consider 24-hour urine collection to characterise stone risk profile.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Absorptive vs resorptive hypercalciuria</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Some stone-formers have primary intestinal hyperabsorption of calcium
+      (type I absorptive hypercalciuria) — these patients are more sensitive
+      to vitamin D-driven calcium changes. Others have renal calcium leak or
+      resorptive causes. A workup by a stone specialist can identify the
+      dominant mechanism, which changes management.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <p class="text-gray-700 leading-relaxed">
+      For most kidney-stone patients: vitamin D 1,000-2,000 IU/day is safe,
+      dietary calcium 1,000 mg/day with meals is protective, adequate
+      hydration is the single most important intervention. Recurrent stone-
+      formers benefit from urologic workup and, in some cases, thiazide
+      diuretics or potassium citrate.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Acute severe flank pain, blood in
+      urine, or fever with UTI symptoms requires urgent medical attention —
+      infected obstructing stones are surgical emergencies.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-chronic-kidney-stones" />
+  </main>
+</BaseLayout>

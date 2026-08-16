@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-tuberculosis`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Tuberculosis',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Tuberculosis', code: { '@type': 'MedicalCode', codeValue: 'A15', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Tuberculosis', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Tuberculosis: History, Macrophage Killing, and Adjunctive Trial Evidence"
+  description="From 19th-century sanatorium sunbathing to modern adjunctive trials — the story of vitamin D and TB. Isoniazid B6 caution, and hypercalcaemia risk in active TB."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-tuberculosis", label: "Tuberculosis" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Tuberculosis</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      TB was the disease that first taught medicine about sun and vitamin D —
+      19th-century Alpine sanatoria used sunbathing as therapy long before the
+      mechanism was understood. Vitamin D-dependent macrophage killing of
+      <em>Mycobacterium tuberculosis</em> is now well-characterised biology,
+      but modern adjunctive trials give a mixed picture.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The mechanism</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      TLR2/1 recognition of mycobacterial lipoproteins induces macrophage
+      1α-hydroxylase and VDR. Local calcitriol drives cathelicidin expression
+      and phagosome-lysosome fusion, killing intracellular bacilli. Vitamin
+      D-deficient macrophages have impaired killing — a plausible reason TB
+      historically hit malnourished, sun-deprived populations hardest.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Modern adjunctive trials</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Martineau 2011 (UK)</strong> — 146 pulmonary TB patients; 100,000 IU cholecalciferol every 2 weeks × 4 doses added to standard antibiotics. Faster sputum-culture conversion in the <em>tt</em> TaqI VDR genotype subgroup.</li>
+      <li><strong>Salahuddin 2013 (Pakistan)</strong> — 259 TB patients; vitamin D repletion accelerated chest X-ray improvement.</li>
+      <li><strong>Cochrane 2020 review</strong> — vitamin D as TB adjunct: modest benefit in specific subgroups, no consistent improvement in cure rates overall.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Isoniazid and vitamin B6</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Isoniazid (the "H" in RIPE/HRZE regimens) depletes vitamin B6 and can
+      cause peripheral neuropathy. All patients on isoniazid should receive
+      pyridoxine 25-50 mg/day. This is not a vitamin D issue but is worth
+      knowing for TB patients on treatment. See our
+      <a href="/vitamin-b6" class="text-amber-700 underline">B6 page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Hypercalcaemia risk</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Active TB is a granulomatous disease — extra-renal 1α-hydroxylase in
+      granulomatous lesions can produce unregulated calcitriol. Vitamin D
+      supplementation in active TB carries small hypercalcaemia risk;
+      monitoring calcium is prudent, especially with high-dose regimens. See
+      our <a href="/vitamin-d-and-sarcoidosis" class="text-amber-700 underline">sarcoidosis page</a>
+      for the same principle.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical approach</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Standard TB treatment (RIPE: rifampin, isoniazid, pyrazinamide, ethambutol) remains primary.</li>
+      <li>Correct vitamin D deficiency in active TB patients — 1,000-2,000 IU/day cholecalciferol; monitor calcium.</li>
+      <li>Add pyridoxine 25-50 mg/day for isoniazid neuropathy prevention.</li>
+      <li>Public health: address latent TB in vitamin D-deficient populations (test-and-treat programmes).</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> TB is a specialist-managed
+      notifiable disease; do not substitute vitamin D or sun exposure for
+      standard antibiotic therapy.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-tuberculosis" />
+  </main>
+</BaseLayout>
