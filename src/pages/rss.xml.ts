@@ -185,6 +185,10 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-tuberculosis', title: 'Vitamin D and Tuberculosis', description: 'Historical sanatorium, macrophage killing biology, modern adjunctive trials, and isoniazid B6.', date: '2026-08-28' },
   { slug: '/vitamin-d-and-immunosuppression', title: 'Vitamin D for Immunosuppressed Patients', description: 'Transplant, biologics, HIV, chemotherapy — dosing, monitoring, and bone-density considerations.', date: '2026-08-29' },
   { slug: '/vitamin-d-and-proton-pump-inhibitors', title: 'Vitamin D and Proton Pump Inhibitors', description: 'B12 and calcium absorption, fracture risk, calcium citrate switch, and rational PPI use.', date: '2026-08-29' },
+  { slug: '/vitamin-d-and-metformin', title: 'Vitamin D and Metformin', description: 'B12 depletion on chronic metformin; how vitamin D and metformin fit together in PCOS and diabetes care.', date: '2026-08-30' },
+  { slug: '/vitamin-d-and-thyroid-cancer', title: 'Vitamin D and Thyroid Cancer', description: 'Post-thyroidectomy hypoparathyroidism (calcitriol vs cholecalciferol) and TSH-suppression bone loss.', date: '2026-08-30' },
+  { slug: '/vitamin-d-sun-safety-kids', title: 'Vitamin D and Kid Sun Safety', description: 'Balancing outdoor play, sunscreen, and lifelong melanoma prevention — the sun-smart family routine.', date: '2026-08-30' },
+  { slug: '/vitamin-d-and-lactation', title: 'Vitamin D and Lactation / Breastfeeding', description: 'Why 400 IU maternal doesn\'t reach breastmilk and the Wagner-Hollis 6,400 IU alternative to infant drops.', date: '2026-08-30' },
 ];
 
 export const GET: APIRoute = async () => {

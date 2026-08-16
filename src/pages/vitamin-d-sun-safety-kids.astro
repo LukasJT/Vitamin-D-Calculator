@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-sun-safety-kids`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Kid Sun Safety',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Kid Sun Safety', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Kid Sun Safety: Balancing Play, Sunscreen, and Skin Cancer Prevention"
+  description="Childhood sunburns dramatically raise adult melanoma risk. How to balance kids' outdoor play, vitamin D synthesis, and skin protection — the family sun-smart routine."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-sun-safety-kids", label: "Kid Sun Safety" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Kid Sun Safety</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Childhood is the highest-leverage window for both vitamin D synthesis
+      and lifelong skin cancer risk. Sunburns before age 20 more than double
+      lifetime melanoma risk. Kids need outdoor play (many reasons — vision,
+      circadian, movement, mood, vitamin D), and they need reliable sun
+      protection.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The lifetime cancer risk</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      5+ sunburns before age 20 doubles melanoma risk. A single blistering
+      childhood sunburn triples it. These are the highest-leverage prevention
+      opportunities in dermatology — and they are entirely modifiable through
+      parenting choices about hats, sunscreen, and midday shade.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Family sun-smart routine</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Sunscreen SPF 30+</strong> on exposed skin for extended outdoor time; reapply every 2 hours or after swimming.</li>
+      <li><strong>Wide-brim hats and UPF clothing</strong> for the beach, hiking, extended outdoor sport.</li>
+      <li><strong>Sunglasses</strong> — cumulative UV eye damage matters too.</li>
+      <li><strong>Shade seeking</strong> during peak UV (10 AM-2 PM in summer).</li>
+      <li><strong>Never seek sunburn</strong>, especially in children.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Doesn't sunscreen block vitamin D?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Real-world sunscreen use doesn't cause vitamin D deficiency in children
+      (see our <a href="/vitamin-d-and-sunscreen" class="text-amber-700 underline">sunscreen page</a>).
+      Kids get plenty of incidental sun through daily play — often more than
+      their parents realize. The AAP position: protect skin, and supplement
+      vitamin D if needed (400 IU/day standard).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical dosing</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Infants (breastfed): 400 IU/day cholecalciferol drops from birth (see <a href="/vitamin-d-for-infants" class="text-amber-700 underline">infants page</a>).</li>
+      <li>Toddlers to age 12: 600-1,000 IU/day, especially at high latitudes in winter.</li>
+      <li>Adolescents: 600-1,000 IU/day (see <a href="/vitamin-d-for-teens" class="text-amber-700 underline">teens page</a>).</li>
+      <li>Sunscreen and hat use is orthogonal to supplementation — do both.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Sunscreen for babies?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      AAP guidance: under 6 months, avoid direct sun and use physical
+      barriers (shade, clothing, hat, stroller cover). Sunscreen only if
+      shade isn't possible; use small amounts of mineral (zinc oxide,
+      titanium dioxide) on limited exposed areas. Over 6 months, standard
+      broad-spectrum SPF 15+.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> The single most valuable long-term
+      health investment for a child's skin is preventing sunburns while
+      enabling outdoor play. Vitamin D supplementation handles the vitamin D
+      side without compromising skin protection.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-sun-safety-kids" />
+  </main>
+</BaseLayout>

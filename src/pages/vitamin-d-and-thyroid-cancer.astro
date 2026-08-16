@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-thyroid-cancer`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Thyroid Cancer',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Thyroid Cancer', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Thyroid Cancer: Post-Thyroidectomy Care and Hypoparathyroidism"
+  description="Vitamin D and thyroid cancer — post-thyroidectomy hypoparathyroidism, calcitriol vs cholecalciferol dosing, TSH-suppression bone effects."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-thyroid-cancer", label: "Thyroid Cancer" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Thyroid Cancer</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D is relevant in thyroid cancer care mainly for two reasons —
+      post-thyroidectomy hypoparathyroidism (often needing active calcitriol
+      rather than cholecalciferol) and TSH-suppression-related bone loss
+      (needing standard vitamin D + calcium bone protection).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Post-thyroidectomy hypoparathyroidism</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Total thyroidectomy for cancer can damage or remove parathyroid glands,
+      causing transient (in ~25%) or permanent (~1-3%) hypoparathyroidism.
+      PTH deficiency reduces intestinal calcium absorption and renal calcium
+      reabsorption; standard cholecalciferol supplementation alone doesn't
+      correct calcium adequately without PTH-driven activation. Active
+      calcitriol (Rocaltrol) 0.25-0.5 µg BID plus calcium 1-2 g daily is
+      standard replacement.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">TSH suppression and bone loss</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Differentiated thyroid cancer patients often receive TSH-suppressive
+      levothyroxine doses to prevent recurrence. Long-term subclinical
+      hyperthyroidism (suppressed TSH) accelerates bone loss, particularly in
+      postmenopausal women. Standard vitamin D + calcium plus DEXA
+      monitoring is standard care; bisphosphonate for osteopenia progression.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Does vitamin D prevent thyroid cancer?</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Observational data are mixed. Some studies find lower 25(OH)D in
+      thyroid cancer patients than controls; others find no association.
+      There's no established preventive role. Vitamin D adequacy is
+      general good practice, not a cancer-specific intervention.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Post-thyroidectomy: calcium and PTH monitoring in the first weeks; calcitriol + calcium if hypoparathyroidism develops.</li>
+      <li>Persistent hypoparathyroidism (&gt; 6 months): endocrinology-managed with calcitriol titrated to normalise calcium.</li>
+      <li>TSH-suppressed patients: 800-2,000 IU/day cholecalciferol, 1,000 mg/day calcium, DEXA at baseline and every 1-2 years.</li>
+      <li>Standard maintenance in cancer survivorship: 1,000-2,000 IU/day.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Post-thyroidectomy calcium
+      management is specialist-directed — do not self-adjust calcitriol
+      or calcium dosing.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-thyroid-cancer" />
+  </main>
+</BaseLayout>

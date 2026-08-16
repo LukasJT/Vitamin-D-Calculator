@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-metformin`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Metformin',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Metformin', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Metformin: B12 Depletion, Diabetes Care, and Combined Dosing"
+  description="Metformin depletes B12; vitamin D is often paired with metformin for prediabetes and PCOS. What to monitor and how they fit together."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-metformin", label: "Metformin" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Metformin</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Metformin is the most-prescribed diabetes drug worldwide. It's often
+      combined with vitamin D supplementation — both are cheap, safe, and
+      addressed together in prediabetes, T2D, and PCOS care. The key
+      interaction to know: metformin depletes vitamin B12.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">B12 depletion — the well-established interaction</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Chronic metformin use (~4+ years) reduces serum B12 by ~10-30% in
+      long-term users. Prevalence of B12 deficiency in metformin users:
+      5-10% overall, higher in older adults. American Diabetes Association
+      recommends periodic B12 screening in long-term metformin users. This
+      is not a vitamin D issue but is worth knowing. See our
+      <a href="/vitamin-b12" class="text-amber-700 underline">B12 page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Vitamin D and metformin combined</h2>
+    <p class="text-gray-700 leading-relaxed">
+      No direct pharmacological interaction. Vitamin D + metformin combinations
+      are common in:
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>PCOS — vitamin D deficiency is common; metformin is standard care.</li>
+      <li>Prediabetes — D2d trial tested vitamin D for T2D prevention; metformin is DPP evidence-based.</li>
+      <li>T2D — vitamin D correction alongside standard diabetes care.</li>
+      <li>Gestational diabetes.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical care</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Long-term metformin users: check B12 every 2 years; more often if elderly, neuropathy, or anaemia.</li>
+      <li>Vitamin D 1,000-2,000 IU/day standard dosing; correct any deficiency.</li>
+      <li>Some patients benefit from a B12 supplement (500-1,000 µg oral cyanocobalamin) alongside metformin.</li>
+      <li>The evidence-based diabetes prevention/treatment is metformin (or GLP-1 agonists, SGLT2 inhibitors) plus lifestyle change — vitamin D is adjunctive.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Metformin has excellent long-term
+      safety and effectiveness — the B12 issue is manageable with periodic
+      monitoring.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-metformin" />
+  </main>
+</BaseLayout>

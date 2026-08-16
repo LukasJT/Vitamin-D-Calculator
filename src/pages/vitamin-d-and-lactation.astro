@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-lactation`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Lactation / Breastfeeding',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Lactation', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Lactation: Why Standard Doses Don't Reach Breastmilk (And What Does)"
+  description="Why standard 400-600 IU maternal vitamin D doesn't meet the breastfed infant's requirement, the Wagner-Hollis 6,400 IU protocol, and infant supplementation alternatives."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-lactation", label: "Lactation" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Lactation / Breastfeeding</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Breastmilk is nutritionally superior for infants in almost every respect —
+      but historically low in one nutrient: vitamin D. A mother with normal
+      25(OH)D supplies only ~25-50 IU/L in breastmilk, well below the infant
+      RDA of 400 IU. This is why AAP recommends infant supplementation from
+      birth. High-dose maternal supplementation is a validated alternative.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The transfer physiology</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D crosses into breastmilk in proportion to maternal serum
+      25(OH)D and, more responsively, to recent oral intake. Standard
+      supplementation (400-1,000 IU/day) produces very modest breastmilk
+      concentrations because the mother's tissues absorb the vitamin D
+      before it reaches breastmilk in sufficient quantity.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The Wagner-Hollis 6,400 IU trial</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Wagner & Hollis 2015 (Pediatrics) randomised breastfeeding mothers to
+      400, 2,400, or 6,400 IU/day cholecalciferol. Infants received either
+      400 IU/day drops or nothing depending on maternal arm. Result:
+      infants of mothers taking 6,400 IU/day achieved the same 25(OH)D as
+      infants directly supplemented at 400 IU/day. No infant hypercalcaemia
+      or adverse events.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Two valid approaches</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Infant drops</strong> — 400 IU/day cholecalciferol directly to the breastfed baby. Standard AAP recommendation. Products: D-Vi-Sol, Baby Ddrops, Enfamil D.</li>
+      <li><strong>Maternal 6,400 IU/day</strong> — mother takes 6,400 IU/day; infant needs no drops. Compliance often better; single-actor solution.</li>
+      <li>Choose based on family preference and compliance factors.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Lactation RDA</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>IOM RDA for lactating women: 600 IU/day (same as pregnancy).</li>
+      <li>Practical clinical dosing often 1,000-2,000 IU/day for mother, plus 400 IU/day infant drops.</li>
+      <li>Wagner-Hollis maternal option: 6,400 IU/day mother, no infant drops.</li>
+      <li>Upper limit 4,000 IU/day officially, though 6,400 IU/day in the trial was safe.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical timing</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Take the daily maternal dose consistently — the transfer into breastmilk
+      is dose-responsive over hours to days. Missing days significantly
+      reduces breastmilk vitamin D. Time of day doesn't matter much; with a
+      meal for fat co-absorption is best.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Either dosing approach (infant
+      drops or high-dose maternal) is safe and effective. See our
+      <a href="/vitamin-d-for-infants" class="text-amber-700 underline">infants page</a>
+      for the full picture.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-lactation" />
+  </main>
+</BaseLayout>
