@@ -901,6 +901,16 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-and-immunosuppression</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vitamindcalculator.net/vitamin-d-and-proton-pump-inhibitors</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://vitamindcalculator.net/sitemap</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

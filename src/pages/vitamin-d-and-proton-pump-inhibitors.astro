@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-proton-pump-inhibitors`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Proton Pump Inhibitors',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'PPI Users', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Proton Pump Inhibitors (PPIs): B12, Calcium, Fracture, and Testing"
+  description="Long-term PPI users — omeprazole, pantoprazole — need attention to B12, calcium form, and fracture risk. Where vitamin D fits and the calcium citrate switch."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-proton-pump-inhibitors", label: "PPI Users" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Proton Pump Inhibitors</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Long-term proton pump inhibitors (PPIs) — omeprazole, esomeprazole,
+      pantoprazole, rabeprazole, dexlansoprazole — affect several
+      nutrient-absorption pathways. Vitamin D itself doesn't require gastric
+      acid for absorption. But PPIs impair B12 and calcium absorption, and
+      cumulative use has been associated with modestly increased fracture
+      risk.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Vitamin D absorption on PPIs</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D is fat-soluble; it depends on bile and pancreatic lipase, not
+      gastric acid. PPIs do not reduce vitamin D absorption. Taking a
+      cholecalciferol supplement on a PPI is fine — with a meal for absorption.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Calcium — carbonate vs citrate</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Calcium carbonate (cheapest form) requires stomach acid for
+      dissociation and absorption. PPI users have reduced acid, so carbonate
+      is poorly absorbed. Switch to calcium citrate, which absorbs equally
+      well with or without acid. See our
+      <a href="/calcium" class="text-amber-700 underline">calcium page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">B12 deficiency</h2>
+    <p class="text-gray-700 leading-relaxed">
+      PPIs impair release of B12 from food proteins (which requires acid).
+      Long-term PPI users (2+ years) have elevated B12 deficiency risk. Consider
+      B12 supplementation (500-1,000 µg oral cyanocobalamin daily) or periodic
+      screening. See our <a href="/vitamin-b12" class="text-amber-700 underline">B12 page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Fracture risk</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Meta-analyses of observational data suggest PPI use for &gt; 1 year
+      associates with modestly elevated hip and vertebral fracture risk
+      (relative risk ~1.2-1.3). The mechanism is likely multi-factorial:
+      reduced calcium absorption, altered bone remodelling, potential effects
+      on osteoclasts. FDA labels have included this warning since 2010.
+      Ensuring vitamin D + calcium adequacy and re-evaluating whether the
+      PPI is still needed at annual reviews is prudent.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">When PPIs are still worth it</h2>
+    <p class="text-gray-700 leading-relaxed">
+      For patients with erosive esophagitis, Barrett's esophagus, Zollinger-
+      Ellison syndrome, or long-term NSAID users with ulcer risk, PPIs remain
+      strongly indicated. The risk-benefit favours continued PPI use in these
+      settings. For uncomplicated GERD, periodic step-down trials to H₂
+      blockers or on-demand PPI use are reasonable.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide for PPI users</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Vitamin D 1,000-2,000 IU/day with meals — standard dosing works fine.</li>
+      <li>Calcium citrate 500-1,000 mg/day if supplement needed.</li>
+      <li>B12 500-1,000 µg/day if long-term PPI use.</li>
+      <li>Annual review of PPI indication — try to step down when possible.</li>
+      <li>DEXA screening per usual osteoporosis guidelines.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Do not stop a PPI without discussing
+      with your prescriber — for some conditions, PPI discontinuation causes
+      serious complications.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-proton-pump-inhibitors" />
+  </main>
+</BaseLayout>

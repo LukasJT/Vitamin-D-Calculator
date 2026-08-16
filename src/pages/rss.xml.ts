@@ -183,6 +183,8 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-chronic-kidney-stones', title: 'Vitamin D and Kidney Stones', description: 'The calcium-oxalate stone paradox, VITAL and WHI data, and safe dosing in stone-formers.', date: '2026-08-28' },
   { slug: '/vitamin-d-and-lyme-disease', title: 'Vitamin D and Lyme Disease', description: 'PTLDS deficiency signal, why Marshall Protocol is wrong, evidence-based Lyme management.', date: '2026-08-28' },
   { slug: '/vitamin-d-and-tuberculosis', title: 'Vitamin D and Tuberculosis', description: 'Historical sanatorium, macrophage killing biology, modern adjunctive trials, and isoniazid B6.', date: '2026-08-28' },
+  { slug: '/vitamin-d-and-immunosuppression', title: 'Vitamin D for Immunosuppressed Patients', description: 'Transplant, biologics, HIV, chemotherapy — dosing, monitoring, and bone-density considerations.', date: '2026-08-29' },
+  { slug: '/vitamin-d-and-proton-pump-inhibitors', title: 'Vitamin D and Proton Pump Inhibitors', description: 'B12 and calcium absorption, fracture risk, calcium citrate switch, and rational PPI use.', date: '2026-08-29' },
 ];
 
 export const GET: APIRoute = async () => {

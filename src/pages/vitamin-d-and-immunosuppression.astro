@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-immunosuppression`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D in Immunosuppressed Patients',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Immunosuppressed Patients', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D for Immunosuppressed Patients: Transplant, Biologics, HIV, Chemotherapy"
+  description="Vitamin D in immunosuppressed patients — solid-organ transplant, biologics for autoimmune disease, HIV, chemotherapy. Dosing, monitoring, and infection-risk implications."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-immunosuppression", label: "Immunosuppression" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D for Immunosuppressed Patients</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Immunosuppressed patients — solid-organ transplant recipients, adults on
+      biologics for autoimmune disease, HIV patients, chemotherapy — commonly
+      have low 25(OH)D. Adequate vitamin D supports residual immune function
+      without interfering with intentional immunosuppression, and helps
+      manage bone-density complications of chronic steroid or biologic
+      therapy.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Solid-organ transplant</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Kidney, liver, heart, lung, and pancreas transplant recipients require
+      lifelong immunosuppression (typically calcineurin inhibitor + antimetabolite
+      ± steroid). Deficiency rates 60-80% post-transplant. Chronic steroid use
+      + calcineurin inhibitor effects on vitamin D metabolism produce
+      accelerated bone loss. Standard care: cholecalciferol 1,000-2,000 IU/day,
+      calcium 1,000-1,200 mg/day, DEXA monitoring, bisphosphonate for
+      confirmed osteoporosis. Native vitamin D does not interfere with
+      immunosuppression regimens.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Biologic therapy for autoimmune disease</h2>
+    <p class="text-gray-700 leading-relaxed">
+      TNF-α inhibitors (adalimumab, infliximab, etanercept), IL-17 inhibitors
+      (secukinumab, ixekizumab), JAK inhibitors, and other biologics create
+      moderate immunosuppression. Vitamin D deficiency is common in the
+      underlying autoimmune diseases and often worsens with reduced sun
+      exposure post-diagnosis. Correction is safe and reasonable general care.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">HIV and vitamin D</h2>
+    <p class="text-gray-700 leading-relaxed">
+      HIV patients have high deficiency rates. Some antiretrovirals (efavirenz,
+      tenofovir) affect vitamin D metabolism. Standard 1,000-2,000 IU/day is
+      typical; correction of documented deficiency common. Bone-density
+      monitoring is standard given HIV and tenofovir effects on BMD.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Chemotherapy</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D deficiency is common in cancer patients (illness burden,
+      reduced sun exposure, weight loss). Correction is reasonable adjunctive
+      care. Some chemotherapy agents (glucocorticoids in lymphoma/myeloma
+      regimens) accelerate bone loss requiring vitamin D + calcium and
+      sometimes bisphosphonate. Vitamin D does not interfere with standard
+      chemotherapy efficacy.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical monitoring</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Baseline 25(OH)D, calcium, and PTH at immunosuppression start.</li>
+      <li>Correct deficiency (2,000-4,000 IU/day for 8-12 weeks).</li>
+      <li>Maintenance 1,000-2,000 IU/day.</li>
+      <li>Monitor calcium; adjust as needed with immunosuppression regimen changes.</li>
+      <li>DEXA at baseline and every 1-2 years on long-term steroids.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Immunosuppression is specialist-
+      managed; all supplement changes should be coordinated with your
+      treating team.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-immunosuppression" />
+  </main>
+</BaseLayout>
