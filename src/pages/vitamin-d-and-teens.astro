@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-for-teens`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D for Teenagers',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D for Teens', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D for Teenagers: Peak Bone Mass, Screen Time, and Sports Performance"
+  description="Vitamin D in adolescence — peak bone-mass window, deficiency in indoor teens, sports and stress fracture risk, and dosing for teens 12-18."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-for-teens", label: "Vitamin D for Teens" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D for Teenagers</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Adolescence is the peak bone-mass window — roughly 90% of adult bone mass is
+      acquired by age 18. Vitamin D and calcium adequacy in these years shapes
+      lifetime osteoporosis and fracture risk. Teenage deficiency is common and
+      rising — screen time and indoor lifestyles reduce sun exposure, and dietary
+      calcium intake often falls short.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">RDA for teens</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li><strong>Ages 9–18:</strong> 600 IU/day cholecalciferol (IOM/AAP).</li>
+      <li><strong>Calcium:</strong> 1,300 mg/day — highest of any life stage.</li>
+      <li><strong>UL:</strong> 4,000 IU/day.</li>
+      <li>Endocrine Society suggests 1,000 IU/day for teens at risk of deficiency (dark skin, obesity, limited sun).</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Deficiency prevalence</h2>
+    <p class="text-gray-700 leading-relaxed">
+      NHANES data: ~40% of US adolescents have 25(OH)D &lt; 20 ng/mL; higher in
+      Non-Hispanic Black (~85%) and Hispanic teens (~65%). UK NDNS: 20% of adolescents
+      deficient in winter. Screen time, indoor after-school hours, and dietary
+      shifts all contribute.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Sports and stress fracture</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Adolescent athletes — particularly in running, gymnastics, dance, and
+      military-track preparation — have elevated stress-fracture rates. Vitamin D
+      + calcium adequacy is one modifiable protective factor. See our
+      <a href="/vitamin-d-for-athletes" class="text-amber-700 underline">athletes page</a>.
+      Screening 25(OH)D in adolescent athletes is reasonable.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Body image and eating disorders</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Restrictive eating patterns in adolescence (anorexia, orthorexia,
+      restrictive weight cutting for sport) often produce low vitamin D and low
+      calcium intake, adding bone-density loss to the many other harms. Screening
+      and multidisciplinary care are essential.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guidance</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Encourage outdoor activity 15–30 minutes daily in warm months.</li>
+      <li>Standard multivitamin providing 400–800 IU vitamin D is reasonable for teens with limited sun or dietary vitamin D.</li>
+      <li>Ensure dairy or fortified plant-milk intake for calcium.</li>
+      <li>Test 25(OH)D in symptomatic teens, athletes with stress-fracture history, or teens with restrictive dietary patterns.</li>
+      <li>Winter supplementation (1,000 IU/day cholecalciferol) reasonable for northern-latitude adolescents.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Adolescence is the once-in-a-lifetime
+      window for peak bone-mass accrual. Small habits established now (calcium
+      intake, weight-bearing exercise, adequate vitamin D) pay off over decades.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-for-teens" />
+  </main>
+</BaseLayout>

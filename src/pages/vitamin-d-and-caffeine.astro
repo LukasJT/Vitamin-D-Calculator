@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-caffeine`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Caffeine',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Caffeine', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Caffeine: Does Coffee Interfere With Absorption?"
+  description="Whether coffee, tea, or caffeine affects vitamin D absorption or bone health — the calcium-caffeine story vs the vitamin-D-caffeine question."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-caffeine", label: "Vitamin D and Caffeine" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Caffeine</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Coffee and caffeine don't meaningfully affect vitamin D absorption. The
+      historical concern was about caffeine and calcium — heavy chronic caffeine
+      intake modestly increases urinary calcium loss, which matters for bone
+      health. Vitamin D itself is fat-soluble and largely independent of caffeine
+      intake.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The calcium-caffeine story</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Caffeine at high chronic doses (&gt; 400 mg/day, 4+ cups of coffee) modestly
+      increases urinary calcium excretion — about 4–6 mg extra per 100 mg caffeine.
+      Real-world impact on bone density is small in adults with adequate calcium
+      intake (~1,000 mg/day). Adding milk to coffee/tea offsets the loss.
+      Bone-health concerns primarily affect heavy caffeine users with low
+      dietary calcium.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Vitamin D absorption and caffeine</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D is a fat-soluble molecule absorbed with dietary fat via bile-
+      salt-dependent mixed micelles. Caffeine doesn't participate in this pathway
+      and doesn't reduce vitamin D absorption. Taking a vitamin D capsule with
+      or near coffee has no meaningful effect on 25(OH)D response.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">One older-adult concern</h2>
+    <p class="text-gray-700 leading-relaxed">
+      One older study (Rapuri 2007) reported that older women with a specific
+      vitamin D receptor (VDR) polymorphism had modestly accelerated bone loss
+      with high caffeine intake. Later research has not consistently replicated
+      this. The overall bone-density impact of habitual coffee drinking in adults
+      is small.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Take your vitamin D supplement with your usual meal — coffee timing doesn't matter.</li>
+      <li>If you drink &gt; 4 cups coffee/day, ensure adequate calcium (~1,000 mg/day) from food or supplement.</li>
+      <li>Milk in coffee provides useful calcium and vitamin D (fortified milk).</li>
+      <li>Bone-density concerns are age and sex specific — DEXA over 65, earlier if postmenopausal with risk factors.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> The coffee-vitamin-D discussion is
+      largely a non-issue for most adults. Focus energy on the interventions
+      that actually matter for bone health.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-caffeine" />
+  </main>
+</BaseLayout>

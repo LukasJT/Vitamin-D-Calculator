@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-hyperparathyroidism`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Hyperparathyroidism',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Hyperparathyroidism', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Hyperparathyroidism: Primary vs Secondary, PTH Suppression, Cautious Repletion"
+  description="Primary and secondary hyperparathyroidism — how vitamin D repletion helps secondary (deficiency-driven) PTH elevation and how to correct deficiency safely in primary HPT."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-hyperparathyroidism", label: "Hyperparathyroidism" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Hyperparathyroidism</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Parathyroid hormone (PTH) rises when calcium falls, keeping serum calcium in
+      the tight physiological range. Vitamin D deficiency lowers calcium absorption,
+      which raises PTH (secondary hyperparathyroidism). Autonomous parathyroid
+      overactivity (primary hyperparathyroidism) raises PTH and calcium simultaneously.
+      Vitamin D dosing differs sharply between the two.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Secondary hyperparathyroidism — vitamin D deficiency driven</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      The most common cause of elevated PTH. Vitamin D deficiency → reduced
+      intestinal calcium absorption → tendency to hypocalcaemia → parathyroid
+      responds by raising PTH → PTH mobilises calcium from bone. Chronic pattern
+      accelerates bone loss and increases fracture risk. Correcting vitamin D
+      deficiency normalises PTH over weeks to months, protecting bone.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Primary hyperparathyroidism — autonomous</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Adenoma or hyperplasia of one or more parathyroid glands produces excess
+      PTH independent of calcium feedback. Serum calcium is high, PTH is
+      inappropriately high or normal. Osteoporosis, kidney stones, and
+      neurocognitive symptoms result. Definitive treatment is parathyroidectomy
+      in symptomatic disease.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Vitamin D deficiency in primary HPT</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Many primary HPT patients have concomitant vitamin D deficiency (partly from
+      chronic urinary calcium losses). The traditional concern was that vitamin D
+      supplementation would worsen hypercalcaemia. Recent evidence (Rolighed 2014)
+      shows cautious vitamin D repletion in primary HPT is safe when calcium is
+      monitored — 400–1,000 IU/day maintenance is standard, higher for correction
+      with monitoring.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Tertiary hyperparathyroidism</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Long-standing secondary HPT (usually in CKD) leads to autonomous parathyroid
+      overactivity even after the underlying cause is corrected. Treatment options
+      include cinacalcet, active vitamin D analogues, or parathyroidectomy under
+      specialist care.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Persistently elevated PTH: check serum calcium, 25(OH)D, and renal function.</li>
+      <li>Low 25(OH)D + high PTH + normal or low calcium → secondary HPT from deficiency. Correct vitamin D; re-check PTH at 8–12 weeks.</li>
+      <li>High calcium + high PTH → primary HPT. Endocrine referral for imaging (sestamibi scan, ultrasound), consideration of surgery.</li>
+      <li>Vitamin D correction in primary HPT is generally safe with calcium monitoring; work with endocrinology.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Elevated PTH always deserves an
+      etiological workup — differentiating primary from secondary changes
+      treatment fundamentally.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-hyperparathyroidism" />
+  </main>
+</BaseLayout>

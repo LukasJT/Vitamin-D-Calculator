@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-sarcoidosis`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Sarcoidosis',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Sarcoidosis', code: { '@type': 'MedicalCode', codeValue: 'D86', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Sarcoidosis', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Sarcoidosis: Why Supplementation Can Be Dangerous"
+  description="Why sarcoidosis patients can develop hypercalcaemia from routine vitamin D doses — extrarenal 1α-hydroxylase in granulomas — and how to monitor and dose."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-sarcoidosis", label: "Sarcoidosis" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Sarcoidosis</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Sarcoidosis is one of the few conditions where standard vitamin D dosing
+      recommendations can cause harm. Granulomas contain macrophages that express
+      1α-hydroxylase — the enzyme normally confined to the kidney that converts
+      25(OH)D to active calcitriol. In granulomatous disease, this conversion is
+      unregulated. Adding vitamin D substrate can produce hypercalcaemia.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The mechanism</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Normal renal 1α-hydroxylase is suppressed by rising calcium and PTH — a
+      negative feedback loop that prevents excess calcitriol. Granulomatous
+      macrophages don't have this feedback. They convert 25(OH)D to calcitriol
+      in proportion to substrate available. When 25(OH)D rises from
+      supplementation, so does calcitriol — potentially into hypercalcaemic
+      territory.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Prevalence of hypercalcaemia in sarcoid</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Baseline hypercalcaemia in untreated sarcoidosis is ~5–10%. Hypercalciuria
+      is more common (~40–50%). Standard 1,000–2,000 IU/day supplementation of a
+      previously deficient sarcoid patient can precipitate hypercalcaemia if
+      granuloma burden is significant. Case series report symptomatic
+      hypercalcaemia after even modest sun exposure or supplementation in some
+      sarcoid patients.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Other granulomatous / hypercalcaemic conditions</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Tuberculosis</strong> — same mechanism; hypercalcaemia occasionally seen.</li>
+      <li><strong>Chronic berylliosis</strong> — occupational granulomatous lung disease.</li>
+      <li><strong>Wegener's granulomatosis / GPA</strong> — occasional.</li>
+      <li><strong>Certain lymphomas</strong> (Hodgkin, some non-Hodgkin) — express extra-renal 1α-hydroxylase.</li>
+      <li><strong>Cat scratch disease, coccidioidomycosis, histoplasmosis</strong> — occasional cases.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide for sarcoid patients</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Do not self-supplement vitamin D without discussing with your pulmonologist / rheumatologist.</li>
+      <li>Baseline 25(OH)D, calcium, and calcitriol (1,25(OH)₂D) if considering supplementation.</li>
+      <li>Limit sun exposure — same substrate concern applies.</li>
+      <li>If deficient (25(OH)D &lt; 10 ng/mL) and bone pain: cautious repletion 400 IU/day with monthly calcium monitoring; escalate as tolerated.</li>
+      <li>Corticosteroids used for sarcoid also warrant calcium + vitamin D for bone protection — the dose balance requires specialist input.</li>
+      <li>Avoid calcium-rich supplements without endocrinology guidance.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Sarcoidosis is a specialist-managed
+      disease; do not apply general vitamin D dosing recommendations without
+      individualised medical guidance.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-sarcoidosis" />
+  </main>
+</BaseLayout>

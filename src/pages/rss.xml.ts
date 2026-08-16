@@ -155,6 +155,13 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-metabolic-syndrome', title: 'Vitamin D and Metabolic Syndrome', description: 'Insulin resistance, HDL, waist circumference — observational signal vs RCT reality.', date: '2026-08-23' },
   { slug: '/vitamin-d-and-hypertension', title: 'Vitamin D and Hypertension', description: 'RAAS suppression mechanism, MR evidence, and the VITAL null RCT result on blood pressure.', date: '2026-08-23' },
   { slug: '/vitamin-d-and-erectile-dysfunction', title: 'Vitamin D and Erectile Dysfunction', description: 'Endothelial function, cardiovascular risk overlap, and where vitamin D fits alongside PDE5 inhibitors.', date: '2026-08-23' },
+  { slug: '/vitamin-d-and-caffeine', title: 'Vitamin D and Caffeine', description: 'Whether coffee affects vitamin D absorption, the calcium-caffeine bone-density story.', date: '2026-08-24' },
+  { slug: '/vitamin-d-and-smoking', title: 'Vitamin D and Smoking', description: 'Why smokers have lower 25(OH)D, quitting recovery, and bone-density consequences.', date: '2026-08-24' },
+  { slug: '/vitamin-d-and-outdoor-workers', title: 'Vitamin D for Outdoor Workers', description: 'Why farmers, roofers, and construction workers can still be deficient — UPF workwear and shift patterns.', date: '2026-08-24' },
+  { slug: '/vitamin-d-for-teens', title: 'Vitamin D for Teenagers', description: 'Peak bone-mass window, screen time, sports and stress fractures, and dosing for teens 12-18.', date: '2026-08-24' },
+  { slug: '/vitamin-d-and-covid-severity', title: 'Vitamin D and COVID-19 Severity', description: 'Castillo calcifediol trial, hospital outcomes, and the calcifediol-vs-cholecalciferol distinction.', date: '2026-08-24' },
+  { slug: '/vitamin-d-and-hyperparathyroidism', title: 'Vitamin D and Hyperparathyroidism', description: 'Primary vs secondary vs tertiary — how correction fixes secondary HPT and cautions in primary.', date: '2026-08-24' },
+  { slug: '/vitamin-d-and-sarcoidosis', title: 'Vitamin D and Sarcoidosis', description: 'Why granulomatous disease turns standard supplementation into a hypercalcaemia risk.', date: '2026-08-24' },
 ];
 
 export const GET: APIRoute = async () => {

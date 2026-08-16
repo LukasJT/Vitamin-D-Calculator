@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-covid-severity`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and COVID-19 Severity',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and COVID Severity', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and COVID-19 Severity: Hospitalization, ICU, and Death Risk"
+  description="What the evidence shows for vitamin D and severe COVID — the CovidVIT-D and calcifediol trials, deficiency associations with hospitalization, and current guidance."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-covid-severity", label: "COVID Severity" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and COVID-19 Severity</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Separately from the prevention question (see our
+      <a href="/vitamin-d-and-covid" class="text-amber-700 underline">COVID page</a>),
+      research has examined whether vitamin D status modifies COVID-19 severity —
+      hospitalisation, ICU admission, mortality. The picture is nuanced with
+      observational deficiency associations but mixed trial evidence.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational severity data</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Multiple observational studies (Radujkovic 2020, Meltzer 2021, and others)
+      reported vitamin D-deficient patients had higher COVID hospitalisation, ICU
+      admission, and mortality rates. Effect sizes varied — some cohorts found
+      2–3× higher mortality in the deficient after adjustment; others found no
+      independent effect once age, obesity, and comorbidity were controlled.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Hospitalised-patient trials</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Castillo 2020 (Cordoba, Spain)</strong> — 76 hospitalised COVID patients randomised to calcifediol (25(OH)D3) or standard care. Calcifediol arm had dramatically lower ICU admission (2% vs 50%) and mortality (0% vs 7.6%). Small trial, single-centre, but striking.</li>
+      <li><strong>Murai 2021 (Brazil, COVIDIOL)</strong> — 240 hospitalised COVID patients; single 200,000 IU cholecalciferol bolus vs placebo. No difference in length of stay, mortality, or ICU admission.</li>
+      <li><strong>SHADE trial (India, 2021)</strong> — 40 asymptomatic COVID patients; 60,000 IU cholecalciferol daily × 7 days: improved viral clearance.</li>
+      <li><strong>CARED trial (Argentina, 2022)</strong> — 218 hospitalised patients; calcifediol vs standard: no significant benefit on primary endpoint.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The calcifediol vs cholecalciferol distinction</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Positive severity signals came predominantly from calcifediol (already-25-
+      hydroxylated vitamin D — bypasses hepatic activation and raises 25(OH)D
+      within hours). Cholecalciferol bolus takes days to raise 25(OH)D. In acutely
+      ill hospitalised patients, speed of repletion may matter. Calcifediol is
+      not widely available OTC in the US; it is in some European countries.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Meta-analyses</h2>
+    <p class="text-gray-700 leading-relaxed">
+      2022 and 2023 meta-analyses of COVID vitamin D trials produced mixed
+      conclusions — modest overall benefit signals with substantial heterogeneity.
+      The Cochrane 2023 review concluded very-low certainty evidence for
+      supplementation reducing severe outcomes.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical current guidance</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Correct vitamin D deficiency for the many established reasons — not specifically for COVID prevention or severity reduction.</li>
+      <li>If admitted with COVID and known to be deficient: many hospitals now include repletion in their standard care.</li>
+      <li>Vaccination remains the strongest-evidence COVID intervention.</li>
+      <li>Do not use vitamin D as a substitute for vaccines, monoclonal antibodies, antivirals, or hospital care.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> The COVID-vitamin-D literature evolved
+      rapidly and remains partly unsettled. Trust official guidance from your
+      country's health authority for current care recommendations.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-covid-severity" />
+  </main>
+</BaseLayout>

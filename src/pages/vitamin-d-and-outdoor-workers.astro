@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-outdoor-workers`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D for Outdoor Workers',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Outdoor Workers', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D for Outdoor Workers: The Surprising Deficiency in People Who Live in the Sun"
+  description="Why construction workers, farmers, roofers, lifeguards can still be vitamin D deficient — UPF workwear, sun-protective clothing, and modern occupational sun avoidance."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-outdoor-workers", label: "Outdoor Workers" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D for Outdoor Workers</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Outdoor workers you'd expect to be vitamin D-replete — construction, farming,
+      landscaping, roofing, lifeguarding, ranching, forestry — often are.
+      But not always. Modern occupational sun-protection clothing, sun-avoidance
+      culture, dark skin at high latitudes, and winter months all combine to
+      create surprising deficiency rates even in people spending 8+ hours daily
+      outdoors.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Which outdoor workers are typically replete</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Beach lifeguards in tropical / subtropical latitudes — high 25(OH)D (70+ ng/mL common); skin cancer risk elevated.</li>
+      <li>Athletes training outdoors in shorts and short-sleeves in summer.</li>
+      <li>Traditional agriculturalists with substantial skin exposure.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Which outdoor workers are commonly deficient</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Australian farmers wearing long UPF clothing</strong> — measured deficiency rates of 30–40% despite spending days outdoors, because their workwear blocks most UVB.</li>
+      <li><strong>Construction workers in hot climates</strong> — daytime heat drives midday breaks indoors; light hi-vis clothing may block some UVB.</li>
+      <li><strong>Winter outdoor workers at high latitude</strong> — no sun angle available; face-only exposure produces minimal synthesis.</li>
+      <li><strong>Dark-skinned outdoor workers at temperate latitudes</strong> — still often deficient in winter despite outdoor work.</li>
+      <li><strong>Ski patrol, snow-plough operators</strong> — heavy winter clothing; despite altitude and snow reflection, most skin is covered.</li>
+      <li><strong>Fishermen in enclosed cabins</strong> — modern trawlers keep crew in enclosed spaces much of the day.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Skin cancer trade-off</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Outdoor workers have elevated basal cell and squamous cell carcinoma rates
+      from cumulative UV exposure — this is real and deserves protection. UPF
+      clothing, wide-brim hats, and sunscreen are standard occupational health
+      recommendations. Vitamin D adequacy in this population is best achieved by
+      modest supplementation rather than reducing sun protection.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide for outdoor workers</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Wear UPF workwear and sunscreen for skin-cancer protection — evidence-based occupational safety.</li>
+      <li>Test 25(OH)D if working with heavy sun-protection clothing or in winter conditions.</li>
+      <li>Standard maintenance supplementation 1,000–2,000 IU/day cholecalciferol.</li>
+      <li>Take brief unprotected breaks (face + hands, 5–10 min at lunch) if skin type and cancer risk permit.</li>
+      <li>Annual skin cancer screening for chronic sun-exposed occupations.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Outdoor work does not guarantee vitamin
+      D adequacy in the modern era — sun protection is smart and supplementation
+      often complements it.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-outdoor-workers" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-smoking`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Smoking',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Vitamin D and Smoking', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Smoking: Why Smokers Have Lower 25(OH)D and Worse Bone Density"
+  description="How smoking lowers 25(OH)D, what happens after quitting, and why smokers have accelerated bone loss and higher fracture risk on top of their vitamin D deficit."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-smoking", label: "Vitamin D and Smoking" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Smoking</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Smokers have consistently lower serum 25(OH)D than never-smokers — roughly
+      3–5 ng/mL less on average, independent of sun exposure, BMI, and diet. This
+      compounds their well-known bone-density and fracture risk. Quitting
+      partially reverses the vitamin D difference; correcting deficiency is
+      standard care for smokers.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational data</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      NHANES and European cohorts consistently show smokers have lower 25(OH)D.
+      The effect is dose-dependent — heavy smokers (&gt; 20 cigarettes/day) show
+      larger reductions than light smokers. Ex-smokers have intermediate levels;
+      levels rise partially over the years after quitting.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Possible mechanisms</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Increased 25(OH)D catabolism from CYP450 induction by tobacco combustion products.</li>
+      <li>Reduced hepatic 25-hydroxylation.</li>
+      <li>Reduced physical activity and outdoor time in some smoking populations.</li>
+      <li>Lower dietary calcium and vitamin D intake in smokers on average.</li>
+      <li>Increased oxidative stress accelerating vitamin D breakdown.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Bone consequences compound</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Smoking is an independent risk factor for osteoporosis via multiple mechanisms
+      — direct effects on osteoblast function, altered estrogen metabolism (earlier
+      menopause in women smokers), reduced calcium absorption, and cortisol effects.
+      Combined with vitamin D deficiency, smokers have hip fracture risk ~40%
+      higher than never-smokers. Correcting vitamin D deficiency is one modifiable
+      component in this risk stack.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Passive smoking</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Some studies find lower 25(OH)D in non-smokers with significant passive
+      smoke exposure, particularly children. The effect is smaller than active
+      smoking. Reducing household smoking exposure benefits kids on many
+      dimensions including bone health.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Vaping</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Data on vaping and vitamin D is limited. Nicotine effects on hepatic
+      metabolism may be similar to smoking; combustion products are absent.
+      Studies to date are inconclusive; the general recommendation is not to
+      vape as a "safer alternative" for vitamin D reasons.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Smokers: test 25(OH)D and correct any deficiency with standard doses.</li>
+      <li>Ensure adequate calcium (1,000–1,200 mg/day) and consider DEXA screening earlier than non-smokers.</li>
+      <li>Support smoking cessation — the vitamin D benefit is a small bonus to the many other reasons.</li>
+      <li>Quitting resources: nicotine replacement, varenicline, bupropion, counselling, quitlines (US 1-800-QUIT-NOW).</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Smoking cessation is the single most
+      valuable modifiable health intervention for most smokers — vitamin D
+      correction complements but does not substitute for it.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-smoking" />
+  </main>
+</BaseLayout>
