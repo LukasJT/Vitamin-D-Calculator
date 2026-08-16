@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-dementia`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: "Vitamin D and Dementia / Alzheimer's Disease",
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [
+    { '@type': 'MedicalCondition', name: "Alzheimer's disease", code: { '@type': 'MedicalCode', codeValue: 'G30', codingSystem: 'ICD-10' } },
+    { '@type': 'MedicalCondition', name: 'Dementia' },
+  ],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: "Dementia / Alzheimer's", item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Dementia: What Cohort and MR Studies Show, What Trials Don't"
+  description="Vitamin D and dementia/Alzheimer's — the observational associations, VITAL cognitive substudy, Mendelian randomisation, and current dosing guidance for older adults."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-dementia", label: "Dementia" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Dementia</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Cohort studies consistently link low serum 25(OH)D with increased dementia
+      risk over follow-up. Mendelian randomisation studies partly support
+      causation. Large randomised supplementation trials have not clearly shown
+      prevention. The evidence justifies correcting deficiency in older adults
+      but not high-dose supplementation for cognitive protection.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational data</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Littlejohns 2014 (Neurology) followed 1,658 older adults for 6 years —
+      severely deficient participants (25(OH)D &lt; 25 nmol/L) had ~120% higher
+      risk of any dementia and ~120% higher Alzheimer's risk than sufficient
+      participants. Multiple similar cohort findings across Europe and North
+      America.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mendelian randomisation</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Larsson 2018 and 2023 MR studies find genetically-lowered 25(OH)D is
+      associated with higher dementia risk — supporting causal interpretation.
+      Effect sizes are modest.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation trials</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>VITAL cognitive substudy (2020)</strong> — 3,424 older adults; 2,000 IU/day for 3 years; no cognitive benefit vs placebo overall.</li>
+      <li><strong>D-Health cognitive substudy</strong> — pending final results but interim analyses show no meaningful cognitive impact of 60,000 IU monthly in older Australian adults.</li>
+      <li><strong>Ghahremani 2023</strong> — retrospective analysis of NACC dataset: vitamin D users showed lower dementia incidence, but observational confounds are hard to rule out.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Reconciling the discrepancy</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Observational and MR studies suggest chronic lifelong vitamin D adequacy
+      may reduce dementia risk. Short-term supplementation trials in late life
+      may miss a benefit that acts across decades. Alternatively, the observational
+      association may reflect residual confounding (health-conscious individuals
+      have both higher vitamin D and lower dementia risk from many other
+      factors).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Older adults (65+): 1,000-2,000 IU/day cholecalciferol maintenance is safe and reasonable — the general benefits (bones, falls, muscle) are established.</li>
+      <li>Don't expect dementia prevention from supplementation started late in life on top of existing sufficiency.</li>
+      <li>Evidence-based dementia prevention: cardiovascular risk management, physical activity, cognitive/social engagement, adequate sleep, hearing-aid use if hearing loss.</li>
+      <li>If you have concerns about cognitive decline: prompt medical evaluation, not just supplement adjustment.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Cognitive changes deserve
+      evaluation — early recognition of treatable causes (B12 deficiency,
+      thyroid, depression, medications) matters more than any single supplement.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-dementia" />
+  </main>
+</BaseLayout>

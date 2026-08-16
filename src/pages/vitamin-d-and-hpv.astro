@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-hpv`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and HPV',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'HPV', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and HPV: Immune Clearance, CIN Persistence, and Vaccine Priority"
+  description="Vitamin D and human papillomavirus — cross-sectional deficiency associations with persistent infection, CIN progression, and why HPV vaccination remains primary prevention."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-hpv", label: "HPV" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and HPV</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Most HPV infections clear spontaneously; persistent high-risk HPV drives
+      cervical intraepithelial neoplasia (CIN) and cervical cancer. Vitamin D's
+      immune-modulating role has attracted attention as a possible modifier of
+      HPV clearance. Evidence is preliminary and does not replace vaccination
+      or screening.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational data</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Multiple cohort studies (Ozgu 2016, Schulte-Uebbing 2014) find lower mean
+      25(OH)D in women with persistent HPV or CIN than in those clearing
+      infection or with normal cytology. Effect sizes are modest and not
+      consistent across all studies.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mechanistic plausibility</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D receptors expressed in cervical epithelium. Calcitriol modulates
+      cell-cycle proteins and can inhibit HPV E6/E7-driven proliferation in
+      vitro. Vitamin D-dependent innate immunity may help clear early HPV
+      infection. These are plausible mechanisms; clinical translation is
+      unproven.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation trials</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Very small pilot trials of vitamin D supplementation in low-grade CIN
+      have reported histological regression rates comparable to expected natural
+      history. No large trial has established supplementation as a CIN
+      treatment. Standard management (colposcopy, observation for low-grade
+      lesions, LEEP for high-grade) remains the evidence-based approach.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What actually prevents HPV-related cancer</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>HPV vaccination — 9-valent (Gardasil 9) prevents ~90% of cervical cancers. Best given at ages 9-14 before sexual debut but effective up to age 45.</li>
+      <li>Cervical screening — HPV testing ± cytology per age and country guidelines.</li>
+      <li>Appropriate treatment of high-grade CIN.</li>
+      <li>Smoking cessation — smoking is an independent HPV-persistence and cervical cancer risk factor.</li>
+      <li>Vitamin D correction is a reasonable adjunct in deficient women; not a substitute for the above.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Abnormal cervical screening results
+      need timely colposcopy follow-up — vitamin D is not a wait-and-see
+      alternative.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-hpv" />
+  </main>
+</BaseLayout>

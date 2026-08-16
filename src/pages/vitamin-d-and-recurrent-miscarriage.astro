@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-recurrent-miscarriage`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Recurrent Miscarriage',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Recurrent Miscarriage', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Recurrent Miscarriage: What the Evidence Actually Supports"
+  description="Recurrent pregnancy loss and vitamin D — deficiency prevalence, immune tolerance mechanism, small supplementation trial evidence, and evidence-based RPL workup."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-recurrent-miscarriage", label: "Recurrent Miscarriage" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Recurrent Miscarriage</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Recurrent pregnancy loss (RPL, ≥ 2 clinical losses) affects ~1-2% of
+      women trying to conceive. Vitamin D deficiency is more common in RPL
+      cohorts than in controls, and immune-tolerance mechanisms at the
+      maternal-fetal interface provide biological plausibility. Correcting
+      deficiency is standard part of RPL workup though causal evidence is
+      limited.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational data</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Meta-analyses find women with recurrent miscarriage have significantly
+      lower mean 25(OH)D than controls. Autoantibody-positive RPL patients
+      (antiphospholipid syndrome, thyroid antibodies) tend to have particularly
+      low levels. Rate of deficiency in RPL cohorts ranges 45-75% in various
+      studies.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mechanisms</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Vitamin D promotes Treg cells and dampens Th1/Th17 responses — important for maternal immune tolerance of the semi-allogeneic fetus.</li>
+      <li>Regulates decidual NK cell function.</li>
+      <li>Modulates HOXA10 and endometrial receptivity genes.</li>
+      <li>Affects thrombotic and complement pathways relevant to placental function.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation trials</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Small RCTs (Ota 2014 and others) suggest reduced miscarriage rates with
+      vitamin D correction in the deficient. Larger trials are lacking. RCOG
+      and ASRM guidelines mention vitamin D as part of the RPL workup without
+      formal recommendation for supplementation as treatment.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Full RPL workup context</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Antiphospholipid antibodies (lupus anticoagulant, anticardiolipin, anti-β2-GPI).</li>
+      <li>Uterine anatomy (saline sonogram, hysteroscopy).</li>
+      <li>Karyotyping of both partners; products of conception if available.</li>
+      <li>Thyroid function and thyroid antibodies.</li>
+      <li>Diabetes screening.</li>
+      <li>Vitamin D level.</li>
+      <li>Hereditary thrombophilia panel (situation-dependent).</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>RPL workup should include 25(OH)D testing.</li>
+      <li>Correct deficiency to ≥ 30 ng/mL (some centres target 40+) with 2,000-4,000 IU/day cholecalciferol pre-conception.</li>
+      <li>Vitamin D correction complements — not replaces — antiphospholipid syndrome treatment (aspirin + heparin), thyroid management, and other RPL-specific therapy.</li>
+      <li>See our <a href="/vitamin-d-in-pregnancy" class="text-amber-700 underline">pregnancy page</a> for ongoing dosing.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Recurrent pregnancy loss is emotionally
+      hard and clinically complex — specialist RPL care improves outcomes far
+      more than any single intervention alone.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-recurrent-miscarriage" />
+  </main>
+</BaseLayout>

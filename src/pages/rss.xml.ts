@@ -168,6 +168,12 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-restless-legs', title: 'Vitamin D and Restless Legs Syndrome', description: 'Iron/ferritin priority, small vitamin D evidence, evidence-based RLS management.', date: '2026-08-25' },
   { slug: '/vitamin-d-and-post-surgery-recovery', title: 'Vitamin D and Post-Surgery Recovery', description: 'Wound healing, infection risk, joint-replacement outcomes, ICU mortality — pre-op optimisation.', date: '2026-08-25' },
   { slug: '/vitamin-d-and-dialysis', title: 'Vitamin D in Dialysis', description: 'Active analogues (paricalcitol, doxercalciferol), calcimimetics, KDIGO targets, cholecalciferol role.', date: '2026-08-25' },
+  { slug: '/vitamin-d-and-dementia', title: "Vitamin D and Dementia / Alzheimer's", description: 'Observational and MR evidence for a link; VITAL cognitive substudy showing no benefit in late-life supplementation.', date: '2026-08-26' },
+  { slug: '/vitamin-d-and-anxiety', title: 'Vitamin D and Anxiety', description: 'Small trial signal for GAD-7 improvement in deficient adults; evidence weaker than for depression.', date: '2026-08-26' },
+  { slug: '/vitamin-d-and-recurrent-miscarriage', title: 'Vitamin D and Recurrent Miscarriage', description: 'Deficiency in RPL cohorts, immune-tolerance mechanism, and the wider RPL workup.', date: '2026-08-26' },
+  { slug: '/vitamin-d-and-birth-defects', title: 'Vitamin D and Birth Defects', description: 'Rickets prevention on one side, hypercalcaemia teratogenicity on the other — the safety margin.', date: '2026-08-26' },
+  { slug: '/vitamin-d-and-hpv', title: 'Vitamin D and HPV', description: 'HPV clearance signal in observational studies; vaccination remains primary prevention.', date: '2026-08-26' },
+  { slug: '/vitamin-d-and-atopic-march', title: 'Vitamin D and the Atopic March', description: 'VDAART and COPSAC prenatal trials, infant eczema, food allergy — the childhood allergic cascade.', date: '2026-08-26' },
 ];
 
 export const GET: APIRoute = async () => {

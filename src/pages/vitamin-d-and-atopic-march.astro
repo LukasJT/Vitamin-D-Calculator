@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-atopic-march`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and the Atopic March',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Atopic March', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and the Atopic March: Eczema, Asthma, Food Allergy Cascade"
+  description="Vitamin D and the childhood allergic cascade (eczema → food allergy → asthma → rhinitis) — VDAART and prenatal trial evidence, infant supplementation."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-atopic-march", label: "Atopic March" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and the Atopic March</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      The "atopic march" describes the typical progression of allergic disease
+      in childhood — infant eczema, followed by food allergy, then asthma, then
+      allergic rhinitis. Vitamin D deficiency has been examined as a modifiable
+      factor across this cascade. Evidence is strongest for prenatal
+      supplementation and infant wheeze; weaker for later stages.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Prenatal trials — VDAART and COPSAC</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Two landmark 2016 trials tested high-dose maternal vitamin D vs standard
+      prenatal vitamin D for offspring allergic disease:
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>VDAART (US)</strong> — 4,400 IU/day vs 400 IU/day. 20% relative reduction in asthma/recurrent wheeze at age 3, not quite significant at pre-specified threshold.</li>
+      <li><strong>COPSAC (Copenhagen)</strong> — similar design; 24% relative reduction in persistent wheeze/asthma at age 3.</li>
+      <li>Combined analyses suggest a real effect, particularly for early wheeze.</li>
+      <li>Extended follow-up: 6-year VDAART did not show durable asthma protection; effects appeared to fade.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Infant eczema</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Small trials of infant vitamin D supplementation show modest SCORAD
+      improvement in infants with eczema and vitamin D deficiency. Broader
+      preventive effect is unclear. Standard 400 IU/day for breastfed infants
+      (AAP) is standard care regardless.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Food allergy</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Ecological data — food allergy rates correlate with latitude — suggests
+      possible vitamin D role in food allergy pathogenesis. The Australian
+      HealthNuts study found vitamin D-deficient infants had higher peanut
+      allergy rates. Supplementation trial evidence is limited. Early
+      introduction of allergenic foods (LEAP-style peanut protocol) is the
+      established evidence-based food allergy prevention intervention.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Pregnancy: ensure adequate vitamin D (600-4,000 IU/day per obstetric guidance). Higher-end dosing may reduce infant wheeze.</li>
+      <li>Breastfed infants: 400 IU/day cholecalciferol drops (AAP standard). See our <a href="/vitamin-d-for-infants" class="text-amber-700 underline">infants page</a>.</li>
+      <li>Toddlers with eczema: standard age-appropriate dosing; correct any deficiency.</li>
+      <li>Food-allergy prevention: follow early-introduction guidance; vitamin D is not a substitute.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Persistent atopic disease benefits
+      from allergology/dermatology specialist care — supplements are supportive,
+      not curative.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-atopic-march" />
+  </main>
+</BaseLayout>

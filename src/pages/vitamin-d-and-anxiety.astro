@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-anxiety`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Anxiety',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Anxiety', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Anxiety: What the Small Trial Evidence Shows"
+  description="Vitamin D and anxiety disorders — cross-sectional deficiency associations, small supplementation trials with GAD-7 improvement, and where the evidence falls short."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-anxiety", label: "Anxiety" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Anxiety</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Anxiety disorders — generalised anxiety, panic disorder, social anxiety —
+      show a modest deficiency association with vitamin D in cohort studies.
+      Small supplementation trials in deficient anxious adults report GAD-7
+      score improvements. Evidence is weaker than for depression but the
+      intervention is safe and cheap.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational data</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Cross-sectional studies find lower mean 25(OH)D in adults with anxiety
+      disorders vs matched controls (Bicikova 2015 and others). The correlation
+      is smaller than for depression. Mendelian randomisation studies have not
+      convincingly supported causation for anxiety.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Small supplementation trials</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Fazelian 2019 and others show modest GAD-7 reduction in deficient anxious
+      adults given vitamin D vs placebo for 8-12 weeks. Effect sizes are small
+      (0.5-1.5 point improvement on GAD-7). Larger definitive trials are lacking.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical approach</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test 25(OH)D in patients with persistent anxiety symptoms.</li>
+      <li>Correct any deficiency with 2,000 IU/day cholecalciferol.</li>
+      <li>Continue evidence-based anxiety management — CBT, SSRI/SNRI, mindfulness.</li>
+      <li>Don't stop or delay effective anxiety treatment for a vitamin trial.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Severe anxiety with panic attacks,
+      avoidance, or functional impairment warrants professional mental health
+      evaluation, not just a vitamin bottle.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-anxiety" />
+  </main>
+</BaseLayout>
