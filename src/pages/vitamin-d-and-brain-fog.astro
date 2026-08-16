@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-brain-fog`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Brain Fog',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Brain Fog', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Brain Fog: The Wide Differential and Where Correction Helps"
+  description="'Brain fog' as a symptom — the wide differential (thyroid, B12, iron, sleep, mood, medications) and where vitamin D correction actually helps clear it."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-brain-fog", label: "Brain Fog" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Brain Fog</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      "Brain fog" is a common patient complaint that doesn't map to a single
+      diagnosis. Vitamin D deficiency is one modifiable contributor, but the
+      differential is much wider — and getting the diagnosis right matters
+      more than throwing supplements at the symptom.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The wide differential</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Sleep deprivation or untreated sleep apnoea.</li>
+      <li>Untreated hypothyroidism (check TSH).</li>
+      <li>Iron-deficiency anaemia — particularly in menstruating women (check ferritin).</li>
+      <li>B12 deficiency — especially in vegans, older adults, chronic PPI/metformin.</li>
+      <li>Depression or anxiety.</li>
+      <li>Perimenopause.</li>
+      <li>Chronic pain distraction.</li>
+      <li>Post-viral (Long COVID, post-mono, post-flu).</li>
+      <li>Medication side effects (antihistamines, benzodiazepines, opioids, gabapentin, some anticholinergics).</li>
+      <li>Chronic alcohol use.</li>
+      <li>Vitamin D deficiency — a contributor, not usually the sole cause.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Where vitamin D correction helps</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Small trials in vitamin D-deficient adults with cognitive complaints
+      report modest improvements in processing speed and executive function
+      with correction. Effect is largest in the truly deficient (&lt; 20 ng/mL);
+      minimal or absent in the already-sufficient. Don't expect vitamin D to
+      clear brain fog that has a different underlying cause.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical approach</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Persistent brain fog: check CBC + ferritin, TSH, B12, 25(OH)D, glucose/HbA1c, comprehensive metabolic panel.</li>
+      <li>Review medications — many culprits are hiding in plain sight.</li>
+      <li>Sleep hygiene assessment; sleep-study referral if snoring/witnessed apnoeas/daytime somnolence.</li>
+      <li>Mental health screen (PHQ-9, GAD-7).</li>
+      <li>Correct any nutrient deficiencies found.</li>
+      <li>Structured cognitive assessment if persistent unexplained decline.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Persistent cognitive symptoms
+      deserve proper workup — the treatable causes are common and easy to miss
+      without testing.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-brain-fog" />
+  </main>
+</BaseLayout>

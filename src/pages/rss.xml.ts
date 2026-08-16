@@ -189,6 +189,9 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-thyroid-cancer', title: 'Vitamin D and Thyroid Cancer', description: 'Post-thyroidectomy hypoparathyroidism (calcitriol vs cholecalciferol) and TSH-suppression bone loss.', date: '2026-08-30' },
   { slug: '/vitamin-d-sun-safety-kids', title: 'Vitamin D and Kid Sun Safety', description: 'Balancing outdoor play, sunscreen, and lifelong melanoma prevention — the sun-smart family routine.', date: '2026-08-30' },
   { slug: '/vitamin-d-and-lactation', title: 'Vitamin D and Lactation / Breastfeeding', description: 'Why 400 IU maternal doesn\'t reach breastmilk and the Wagner-Hollis 6,400 IU alternative to infant drops.', date: '2026-08-30' },
+  { slug: '/vitamin-d-and-brain-fog', title: 'Vitamin D and Brain Fog', description: 'The wide differential (thyroid, B12, iron, sleep) and where vitamin D correction actually helps.', date: '2026-08-31' },
+  { slug: '/vitamin-d-and-dry-eye', title: 'Vitamin D and Dry Eye Disease', description: 'OSDI improvement in supplementation trials, lacrimal gland biology, and adjunct to standard care.', date: '2026-08-31' },
+  { slug: '/vitamin-d-childhood-eczema', title: 'Vitamin D and Childhood Eczema', description: 'Camargo Mongolia RCT, winter flares, SCORAD improvement, and standard eczema care.', date: '2026-08-31' },
 ];
 
 export const GET: APIRoute = async () => {

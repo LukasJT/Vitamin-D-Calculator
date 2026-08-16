@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-dry-eye`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Dry Eye Disease',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Dry Eye', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Dry Eye Disease: What Trials Show Beyond Artificial Tears"
+  description="Vitamin D and dry eye disease — OSDI improvement in supplementation trials, lacrimal-gland biology, and adjunct to standard dry-eye care."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-dry-eye", label: "Dry Eye" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Dry Eye Disease</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Dry eye disease affects up to 30% of adults, more in women and older
+      age. Vitamin D deficiency is more common in dry eye patients than
+      controls; small supplementation trials show OSDI (Ocular Surface
+      Disease Index) improvement. Vitamin D is a reasonable adjunct to
+      standard dry-eye care.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational data</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Bae 2016 (Korean nationwide survey) found 18% higher dry-eye odds in
+      vitamin D-deficient adults after adjustment. Yildirim 2016 reported
+      OSDI symptom improvement with vitamin D repletion in deficient dry-eye
+      patients. Meta-analyses find modest overall benefit signal.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Mechanism</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D receptors expressed in the lacrimal gland, corneal
+      epithelium, and conjunctival goblet cells. Vitamin D modulates tear-film
+      stability, dampens ocular-surface inflammation, and supports goblet-cell
+      mucin production. Deficiency associates with reduced tear film break-up
+      time and worse Schirmer scores.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Standard evidence-based dry-eye care</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Preservative-free artificial tears — 4-6x daily.</li>
+      <li>Warm compresses for meibomian gland dysfunction.</li>
+      <li>Environmental modifications — humidifiers, screen breaks (20-20-20 rule).</li>
+      <li>Omega-3 supplementation — mixed evidence but reasonable.</li>
+      <li>Prescription cyclosporine (Restasis) or lifitegrast (Xiidra) for moderate-severe dry eye.</li>
+      <li>Punctal plugs to reduce tear drainage.</li>
+      <li>Vitamin D correction in the deficient — reasonable adjunct.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Dry-eye patients: test 25(OH)D once. Correct deficiency with 2,000
+      IU/day cholecalciferol. Reasonable to expect small OSDI improvement
+      over 8-12 weeks. Continue standard artificial-tear regimen and
+      dry-eye specialist care.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Severe or refractory dry eye
+      benefits from ophthalmology or dry-eye clinic evaluation — some causes
+      (Sjögren's syndrome, meibomian gland dysfunction) need specific therapy.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-dry-eye" />
+  </main>
+</BaseLayout>
