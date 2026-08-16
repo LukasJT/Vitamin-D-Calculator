@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-heart-failure`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Heart Failure',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Heart failure', code: { '@type': 'MedicalCode', codeValue: 'I50', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Heart Failure', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Heart Failure: LV Function, VINDICATE Trial, and Loop-Diuretic Thiamine"
+  description="Heart failure and vitamin D — VINDICATE trial showed LV improvement, wider evidence, loop-diuretic thiamine concern, and dosing in HFrEF and HFpEF."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-heart-failure", label: "Heart Failure" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Heart Failure</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Heart failure patients have very high rates of vitamin D deficiency —
+      often 70%+. The VINDICATE trial showed cholecalciferol supplementation
+      improved left ventricular function in HFrEF patients. Correction is
+      standard supportive care alongside guideline-directed HF therapy.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Deficiency prevalence in HF</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Multiple observational studies find 70-90% of HF patients have 25(OH)D
+      &lt; 30 ng/mL and 30-50% &lt; 20 ng/mL. Reasons include reduced sun
+      exposure from mobility limitation, altered kidney function affecting
+      activation, and loop-diuretic-related changes.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">VINDICATE trial</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Witte 2016 randomised 229 HFrEF patients with 25(OH)D &lt; 20 ng/mL to
+      4,000 IU/day vitamin D vs placebo for 1 year. Vitamin D arm showed:
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>~6.7% absolute increase in LV ejection fraction.</li>
+      <li>Improvement in LV end-diastolic and end-systolic volumes.</li>
+      <li>No improvement in 6-minute walk distance primary endpoint.</li>
+      <li>Modest quality-of-life improvement.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Loop diuretics and thiamine — separate but important</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Furosemide, torsemide, and bumetanide (all loop diuretics) increase
+      urinary thiamine losses. Chronic HF patients on loop diuretics develop
+      thiamine deficiency at up to 33% prevalence. This is not a vitamin D
+      issue but is worth screening — thiamine deficiency worsens HF, causes
+      Wernicke's, and is easily correctable. See our
+      <a href="/vitamin-b1" class="text-amber-700 underline">thiamine page</a>.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">HFpEF (preserved ejection fraction)</h2>
+    <p class="text-gray-700 leading-relaxed">
+      HFpEF is increasingly recognised as a distinct syndrome — heart failure
+      with normal ejection fraction, driven by diastolic dysfunction,
+      hypertension, obesity, and diabetes. Vitamin D evidence in HFpEF is
+      thinner than HFrEF; correcting deficiency is reasonable for general
+      health but disease-specific benefit is unproven.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>All HF patients: test 25(OH)D annually.</li>
+      <li>Correct deficiency: 2,000-4,000 IU/day cholecalciferol.</li>
+      <li>On chronic loop diuretic: consider thiamine 100 mg/day, especially in older patients or malnourished.</li>
+      <li>Guideline-directed HF therapy (ARNI/ACE-i, beta-blocker, MRA, SGLT2i) remains the priority.</li>
+      <li>Monitor calcium and creatinine — HF patients on ACE-i/ARB and MRAs can develop hyperkalaemia; vitamin D-driven calcium changes deserve attention.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Heart failure is a specialist-managed
+      chronic condition; supplement decisions should fit with your cardiology
+      team's plan.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-heart-failure" />
+  </main>
+</BaseLayout>

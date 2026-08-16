@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-atrial-fibrillation`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Atrial Fibrillation',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Atrial fibrillation', code: { '@type': 'MedicalCode', codeValue: 'I48', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Atrial Fibrillation', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Atrial Fibrillation: The Complicated Omega-3 Overlap"
+  description="Vitamin D and AF — observational deficiency signal, why very high vitamin D or omega-3 may increase AF risk, and evidence-based AF management priorities."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-atrial-fibrillation", label: "Atrial Fibrillation" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Atrial Fibrillation</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Atrial fibrillation (AF) is the most common sustained arrhythmia, affecting
+      ~3% of adults. Vitamin D deficiency is associated with higher AF prevalence
+      in cross-sectional data, but the story is complicated — some
+      supplementation trials hint at increased AF risk with very high doses.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational deficiency signal</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Cross-sectional studies find lower mean 25(OH)D in AF patients than
+      controls; U-shaped relationships have been reported — both very low and
+      very high 25(OH)D may associate with elevated AF risk. Rahimi 2011
+      reported adults with 25(OH)D &gt; 100 nmol/L had higher AF prevalence
+      than sufficient adults.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The VITAL AF substudy</h2>
+    <p class="text-gray-700 leading-relaxed">
+      In the VITAL trial (25,000 adults; 2,000 IU vitamin D + 1 g EPA/DHA
+      or placebo × 5 years), the vitamin D arm did not increase incident AF
+      overall. However, the omega-3 arm had a small but significant increase
+      in AF (particularly at higher doses in follow-up studies), consistent
+      with earlier signals from REDUCE-IT and STRENGTH trials.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">High-dose vitamin D concerns</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Rare case reports link acute hypercalcaemia from vitamin D overdose with
+      new-onset AF. Vitamin D at physiological repletion doses (up to
+      4,000-5,000 IU/day) has not been associated with increased AF risk in
+      general trial evidence. Extreme mega-dosing (10,000+ IU/day chronically)
+      has less certain safety profile.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What actually manages AF</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Anticoagulation for stroke prevention if CHA₂DS₂-VASc ≥ 2 in men or ≥ 3 in women (DOACs preferred over warfarin in non-valvular AF).</li>
+      <li>Rate control (beta-blocker, calcium channel blocker, digoxin) or rhythm control (antiarrhythmics, ablation).</li>
+      <li>Address underlying drivers: hypertension, obesity, sleep apnoea, alcohol excess.</li>
+      <li>Vitamin D correction in the deficient is reasonable adjunctive care; do not use as substitute for anticoagulation.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> New-onset AF requires medical
+      evaluation for stroke-risk assessment and anticoagulation decision —
+      urgent for anyone with symptoms of stroke, chest pain, or heart failure.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-atrial-fibrillation" />
+  </main>
+</BaseLayout>

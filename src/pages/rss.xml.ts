@@ -174,6 +174,11 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-birth-defects', title: 'Vitamin D and Birth Defects', description: 'Rickets prevention on one side, hypercalcaemia teratogenicity on the other — the safety margin.', date: '2026-08-26' },
   { slug: '/vitamin-d-and-hpv', title: 'Vitamin D and HPV', description: 'HPV clearance signal in observational studies; vaccination remains primary prevention.', date: '2026-08-26' },
   { slug: '/vitamin-d-and-atopic-march', title: 'Vitamin D and the Atopic March', description: 'VDAART and COPSAC prenatal trials, infant eczema, food allergy — the childhood allergic cascade.', date: '2026-08-26' },
+  { slug: '/vitamin-d-and-glucocorticoids', title: 'Vitamin D for Glucocorticoid Users', description: 'Preventing steroid-induced osteoporosis — ACR 2022 GIOP guidance, calcium and vitamin D dosing.', date: '2026-08-27' },
+  { slug: '/vitamin-d-and-heart-failure', title: 'Vitamin D and Heart Failure', description: 'VINDICATE trial LV improvement, deficiency prevalence in HFrEF, and loop-diuretic thiamine concern.', date: '2026-08-27' },
+  { slug: '/vitamin-d-and-atrial-fibrillation', title: 'Vitamin D and Atrial Fibrillation', description: 'Deficiency signal, U-shaped high-dose concern, and evidence-based AF anticoagulation priorities.', date: '2026-08-27' },
+  { slug: '/vitamin-d-and-postpartum-depression', title: 'Vitamin D and Postpartum Depression', description: 'Cohort deficiency associations, EPDS trial evidence, and lactation-safe evidence-based PPD care.', date: '2026-08-27' },
+  { slug: '/vitamin-d-and-athletic-performance', title: 'Vitamin D and Athletic Performance', description: 'Strength, VO2max, recovery, screening protocols and WADA-compliant dosing for elite athletes.', date: '2026-08-27' },
 ];
 
 export const GET: APIRoute = async () => {

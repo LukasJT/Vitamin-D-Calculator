@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-glucocorticoids`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Glucocorticoids',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Glucocorticoid Users', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D for Glucocorticoid Users: Preventing Steroid-Induced Osteoporosis"
+  description="Chronic prednisone and steroid users need calcium plus vitamin D for bone protection. ACR guidance on GIOP, dosing, and when to add bisphosphonates."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-glucocorticoids", label: "Glucocorticoid Users" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D for Glucocorticoid Users</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Chronic glucocorticoid therapy — prednisone for rheumatoid arthritis, lupus,
+      polymyalgia rheumatica, inflammatory bowel disease, transplant — causes
+      accelerated bone loss and fractures. Glucocorticoid-induced osteoporosis
+      (GIOP) is preventable with calcium plus vitamin D, plus bisphosphonate
+      or denosumab in higher-risk patients.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The mechanism</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Glucocorticoids reduce calcium absorption from the gut, increase urinary
+      calcium loss, inhibit osteoblast function, and increase osteoclast
+      activity. Bone loss is fastest in the first 3-6 months of therapy —
+      ~5-10% of trabecular bone can be lost in the first year at prednisone
+      doses of 7.5-10+ mg/day.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">ACR 2022 GIOP guidance</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>All adults on ≥ 2.5 mg/day prednisone for ≥ 3 months:</strong> calcium 1,000-1,200 mg/day (food + supplement) and vitamin D 600-800 IU/day.</li>
+      <li><strong>Higher fracture risk</strong> (older age, low bone density, prior fracture, higher steroid dose): add bisphosphonate (alendronate, risedronate, zoledronic acid) or denosumab.</li>
+      <li><strong>Postmenopausal women and older men on ≥ 5 mg/day prednisone:</strong> DEXA screening and consideration of anti-resorptive.</li>
+      <li><strong>Young adults</strong>: dosing more individualised; still test 25(OH)D and correct deficiency.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Dosing detail</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Test baseline 25(OH)D at glucocorticoid initiation.</li>
+      <li>Correct to ≥ 30 ng/mL: 2,000-4,000 IU/day cholecalciferol for correction.</li>
+      <li>Maintenance 800-1,000 IU/day for long-term steroid users.</li>
+      <li>Calcium 1,000-1,200 mg/day from food preferentially; supplement to close the gap.</li>
+      <li>DEXA at baseline and every 1-2 years on chronic steroids.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Inhaled and topical steroids</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Inhaled corticosteroids at low-to-moderate asthma/COPD doses have modest
+      systemic effect on bone. High-dose inhaled (e.g., fluticasone 500+ µg/day)
+      and long-term topical use over large areas do have measurable systemic
+      effects. Standard vitamin D + calcium remains reasonable general care.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Withdrawal considerations</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Bone density gradually recovers after glucocorticoid discontinuation, but
+      fracture risk remains elevated for years. Continue vitamin D + calcium and
+      the anti-resorptive therapy per your rheumatology / endocrinology plan
+      even during dose tapering.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Glucocorticoid therapy is often
+      essential for the underlying disease — bone protection makes it safer,
+      but does not eliminate all long-term risks. Discuss any dose or duration
+      concerns with the prescribing specialist.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-glucocorticoids" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-athletic-performance`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Athletic Performance',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Athletic Performance', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Athletic Performance: Strength, VO2max, Recovery, and Testing Rules"
+  description="Can vitamin D boost athletic performance? Deficiency correction helps deficient athletes; supplementation of sufficient athletes does not. Anti-doping legality."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-athletic-performance", label: "Athletic Performance" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Athletic Performance</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D is one of the most-discussed nutritional considerations in
+      sports medicine. The evidence is clear: correcting deficiency in
+      deficient athletes helps performance modestly; supplementation of
+      already-sufficient athletes provides no ergogenic benefit.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Performance-relevant biology</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Skeletal muscle</strong> — vitamin D receptors in fast-twitch fibres; deficiency causes proximal myopathy, reduced strength and power.</li>
+      <li><strong>Bone</strong> — stress-fracture prevention in high-impact sports.</li>
+      <li><strong>Immune</strong> — reduces respiratory infection rates that disrupt training.</li>
+      <li><strong>Testosterone</strong> — modest effect in deficient men; see <a href="/vitamin-d-and-testosterone" class="text-amber-700 underline">testosterone page</a>.</li>
+      <li><strong>Cardiac</strong> — VO₂max may improve modestly with correction of deficiency.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">The performance meta-analysis</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Farrokhyar 2017 pooled 13 trials in athletes and physically active adults:
+      vitamin D supplementation modestly improved muscle strength (grip, jump)
+      and power, with larger effect in those starting deficient. No consistent
+      improvement in endurance metrics in already-sufficient athletes.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Screening protocols</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Elite and competitive athletes at latitudes &gt; 35°: pre-season and mid-winter 25(OH)D testing.</li>
+      <li>Indoor-sport athletes (gymnastics, basketball, ice hockey, dance): screen year-round.</li>
+      <li>Athletes with stress-fracture history or recurrent injury: annual screening minimum.</li>
+      <li>Target 25(OH)D 40-50 ng/mL — higher than general-population sufficiency, common in sports-medicine practice.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Dosing for athletes</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Deficient (&lt; 30 ng/mL): 4,000-5,000 IU/day cholecalciferol for 8-12 weeks, then re-test and adjust.</li>
+      <li>Insufficient (30-40 ng/mL): 2,000-4,000 IU/day for correction, then 2,000 IU/day maintenance.</li>
+      <li>Sufficient (&gt; 40 ng/mL): 1,000-2,000 IU/day maintenance year-round.</li>
+      <li>Take with a fat-containing meal for best absorption.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Anti-doping status</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vitamin D is not on the WADA banned list. All cholecalciferol supplements
+      are compatible with competition anti-doping rules. Use products with
+      Informed-Sport or NSF Certified for Sport labels for guaranteed batch
+      testing against banned-substance contamination.
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Athletic supplementation is best
+      coordinated with a sports-medicine physician or registered sports
+      dietitian. See also our <a href="/vitamin-d-for-athletes" class="text-amber-700 underline">athletes overview page</a>.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-athletic-performance" />
+  </main>
+</BaseLayout>

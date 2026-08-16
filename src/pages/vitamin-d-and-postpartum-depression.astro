@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-postpartum-depression`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Postpartum Depression',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Postpartum Depression', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Postpartum Depression: What the Evidence Actually Shows"
+  description="Postpartum depression and vitamin D — cohort deficiency associations, small supplementation trials with EPDS improvement, and evidence-based PPD management."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-postpartum-depression", label: "Postpartum Depression" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Postpartum Depression</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Postpartum depression (PPD) affects ~10-15% of new mothers. Vitamin D
+      deficiency is common in postpartum women — pregnancy demands, breastfeeding
+      transfer, reduced outdoor time with a newborn all combine. Cohort studies
+      link low 25(OH)D with higher PPD risk; small trials suggest supplementation
+      may help.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational data</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Meta-analyses (Aghajafari 2018 and others) find women with PPD have lower
+      mean 25(OH)D than non-depressed postpartum women. Effect sizes vary but
+      the association is reasonably consistent across cohorts.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation trials</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Vaziri 2016 randomised women with PPD and 25(OH)D deficiency to vitamin D
+      or placebo for 8 weeks — EPDS (Edinburgh Postnatal Depression Scale)
+      improved more with vitamin D. Sample sizes small; larger trials pending.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Evidence-based PPD management</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Universal PPD screening at postpartum visits (EPDS, PHQ-9).</li>
+      <li>Psychotherapy (CBT, interpersonal therapy) first-line for mild-moderate PPD.</li>
+      <li>SSRIs (sertraline is first-line if breastfeeding — extensive lactation safety data) for moderate-severe PPD.</li>
+      <li>Brexanolone (IV allopregnanolone) and zuranolone (oral) — newer options for severe PPD.</li>
+      <li>Vitamin D correction if deficient; not a substitute for the above.</li>
+      <li>Sleep support, social support, partner involvement.</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Postpartum vitamin D adequacy</h2>
+    <p class="text-gray-700 leading-relaxed">
+      All postpartum women should continue vitamin D supplementation — the RDA
+      during lactation is 600 IU/day and clinical practice often uses
+      1,000-2,000 IU/day. Breastfeeding mothers taking 6,400 IU/day can meet
+      the exclusively-breastfed infant's requirement without direct infant
+      drops (see our <a href="/vitamin-d-for-infants" class="text-amber-700 underline">infants page</a>).
+    </p>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Postpartum depression is a common,
+      treatable medical condition. Any new mother experiencing suicidal
+      thoughts, thoughts of harming the baby, or severe hopelessness needs
+      immediate mental health support — call 988 (US), 116 123 (UK Samaritans),
+      or local crisis line.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-postpartum-depression" />
+  </main>
+</BaseLayout>
