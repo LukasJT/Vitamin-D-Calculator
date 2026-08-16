@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-rosacea`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Rosacea',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Rosacea', code: { '@type': 'MedicalCode', codeValue: 'L71', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Rosacea', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Rosacea: The Cathelicidin Complication"
+  description="Vitamin D upregulates cathelicidin, which is implicated in rosacea pathogenesis. The complicated evidence for supplementation in rosacea patients."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-rosacea", label: "Rosacea" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Rosacea</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Rosacea is one of the few skin conditions where vitamin D supplementation has
+      a plausible mechanistic downside as well as upside. Vitamin D upregulates
+      cathelicidin (LL-37) — which is beneficial for infection defence but may
+      also drive rosacea inflammation. Evidence is mixed and clinically
+      complicated.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The cathelicidin story</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      Rosacea patients have elevated skin cathelicidin and abnormally processed
+      LL-37 peptides. This drives erythema, papules, and inflammation. Vitamin D
+      is a potent inducer of cathelicidin — a bit like adding fuel to a fire
+      that's already going.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Observational data</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Some studies find rosacea patients have HIGHER 25(OH)D than controls
+      (Ekiz 2014); others find no significant difference. This is not the
+      typical pattern seen in other inflammatory skin diseases.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical considerations</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Rosacea patients with documented vitamin D deficiency: correct to standard sufficient levels; don't over-supplement.</li>
+      <li>If already sufficient, additional vitamin D is not recommended specifically for rosacea.</li>
+      <li>UV exposure is a known rosacea trigger — don't attempt sun-based vitamin D strategies.</li>
+      <li>Evidence-based rosacea therapy: metronidazole cream, ivermectin cream, azelaic acid, brimonidine, oral doxycycline, IPL.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Rosacea has multiple triggers —
+      alcohol, spicy food, temperature extremes, UV, stress — that matter more
+      than supplement decisions for symptom control.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-rosacea" />
+  </main>
+</BaseLayout>

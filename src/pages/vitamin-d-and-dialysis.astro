@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-dialysis`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Dialysis',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Dialysis', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D in Dialysis: Calcitriol, Paricalcitol, Doxercalciferol, and PTH Control"
+  description="Dialysis patients need active vitamin D analogues, not cholecalciferol, for PTH suppression. Standard dosing of paricalcitol, doxercalciferol, and calcitriol."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-dialysis", label: "Dialysis" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D in Dialysis Patients</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Dialysis patients (CKD stage 5) have essentially zero renal 1α-hydroxylase
+      activity. Cholecalciferol supplementation raises 25(OH)D but doesn't
+      convert to active calcitriol. Managing CKD-MBD in dialysis requires active
+      vitamin D analogues, calcimimetics, and calcium/phosphate balance under
+      nephrology supervision.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">The active analogues</h2>
+    <MidContentAd />
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li><strong>Calcitriol (Rocaltrol)</strong> — the natural active hormone 1,25(OH)₂D. Effective for PTH suppression; risk of hypercalcaemia and vascular calcification.</li>
+      <li><strong>Paricalcitol (Zemplar)</strong> — synthetic analogue; PTH suppression with less calcium/phosphate rise than calcitriol. Widely used.</li>
+      <li><strong>Doxercalciferol (Hectorol)</strong> — 1α-hydroxyvitamin D₂; activated in liver rather than kidney; commonly used in dialysis.</li>
+      <li><strong>Calcifediol (Rayaldee)</strong> — extended-release 25(OH)D₃; used earlier in CKD to boost 25(OH)D and secondary PTH.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Cholecalciferol still has a role</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Dialysis patients often have very low 25(OH)D even with active analogue
+      therapy. Standard cholecalciferol (1,000-2,000 IU/day or 50,000 IU/week)
+      to raise 25(OH)D above 30 ng/mL is standard alongside active analogues.
+      Supports non-renal functions of vitamin D (immune, muscle, bone matrix
+      quality).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Calcimimetics</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cinacalcet (Sensipar) and etelcalcetide (Parsabiv) sensitise the parathyroid
+      calcium-sensing receptor, suppressing PTH without raising serum calcium.
+      Often combined with lower doses of active vitamin D to control PTH while
+      minimising vascular calcification.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">KDIGO targets in dialysis</h2>
+    <ul class="list-disc pl-6 text-gray-700 leading-relaxed space-y-1">
+      <li>Serum calcium: within normal range (avoid hypercalcaemia).</li>
+      <li>Serum phosphate: toward normal.</li>
+      <li>PTH: 2-9× upper limit of normal (roughly 130-585 pg/mL depending on assay).</li>
+      <li>Avoid over-suppression of PTH (&lt; 2× ULN) — adynamic bone disease.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">What dialysis patients should NOT do</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Do not self-adjust vitamin D analogue doses.</li>
+      <li>Do not stop calcimimetics without nephrology input.</li>
+      <li>Do not use calcium-based supplements (e.g., Tums) as antacid without discussing with your kidney team — chronic accumulation contributes to vascular calcification.</li>
+      <li>Do not take OTC magnesium without checking — dialysis alters magnesium handling.</li>
+      <li>Sun exposure limits do not apply — even significant sun does not raise calcitriol without renal 1α-hydroxylase.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Dialysis vitamin D management is
+      complex and must be coordinated with your nephrology team. This overview
+      is educational, not prescriptive.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-dialysis" />
+  </main>
+</BaseLayout>

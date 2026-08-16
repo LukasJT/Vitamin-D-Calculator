@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-restless-legs`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Restless Legs Syndrome',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: [{ '@type': 'MedicalCondition', name: 'Restless legs syndrome', code: { '@type': 'MedicalCode', codeValue: 'G25.81', codingSystem: 'ICD-10' } }],
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Restless Legs Syndrome', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Restless Legs Syndrome: Iron First, Vitamin D Second"
+  description="Restless legs syndrome and vitamin D — the iron/ferritin priority, small vitamin D supplementation evidence, and evidence-based RLS management."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-restless-legs", label: "Restless Legs" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Restless Legs Syndrome</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Restless legs syndrome (RLS) is neurologically related to central iron and
+      dopamine dysfunction. Ferritin is the primary lab to check. Vitamin D
+      deficiency associations exist but are secondary — correct deficiency, but
+      don't skip the ferritin.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Iron first — the ferritin priority</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      RLS is a "brain iron deficiency" syndrome even at normal peripheral iron.
+      Guidelines recommend checking ferritin and transferrin saturation; treating
+      ferritin below 75 ng/mL with oral iron (ferric maltol or standard ferrous
+      salts) even without frank anaemia. This is the highest-impact intervention
+      for most RLS patients.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Vitamin D evidence</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cross-sectional studies find lower 25(OH)D in RLS patients. Wali 2015
+      randomised RLS patients to vitamin D or placebo and reported significant
+      IRLS score improvement in the vitamin D group. Small trial. Broader
+      evidence is limited.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical approach</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Any adult with RLS: check ferritin, transferrin saturation, CBC, TSH, 25(OH)D, magnesium, B12, glucose.</li>
+      <li>Ferritin &lt; 75 ng/mL: iron supplementation (325 mg ferrous sulfate every other day, or ferric maltol).</li>
+      <li>25(OH)D &lt; 30 ng/mL: correct with 2,000 IU/day cholecalciferol.</li>
+      <li>Persistent moderate-severe RLS after nutrient repletion: neurology referral; dopamine agonists (pramipexole, ropinirole), alpha-2-delta ligands (gabapentin enacarbil, pregabalin).</li>
+      <li>Avoid RLS triggers: caffeine after mid-day, alcohol, sedating antihistamines, some antidepressants.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> RLS with severe sleep disruption
+      warrants prompt medical evaluation — the ferritin-and-iron pathway alone
+      resolves symptoms in many patients.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-restless-legs" />
+  </main>
+</BaseLayout>

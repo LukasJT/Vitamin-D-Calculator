@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-hearing-loss`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Hearing Loss',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Hearing Loss', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Hearing Loss: Cochlear Otoconia, BPPV, and Presbycusis"
+  description="What the evidence shows for vitamin D and hearing — BPPV recurrence, sudden sensorineural hearing loss, age-related presbycusis, and otoconia calcium biology."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-hearing-loss", label: "Hearing Loss" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Hearing Loss</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Vitamin D and calcium metabolism are relevant to inner-ear function in
+      three specific ways: benign paroxysmal positional vertigo (BPPV) recurrence,
+      sudden sensorineural hearing loss (SSNHL), and age-related presbycusis.
+      Evidence is strongest for BPPV.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">BPPV — the calcium otoconia link</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      BPPV is caused by dislodged otoconia — calcium carbonate crystals — floating
+      into the semicircular canals. Vitamin D and calcium metabolism affect otoconia
+      formation and stability. A 2020 South Korean randomised trial (Jeong) of
+      957 BPPV patients showed vitamin D 400 IU + calcium 500 mg reduced BPPV
+      recurrence rate by ~24% over 12 months (annualised recurrence 0.83 vs 1.10
+      episodes). Reasonable adjunct in recurrent BPPV.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Sudden sensorineural hearing loss (SSNHL)</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Small observational studies find vitamin D-deficient SSNHL patients have
+      poorer recovery than replete patients. Corticosteroids remain the standard
+      early treatment. Vitamin D correction is not established as changing
+      outcomes but is reasonable general care.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Presbycusis and age-related hearing loss</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Cross-sectional studies find modest correlation between low 25(OH)D and
+      hearing threshold in older adults, but Mendelian randomisation and
+      supplementation trials do not consistently support causation. Age-related
+      hearing loss is multifactorial (noise exposure, ototoxic medications,
+      vascular changes, genetics).
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Recurrent BPPV: check 25(OH)D and calcium; consider 800 IU vitamin D + 500 mg calcium daily as adjunct to Epley/Semont maneuvers.</li>
+      <li>SSNHL: prompt otolaryngology evaluation (steroids are time-sensitive within days); vitamin D adjunct is reasonable.</li>
+      <li>General age-related hearing changes: get audiology assessment; vitamin D unlikely to reverse but useful for general health.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Sudden hearing loss is a medical
+      emergency — steroid treatment window is only days for best recovery.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-hearing-loss" />
+  </main>
+</BaseLayout>

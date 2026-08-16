@@ -162,6 +162,12 @@ const ARTICLES: { slug: string; title: string; description: string; date: string
   { slug: '/vitamin-d-and-covid-severity', title: 'Vitamin D and COVID-19 Severity', description: 'Castillo calcifediol trial, hospital outcomes, and the calcifediol-vs-cholecalciferol distinction.', date: '2026-08-24' },
   { slug: '/vitamin-d-and-hyperparathyroidism', title: 'Vitamin D and Hyperparathyroidism', description: 'Primary vs secondary vs tertiary — how correction fixes secondary HPT and cautions in primary.', date: '2026-08-24' },
   { slug: '/vitamin-d-and-sarcoidosis', title: 'Vitamin D and Sarcoidosis', description: 'Why granulomatous disease turns standard supplementation into a hypercalcaemia risk.', date: '2026-08-24' },
+  { slug: '/vitamin-d-and-hearing-loss', title: 'Vitamin D and Hearing Loss', description: 'BPPV recurrence, SSNHL recovery, presbycusis, and cochlear otoconia biology.', date: '2026-08-25' },
+  { slug: '/vitamin-d-and-tinnitus', title: 'Vitamin D and Tinnitus', description: 'Deficiency associations, small THI trial evidence, and evidence-based tinnitus management.', date: '2026-08-25' },
+  { slug: '/vitamin-d-and-rosacea', title: 'Vitamin D and Rosacea', description: 'The cathelicidin complication — why rosacea is different from other inflammatory skin conditions.', date: '2026-08-25' },
+  { slug: '/vitamin-d-and-restless-legs', title: 'Vitamin D and Restless Legs Syndrome', description: 'Iron/ferritin priority, small vitamin D evidence, evidence-based RLS management.', date: '2026-08-25' },
+  { slug: '/vitamin-d-and-post-surgery-recovery', title: 'Vitamin D and Post-Surgery Recovery', description: 'Wound healing, infection risk, joint-replacement outcomes, ICU mortality — pre-op optimisation.', date: '2026-08-25' },
+  { slug: '/vitamin-d-and-dialysis', title: 'Vitamin D in Dialysis', description: 'Active analogues (paricalcitol, doxercalciferol), calcimimetics, KDIGO targets, cholecalciferol role.', date: '2026-08-25' },
 ];
 
 export const GET: APIRoute = async () => {

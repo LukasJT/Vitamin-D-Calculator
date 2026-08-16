@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedArticles from '../components/shared/RelatedArticles.astro';
+import MidContentAd from '../components/shared/MidContentAd.astro';
+import EndOfContentAd from '../components/shared/EndOfContentAd.astro';
+import Breadcrumbs from '../components/shared/Breadcrumbs.astro';
+import EditorialStandards from '../components/shared/EditorialStandards.astro';
+
+const SITE = 'https://vitamindcalculator.net';
+const PAGE_URL = `${SITE}/vitamin-d-and-tinnitus`;
+
+const medicalJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: 'Vitamin D and Tinnitus',
+  url: PAGE_URL,
+  medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  lastReviewed: '2026-05-01',
+};
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'Tinnitus', item: PAGE_URL },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vitamin D and Tinnitus: Small Trial Evidence for Correcting Deficiency"
+  description="Tinnitus patients have lower mean 25(OH)D than controls. What supplementation trials show for tinnitus severity, THI scores, and where the evidence is weaker."
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(medicalJsonLd)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Breadcrumbs crumbs={[{ href: "/vitamin-d-and-tinnitus", label: "Tinnitus" }]} />
+  <EditorialStandards />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vitamin D and Tinnitus</h1>
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Tinnitus — the perception of sound without external source — affects ~15%
+      of adults. Cross-sectional studies find lower serum 25(OH)D in adults with
+      idiopathic tinnitus than in matched controls. Small supplementation trials
+      show modest improvements in Tinnitus Handicap Inventory (THI) scores.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Observational data</h2>
+    <MidContentAd />
+    <p class="text-gray-700 leading-relaxed">
+      A 2020 Turkish study (Nemati) reported 40% of tinnitus patients were
+      deficient (&lt; 20 ng/mL) vs 27% of controls. Severity correlated inversely
+      with 25(OH)D. Multiple similar cohort findings; mechanism uncertain.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Supplementation evidence</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Nemati 2022 randomised 47 tinnitus patients with 25(OH)D &lt; 30 ng/mL to
+      vitamin D or placebo × 3 months. THI score improved significantly more in
+      the vitamin D group. Small sample, limited generalisability. No large
+      confirmatory trial to date.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Practical guide</h2>
+    <ol class="list-decimal pl-6 text-gray-700 leading-relaxed space-y-2">
+      <li>Bothersome tinnitus: test 25(OH)D and correct any deficiency.</li>
+      <li>Otolaryngology evaluation for pattern change, hearing loss, unilateral tinnitus.</li>
+      <li>Evidence-based tinnitus interventions: sound therapy, cognitive-behavioural therapy for tinnitus, hearing aids if hearing loss present.</li>
+      <li>Vitamin D is adjunct, not stand-alone treatment.</li>
+    </ol>
+
+    <EndOfContentAd />
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900 mt-8 leading-relaxed">
+      <strong>Not medical advice.</strong> Unilateral tinnitus needs
+      otolaryngology evaluation to exclude vestibular schwannoma.
+    </div>
+
+    <RelatedArticles current="/vitamin-d-and-tinnitus" />
+  </main>
+</BaseLayout>
